@@ -10,6 +10,9 @@ Description: A collection of diverse R functions who don't fit (yet?) in another
 License: GPL (>= 3)
 URL: https://github.com/larmarange/JLutils
 Encoding: UTF-8
+Suggests:
+    TraMineR,
+    ade4
 Collate:
     'clustering.R'
     'factor_analysis.R'
