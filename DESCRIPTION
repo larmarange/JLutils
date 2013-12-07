@@ -17,3 +17,4 @@ Collate:
     'clustering.R'
     'factor_analysis.R'
     'sequences.R'
+    'A2Rplot.R'
