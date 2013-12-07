@@ -8,7 +8,6 @@ JLutils
 \description{
 A collection of diverse functions who don't fit (yet?) in another package.
 }
-\author{
-Joseph Larmarange - \url{http://joseph.larmarange.net}
-}
+\source{\url{https://github.com/larmarange/JLutils}}
+\author{Joseph Larmarange - \url{http://joseph.larmarange.net}}
 \keyword{ package }
