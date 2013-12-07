@@ -1,0 +1,15 @@
+Package: JLutils
+Type: Package
+Title: Collection of R functions
+Version: 0.1.0
+Date: 2013-12-07
+Author: Joseph Larmarange <joseph@larmarange.net>
+Maintainer: Joseph Larmarange <joseph@larmarange.net>
+Description: A collection of diverse functions who don't fit (yet?) in another
+    package.
+License: GPL (>= 3)
+Encoding: UTF-8
+Collate:
+    'clustering.R'
+    'factor_analysis.R'
+    'sequences.R'

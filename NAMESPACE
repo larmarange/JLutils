@@ -1,0 +1,3 @@
+export(best.cutree)
+export(s.freq)
+export(seq.heatmap)
