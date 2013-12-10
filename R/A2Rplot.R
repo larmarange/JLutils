@@ -1,5 +1,7 @@
 #' Colored dendrogram
 #'
+#' This function plot an hclust dendrogram with one color per branch (see examples).
+#'
 #' @author Romain Francois 
 #' @note 
 #' The A2R package has not been updated since January 2006 and cannot be installed

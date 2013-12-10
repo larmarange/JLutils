@@ -8,7 +8,8 @@
   A2Rplot(x, ...)
 }
 \description{
-  Colored dendrogram
+  This function plot an hclust dendrogram with one color
+  per branch (see examples).
 }
 \note{
   The A2R package has not been updated since January 2006
