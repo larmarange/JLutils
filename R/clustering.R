@@ -5,7 +5,7 @@
 #' proposed by the \code{\link[FactoMineR]{HCPC}} function of the package
 #' \code{FactoMineR}.
 #' 
-#' @param hc a clustering tree (an object of class \code{"hclust"}, \code{"dendrogram"} or \code{"agnes"})
+#' @param hc a clustering tree (an object of class \code{\link{hclust}}, \code{\link{dendrogram}} or \code{\link{agnes}})
 #' @param min the minimum number of classes
 #' @param max the maximum number of classes
 #' @param loss if \code{TRUE}, will return the relative loss of inertia of each partition instead of the best partition

@@ -7,7 +7,8 @@
 }
 \arguments{
   \item{hc}{a clustering tree (an object of class
-  \code{"hclust"}, \code{"dendrogram"} or \code{"agnes"})}
+  \code{\link{hclust}}, \code{\link{dendrogram}} or
+  \code{\link{agnes}})}
 
   \item{min}{the minimum number of classes}
 
