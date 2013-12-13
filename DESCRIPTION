@@ -12,7 +12,9 @@ URL: https://github.com/larmarange/JLutils
 Encoding: UTF-8
 Suggests:
     TraMineR,
-    ade4
+    ade4,
+    questionr,
+    cluster
 Collate:
     'clustering.R'
     'factor_analysis.R'

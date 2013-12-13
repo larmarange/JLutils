@@ -15,7 +15,7 @@
   \item{yax}{column for the y axis}
 
   \item{...}{additional parameters sent to
-  \code{\link{s.value}}}
+  \code{\link[ade4]{s.value}}}
 }
 \description{
   For each point on the factorial plan, display the number
@@ -29,5 +29,8 @@ if (require(ade4) & require(questionr)) {
   s.label(acm$li, clabel = 0, cpoint = 2)
   s.freq(acm$li, csize = 0.75)
 }
+}
+\seealso{
+  \code{\link[ade4]{s.value}}, \code{\link[ade4]{s.label}}
 }
 

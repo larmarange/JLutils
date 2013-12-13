@@ -6,8 +6,9 @@
 #' @param dfxy a data frame with two coordinates
 #' @param xax	column for the x axis
 #' @param yax	column for the y axis
-#' @param ... additional parameters sent to \code{\link{s.value}}
+#' @param ... additional parameters sent to \code{\link[ade4]{s.value}}
 #' @source \url{http://joseph.larmarange.net/?Representer-des-effectifs-dans-le}
+#' @seealso \code{\link[ade4]{s.value}}, \code{\link[ade4]{s.label}}
 #' @export s.freq
 #' @examples
 #' if (require(ade4) & require(questionr)) {
@@ -18,7 +19,7 @@
 #' }
 
 s.freq <-
-	function(dfxy, xax=1, yax=2, ...)
+	function(dfxy, xax = 1, yax = 2, ...)
 	{
 		if (!require(ade4)) stop("You need to install the ade4 package.")
 		d <- as.data.frame(table(dfxy[c(xax,yax)]))

@@ -58,6 +58,8 @@
   drawn (use that to include the tree in a more complicated
   layout)}
 
+  \item{main}{title of the plot}
+
   \item{boxes}{\code{TRUE} to draw the bow around the
   plots}
 

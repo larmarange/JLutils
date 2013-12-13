@@ -17,6 +17,7 @@
 #' @param fact.sup a factor to categorize the observations
 #' @param show.labels	\code{TRUE} if the labels should be drawn
 #' @param only.tree	\code{TRUE} if only the tree should be drawn (use that to include the tree in a more complicated layout)
+#' @param main title of the plot
 #' @param boxes	\code{TRUE} to draw the bow around the plots
 #' @param members	members of each terminal node (see \code{\link{hclust}} for more details)
 #' @author Romain Francois 
