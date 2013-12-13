@@ -401,19 +401,30 @@
 #' Cut a tree (result from \link{hclust}) into groups of data. 
 #' Groups are in the order of the tree leafs.
 #'
+#' @param tree an \code{\link{hclust}} object
+#' @param k the desired number of groups
+#' @param h height where the tree is to be cut
 #' @author Romain Francois 
 #' @note 
 #' The A2R package has not been updated since January 2006 and cannot be installed
 #' anymore with a recent version of R. It's why this function has been copied here.
 #' @source \url{http://addictedtor.free.fr/packages/A2R/lastVersion/}
+#' @seealso \code{\link{cutree}}
 #' @export cutree.order
+#' @examples
+#' h77 <- hclust(dist(state.x77))
+#' ct.o <- cutree.order(h77, k=4)
+#' ct.n <- cutree(h77,k=4)
+#' plot(h77)
+#' rect.hclust(h77, 4)
+#' cbind(ct.o, ct.n)
 
 `cutree.order` <- 
-function(hclu, k=NULL, h=NULL){
+function(tree, k = NULL, h = NULL){
 	
-	coupe <- cutree(hclu,k=k, h=h)
+	coupe <- cutree(tree,k=k, h=h)
 	
-	coupe.or <- coupe[hclu$order]
+	coupe.or <- coupe[tree$order]
 	coupe.out<- rep(NA,length(coupe))
 	j <-  1 #
 	k <-  coupe.or[1]

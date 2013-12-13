@@ -5,7 +5,14 @@
   \url{http://addictedtor.free.fr/packages/A2R/lastVersion/}
 }
 \usage{
-  cutree.order(hclu, k = NULL, h = NULL)
+  cutree.order(tree, k = NULL, h = NULL)
+}
+\arguments{
+  \item{tree}{an \code{\link{hclust}} object}
+
+  \item{k}{the desired number of groups}
+
+  \item{h}{height where the tree is to be cut}
 }
 \description{
   Cut a tree (result from \link{hclust}) into groups of
@@ -16,7 +23,18 @@
   and cannot be installed anymore with a recent version of
   R. It's why this function has been copied here.
 }
+\examples{
+h77 <- hclust(dist(state.x77))
+ct.o <- cutree.order(h77, k=4)
+ct.n <- cutree(h77,k=4)
+plot(h77)
+rect.hclust(h77, 4)
+cbind(ct.o, ct.n)
+}
 \author{
   Romain Francois
+}
+\seealso{
+  \code{\link{cutree}}
 }
 
