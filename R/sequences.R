@@ -6,20 +6,21 @@
 #' @param seq a state sequence object created with the \code{\link[TraMineR]{seqdef}} function
 #' @param tree a dendrogram of the sequences (an object of class \code{\link{hclust}}, \code{\link{dendrogram}} or \code{\link{agnes}})
 #' @param with.missing is there a 'missing value' state in the sequences?
+#' @param ... additional parameters sent to \code{\link{heatmap}}
 #' @source \url{http://joseph.larmarange.net/?Representer-un-tapis-de-sequences}
 #' @seealso \code{\link[TraMineR]{seqIplot}}
-#' @export seq.heatmap
+#' @export seq_heatmap
 #' @examples
-#' if (require(TraMineR)) {
+#' if (require(TraMineR) & require(cluster)) {
 #'   data(mvad)
 #'   mvad.seq <- seqdef(mvad[,17:86])
 #'   mvad.lcs <- seqdist(mvad.seq, method = "LCS")
 #'   mvad.hc <- agnes(mvad.lcs, method = "ward")
-#'   seq.heatmap(mvad.seq, mvad.hc)
+#'   seq_heatmap(mvad.seq, mvad.hc)
 #'   seqIplot(mvad.seq, sortv = cutree.order(mvad.hc, nrow(mvad.seq)))
 #' }
 
-seq.heatmap <- function (seq, tree, with.missing = FALSE, ...) {
+seq_heatmap <- function (seq, tree, with.missing = FALSE, ...) {
 	if (!require(TraMineR)) stop("You need to install the TraMineR package.")
 	if (class(tree)!="dendrogram") tree <- as.dendrogram(tree)
 	mat <- seq

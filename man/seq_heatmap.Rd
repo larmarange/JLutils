@@ -1,11 +1,11 @@
-\name{seq.heatmap}
-\alias{seq.heatmap}
+\name{seq_heatmap}
+\alias{seq_heatmap}
 \title{Index plot of sequences orderred according to a dendrogram}
 \source{
   \url{http://joseph.larmarange.net/?Representer-un-tapis-de-sequences}
 }
 \usage{
-  seq.heatmap(seq, tree, with.missing = FALSE, ...)
+  seq_heatmap(seq, tree, with.missing = FALSE, ...)
 }
 \arguments{
   \item{seq}{a state sequence object created with the
@@ -17,6 +17,9 @@
 
   \item{with.missing}{is there a 'missing value' state in
   the sequences?}
+
+  \item{...}{additional parameters sent to
+  \code{\link{heatmap}}}
 }
 \description{
   Index plot of state sequences. Sequences are ordered
@@ -24,16 +27,16 @@
   also plotted on the side of the index plot.
 }
 \examples{
-if (require(TraMineR)) {
+if (require(TraMineR) & require(cluster)) {
   data(mvad)
   mvad.seq <- seqdef(mvad[,17:86])
   mvad.lcs <- seqdist(mvad.seq, method = "LCS")
   mvad.hc <- agnes(mvad.lcs, method = "ward")
-  seq.heatmap(mvad.seq, mvad.hc)
+  seq_heatmap(mvad.seq, mvad.hc)
   seqIplot(mvad.seq, sortv = cutree.order(mvad.hc, nrow(mvad.seq)))
 }
 }
 \seealso{
-  \code{\link[TraMineR]{seqiplot}}
+  \code{\link[TraMineR]{seqIplot}}
 }
 
