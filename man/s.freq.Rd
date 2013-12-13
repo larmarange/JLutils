@@ -1,13 +1,33 @@
 \name{s.freq}
 \alias{s.freq}
-\title{Display frequencies on the factorial plan}
+\title{Plot of factorial maps with frequency of each point}
 \source{
   \url{http://joseph.larmarange.net/?Representer-des-effectifs-dans-le}
 }
 \usage{
   s.freq(dfxy, xax = 1, yax = 2, ...)
 }
+\arguments{
+  \item{dfxy}{a data frame with two coordinates}
+
+  \item{xax}{column for the x axis}
+
+  \item{yax}{column for the y axis}
+
+  \item{...}{additional parameters sent to
+  \code{\link{s.value}}}
+}
 \description{
-  Display frequencies on the factorial plan
+  For each point on the factorial plan, display the number
+  of identical observations (i.e. with the same
+  coordinates).
+}
+\examples{
+if (require(ade4) & require(questionr)) {
+  data(hdv2003)
+  acm <- dudi.acm(hdv2003[,c("sexe","sport","bricol","cuisine","cinema")], scannf = FALSE)
+  s.label(acm$li, clabel = 0, cpoint = 2)
+  s.freq(acm$li, csize = 0.75)
+}
 }
 
