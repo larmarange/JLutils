@@ -1,8 +1,25 @@
-#' Index plot of sequences oderred according to a dendrogram
+#' Index plot of sequences orderred according to a dendrogram
+#' 
+#' Index plot of state sequences. Sequences are ordered accoring to the specified
+#' dendrogram. The dendrogram is also plotted on the side of the index plot.
+#' 
+#' @param seq a state sequence object created with the \code{\link[TraMineR]{seqdef}} function
+#' @param tree a dendrogram of the sequences (an object of class \code{\link{hclust}}, \code{\link{dendrogram}} or \code{\link{agnes}})
+#' @param with.missing is there a 'missing value' state in the sequences?
 #' @source \url{http://joseph.larmarange.net/?Representer-un-tapis-de-sequences}
+#' @seealso \code{\link[TraMineR]{seqIplot}}
 #' @export seq.heatmap
+#' @examples
+#' if (require(TraMineR)) {
+#'   data(mvad)
+#'   mvad.seq <- seqdef(mvad[,17:86])
+#'   mvad.lcs <- seqdist(mvad.seq, method = "LCS")
+#'   mvad.hc <- agnes(mvad.lcs, method = "ward")
+#'   seq.heatmap(mvad.seq, mvad.hc)
+#'   seqIplot(mvad.seq, sortv = cutree.order(mvad.hc, nrow(mvad.seq)))
+#' }
 
-seq.heatmap <- function (seq, tree, with.missing=FALSE, ...) {
+seq.heatmap <- function (seq, tree, with.missing = FALSE, ...) {
 	if (!require(TraMineR)) stop("You need to install the TraMineR package.")
 	if (class(tree)!="dendrogram") tree <- as.dendrogram(tree)
 	mat <- seq
