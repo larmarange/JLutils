@@ -22,7 +22,7 @@
 
 seq_heatmap <- function (seq, tree, with.missing = FALSE, ...) {
 	if (!require(TraMineR)) stop("You need to install the TraMineR package.")
-	if (class(tree)!="dendrogram") tree <- as.dendrogram(tree)
+	if (!"dendrogram" %in% class(tree)) tree <- as.dendrogram(tree)
 	mat <- seq
 	for (i in 1:length(seq)){
 		mat[mat[,i]=="%",i] <- NA
