@@ -22,7 +22,7 @@
 
 best.cutree <- 
 function(hc, min=3, max=20, loss=FALSE, graph=FALSE, ...){
-	if (!"hclust" %in% class(hc)) hc <- as.hclust(hc)
+	if (!inherits(hc, "hclust")) hc <- as.hclust(hc)
 	max <- min(max, length(hc$height))
 	inert.gain <- rev(hc$height)
 	intra <- rev(cumsum(rev(inert.gain)))

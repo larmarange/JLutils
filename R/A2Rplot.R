@@ -113,7 +113,7 @@
 	boxes    = TRUE,
 	members
 ){
-	if (!"hclust" %in% class(x)) x <- as.hclust(x)
+	if (!inherits(x, "hclust")) x <- as.hclust(x)
 	if(missing(members)) members <- NULL
 	opar <- par(no.readonly=TRUE)
 	knot.pos <- match.arg(knot.pos)
