@@ -21,3 +21,4 @@ Collate:
     'sequences.R'
     'A2Rplot.R'
     'formating.R'
+    'concatenate.R'
