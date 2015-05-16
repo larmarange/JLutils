@@ -317,7 +317,7 @@ f5 <- function (x)
 #'   \item 10 if ≥ 5 and < 10
 #'   \item one significant digit if ≥ 10 and < 100
 #'   \item two significant digits if ≥ 100 and < 10 millions
-#'   \item three significant digits if ≥ 10 million
+#'   \item three significant digits if ≥ 10 millions
 #' }
 #' @export
 #' @examples 
