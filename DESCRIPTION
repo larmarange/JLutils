@@ -20,3 +20,4 @@ Collate:
     'factor_analysis.R'
     'sequences.R'
     'A2Rplot.R'
+    'formating.R'
