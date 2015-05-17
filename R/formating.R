@@ -245,16 +245,16 @@ comp.pourcent5 <- function (x)
 #' 
 #' @param x a numeric vector to format
 #' @param digits number of decimal digits to display
-#' @details \code{f0(x)} is a shortcut for \code{f(x, digits = 0)}, 
-#' \code{f1(x)} for \code{f(x, digits = 1)}, etc.
-#' @export f
+#' @details \code{fr0(x)} is a shortcut for \code{fr(x, digits = 0)}, 
+#' \code{fr1(x)} for \code{fr(x, digits = 1)}, etc.
+#' @export fr
 #' @examples
-#' f(0.004)
-#' f0(c(0.000045, 0.56789, 234.567))
-#' f2(c(0.000045, 0.56789, 234.567))
-#' f5(c(0.000045, 0.56789, 234.567))
+#' fr(0.004)
+#' fr0(c(0.000045, 0.56789, 234.567))
+#' fr2(c(0.000045, 0.56789, 234.567))
+#' fr5(c(0.000045, 0.56789, 234.567))
 
-f <- function (x, digits=1) 
+fr <- function (x, digits=1) 
 {
   if (all(is.na(x)))
     return("NA")
@@ -266,46 +266,46 @@ f <- function (x, digits=1)
     ))
 }
 
-#' @rdname f
+#' @rdname fr
 #' @export
-f0 <- function (x)
+fr0 <- function (x)
 {
-  return(f(x, digits = 0))
+  return(fr(x, digits = 0))
 }
 
-#' @rdname f
+#' @rdname fr
 #' @export
-f1 <- function (x)
+fr1 <- function (x)
 {
-  return(f(x, digits = 1))
+  return(fr(x, digits = 1))
 }
 
-#' @rdname f
+#' @rdname fr
 #' @export
-f2 <- function (x)
+fr2 <- function (x)
 {
-  return(f(x, digits = 2))
+  return(fr(x, digits = 2))
 }
 
-#' @rdname f
+#' @rdname fr
 #' @export
-f3 <- function (x)
+fr3 <- function (x)
 {
-  return(f(x, digits = 3))
+  return(fr(x, digits = 3))
 }
 
-#' @rdname f
+#' @rdname fr
 #' @export
-f4 <- function (x)
+fr4 <- function (x)
 {
-  return(f(x, digits = 5))
+  return(fr(x, digits = 5))
 }
 
-#' @rdname f
+#' @rdname fr
 #' @export
-f5 <- function (x)
+fr5 <- function (x)
 {
-  return(f(x, digits = 5))
+  return(fr(x, digits = 5))
 }
 
 
