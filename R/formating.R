@@ -139,9 +139,9 @@ pourcent <- function (x, digits=1)
   else
     return(paste0(format(
       round(100*x, digits = digits), 
-      nsmall = digits, big.mark = " ", 
+      nsmall = digits, big.mark = " ", 
       scientific = FALSE, decimal.mark = ","
-      ), " %"))
+      ), " %"))
 }
 
 #' @rdname pourcent
@@ -261,7 +261,7 @@ fr <- function (x, digits=1)
   else
     return(format(
       round(x, digits = digits), 
-      nsmall = digits, big.mark = " ", 
+      nsmall = digits, big.mark = " ", 
       scientific = FALSE, decimal.mark = ","
     ))
 }
@@ -319,6 +319,9 @@ fr5 <- function (x)
 #'   \item two significant digits if ≥ 100 and < 10 millions
 #'   \item three significant digits if ≥ 10 millions
 #' }
+#' 
+#' @param x a numeric vector to format
+#' 
 #' @export
 #' @examples 
 #' who.format(c(3, 8, 42, 75, 45678, 9876543, 12345678))
