@@ -6,6 +6,9 @@
 \usage{
 who.format(x)
 }
+\arguments{
+\item{x}{a numeric vector to format}
+}
 \description{
 In WHO publications, population numbers are usually presented as follow:
 \itemize{
