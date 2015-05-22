@@ -36,7 +36,7 @@ require(ggplot2)
  multiplot(p1, p2, p3, layout = matrix(c(1,2,3,3), nrow=2, byrow=TRUE))
 }
 \references{
-Winston Chang, \empth{Cookbook for R},
+Winston Chang, \emph{Cookbook for R},
  \url{http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/}
 }
 
