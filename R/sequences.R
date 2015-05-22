@@ -41,9 +41,9 @@ seq_heatmap <- function (seq, tree, with.missing = FALSE, ...) {
 #' 
 #' @return a river plot object that can be plotted with \code{\link[riverplot]{riverplot}}
 #' 
-#' @export
+#' @export 
 
-seq.makeRiver <- function(seq)
+seq_makeRiver <- function(seq)
 {
   if (!require(TraMineR)) stop("You need to install the TraMineR package.")
   if (!require(riverplot)) stop("You need to install the riverplot package.")
