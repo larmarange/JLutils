@@ -11,7 +11,7 @@
 #'  then plot 1 will go in the upper left, 2 will go in the upper right, and 3 will go all 
 #'  the way across the bottom.
 #'  
-#'  @references Winston Chang, \empth{Cookbook for R}, 
+#'  @references Winston Chang, \emph{Cookbook for R}, 
 #'  \url{http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/}
 #'  
 #'  @examples 
