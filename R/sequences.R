@@ -22,6 +22,7 @@
 
 seq_heatmap <- function (seq, tree, with.missing = FALSE, ...) {
 	if (!require(TraMineR)) stop("You need to install the TraMineR package.")
+  if (!inherits(seq, "stslist")) stop("seq should be a stslist object, see ?seqdef.")
 	if (!inherits(tree, "dendrogram")) tree <- as.dendrogram(tree)
 	mat <- seq
 	for (i in 1:length(seq)){
@@ -32,4 +33,58 @@ seq_heatmap <- function (seq, tree, with.missing = FALSE, ...) {
 	col <- attr(seq,"cpal")
 	if (with.missing) col <- c(col,attr(seq,"missing.color"))
 	heatmap(mat, tree, NA,  na.rm=FALSE, col=col, scale="none", labRow=NA, ...)	
+}
+
+#' Create a riverplot from a sequence object
+#' 
+#' @param seq a stslist object (typically produced with \code{\link[TraMineR]{seqdef}})
+#' 
+#' @return a river plot object that can be plotted with \code{\link[riverplot]{riverplot}}
+#' 
+#' @export
+
+seq.makeRiver <- function(seq)
+{
+  if (!require(TraMineR)) stop("You need to install the TraMineR package.")
+  if (!require(riverplot)) stop("You need to install the riverplot package.")
+  if (!inherits(seq, "stslist")) stop("seq should be a stslist object, see ?seqdef.")
+  
+  alphabet <- attr(seq, "alphabet")
+  cpal <- attr(seq, "cpal")
+  n.states <- ncol(seq)
+  
+  nodes <- data.frame()
+  for (i in 1:n.states) {
+    for (j in 1:length(alphabet)) {
+      nodes <- rbind(nodes, data.frame(
+        ID = paste0(i, '-', alphabet[j]),
+        x = i,
+        col = cpal[j],
+        labels = sum(seq[[i]]==alphabet[j], na.rm = TRUE)
+      ))
+    }
+  }
+  
+  nodes$ID <- as.character(nodes$ID)
+  nodes$col <- as.character(nodes$col)
+  nodes <- nodes[nodes$labels>0, ]
+  
+  edges <- data.frame()
+  for (i in 1:(n.states-1)) {
+    for (j1 in 1:length(alphabet)) {
+      for (j2 in 1:length(alphabet)) {
+        edges <- rbind(edges, data.frame(
+          N1 = paste0(i, '-', alphabet[j1]),
+          N2 = paste0(i+1, '-', alphabet[j2]),
+          Value = sum(seq[[i]]==alphabet[j1] & seq[[i+1]]==alphabet[j2], na.rm = TRUE)
+        ))
+      }
+    }
+  }
+  
+  edges$N1 <- as.character(edges$N1)
+  edges$N2 <- as.character(edges$N2)
+  edges <- edges[edges$Value>0, ]
+    
+  return(makeRiver(nodes, edges))
 }

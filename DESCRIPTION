@@ -1,8 +1,8 @@
 Package: JLutils
 Type: Package
 Title: Collection of R functions
-Version: 1.1.0
-Date: 2015-05-20
+Version: 1.2.0
+Date: 2015-05-22
 Author: Joseph Larmarange <joseph@larmarange.net>
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Description: A collection of diverse R functions who don't fit (yet?) in another
@@ -14,7 +14,8 @@ Suggests:
     TraMineR,
     ade4,
     questionr,
-    cluster
+    cluster,
+    riverplot
 Collate:
     'clustering.R'
     'factor_analysis.R'
