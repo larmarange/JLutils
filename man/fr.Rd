@@ -30,16 +30,16 @@ fr5(x)
 \item{digits}{number of decimal digits to display}
 }
 \description{
-Use a comma as decimal separator and a space as separator for thousands (French way).
+Use a comma as decimal separator and a space as separator for thousands.
 }
 \details{
 \code{fr0(x)} is a shortcut for \code{fr(x, digits = 0)},
 \code{fr1(x)} for \code{fr(x, digits = 1)}, etc.
 }
 \examples{
-fr(0.004)
-fr0(c(0.000045, 0.56789, 234.567))
-fr2(c(0.000045, 0.56789, 234.567))
-fr5(c(0.000045, 0.56789, 234.567))
+fr(12345.57)
+fr0(c(0.123, 123.4567, 1234567.89))
+fr2(c(0.123, 123.4567, 1234567.89))
+fr5(c(0.123, 123.4567, 1234567.89))
 }
 

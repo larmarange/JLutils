@@ -15,7 +15,7 @@
 \alias{percent3}
 \alias{percent4}
 \alias{percent5}
-\title{Percent formatter}
+\title{Percent formatter (English)}
 \usage{
 percent(x, digits = 1)
 
