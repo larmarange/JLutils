@@ -1,4 +1,4 @@
-#' Percent formatter
+#' Percent formatter (English)
 #' 
 #' Multiply by 100 and display a percent sign.
 #' 
@@ -239,9 +239,79 @@ comp.pourcent5 <- function (x)
   return(comp.pourcent(x, digits = 5))
 }
 
+#' English formatter
+#' 
+#' Use a dot as decimal separator and a single quote as separator for thousands.
+#' 
+#' @param x a numeric vector to format
+#' @param digits number of decimal digits to display
+#' @details \code{en0(x)} is a shortcut for \code{en(x, digits = 0)}, 
+#' \code{en1(x)} for \code{en(x, digits = 1)}, etc.
+#' @export en
+#' @examples
+#' en(12345.67)
+#' en0(c(0.123, 123.4567, 1234567.89))
+#' en2(c(0.123, 123.4567, 1234567.89))
+#' en5(c(0.123, 123.4567, 1234567.89))
+
+en <- function (x, digits=1) 
+{
+  if (all(is.na(x)))
+    return("NA")
+  else
+    return(format(
+      round(x, digits = digits), 
+      nsmall = digits, big.mark = "'", 
+      scientific = FALSE, decimal.mark = "."
+    ))
+}
+
+#' @rdname en
+#' @export
+en0 <- function (x)
+{
+  return(en(x, digits = 0))
+}
+
+#' @rdname en
+#' @export
+en1 <- function (x)
+{
+  return(en(x, digits = 1))
+}
+
+#' @rdname en
+#' @export
+en2 <- function (x)
+{
+  return(en(x, digits = 2))
+}
+
+#' @rdname en
+#' @export
+en3 <- function (x)
+{
+  return(en(x, digits = 3))
+}
+
+#' @rdname en
+#' @export
+en4 <- function (x)
+{
+  return(en(x, digits = 5))
+}
+
+#' @rdname en
+#' @export
+en5 <- function (x)
+{
+  return(en(x, digits = 5))
+}
+
+
 #' French formatter
 #' 
-#' Use a comma as decimal separator and a space as separator for thousands (French way).
+#' Use a comma as decimal separator and a space as separator for thousands.
 #' 
 #' @param x a numeric vector to format
 #' @param digits number of decimal digits to display
@@ -249,10 +319,10 @@ comp.pourcent5 <- function (x)
 #' \code{fr1(x)} for \code{fr(x, digits = 1)}, etc.
 #' @export fr
 #' @examples
-#' fr(0.004)
-#' fr0(c(0.000045, 0.56789, 234.567))
-#' fr2(c(0.000045, 0.56789, 234.567))
-#' fr5(c(0.000045, 0.56789, 234.567))
+#' fr(12345.57)
+#' fr0(c(0.123, 123.4567, 1234567.89))
+#' fr2(c(0.123, 123.4567, 1234567.89))
+#' fr5(c(0.123, 123.4567, 1234567.89))
 
 fr <- function (x, digits=1) 
 {
@@ -307,6 +377,76 @@ fr5 <- function (x)
 {
   return(fr(x, digits = 5))
 }
+
+#' International formatter
+#' 
+#' Use a dot as decimal separator and a space as separator for thousands.
+#' 
+#' @param x a numeric vector to format
+#' @param digits number of decimal digits to display
+#' @details \code{int0(x)} is a shortcut for \code{int(x, digits = 0)}, 
+#' \code{int1(x)} for \code{int(x, digits = 1)}, etc.
+#' @export int
+#' @examples
+#' int(12345.67)
+#' int0(c(0.123, 123.4567, 1234567.89))
+#' int2(c(0.123, 123.4567, 1234567.89))
+#' int5(c(0.123, 123.4567, 1234567.89))
+
+int <- function (x, digits=1) 
+{
+  if (all(is.na(x)))
+    return("NA")
+  else
+    return(format(
+      round(x, digits = digits), 
+      nsmall = digits, big.mark = " ", 
+      sciinttific = FALSE, decimal.mark = "."
+    ))
+}
+
+#' @rdname int
+#' @export
+int0 <- function (x)
+{
+  return(int(x, digits = 0))
+}
+
+#' @rdname int
+#' @export
+int1 <- function (x)
+{
+  return(int(x, digits = 1))
+}
+
+#' @rdname int
+#' @export
+int2 <- function (x)
+{
+  return(int(x, digits = 2))
+}
+
+#' @rdname int
+#' @export
+int3 <- function (x)
+{
+  return(int(x, digits = 3))
+}
+
+#' @rdname int
+#' @export
+int4 <- function (x)
+{
+  return(int(x, digits = 5))
+}
+
+#' @rdname int
+#' @export
+int5 <- function (x)
+{
+  return(int(x, digits = 5))
+}
+
 
 
 #' Formatting numbers like in WHO publications
