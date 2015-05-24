@@ -74,8 +74,8 @@ for (var in vars) df[[var]] <- lfactor(var, df)
   
   if (add.variable.labels & is.data.frame(df) & !is.null(vars)) {
     var.labels <- NULL
-    if (!is.null(attr(df, "variable.labels"))) var.labels <- attr(df, "variable.labels")
-    if (!is.null(attr(df, "var.labels"))) var.labels <- attr(df, "var.labels")
+    if (!is.null(attr(df, "variable.labels"))) var.labels <- attr(df, "variable.labels") ## read.spss
+    if (!is.null(attr(df, "var.labels"))) var.labels <- attr(df, "var.labels") ## read.dta
     if (!is.null(var.labels)) 
       names(dimnames(tab)) <- paste(vars, var.labels[pmatch(vars, names(df))], sep = ": ")
   }
@@ -171,10 +171,12 @@ lfactor <- function(labelled_x, labelled_df = NULL, add.codes = TRUE) {
   if (is.factor(labelled_df[[labelled_x]])) return (labelled_df[[labelled_x]])
   
   lab <- NULL
-  if (!is.null(attr(labelled_df[[labelled_x]], "value.labels")))
+  if (!is.null(attr(labelled_df[[labelled_x]], "value.labels"))) ## read.spss
     lab <- attr(labelled_df[[labelled_x]], "value.labels")
-  if (!is.null(attr(labelled_df, "label.table")[[labelled_x]]))
+  if (!is.null(attr(labelled_df, "label.table")[[labelled_x]])) ## read.dta
     lab <- attr(labelled_df, "label.table")[[labelled_x]]
+  if (!is.null(attr(labelled_df[[labelled_x]], "labels"))) ## haven
+    lab <- attr(labelled_df[[labelled_x]], "labels")
   
   if (!is.null(lab)) {
     tmp <- data.frame(values = na.rm(unique(labelled_df[[labelled_x]])))
