@@ -2,12 +2,12 @@
 % Please edit documentation in R/label_freq.R
 \name{lfreq}
 \alias{lfreq}
-\title{Frequency table with value labels}
+\title{Frequency table with SPSS/Stata value labels}
 \usage{
-lfreq(x, ...)
+lfreq(labeled_x, ...)
 }
 \arguments{
-\item{x}{a vector}
+\item{labeled_x}{a vector}
 
 \item{...}{additional arguments sent to \code{\link[questionr]{freq}}}
 }
@@ -16,11 +16,16 @@ This function display a frequency table with value labels if they are available
 }
 \details{
 This function is particulary useful when the data has been imported
-from SPSS or Stata but the labelled variables not converted to factors.
+from SPSS or Stata but the labeled variables not converted to factors.
+
+\code{lfreq(df$Sex)} has been designed for convenient purpose. In this
+situation, the function will try to guess what is the corresponding data frame
+(i.e. \code{df}) by analysing the function call. To avoid any issue when
+programming, you should prefer \code{freq(ltabs(~Sex, df))}.
 }
 \note{
 This function is an equivalent of applying \code{\link[questionr]{freq}} on
-the result of \code{\link{ltabs}}.
+the result of \code{\link{ltabs}}. It requires the questionr package.
 }
 \examples{
 \dontrun{
@@ -28,6 +33,6 @@ the result of \code{\link{ltabs}}.
 }
 }
 \seealso{
-\code{\link{ltabs}}
+\code{\link{ltabs}}, \code{\link{lfactor}}
 }
 
