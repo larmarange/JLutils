@@ -4,10 +4,10 @@
 \alias{lfreq}
 \title{Frequency table with SPSS/Stata value labels}
 \usage{
-lfreq(labeled_x, ...)
+lfreq(labelled_x, ...)
 }
 \arguments{
-\item{labeled_x}{a vector}
+\item{labelled_x}{a vector}
 
 \item{...}{additional arguments sent to \code{\link[questionr]{freq}}}
 }
@@ -16,7 +16,7 @@ This function display a frequency table with value labels if they are available
 }
 \details{
 This function is particulary useful when the data has been imported
-from SPSS or Stata but the labeled variables not converted to factors.
+from SPSS or Stata but the labelled variables not converted to factors.
 
 \code{lfreq(df$Sex)} has been designed for convenient purpose. In this
 situation, the function will try to guess what is the corresponding data frame

@@ -4,16 +4,16 @@
 \alias{ltabs}
 \title{Cross tabulation with SPSS/Stata value labels}
 \usage{
-ltabs(labeled_x, labeled_df = NULL, add.variable.labels = FALSE, ...)
+ltabs(labelled_x, labelled_df = NULL, add.variable.labels = FALSE, ...)
 }
 \arguments{
-\item{labeled_x}{a formula (see \code{\link[stats]{xtabs}}) or a vector}
+\item{labelled_x}{a formula (see \code{\link[stats]{xtabs}}) or a vector}
 
 \item{add.variable.labels}{add variable labels to dimension names?}
 
 \item{...}{additional parameters sent to \code{\link[stats]{xtabs}}}
 
-\item{labeled_d}{a data.frame (if \code{labeled_x} is a formula) or an optional second vector}
+\item{labelled_d}{a data.frame (if \code{labelled_x} is a formula) or an optional second vector}
 }
 \description{
 Create a contingency table (with \code{\link[stats]{xtabs}}) and add value and variable
@@ -22,7 +22,7 @@ labels if they are available (typically if the data frame has been imported with
 }
 \details{
 This function is particulary useful when the data has been imported
-from SPSS or Stata but the labeled variables not converted to factors.
+from SPSS or Stata but the labelled variables not converted to factors.
 
 It's possible to enter \code{ltabs(df$Sex)} for convenient purpose. In this
 situation, the function will try to guess what is the corresponding data frame

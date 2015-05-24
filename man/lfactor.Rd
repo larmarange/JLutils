@@ -2,19 +2,19 @@
 % Please edit documentation in R/label_freq.R
 \name{lfactor}
 \alias{lfactor}
-\title{Labeled factor}
+\title{labelled factor}
 \usage{
-lfactor(labeled_x, labeled_df = NULL, add.codes = TRUE)
+lfactor(labelled_x, labelled_df = NULL, add.codes = TRUE)
 }
 \arguments{
-\item{labeled_x}{the name of a column or a vector}
+\item{labelled_x}{the name of a column or a vector}
 
-\item{labeled_df}{a data frame (if \code{labeled_x} is the column name)}
+\item{labelled_df}{a data frame (if \code{labelled_x} is the column name)}
 
 \item{add.codes}{add the numerical code to the labels?}
 }
 \value{
-If \code{labeled_x} is already a factor, \code{labeled_x} is
+If \code{labelled_x} is already a factor, \code{labelled_x} is
 returned with no change.
 }
 \description{
@@ -23,7 +23,7 @@ in the data frame
 }
 \details{
 This function is particulary useful when the data has been imported
-from SPSS or Stata but the labeled variables not converted to factors.
+from SPSS or Stata but the labelled variables not converted to factors.
 
 It's possible to enter \code{lfactor(df$Sex)} for convenient purpose. In this
 situation, the function will try to guess what is the corresponding data frame
