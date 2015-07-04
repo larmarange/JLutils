@@ -4,7 +4,7 @@
 \alias{ltabs}
 \title{Cross tabulation with SPSS/Stata value labels}
 \usage{
-ltabs(labelled_x, labelled_df = NULL, add.variable.labels = FALSE, ...)
+ltabs(labelled_x, labelled_df = NULL, add.variable.labels = TRUE, ...)
 }
 \arguments{
 \item{labelled_x}{a formula (see \code{\link[stats]{xtabs}}) or a vector}
