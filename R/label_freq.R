@@ -30,7 +30,7 @@
 #' 
 #' @export
 
-ltabs <- function(labelled_x, labelled_df = NULL, add.variable.labels = FALSE, ...) {
+ltabs <- function(labelled_x, labelled_df = NULL, add.variable.labels = TRUE, ...) {
   if (inherits(labelled_x, "formula")) {
     if(!is.data.frame(labelled_df)) stop("When labelled_x is a formula, labelled_df should be a data.frame.")
     vars <- attr(terms(labelled_x), "term.labels")
@@ -112,6 +112,7 @@ for (var in vars) df[[var]] <- lfactor(var, df)
 
 lfreq <- function(labelled_x, ...) {
   if (!require(questionr)) stop("questionr package is required")
+  if (!is.null(attr(labelled_x, "labels"))) return(freq(lfactor(labelled_x)))
   dx <- deparse(substitute(labelled_x))
   posx <- regexpr("[$]", dx)[1]
   if (posx > 1) {
@@ -155,7 +156,19 @@ lfreq <- function(labelled_x, ...) {
 #' @export
 
 lfactor <- function(labelled_x, labelled_df = NULL, add.codes = TRUE) {
-  if (length(labelled_x)>1) {
+  if (!is.null(attr(labelled_x, "labels"))) { ## haven
+    lab <- attr(labelled_x, "labels")
+    tmp <- data.frame(values = na.rm(unique(labelled_x)))
+    tmp <- merge(tmp, data.frame(values = lab, vlab = names(lab)), by = "values", all.x = TRUE)
+    if (add.codes)
+      tmp$flab <- paste0("[", tmp$values, "] ", tmp$vlab)
+    else
+      tmp$flab <- tmp$vlab
+    tmp[is.na(tmp$vlab),"flab"] <- as.character(tmp[is.na(tmp$vlab),"values"])
+    
+    res <- factor(labelled_x, levels = tmp$values, labels = tmp$flab)
+    return (res)
+  } else if (length(labelled_x)>1) {
     dx <- deparse(substitute(labelled_x))
     posx <- regexpr("[$]", dx)[1]
     if (posx > 1) {
@@ -180,7 +193,7 @@ lfactor <- function(labelled_x, labelled_df = NULL, add.codes = TRUE) {
   
   if (!is.null(lab)) {
     tmp <- data.frame(values = na.rm(unique(labelled_df[[labelled_x]])))
-    tmp <- merge(tmp, data.frame(values = lab, vlab = names(lab)), all.x = TRUE)
+    tmp <- merge(tmp, data.frame(values = lab, vlab = names(lab)), by = "values", all.x = TRUE)
     if (add.codes)
       tmp$flab <- paste0("[", tmp$values, "] ", tmp$vlab)
     else
