@@ -16,13 +16,3 @@ Suggests:
     questionr,
     cluster,
     riverplot
-Collate:
-    'clustering.R'
-    'factor_analysis.R'
-    'sequences.R'
-    'A2Rplot.R'
-    'formating.R'
-    'concatenate.R'
-    'multiplot.R'
-    'prop.ci.R'
-    'label_freq.R'
