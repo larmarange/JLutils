@@ -2,7 +2,6 @@
 
 export("%p%")
 export(A2Rplot)
-export(StatXprop)
 export(best.cutree)
 export(comp.percent)
 export(comp.percent0)
@@ -59,5 +58,4 @@ export(prop.ci.upper)
 export(s.freq)
 export(seq_heatmap)
 export(seq_makeRiver)
-export(stat_xprop)
 export(who.format)
