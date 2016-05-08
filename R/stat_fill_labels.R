@@ -29,10 +29,18 @@ StatFillLabels <- ggproto("StatFillLabels", StatCount,
 #' Computed variables: \code{count}, the number of observations; \code{prop}, proportion on \code{x}; \code{ylabel}, \code{y} position of labels.
 #' 
 #' @examples 
-#' ggplot(as.data.frame(Titanic)) + aes(x = Class, fill = Survived, weight = Freq) + geom_bar(position = "fill") + geom_text(stat = "fill_labels")
-#' ggplot(as.data.frame(Titanic)) + aes(x = Class, fill = Survived, weight = Freq) + geom_bar(position = "fill") + stat_fill_labels()
-#' ggplot(as.data.frame(Titanic)) + aes(x = Class, fill = Survived, weight = Freq) + geom_bar(position = "fill") + geom_text(stat = "fill_labels") + facet_grid(~Sex)
-#' ggplot(as.data.frame(Titanic)) + aes(x = as.integer(Class), fill = Survived, weight = Freq) + geom_area(position = "fill", stat = "count") + geom_text(stat = "fill_labels")
+#' ggplot(as.data.frame(Titanic)) + 
+#'   aes(x = Class, fill = Survived, weight = Freq) + 
+#'   geom_bar(position = "fill") + geom_text(stat = "fill_labels")
+#' ggplot(as.data.frame(Titanic)) + 
+#'   aes(x = Class, fill = Survived, weight = Freq) + 
+#'   geom_bar(position = "fill") + stat_fill_labels()
+#' ggplot(as.data.frame(Titanic)) + 
+#'   aes(x = Class, fill = Survived, weight = Freq) + 
+#'   geom_bar(position = "fill") + geom_text(stat = "fill_labels") + facet_grid(~Sex)
+#' ggplot(as.data.frame(Titanic)) + 
+#'   aes(x = as.integer(Class), fill = Survived, weight = Freq) + 
+#'   geom_area(position = "fill", stat = "count") + geom_text(stat = "fill_labels")
 #' @export
 stat_fill_labels <- function(mapping = NULL, data = NULL, geom = "text",
                        position = "identity", width = NULL, na.rm = FALSE, show.legend = NA, 
