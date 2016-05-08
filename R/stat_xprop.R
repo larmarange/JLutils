@@ -16,7 +16,7 @@ StatXprop <- ggproto("StatXprop", StatCount,
                          cbind(new, unique[rep(1, nrow(new)), missing, drop = FALSE])
                        }, stats, groups, SIMPLIFY = FALSE)
                        res <- do.call(plyr::rbind.fill, stats)
-                       plyr::ddply(res, "x", plyr::mutate, xprop = count/sum(count), na.rm = TRUE)
+                       plyr::ddply(res, "x", plyr::mutate, xprop = count/sum(count), cumxprop = cumsum(count)/sum(count), ylabel = (cumsum(count) - count / 2)/sum(count), na.rm = TRUE)
                      },
                      default_aes = aes(y = ..xprop..)
 )
@@ -24,6 +24,9 @@ StatXprop <- ggproto("StatXprop", StatCount,
 #' Computes proportions by x
 #' 
 #' This stat makes it easier to generate cumulative stacked bar / area charts.
+#' 
+#' @details 
+#' Computed variables: \code{count}, the number of observations; \code{xprop}, proportion on \code{x}; \code{cumxprop}, cumulative sum of \code{xprop}; \code{ylabel}, position of `y` labels.
 #' 
 #' @examples 
 #' ggplot(as.data.frame(Titanic)) + aes(x = Class, fill = Survived, weight = Freq) + geom_bar(stat = "count")
