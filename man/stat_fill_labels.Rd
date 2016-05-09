@@ -12,7 +12,7 @@ stat_fill_labels(mapping = NULL, data = NULL, geom = "text",
 This stat makes it easier to display labels with \code{position_fill}.
 }
 \details{
-Computed variables: \code{count}, the number of observations; \code{prop}, proportion on \code{x}; \code{ylabel}, \code{y} position of labels.
+Computed variables: \code{count}, the number of observations; \code{prop}, proportion on \code{x}; \code{cumprop}, cumulative proportion; \code{ylabel}, \code{y} position of labels.
 }
 \examples{
 ggplot(as.data.frame(Titanic)) + 
