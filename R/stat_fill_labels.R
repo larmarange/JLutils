@@ -16,7 +16,7 @@ StatFillLabels <- ggproto("StatFillLabels", StatCount,
                          cbind(new, unique[rep(1, nrow(new)), missing, drop = FALSE])
                        }, stats, groups, SIMPLIFY = FALSE)
                        res <- do.call(plyr::rbind.fill, stats)
-                       plyr::ddply(res, "x", plyr::mutate, prop = count/sum(count), ylabel = (cumsum(count) - count / 2)/sum(count), na.rm = TRUE)
+                       plyr::ddply(res, "x", plyr::mutate, prop = count/sum(count), cumprop = cumsum(count)/sum(count), ylabel = (cumsum(count) - count / 2)/sum(count), na.rm = TRUE)
                      },
                      default_aes = aes(y = ..ylabel.., label = paste0(round(100 * ..prop.., digits =1), "%")) 
 )
@@ -26,7 +26,7 @@ StatFillLabels <- ggproto("StatFillLabels", StatCount,
 #' This stat makes it easier to display labels with \code{position_fill}.
 #' 
 #' @details 
-#' Computed variables: \code{count}, the number of observations; \code{prop}, proportion on \code{x}; \code{ylabel}, \code{y} position of labels.
+#' Computed variables: \code{count}, the number of observations; \code{prop}, proportion on \code{x}; \code{cumprop}, cumulative proportion; \code{ylabel}, \code{y} position of labels.
 #' 
 #' @examples 
 #' ggplot(as.data.frame(Titanic)) + 
