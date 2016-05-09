@@ -21,7 +21,7 @@ StatFillLabels <- ggproto("StatFillLabels", StatCount,
                      default_aes = aes(y = ..ylabel.., label = paste0(round(100 * ..prop.., digits =1), "%")) 
 )
 
-#' Computes labels for position = "fill"
+#' Computes labels position for position = "fill"
 #' 
 #' This stat makes it easier to display labels with \code{position_fill}.
 #' 
