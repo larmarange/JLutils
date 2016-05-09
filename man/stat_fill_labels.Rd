@@ -2,7 +2,7 @@
 % Please edit documentation in R/stat_fill_labels.R
 \name{stat_fill_labels}
 \alias{stat_fill_labels}
-\title{Computes labels for position = "fill"}
+\title{Computes labels position for position = "fill"}
 \usage{
 stat_fill_labels(mapping = NULL, data = NULL, geom = "text",
   position = "identity", width = NULL, na.rm = FALSE, show.legend = NA,
