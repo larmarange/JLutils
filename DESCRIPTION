@@ -1,7 +1,7 @@
 Package: JLutils
 Type: Package
 Title: Collection of R functions
-Version: 1.4.1
+Version: 1.5.0
 Date: 2016-05-14
 Author: Joseph Larmarange <joseph@larmarange.net>
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
@@ -17,5 +17,9 @@ Suggests:
     ade4,
     questionr,
     cluster,
-    riverplot
+    riverplot,
+    broom,
+    dplyr,
+    labelled,
+    ArgumentCheck
 RoxygenNote: 5.0.1
