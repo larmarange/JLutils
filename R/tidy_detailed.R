@@ -6,7 +6,7 @@
 #' @param x model to tidy
 #' @param ... extra arguments passed to \code{\link[broom]{tidy}} function from \pkg{broom} package
 #' @note
-#' This function requires the following packages: \pkg{broom}, \pkg{dplyr} and \pkg{ArgumentCheck}.
+#' This function requires the \pkg{broom} and \pkg{dplyr} packages.
 #' @value
 #' The \code{data.frame} produced by \code{\link[broom]{tidy}} with these additional columns:
 #' \describe{
@@ -18,15 +18,21 @@
 #' @seealso \code{\link[broom]{tidy}} function from \pkg{broom} package
 #' @source
 #' This function has been adapted from Benjamin Nutter's \code{tidy_levels_labels} function
-#' implemented within the \code{pixiedust} package (\url{https://github.com/nutterb/pixiedust/blob/master/R/tidy_levels_labels.R}).
+#' implemented within the \code{pixiedust} package 
+#' (\url{https://github.com/nutterb/pixiedust/blob/master/R/tidy_levels_labels.R}).
+#' @examples 
+#' reg <- lm(Sepal.Length ~ Sepal.Width + Petal.Length * Species, data = iris)
+#' tidy_detailed(reg)
+#' 
+#' d <- as.data.frame(Titanic)
+#' reg2 <- glm(Survived ~ Sex + Age + Class, family = binomial, data = d, weights = d$Freq)
+#' tidy_detailed(reg2, conf.int = TRUE, exponentiate = TRUE) 
 #' @export
 tidy_detailed <- function(x, ...) {
   if (!requireNamespace("broom")) 
     stop("broom package is required. Please install it.")
   if (!requireNamespace("dplyr")) 
     stop("dplyr package is required. Please install it.")
-  if (!requireNamespace("ArgumentCheck")) 
-    stop("ArgumentCheck package is required. Please install it.")
   res <- merge(broom::tidy(x, ...), .tidy_levels_labels(x))
   res
 }
@@ -36,17 +42,8 @@ tidy_detailed <- function(x, ...) {
 # https://github.com/nutterb/pixiedust/
 # variable was renamed variable
 .tidy_levels_labels <- function(object, descriptors = c("term", "variable", "label", "level", "level_detail"), 
-  numeric_level = c("label", "term", "variable"), argcheck = NULL) {
-  independent_check <- is.null(argcheck)
-  if (is.null(argcheck)) 
-    argcheck <- ArgumentCheck::newArgCheck()
-  numeric_level <- ArgumentCheck::match_arg(numeric_level, 
-    c("term", "variable", "label"), argcheck = argcheck)
-  descriptors <- ArgumentCheck::match_arg(descriptors, c("term", 
-    "variable", "label", "level", "level_detail"), several.ok = TRUE, 
-    argcheck = argcheck)
-  if (independent_check) 
-    ArgumentCheck::finishArgCheck(argcheck)
+  numeric_level = c("label", "term", "variable")) {
+  numeric_level = match.arg(numeric_level)
   lnl <- .levels_and_labels(object)
   lnl <- .level_label_interactions(lnl, broom::tidy(object), numeric_level)
   if (!"term" %in% descriptors) 

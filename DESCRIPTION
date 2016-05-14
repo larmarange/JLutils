@@ -20,6 +20,5 @@ Suggests:
     riverplot,
     broom,
     dplyr,
-    labelled,
-    ArgumentCheck
+    labelled
 RoxygenNote: 5.0.1
