@@ -16,6 +16,16 @@ tidy_detailed(x, ...)
 
 \item{...}{extra arguments passed to \code{\link[broom]{tidy}} function from \pkg{broom} package}
 }
+\value{
+The \code{data.frame} produced by \code{\link[broom]{tidy}} with these additional columns:
+\describe{
+  \item{variable}{variable name}
+  \item{variable_label}{label of the variable (if available), variable name otherwise}
+  \item{level}{for factors, the corresponding level}
+  \item{level_detail}{level with indication of the reference level, eg. \code{B vs. A}}
+  \item{label}{equal to level_detail if it's a factor, to variable_label otherwise}
+}
+}
 \description{
 This function extends the output of \code{\link[broom]{tidy}} function from \pkg{broom} package
 by providing additional column indicating variables and factors names.
