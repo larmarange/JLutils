@@ -54,10 +54,10 @@ ggcoef(reg2, exponentiate = TRUE)
 ggcoef(reg2, exponentiate = TRUE, exclude_intercept = TRUE, errorbar_height = .2, color = "blue") 
 
 td <- tidy_detailed(reg2, exponentiate = TRUE, conf.int = TRUE)
-td$level_detail <- factor(td$level_detail, rev(td$level_detail)) # To fix order for ggplot2
+td$label <- factor(td$label, rev(td$label)) # To fix order for ggplot2
 ggcoef(
   td, 
-  mapping = aes(y = level_detail, x = estimate, colour = variable), 
+  mapping = aes(y = label, x = estimate, colour = variable_label), 
   exponentiate = TRUE
 )
 }
