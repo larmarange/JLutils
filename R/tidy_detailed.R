@@ -11,9 +11,10 @@
 #' The \code{data.frame} produced by \code{\link[broom]{tidy}} with these additional columns:
 #' \describe{
 #'   \item{variable}{variable name}
-#'   \item{label}{label of the variable (if available), variable name otherwise}
+#'   \item{variable_label}{label of the variable (if available), variable name otherwise}
 #'   \item{level}{for factors, the corresponding level}
 #'   \item{level_detail}{level with indication of the reference level, eg. \code{B vs. A}}
+#'   \item{label}{equal to level_detail if it's a factor, to variable_label otherwise}
 #' }
 #' @seealso \code{\link[broom]{tidy}} function from \pkg{broom} package
 #' @source
@@ -34,6 +35,8 @@ tidy_detailed <- function(x, ...) {
   if (!requireNamespace("dplyr")) 
     stop("dplyr package is required. Please install it.")
   res <- merge(broom::tidy(x, ...), .tidy_levels_labels(x))
+  res$label <- res$level_detail
+  res[res$level_detail == "", "label"] <- res[res$level_detail == "", "variable_label"]
   res
 }
 
@@ -41,8 +44,8 @@ tidy_detailed <- function(x, ...) {
 # inspired by pixiedust:::tidy_levels_labels
 # https://github.com/nutterb/pixiedust/
 # variable was renamed variable
-.tidy_levels_labels <- function(object, descriptors = c("term", "variable", "label", "level", "level_detail"), 
-  numeric_level = c("label", "term", "variable")) {
+.tidy_levels_labels <- function(object, descriptors = c("term", "variable", "variable_label", "level", "level_detail"), 
+  numeric_level = c("variable_label", "term", "variable")) {
   numeric_level = match.arg(numeric_level)
   lnl <- .levels_and_labels(object)
   lnl <- .level_label_interactions(lnl, broom::tidy(object), numeric_level)
@@ -63,15 +66,15 @@ tidy_detailed <- function(x, ...) {
   # dplyr::bind_rows() %>% dplyr::mutate_(variable =
   # ~rep(names(NLevels), NLevels), term = ~paste0(variable,
   # level))
-  Levels$label <- Levels$variable
+  Levels$variable_label <- Levels$variable
   if (requireNamespace("labelled")) 
     Labels <- unlist(labelled::var_label(model_data))
   if (!is.null(Labels)) {
-    Levels$label <- Labels[Levels$variable]
-    if (any(is.na(Levels$label))) 
-      Levels$label[is.na(Levels$label)] <- Levels$variable[is.na(Levels$label)]
+    Levels$variable_label <- Labels[Levels$variable]
+    if (any(is.na(Levels$variable_label))) 
+      Levels$variable_label[is.na(Levels$variable_label)] <- Levels$variable[is.na(Levels$variable_label)]
   }
-  Levels <- Levels[, c("term", "variable", "label", "level", 
+  Levels <- Levels[, c("term", "variable", "variable_label", "level", 
     "level_detail")]
   rownames(Levels) <- NULL
   Levels
@@ -114,7 +117,7 @@ tidy_detailed <- function(x, ...) {
   level_detail <- ifelse(lnl$level_detail[m] == "", lnl[[numeric_level]][m], 
                          lnl$level_detail[m])
   data.frame(term = paste0(lnl$term[m], collapse = ":"), variable = paste0(lnl$variable[m], 
-                                                                             collapse = ":"), label = paste0(lnl$label[m], collapse = ":"), 
+                                                                             collapse = ":"), variable_label = paste0(lnl$variable_label[m], collapse = ":"), 
              level = paste0(level, collapse = ":"), level_detail = paste0(level_detail, 
                                                                           collapse = ":"), stringsAsFactors = FALSE)
 }
