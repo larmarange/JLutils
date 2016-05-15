@@ -7,7 +7,7 @@
 #' @param ... extra arguments passed to \code{\link[broom]{tidy}} function from \pkg{broom} package
 #' @note
 #' This function requires the \pkg{broom} and \pkg{dplyr} packages.
-#' @value
+#' @return 
 #' The \code{data.frame} produced by \code{\link[broom]{tidy}} with these additional columns:
 #' \describe{
 #'   \item{variable}{variable name}
