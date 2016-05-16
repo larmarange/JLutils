@@ -67,6 +67,7 @@ tidy_detailed <- function(x, ...) {
   # ~rep(names(NLevels), NLevels), term = ~paste0(variable,
   # level))
   Levels$variable_label <- Levels$variable
+  Labels <- NULL
   if (requireNamespace("labelled")) 
     Labels <- unlist(labelled::var_label(model_data))
   if (!is.null(Labels)) {
