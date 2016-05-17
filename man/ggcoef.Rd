@@ -4,11 +4,12 @@
 \alias{ggcoef}
 \title{ggcoef - Plot Model Coefficients with broom and ggplot2}
 \usage{
-ggcoef(x, mapping = aes(y = term, x = estimate), conf.int = TRUE,
+ggcoef(x, mapping = aes_string(y = "term", x = "estimate"), conf.int = TRUE,
   conf.level = 0.95, exponentiate = FALSE, exclude_intercept = FALSE,
-  vline = TRUE, vline_color = "gray50", vline_linetype = "dotted",
-  vline_size = 1, errorbar_color = "gray25", errorbar_height = 0,
-  errorbar_linetype = "solid", errorbar_size = 0.5, ...)
+  vline = TRUE, vline_intercept = "auto", vline_color = "gray50",
+  vline_linetype = "dotted", vline_size = 1, errorbar_color = "gray25",
+  errorbar_height = 0, errorbar_linetype = "solid", errorbar_size = 0.5,
+  ...)
 }
 \arguments{
 \item{x}{a model object to be tidied with \code{\link[broom]{tidy}} or a data frame (see Details)}
@@ -25,7 +26,10 @@ if \code{x} is not a data frame)}
 
 \item{exclude_intercept}{should the intercept be excluded from the plot?}
 
-\item{vline}{print a vertical line at \code{x = 0} (or \code{x = 1} if {exponentiate} is \code{TRUE})?}
+\item{vline}{print a vertical line?}
+
+\item{vline_intercept}{\code{xintercept} for the vertical line. 
+\code{"auto"} for \code{x = 0} (or \code{x = 1} if {exponentiate} is \code{TRUE})}
 
 \item{vline_color}{color of the vertical line}
 
@@ -40,25 +44,31 @@ if \code{x} is not a data frame)}
 \item{errorbar_linetype}{line type of the error bars}
 
 \item{errorbar_size}{size of the error bars}
+
+\item{...}{additional arguments sent to \code}
 }
 \description{
 Plot the coefficients of a model with \pkg{broom} and \pkg{ggplot2}.
 }
+\note{
+The \code{ggcoef} function is now implemented within the \pkg{GGally} package.
+}
 \examples{
-reg <- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width, data = iris)
-ggcoef(reg)
+if (require(broom)) {
+  reg <- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width, data = iris)
+  ggcoef(reg)
 
-d <- as.data.frame(Titanic)
-reg2 <- glm(Survived ~ Sex + Age + Class, family = binomial, data = d, weights = d$Freq)
-ggcoef(reg2, exponentiate = TRUE)
-ggcoef(reg2, exponentiate = TRUE, exclude_intercept = TRUE, errorbar_height = .2, color = "blue") 
-
-td <- tidy_detailed(reg2, exponentiate = TRUE, conf.int = TRUE)
-td$label <- factor(td$label, rev(td$label)) # To fix order for ggplot2
-ggcoef(
-  td, 
-  mapping = aes(y = label, x = estimate, colour = variable_label), 
-  exponentiate = TRUE
-)
+  d <- as.data.frame(Titanic)
+  reg2 <- glm(Survived ~ Sex + Age + Class, family = binomial, data = d, weights = d$Freq)
+  ggcoef(reg2, exponentiate = TRUE)
+  ggcoef(reg2, exponentiate = TRUE, exclude_intercept = TRUE, errorbar_height = .2, color = "blue") 
+  td <- tidy_detailed(reg2, exponentiate = TRUE, conf.int = TRUE)
+  td$label <- factor(td$label, rev(td$label)) # To fix order for ggplot2
+  ggcoef(
+    td, 
+    mapping = aes(y = label, x = estimate, colour = variable_label), 
+    exponentiate = TRUE
+  )
+}
 }
 
