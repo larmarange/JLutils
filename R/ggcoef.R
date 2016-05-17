@@ -10,7 +10,9 @@
 #' @param exponentiate if \code{TRUE}, x-axis will be logarithmic (also passed to \code{\link[broom]{tidy}} 
 #'   if \code{x} is not a data frame)
 #' @param exclude_intercept should the intercept be excluded from the plot?
-#' @param vline print a vertical line at \code{x = 0} (or \code{x = 1} if {exponentiate} is \code{TRUE})?
+#' @param vline print a vertical line?
+#' @param vline_intercept \code{xintercept} for the vertical line. 
+#' \code{"auto"} for \code{x = 0} (or \code{x = 1} if {exponentiate} is \code{TRUE})
 #' @param vline_color color of the vertical line
 #' @param vline_linetype line type of the vertical line
 #' @param vline_size size of the vertical line
@@ -18,33 +20,35 @@
 #' @param errorbar_height height of the error bars
 #' @param errorbar_linetype line type of the error bars
 #' @param errorbar_size size of the error bars
+#' @param ... additional arguments sent to \code
+#' @note The \code{ggcoef} function is now implemented within the \pkg{GGally} package.
 #' @examples 
-#' reg <- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width, data = iris)
-#' ggcoef(reg)
+#' if (require(broom)) {
+#'   reg <- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width, data = iris)
+#'   ggcoef(reg)
 #' 
-#' d <- as.data.frame(Titanic)
-#' reg2 <- glm(Survived ~ Sex + Age + Class, family = binomial, data = d, weights = d$Freq)
-#' ggcoef(reg2, exponentiate = TRUE)
-#' ggcoef(reg2, exponentiate = TRUE, exclude_intercept = TRUE, errorbar_height = .2, color = "blue") 
-#' 
-#' td <- tidy_detailed(reg2, exponentiate = TRUE, conf.int = TRUE)
-#' td$label <- factor(td$label, rev(td$label)) # To fix order for ggplot2
-#' ggcoef(
-#'   td, 
-#'   mapping = aes(y = label, x = estimate, colour = variable_label), 
-#'   exponentiate = TRUE
-#' )
+#'   d <- as.data.frame(Titanic)
+#'   reg2 <- glm(Survived ~ Sex + Age + Class, family = binomial, data = d, weights = d$Freq)
+#'   ggcoef(reg2, exponentiate = TRUE)
+#'   ggcoef(reg2, exponentiate = TRUE, exclude_intercept = TRUE, errorbar_height = .2, color = "blue") 
+#'   td <- tidy_detailed(reg2, exponentiate = TRUE, conf.int = TRUE)
+#'   td$label <- factor(td$label, rev(td$label)) # To fix order for ggplot2
+#'   ggcoef(
+#'     td, 
+#'     mapping = aes(y = label, x = estimate, colour = variable_label), 
+#'     exponentiate = TRUE
+#'   )
+#' }
 #' @export
 ggcoef <- function(
-  x, mapping = aes(y = term, x = estimate),
+  x, mapping = aes_string(y = "term", x = "estimate"),
   conf.int = TRUE, conf.level = 0.95, exponentiate = FALSE, exclude_intercept = FALSE,
-  vline = TRUE, vline_color = "gray50", vline_linetype = "dotted", vline_size = 1,
+  vline = TRUE, vline_intercept = "auto", vline_color = "gray50", vline_linetype = "dotted", vline_size = 1,
   errorbar_color = "gray25", errorbar_height = 0, errorbar_linetype = "solid", errorbar_size = .5,
   ...
 ) {
   if (!is.data.frame(x)) {
-    if (!requireNamespace("broom"))
-      stop("broom package is required to tidy data")
+    require_pkgs("broom")
     x <- broom::tidy(x, conf.int = conf.int, conf.level = conf.level, exponentiate = exponentiate)
   }
   if (!("term" %in% names(x)))
@@ -55,17 +59,24 @@ ggcoef <- function(
     x <- x[x$term != "(Intercept)", ]
   p <- ggplot(x) + mapping
   if (vline) {
-    if (exponentiate)
+    if (exponentiate) {
+      if (vline_intercept == "auto")
+        vline_intercept <- 1
       p <- p + 
-        geom_vline(xintercept = 1, color = vline_color, linetype = vline_linetype, size = vline_size) + 
+        geom_vline(xintercept = vline_intercept, color = vline_color, 
+                   linetype = vline_linetype, size = vline_size) + 
         scale_x_log10()
-    else
+    } else {
+      if (vline_intercept == "auto")
+        vline_intercept <- 0
       p <- p + 
-        geom_vline(xintercept = 0, color = vline_color, linetype = vline_linetype, size = vline_size)
+        geom_vline(xintercept = vline_intercept, color = vline_color, linetype = vline_linetype, size = vline_size)
+    }
   }
   if (conf.int & "conf.low" %in% names(x) & "conf.high" %in% names(x))
     p <- p + geom_errorbarh(
-      aes(xmin = conf.low, xmax = conf.high), 
+      aes_string(xmin = "conf.low", xmax = "conf.high"), 
+      color = errorbar_color,
       height = errorbar_height,
       linetype = errorbar_linetype, 
       size = errorbar_size
