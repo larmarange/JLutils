@@ -12,20 +12,26 @@ prop.ci.lower(x, n = NULL, ...)
 
 prop.ci.upper(x, n = NULL, ...)
 }
+\arguments{
+\item{x}{a factor vector, a logical vector, a one-dimensional table or a vector of
+count of successes (in that case, \code{n} should be provided)}
+
+\item{n}{a vector of count of trials (\code{x} should be a vector of successes in that case)}
+
+\item{bounds}{\code{1:2} for lower and upper bounds, \code{1} for lower bounds only, 
+\code{2} for upper bound only.}
+
+\item{...}{additional parameters used by \code{\link[stats]{prop.test}}}
+}
+\value{
+a vector with confidence interval
+}
 \description{
 Provide a convenient wrapper for \code{\link[stats]{prop.test}} to compute 
- confidence intervals for proportions
+confidence intervals for proportions
 }
 \details{
-@param x a factor vector, a logical vector, a one-dimensional table or a vector of
-   count of successes (in that case, \code{n} should be provided)
- @param n a vector of count of trials (\code{x} should be a vector of successes in that case)
- @param bounds \code{1:2} for lower and upper bounds, \code{1} for lower bounds only, 
-   \code{2} for upper bound only.
- @param ... additional parameters used by \code{\link[stats]{prop.test}}
- 
- @details 
- \code{prop.ci.lower} is a wrapper for \code{prop.ci} with \code{bounds = 1} and
+\code{prop.ci.lower} is a wrapper for \code{prop.ci} with \code{bounds = 1} and
  \code{prop.ci.upper} for \code{prop.ci} with \code{bounds = 2}.
  
  When \code{x} and \code{n} are provided, they should be of same length. Alternativaly,
@@ -39,8 +45,8 @@ Provide a convenient wrapper for \code{\link[stats]{prop.test}} to compute
  The confidence level could be specify with \code{conf.level} (0.95 by default).
  
  By default, \code{NA} value are removed.
- 
- @examples 
+}
+\examples{
  if (require(questionr)) {
  data(hdv2003)
  d <- hdv2003
@@ -68,10 +74,8 @@ Provide a convenient wrapper for \code{\link[stats]{prop.test}} to compute
    }
  }
  
- @return a vector with confidence interval
- 
- @seealso \code{\link[stats]{prop.test}}
-
-@export
+}
+\seealso{
+\code{\link[stats]{prop.test}}
 }
 

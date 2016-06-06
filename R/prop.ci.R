@@ -1,16 +1,16 @@
-#'  Proportion confidence interval
+#' Proportion confidence interval
 #' 
-#'  Provide a convenient wrapper for \code{\link[stats]{prop.test}} to compute 
-#'  confidence intervals for proportions
+#' Provide a convenient wrapper for \code{\link[stats]{prop.test}} to compute 
+#' confidence intervals for proportions
 #' 
-#'  @param x a factor vector, a logical vector, a one-dimensional table or a vector of
+#' @param x a factor vector, a logical vector, a one-dimensional table or a vector of
 #'    count of successes (in that case, \code{n} should be provided)
-#'  @param n a vector of count of trials (\code{x} should be a vector of successes in that case)
-#'  @param bounds \code{1:2} for lower and upper bounds, \code{1} for lower bounds only, 
+#' @param n a vector of count of trials (\code{x} should be a vector of successes in that case)
+#' @param bounds \code{1:2} for lower and upper bounds, \code{1} for lower bounds only, 
 #'    \code{2} for upper bound only.
-#'  @param ... additional parameters used by \code{\link[stats]{prop.test}}
+#' @param ... additional parameters used by \code{\link[stats]{prop.test}}
 #'  
-#'  @details 
+#' @details 
 #'  \code{prop.ci.lower} is a wrapper for \code{prop.ci} with \code{bounds = 1} and
 #'  \code{prop.ci.upper} for \code{prop.ci} with \code{bounds = 2}.
 #'  
@@ -26,7 +26,7 @@
 #'  
 #'  By default, \code{NA} value are removed.
 #'  
-#'  @examples 
+#' @examples 
 #'  if (require(questionr)) {
 #'  data(hdv2003)
 #'  d <- hdv2003
@@ -54,12 +54,11 @@
 #'    }
 #'  }
 #'  
-#'  @return a vector with confidence interval
+#' @return a vector with confidence interval
 #'  
-#'  @seealso \code{\link[stats]{prop.test}}
+#' @seealso \code{\link[stats]{prop.test}}
 #' 
-#'  @export
-
+#' @export
 prop.ci <- function (x, n = NULL, bounds = 1:2, ...)
 {
   if (length(bounds)>2 | min(bounds)<1 | max(bounds)>2 | !is.numeric(bounds))
