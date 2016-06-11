@@ -1,8 +1,8 @@
 Package: JLutils
 Type: Package
 Title: Collection of R functions
-Version: 1.5.0
-Date: 2016-05-14
+Version: 1.6.0
+Date: 2016-06-11
 Author: Joseph Larmarange <joseph@larmarange.net>
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Description: A collection of diverse R functions who don't fit (yet?) in another
