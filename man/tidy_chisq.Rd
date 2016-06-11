@@ -8,6 +8,8 @@ tidy_chisq(x, ...)
 }
 \arguments{
 \item{x}{list returned by \code{chisq.test} or \code{svychisq}}
+
+\item{...}{extra arguments}
 }
 \description{
 Tidies objects returned by the \code{\link[stats]{chisq.test}} function.

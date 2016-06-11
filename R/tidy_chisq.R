@@ -3,6 +3,7 @@
 #' Tidies objects returned by the \code{\link[stats]{chisq.test}} function.
 #' 
 #' @param x list returned by \code{chisq.test} or \code{svychisq}
+#' @param ... extra arguments
 #' @examples 
 #' test <- chisq.test(xtabs(Freq ~ Sex + Class, data = as.data.frame(Titanic)))
 #' tidy_chisq(test)
