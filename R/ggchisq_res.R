@@ -6,6 +6,7 @@
 #' @param addNA whether to include NA values in the tables
 #' @param label optionnal cell labels (see examples)
 #' @param breaks how to recode residuals into categories?
+#' @param palette Brewer colour palette (see \url{http://colorbrewer2.org})
 #' @param return_data return computed data.frame instead of ggplot?
 #' @examples 
 #' ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq")
@@ -13,7 +14,12 @@
 #' ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", label = "scales::percent(row.prop)")
 #' ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", breaks = c(-4, -2, 2, 4))
 #' @export
-ggchisq_res <- function(formula, data, weight = NULL, addNA = FALSE, label = NULL, breaks = c(-4, -2, 0, 2, 4), return_data = FALSE) {
+ggchisq_res <- function(
+  formula, data, 
+  weight = NULL, addNA = FALSE, 
+  label = NULL, breaks = c(-4, -2, 0, 2, 4), 
+  palette = "RdBu", return_data = FALSE) 
+{
   if (!is.data.frame(data))
     data <- as.data.frame(data)
   if (!is.formula(formula))
@@ -65,7 +71,7 @@ ggchisq_res <- function(formula, data, weight = NULL, addNA = FALSE, label = NUL
     geom_raster() +
     facet_grid("row.variable ~ col.variable", scales = "free", space = "free") +
     xlab("") + ylab("") +
-    scale_fill_brewer(palette = "RdBu", drop = FALSE) +
+    scale_fill_brewer(palette = palette, drop = FALSE) +
     labs(fill = "Pearson residuals") +
     guides(fill = guide_legend(reverse = TRUE))
   

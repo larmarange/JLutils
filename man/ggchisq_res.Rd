@@ -5,7 +5,7 @@
 \title{Chi-squared residuals matrix plot}
 \usage{
 ggchisq_res(formula, data, weight = NULL, addNA = FALSE, label = NULL,
-  breaks = c(-4, -2, 0, 2, 4), return_data = FALSE)
+  breaks = c(-4, -2, 0, 2, 4), palette = "RdBu", return_data = FALSE)
 }
 \arguments{
 \item{formula}{formula of variables to be cross-tabulated, rows on left hand side and columns on the right hand side}
@@ -19,6 +19,8 @@ ggchisq_res(formula, data, weight = NULL, addNA = FALSE, label = NULL,
 \item{label}{optionnal cell labels (see examples)}
 
 \item{breaks}{how to recode residuals into categories?}
+
+\item{palette}{Brewer colour palette (see \url{http://colorbrewer2.org})}
 
 \item{return_data}{return computed data.frame instead of ggplot?}
 }
