@@ -5,7 +5,7 @@
 \title{Chi-squared residuals matrix plot}
 \usage{
 ggchisq_res(formula, data, weight = NULL, addNA = FALSE, label = NULL,
-  breaks = c(-4, -2, 0, 2, 4), palette = "RdBu", return_data = FALSE)
+  breaks = c(-4, -2, 2, 4), palette = "RdBu", return_data = FALSE)
 }
 \arguments{
 \item{formula}{formula of variables to be cross-tabulated, rows on left hand side and columns on the right hand side}
@@ -34,6 +34,6 @@ Chi-squared residuals matrix plot
 ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq")
 ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", return_data = TRUE)
 ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", label = "scales::percent(row.prop)")
-ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", breaks = c(-4, -2, 2, 4))
+ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", breaks = c(-4, -2, 0, 2, 4))
 }
 
