@@ -19,8 +19,8 @@ tidy_chisq <- function(x, ...) {
   
   ret <- cbind(ret, prop = as.data.frame(prop.table(as.table(x$observed)))[[d+1]])
   if (d == 2) {
-    ret <- cbind(ret, row.prop = as.data.frame(prop.table(as.table(x$observed, 1)))[[d+1]])
-    ret <- cbind(ret, col.prop = as.data.frame(prop.table(as.table(x$observed, 2)))[[d+1]])
+    ret <- cbind(ret, row.prop = as.data.frame(prop.table(as.table(x$observed), 1))[[d+1]])
+    ret <- cbind(ret, col.prop = as.data.frame(prop.table(as.table(x$observed), 2))[[d+1]])
   }
   
   ret <- cbind(ret, expected = as.data.frame(as.table(x$expected))[[d+1]])
