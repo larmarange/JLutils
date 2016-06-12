@@ -24,6 +24,9 @@ ggchisq_res(formula, data, weight = NULL, addNA = FALSE, label = NULL,
 
 \item{return_data}{return computed data.frame instead of ggplot?}
 }
+\value{
+a ggplot graphic or a data frame if \code{return_data == TRUE}.
+}
 \description{
 Chi-squared residuals matrix plot
 }

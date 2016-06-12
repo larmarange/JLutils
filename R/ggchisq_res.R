@@ -8,6 +8,8 @@
 #' @param breaks how to recode residuals into categories?
 #' @param palette Brewer colour palette (see \url{http://colorbrewer2.org})
 #' @param return_data return computed data.frame instead of ggplot?
+#' @return 
+#' a ggplot graphic or a data frame if \code{return_data == TRUE}.
 #' @examples 
 #' ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq")
 #' ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", return_data = TRUE)
