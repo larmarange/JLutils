@@ -29,5 +29,6 @@ Chi-squared residuals matrix plot
 ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq")
 ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", return_data = TRUE)
 ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", label = "scales::percent(row.prop)")
+ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", breaks = c(-4, -2, 2, 4))
 }
 
