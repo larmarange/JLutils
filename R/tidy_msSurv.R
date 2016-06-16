@@ -13,6 +13,8 @@ tidy.msSurv <- function(
 ) {
   extract <- match.arg(extract)
   conf.fun <- match.arg(conf.fun)
+  if (!requireNamespace("msSurv", quietly = TRUE))
+    stop("msSurv package is required.")
   
   if (extract == "state occupation probabilities") {
     ret <- as.table(ps(x))
