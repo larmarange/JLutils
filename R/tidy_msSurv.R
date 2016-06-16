@@ -9,7 +9,7 @@
 tidy.msSurv <- function(
   x, extract = c("state occupation probabilities", "transition probabilities"), 
   conf.level = 0.95, 
-  conf.fun = c("linear", "log", "log-log", "cloglog") ,...
+  conf.fun = c("linear", "log", "log-log", "cloglog"), ...
 ) {
   extract <- match.arg(extract)
   conf.fun <- match.arg(conf.fun)
