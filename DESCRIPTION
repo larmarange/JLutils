@@ -1,8 +1,8 @@
 Package: JLutils
 Type: Package
 Title: Collection of R functions
-Version: 1.7.0
-Date: 2016-06-12
+Version: 1.8.0
+Date: 2016-07-08
 Author: Joseph Larmarange <joseph@larmarange.net>
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Description: A collection of diverse R functions who don't fit (yet?) in another
@@ -21,5 +21,8 @@ Suggests:
     riverplot,
     broom,
     dplyr,
-    labelled
+    labelled,
+    scales,
+    data.table,
+    msSurv
 RoxygenNote: 5.0.1
