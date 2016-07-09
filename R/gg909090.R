@@ -55,7 +55,8 @@ gg909090 <- function(
       axis.line = element_blank(), 
       axis.text = element_blank(), 
       axis.title = element_blank()
-    )
+    ) +
+    xlim(-1.75, 1.75)
   
   if (!is.null(sub))
     p <- p +
