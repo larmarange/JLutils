@@ -7,13 +7,16 @@
 #' @param sub value of the sub-labels (\code{NULL} to hide)
 #' @param p_size text size of the percentages
 #' @param sub_size text size of the sub-labels
+#' @param overall display the overall percentage?
 #' @examples
 #' gg909090()
+#' gg909090(0.782334, .6789, .82, col = "darkblue", overall = TRUE)
 #' @export
 gg909090 <- function(
   first = 0.9, second = 0.9, third = 0.9, col = "#E81634",
   sub = c("diagnosed", "on treatment", "virally suppressed"),
-  p_size = 6, sub_size = 4
+  p_size = 6, sub_size = 4,
+  overall = FALSE
 ) {
   if (!require(ggplot2, quietly = TRUE))
     stop("ggplot2 is required")
@@ -24,6 +27,7 @@ gg909090 <- function(
   x1 <- -1.2
   x2 <- 0
   x3 <- 1.2
+  x4 <- 2.2
   l <- 1
   res <- rbind(res, data.frame(x = x1, y = 1, xmin = x1 - l/2, xmax = x1 + l/2, 
     ymin = 1 - l/2, ymax = 1 + l/2, ltype = "dotted", p = NA))
@@ -55,8 +59,7 @@ gg909090 <- function(
       axis.line = element_blank(), 
       axis.text = element_blank(), 
       axis.title = element_blank()
-    ) +
-    xlim(-1.75, 1.75)
+    )
   
   if (!is.null(sub))
     p <- p +
@@ -64,5 +67,14 @@ gg909090 <- function(
     annotate("text", x = x2, y = 1 - 0.65, label = sub[2], size = sub_size, color = col, fontface = "bold") + 
     annotate("text", x = x3, y = 1 - 0.65, label = sub[3], size = sub_size, color = col, fontface = "bold")
 
+  if (overall) {
+    p <- p + 
+      annotate("text", x = x4, y = 1, 
+               label = paste("=", percent1(first * second * third)), 
+               size = p_size, color = col, fontface = "bold") +
+      xlim(-1.75, 2.75)
+  } else {
+    p <- p + xlim(-1.75, 1.75)
+  }
   p
 }
