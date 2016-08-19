@@ -106,8 +106,7 @@ ggcross <- function(
     xlab("") + ylab("") +
     scale_fill_brewer(palette = palette, drop = FALSE) +
     labs(fill = fill_title, size = size_title) +
-    guides(fill = guide_legend(reverse = TRUE, override.aes = list(size = max_size / 2))) +
-    coord_equal()
+    guides(fill = guide_legend(reverse = TRUE, override.aes = list(size = max_size / 2)))
   
   if (size == 1)
     p <- p + guides(size = FALSE)
