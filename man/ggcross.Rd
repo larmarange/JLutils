@@ -4,22 +4,22 @@
 \alias{ggcross}
 \title{Cross-tabulation matrix plot}
 \usage{
-ggcross(formula, data, weight = NULL, addNA = FALSE, fill = "residuals",
+ggcross(formula, data, weight = NULL, fill = "residuals",
   fill_breaks = c(-4, -2, 2, 4), palette = "RdBu",
   fill_title = "Pearson residuals", size = "observed", max_size = 20,
   size_title = "Observations", labels = NULL, labels_size = 3.5,
+  svystatistic = c("F", "Chisq", "Wald", "adjWald", "lincom", "saddlepoint"),
   return_data = FALSE)
 }
 \arguments{
-\item{formula}{formula of variables to be cross-tabulated, rows on left hand side and columns on the right hand side}
+\item{formula}{formula of variables to be cross-tabulated, 
+rows on left hand side and columns on the right hand side}
 
-\item{data}{data frame containing the data}
+\item{data}{data frame or survey object containing the data}
 
 \item{weight}{optionnal string indicating a column containing weights}
 
-\item{addNA}{whether to include NA values in the tables}
-
-\item{fill}{variable mapped to fill OR color name}
+\item{fill}{variable mapped to fill OR color name OR \code{NULL} (see examples)}
 
 \item{fill_breaks}{how to cut fill variable into categories? (cf. \code{\link[base]{cut}})}
 
@@ -27,28 +27,45 @@ ggcross(formula, data, weight = NULL, addNA = FALSE, fill = "residuals",
 
 \item{fill_title}{legend title for fill}
 
-\item{size}{variable mapped to size}
+\item{size}{variable mapped to size OR \code{"raster"} OR \code{NULL} (see examples)}
 
 \item{max_size}{size of largest point}
 
 \item{size_title}{legend title for size}
 
-\item{return_data}{return computed data.frame instead of ggplot?}
+\item{labels}{optionnal cell labels (see examples)}
 
-\item{label}{optionnal cell labels (see examples)}
+\item{labels_size}{size of cell labels}
 
-\item{label_size}{size of cell labels}
+\item{return_data}{return computed data.frame instead of plot?}
 }
 \value{
 a ggplot graphic or a data frame if \code{return_data == TRUE}.
 }
 \description{
-By default, plot chi-squared residuals
+A matrix plot of 2x2 cross-tabulated factors
+}
+\details{
+By default, the size of squares represents the number of observations while the color 
+  represents the chi-squared residuals.
 }
 \examples{
 ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq")
-ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", return_data = TRUE)
-ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", label = "scales::percent(row.prop)")
-ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", breaks = c(-4, -2, 0, 2, 4))
+ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", 
+  fill_breaks = c(-4, -2, 0, 2, 4))
+ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", 
+  fill = "blue")
+ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", 
+  size = "expected", size_title = "Expected number of observations")
+ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", 
+  labels = "scales::percent(row.prop)", size = NULL)
+ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", 
+  labels = "scales::percent(row.prop)", size = "raster")
+ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", 
+  return_data = TRUE)
+if (require(survey)) {
+  data(api)
+  dclus1 <- svydesign(id = ~dnum, weights = ~pw, data = apiclus1, fpc = ~fpc)
+}
 }
 

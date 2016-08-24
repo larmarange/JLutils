@@ -1,21 +1,24 @@
 #' Cross-tabulation matrix plot
 #' 
-#' By default, plot chi-squared residuals
+#' A matrix plot of 2x2 cross-tabulated factors
 #' 
-#' @param formula formula of variables to be cross-tabulated, rows on left hand side and columns on the right hand side
-#' @param data data frame containing the data
+#' @param formula formula of variables to be cross-tabulated, 
+#'    rows on left hand side and columns on the right hand side
+#' @param data data frame or survey object containing the data
 #' @param weight optionnal string indicating a column containing weights
-#' @param addNA whether to include NA values in the tables
-#' @param fill variable mapped to fill OR color name
+#' @param fill variable mapped to fill OR color name OR \code{NULL} (see examples)
 #' @param fill_breaks how to cut fill variable into categories? (cf. \code{\link[base]{cut}})
 #' @param palette Brewer colour palette (see \url{http://colorbrewer2.org})
 #' @param fill_title legend title for fill
-#' @param size variable mapped to size
+#' @param size variable mapped to size OR \code{"raster"} OR \code{NULL} (see examples)
 #' @param max_size size of largest point
 #' @param size_title legend title for size
-#' @param label optionnal cell labels (see examples)
-#' @param label_size size of cell labels
-#' @param return_data return computed data.frame instead of ggplot?
+#' @param labels optionnal cell labels (see examples)
+#' @param labels_size size of cell labels
+#' @param return_data return computed data.frame instead of plot?
+#' @details 
+#'   By default, the size of squares represents the number of observations while the color 
+#'   represents the chi-squared residuals.
 #' @return 
 #' a ggplot graphic or a data frame if \code{return_data == TRUE}.
 #' @examples 
@@ -29,30 +32,49 @@
 #' ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", 
 #'   labels = "scales::percent(row.prop)", size = NULL)
 #' ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", 
+#'   labels = "scales::percent(row.prop)", size = "raster")
+#' ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", 
 #'   return_data = TRUE)
+#' if (require(survey)) {
+#'   data(api)
+#'   dclus1 <- svydesign(id = ~dnum, weights = ~pw, data = apiclus1, fpc = ~fpc)
+#' }
 #' @export
 ggcross <- function(
-  formula, data, weight = NULL, addNA = FALSE, 
+  formula, data, weight = NULL, 
   fill = "residuals", fill_breaks = c(-4, -2, 2, 4), palette = "RdBu", fill_title = "Pearson residuals",
   size = "observed", max_size = 20, size_title = "Observations", 
   labels = NULL, labels_size = 3.5, 
+  svystatistic = c("F",  "Chisq","Wald","adjWald","lincom","saddlepoint"),
   return_data = FALSE) 
 {
-  if (!is.data.frame(data))
+  if (!is.data.frame(data) & !inherits(data, "survey.design"))
     data <- as.data.frame(data)
+  if (inherits(data, "survey.design"))
+    if (!requireNamespace("survey"))
+      stop("survey package is required if data is a survey object")
   if (!is.formula(formula))
     formula <- as.formula(formula)
-  if (!all(all.vars(formula) %in% names(data)))
+  if (inherits(data, "survey.design"))
+    liste_vars <- names(data$variables)
+  else
+    liste_vars <- names(data)
+  if (!all(all.vars(formula) %in% liste_vars))
     stop("all specified variables should be in data.")
   if (!is.null(weight))
-    if (!weight %in% names(data))
+    if (!weight %in% liste_vars)
       stop("weight variable should be in data.")
   row.vars <- all.vars(formula[[2]])
   col.vars <- all.vars(formula[[3]])
   
-  if (addNA)
-    data <- lapply(data, factor, exclude = NULL) 
-  
+  raster <- FALSE
+  if (!is.null(size)) {
+    if (size == "raster") {
+      raster <- TRUE
+      size <- NULL
+    } 
+  }
+
   require(plyr, quietly = TRUE)
   res <- data.frame()
   for (rv in row.vars) {
@@ -62,7 +84,10 @@ ggcross <- function(
           f <- as.formula(paste("~", rv, "+", cv))
         else
           f <- as.formula(paste(weight, "~", rv, "+", cv))
-        tmp <- .tidy_chisq(chisq.test(xtabs(f, data)))
+        if (inherits(data, "survey.design"))
+          tmp <- .tidy_chisq(svychisq(f, data))
+        else
+          tmp <- .tidy_chisq(chisq.test(xtabs(f, data)))
         names(tmp)[1:2] <- c("row.label", "col.label")
         tmp$row.variable <- rv
         tmp$col.variable <- cv
@@ -102,20 +127,34 @@ ggcross <- function(
   p <- ggplot(res) + 
     aes_string(x = "col.label", y = "row.label", fill = fill_var)
   
-  if (is.null(fill_col))
-    p <- p + geom_point(aes_string(size = size), shape = 22, colour = "black")
-  else
-    p <- p + geom_point(aes_string(size = size), shape = 22, colour = "black", fill = fill_col)
+  if (raster) 
+    p <- p + geom_tile(colour = "black")
+  
+  if (!raster & is.null(fill_col))
+    p <- p + 
+      geom_point(aes_string(size = size), shape = 22, colour = "black") + 
+      scale_size_area(max_size = max_size)
+  
+  if (!raster & !is.null(fill_col))
+    p <- p + 
+      geom_point(aes_string(size = size), shape = 22, colour = "black", fill = fill_col) +
+      scale_size_area(max_size = max_size)
   
   p <- p +
-    scale_size_area(max_size = max_size) +
     facet_grid("row.variable ~ col.variable", scales = "free", space = "free") +
     xlab("") + ylab("") +
-    scale_fill_brewer(palette = palette, drop = FALSE) +
-    labs(fill = fill_title, size = size_title) +
-    guides(fill = guide_legend(reverse = TRUE, override.aes = list(size = max_size / 2)))
+    scale_fill_brewer(palette = palette, drop = FALSE)
   
-  if (size == 1)
+  if (raster)
+    p <- p + 
+      labs(fill = fill_title) +
+      guides(fill = guide_legend(reverse = TRUE))
+  else
+    p <- p +
+      labs(fill = fill_title, size = size_title) +
+      guides(fill = guide_legend(reverse = TRUE, override.aes = list(size = max_size / 2)))
+  
+  if (size == 1 & !raster)
     p <- p + guides(size = FALSE)
   
   if (!is.null(labels))

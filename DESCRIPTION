@@ -1,8 +1,8 @@
 Package: JLutils
 Type: Package
 Title: Collection of R functions
-Version: 1.10.0
-Date: 2016-08-18
+Version: 1.10.1
+Date: 2016-08-24
 Author: Joseph Larmarange <joseph@larmarange.net>
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Description: A collection of diverse R functions who don't fit (yet?) in another
@@ -24,5 +24,6 @@ Suggests:
     labelled,
     scales,
     data.table,
-    msSurv
+    msSurv,
+    survey
 RoxygenNote: 5.0.1
