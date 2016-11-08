@@ -53,7 +53,7 @@ percent3 <- function (x)
 #' @export
 percent4 <- function (x)
 {
-  return(percent(x, digits = 5))
+  return(percent(x, digits = 4))
 }
 
 #' @rdname percent
@@ -106,7 +106,7 @@ comp.percent3 <- function (x)
 #' @export
 comp.percent4 <- function (x)
 {
-  return(comp.percent(x, digits = 5))
+  return(comp.percent(x, digits = 4))
 }
 
 #' @rdname percent
@@ -176,7 +176,7 @@ pourcent3 <- function (x)
 #' @export
 pourcent4 <- function (x)
 {
-  return(pourcent(x, digits = 5))
+  return(pourcent(x, digits = 4))
 }
 
 #' @rdname pourcent
@@ -229,7 +229,7 @@ comp.pourcent3 <- function (x)
 #' @export
 comp.pourcent4 <- function (x)
 {
-  return(comp.pourcent(x, digits = 5))
+  return(comp.pourcent(x, digits = 4))
 }
 
 #' @rdname pourcent
@@ -298,7 +298,7 @@ en3 <- function (x)
 #' @export
 en4 <- function (x)
 {
-  return(en(x, digits = 5))
+  return(en(x, digits = 4))
 }
 
 #' @rdname en
@@ -368,7 +368,7 @@ fr3 <- function (x)
 #' @export
 fr4 <- function (x)
 {
-  return(fr(x, digits = 5))
+  return(fr(x, digits = 4))
 }
 
 #' @rdname fr
@@ -437,7 +437,7 @@ int3 <- function (x)
 #' @export
 int4 <- function (x)
 {
-  return(int(x, digits = 5))
+  return(int(x, digits = 4))
 }
 
 #' @rdname int
