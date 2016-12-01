@@ -57,8 +57,8 @@ StatStackLabels <- ggproto(
     data <- do.call(plyr::rbind.fill, stats)
     plyr::ddply(
       data, "x", plyr::mutate,
-      cumcount = .inv_cumsum(count),
-      ylabel = .inv_cumsum(count) - count / 2,
+      cumcount = inv_cumsum(count),
+      ylabel = inv_cumsum(count) - count / 2,
       na.rm = TRUE
     )
   },

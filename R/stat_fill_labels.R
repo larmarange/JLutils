@@ -69,14 +69,11 @@ StatFillLabels <- ggproto(
     plyr::ddply(
       data, "x", plyr::mutate,
       prop = count/sum(count),
-      cumprop = .inv_cumsum(count)/sum(count),
-      ylabel = (.inv_cumsum(count) - count / 2)/sum(count),
+      cumprop = inv_cumsum(count)/sum(count),
+      ylabel = (inv_cumsum(count) - count / 2)/sum(count),
       na.rm = TRUE
     )
   },
   default_aes = aes(y = ..ylabel.., label = paste0(round(100 * ..prop.., digits =1), "%"))
 )
 
-.inv_cumsum <- function(x) {
-  sum(x) - cumsum(x) +x
-}
