@@ -3,8 +3,10 @@ Type: Package
 Title: Collection of R functions
 Version: 1.12.0
 Date: 2017-09-26
-Author: Joseph Larmarange <joseph@larmarange.net>
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
+Authors@R: c(
+  person("Joseph", "Larmarange", email = "joseph@larmarange.net", role = c("aut", "cre"))
+  )
 Description: A collection of diverse R functions who don't fit (yet?) in another
     package.
 License: GPL (>= 3)
