@@ -32,4 +32,3 @@ plot the 90-90-90 UNAIDS's target
 gg909090()
 gg909090(0.782334, .6789, .82, col = "darkblue", overall = TRUE)
 }
-

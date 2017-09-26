@@ -68,4 +68,3 @@ if (require(survey)) {
   dclus1 <- svydesign(id = ~dnum, weights = ~pw, data = apiclus1, fpc = ~fpc)
 }
 }
-

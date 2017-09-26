@@ -19,4 +19,3 @@ The \code{\%p\%} operator is a shortcut for \code{\link[base]{paste0}}.
 "v_" \%p\% 1:3
 c("A", "B", "C") \%p\% 1:3
 }
-

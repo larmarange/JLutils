@@ -32,10 +32,9 @@ plot(h77)
 rect.hclust(h77, 4)
 cbind(ct.o, ct.n)
 }
-\author{
-Romain Francois
-}
 \seealso{
 \code{\link{cutree}}
 }
-
+\author{
+Romain Francois
+}

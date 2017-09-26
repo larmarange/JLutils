@@ -78,4 +78,3 @@ confidence intervals for proportions
 \seealso{
 \code{\link[stats]{prop.test}}
 }
-

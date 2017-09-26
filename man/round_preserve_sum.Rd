@@ -28,4 +28,3 @@ sum(round(c(0.333, 0.333, 0.334), 2))
 round_preserve_sum(c(0.333, 0.333, 0.334), 2)
 sum(round_preserve_sum(c(0.333, 0.333, 0.334), 2))
 }
-

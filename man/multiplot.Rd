@@ -4,16 +4,21 @@
 \alias{multiplot}
 \title{Multiple plot}
 \usage{
-multiplot(..., plotlist = NULL, cols = 1, layout = NULL)
+multiplot(..., plotlist = NULL, cols = 1, layout = NULL, heights = NULL,
+  widths = NULL)
 }
 \arguments{
-\item{...}{ggplot objects}
+\item{...}{ggplot objects (or grobs)}
 
 \item{plotlist}{a list of ggplot objects}
 
 \item{cols}{number of columns in layout}
 
 \item{layout}{a matrix specifying the layout. if present, \code{cols} is ignored}
+
+\item{heights}{a unit vector giving the relative height of each row (optional)}
+
+\item{widths}{a unit vector giving the relative width of each row (optional)}
 }
 \description{
 Renders multiple ggplot plots in one image
@@ -32,12 +37,12 @@ p4 <- ggplot(mtcars, aes(factor(cyl), mpg)) + geom_boxplot()
 
 multiplot(p1, p2, p3, p4)
 multiplot(p1, p2, p3, p4, cols = 2)
-multiplot(p1, p2, p3, layout = matrix(c(1,2,3,3), nrow=2))
-multiplot(p1, p2, p3, layout = matrix(c(1,2,3,3), nrow=2, byrow=TRUE))
+multiplot(p1, p2, p3, layout = matrix(c(1,2,3,3), nrow = 2))
+multiplot(p1, p2, p3, layout = matrix(c(1,2,3,3), nrow = 2, byrow = TRUE))
+multiplot(p1, p2, p3, layout = matrix(c(1,2,3,3), nrow = 2, byrow = TRUE), heights = c(3, 1))
 
 }
 \references{
-Winston Chang, \emph{Cookbook for R}, 
+Adapted by Joseph Larmarange from Winston Chang, \emph{Cookbook for R}, 
 \url{http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/}
 }
-

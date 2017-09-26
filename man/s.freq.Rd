@@ -33,4 +33,3 @@ if (require(ade4) & require(questionr)) {
 \seealso{
 \code{\link[ade4]{s.value}}, \code{\link[ade4]{s.label}}
 }
-

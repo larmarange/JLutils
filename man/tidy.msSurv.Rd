@@ -22,4 +22,3 @@ tidy.msSurv(x, extract = c("state occupation probabilities",
 \description{
 Experimental tidier for msSurv objects
 }
-

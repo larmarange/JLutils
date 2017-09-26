@@ -18,4 +18,3 @@ Tidies objects returned by the \code{\link[stats]{chisq.test}} function.
 test <- chisq.test(xtabs(Freq ~ Sex + Class, data = as.data.frame(Titanic)))
 tidy_chisq(test)
 }
-

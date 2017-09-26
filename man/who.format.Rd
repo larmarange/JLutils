@@ -22,4 +22,3 @@ In WHO publications, population numbers are usually presented as follow:
 \examples{
 who.format(c(3, 8, 42, 75, 45678, 9876543, 12345678))
 }
-

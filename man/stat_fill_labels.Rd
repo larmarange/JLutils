@@ -65,6 +65,7 @@ Computes position of labels when using \code{position = "fill"}
   \item{ylabel}{the y position of labels, i.e. \eqn{cumprop - prop / 2}}
 }
 }
+
 \examples{
 ggplot(as.data.frame(Titanic)) +
   aes(x = Class, fill = Survived, weight = Freq) +
@@ -91,4 +92,3 @@ ggplot(as.data.frame(Titanic)) +
 \seealso{
 \code{\link{stat_stack_labels}} for \code{position = "stack"}.
 }
-

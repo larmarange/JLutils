@@ -16,4 +16,3 @@ This is a decreasing version of \code{cumsum}.
 cumsum(1:10)
 inv_cumsum(1:10)
 }
-

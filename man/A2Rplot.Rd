@@ -124,10 +124,9 @@ A2Rplot(hc1,
 				knot.pos = "bary"
 )
 }
-\author{
-Romain Francois
-}
 \seealso{
 \url{http://rpubs.com/gaston/dendrograms}, \code{\link{plot.hclust}}
 }
-
+\author{
+Romain Francois
+}

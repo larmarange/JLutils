@@ -35,4 +35,3 @@ best.cutree(hc, graph = TRUE, min = 6, max = 15)
 \seealso{
 \code{\link[FactoMineR]{HCPC}}
 }
-

@@ -44,4 +44,3 @@ tidy_detailed(reg2, conf.int = TRUE, exponentiate = TRUE)
 \seealso{
 \code{\link[broom]{tidy}} function from \pkg{broom} package
 }
-

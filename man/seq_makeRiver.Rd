@@ -15,4 +15,3 @@ a river plot object that can be plotted with \code{\link[riverplot]{riverplot}}
 \description{
 Create a riverplot from a sequence object
 }
-

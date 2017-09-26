@@ -35,4 +35,3 @@ if (require(TraMineR) & require(cluster)) {
 \seealso{
 \code{\link[TraMineR]{seqIplot}}
 }
-
