@@ -4,3 +4,4 @@ language: R
 sudo: false
 cache: packages
 r_packages: msSurv
+bioc_packages: graph
