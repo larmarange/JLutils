@@ -9,6 +9,8 @@
 #'    \item Increment the specified decimal place of values with ‘k’ largest remainders, 
 #'    where ‘k’ is the number of values that must be incremented to preserve their rounded sum
 #' }
+#' @param x vector to sum
+#' @param digits number of decimals for rounding
 #' @source \url{https://www.r-bloggers.com/round-values-while-preserve-their-rounded-sum-in-r/} and
 #' \url{http://stackoverflow.com/questions/32544646/round-vector-of-numerics-to-integer-while-preserving-their-sum}
 #' @examples 

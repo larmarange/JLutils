@@ -11,10 +11,25 @@
 #' @return 
 #' a ggplot graphic or a data frame if \code{return_data == TRUE}.
 #' @examples 
-#' ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq")
-#' ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", return_data = TRUE)
-#' ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", label = "scales::percent(row.prop)")
-#' ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", breaks = c(-4, -2, 0, 2, 4))
+#' ggchisq_res(
+#'   Sex + Age + Class ~ Survived, 
+#'   data = as.data.frame(Titanic), 
+#'   weight = "Freq")
+#' ggchisq_res(
+#'   Sex + Age + Class ~ Survived, 
+#'   data = as.data.frame(Titanic), 
+#'   weight = "Freq", 
+#'   return_data = TRUE)
+#' ggchisq_res(
+#'   Sex + Age + Class ~ Survived, 
+#'   data = as.data.frame(Titanic), 
+#'   weight = "Freq", 
+#'   label = "scales::percent(row.prop)")
+#' ggchisq_res(
+#'   Sex + Age + Class ~ Survived, 
+#'   data = as.data.frame(Titanic), 
+#'   weight = "Freq", 
+#'   breaks = c(-4, -2, 0, 2, 4))
 #' @export
 ggchisq_res <- function(
   formula, data, 
@@ -37,7 +52,6 @@ ggchisq_res <- function(
   if (addNA)
     data <- lapply(data, factor, exclude = NULL) 
   
-  require(plyr, quietly = TRUE)
   res <- data.frame()
   for (rv in row.vars) {
     for (cv in col.vars) {
@@ -64,8 +78,6 @@ ggchisq_res <- function(
 
   if (return_data)
     return(res)
-  
-  require(ggplot2, quietly = TRUE)
   
   res$row.label <- factor(res$row.label, rev(levels(res$row.label)))
   p <- ggplot(res) + 

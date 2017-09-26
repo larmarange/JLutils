@@ -3,7 +3,7 @@
 #' @param x a msSurv object
 #' @param extract what should be extracted?
 #' @param conf.level confidence level of the intervals
-#' @param cond.fun transformation appelied to confidence intervals
+#' @param conf.fun transformation appelied to confidence intervals
 #' @param ... extra arguments
 #' @export
 tidy.msSurv <- function(

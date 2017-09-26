@@ -93,6 +93,10 @@
 #' 				col.down = c("orange", "brown", "green3", "royalblue"),
 #' 				knot.pos = "bary"
 #' )
+#' @importFrom grDevices rainbow
+#' @importFrom utils tail
+#' @importFrom graphics axis box layout par plot points polygon rect segments text title
+#' @importFrom stats as.dendrogram as.formula as.hclust chisq.test cutree heatmap prop.test runif xtabs
 
 `A2Rplot` <- function(
 	x ,             # an hclust object to draw

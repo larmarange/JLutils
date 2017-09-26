@@ -18,7 +18,7 @@ percent <- function (x, digits=1)
   if (all(is.na(x)))
     return("NA")
   else
-    return(paste0(format(round(100*x, digits = digits), nsmall = digits, big.mark = " ", scientific = FALSE),"%"))
+    return(paste0(format(round(100*x, digits = digits), nsmall = digits, big.mark = "\u00A0", scientific = FALSE),"%"))
 }
 
 #' @rdname percent
@@ -472,6 +472,6 @@ who.format <- function(x) {
   x[x >= 100 & x < 10000000 & !is.na(x)] <- signif(x[x >= 100 & x < 10000000 & !is.na(x)], digits=2)
   x[x >= 10000000 & !is.na(x)] <- signif(x[x >= 10000000 & !is.na(x)], digits=3)
   
-  return(format(x, digits=0, big.mark=" ", scientific=FALSE))
+  return(format(x, digits=0, big.mark="\u00A0", scientific=FALSE))
 }
 

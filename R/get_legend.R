@@ -9,8 +9,13 @@
 #' 
 #' @examples 
 #' require(ggplot2)
-#' p1 <- ggplot(iris) + aes(x = Sepal.Length, y = Sepal.Width, color = Species) + geom_point() + theme(legend.position = "bottom") 
-#' p2 <- ggplot(iris) + aes(x = Petal.Length, y = Petal.Width, color = Species) + geom_point()
+#' p1 <- ggplot(iris) + 
+#'   aes(x = Sepal.Length, y = Sepal.Width, color = Species) + 
+#'   geom_point() + 
+#'   theme(legend.position = "bottom") 
+#' p2 <- ggplot(iris) + 
+#' aes(x = Petal.Length, y = Petal.Width, color = Species) + 
+#' geom_point()
 #' 
 #' # get legend from p1
 #' l <- get_legend(p1)

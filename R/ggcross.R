@@ -15,6 +15,7 @@
 #' @param size_title legend title for size
 #' @param labels optionnal cell labels (see examples)
 #' @param labels_size size of cell labels
+#' @param svystatistic statistic to be used for survey data (see \code{\link[survey]{svychisq}})
 #' @param return_data return computed data.frame instead of plot?
 #' @details 
 #'   By default, the size of squares represents the number of observations while the color 
@@ -75,7 +76,6 @@ ggcross <- function(
     } 
   }
 
-  require(plyr, quietly = TRUE)
   res <- data.frame()
   for (rv in row.vars) {
     for (cv in col.vars) {
@@ -117,8 +117,6 @@ ggcross <- function(
 
   if (return_data)
     return(res)
-  
-  require(ggplot2, quietly = TRUE)
   
   if (is.null(size))
     size <- 1

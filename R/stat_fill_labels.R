@@ -36,6 +36,8 @@
 #'     stat = "fill_labels", position = position_dodge(width = .8)
 #'   )
 #' @export
+#' @import ggplot2
+#' @import plyr
 stat_fill_labels <- function(mapping = NULL, data = NULL, geom = "text",
                              position = "identity", width = NULL, na.rm = FALSE, show.legend = NA,
                              inherit.aes = TRUE, ...) {
@@ -46,7 +48,9 @@ stat_fill_labels <- function(mapping = NULL, data = NULL, geom = "text",
   )
 }
 
-
+#' @rdname stat_fill_labels
+#' @format NULL
+#' @usage NULL
 #' @export
 StatFillLabels <- ggproto(
   "StatFillLabels",

@@ -21,7 +21,8 @@
 #' }
 
 seq_heatmap <- function (seq, tree, with.missing = FALSE, ...) {
-	if (!require(TraMineR)) stop("You need to install the TraMineR package.")
+  if (!requireNamespace("TraMineR")) 
+    stop("TraMineR package is required. Please install it.")
   if (!inherits(seq, "stslist")) stop("seq should be a stslist object, see ?seqdef.")
 	if (!inherits(tree, "dendrogram")) tree <- as.dendrogram(tree)
 	mat <- seq
@@ -45,8 +46,10 @@ seq_heatmap <- function (seq, tree, with.missing = FALSE, ...) {
 
 seq_makeRiver <- function(seq)
 {
-  if (!require(TraMineR)) stop("You need to install the TraMineR package.")
-  if (!require(riverplot)) stop("You need to install the riverplot package.")
+  if (!requireNamespace("TraMineR")) 
+    stop("TraMineR package is required. Please install it.")
+  if (!requireNamespace("riverplot")) 
+    stop("riverplot package is required. Please install it.")
   if (!inherits(seq, "stslist")) stop("seq should be a stslist object, see ?seqdef.")
   
   alphabet <- attr(seq, "alphabet")
@@ -86,5 +89,5 @@ seq_makeRiver <- function(seq)
   edges$N2 <- as.character(edges$N2)
   edges <- edges[edges$Value>0, ]
     
-  return(makeRiver(nodes, edges))
+  return(riverplot::makeRiver(nodes, edges))
 }

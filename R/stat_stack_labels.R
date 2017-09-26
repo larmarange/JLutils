@@ -36,7 +36,12 @@ stat_stack_labels <- function(mapping = NULL, data = NULL, geom = "text",
   )
 }
 
+#' @rdname stat_stack_labels
+#' @format NULL
+#' @usage NULL
 #' @export
+#' @import ggplot2
+#' @import plyr
 StatStackLabels <- ggproto(
   "StatStackLabels",
   StatCount,

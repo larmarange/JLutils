@@ -18,8 +18,6 @@ gg909090 <- function(
   p_size = 6, sub_size = 4,
   overall = FALSE
 ) {
-  if (!require(ggplot2, quietly = TRUE))
-    stop("ggplot2 is required")
   if (!is.null(sub) & length(sub) != 3)
     stop("sub should contain 3 elements")
   
