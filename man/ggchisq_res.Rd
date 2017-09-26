@@ -31,8 +31,23 @@ a ggplot graphic or a data frame if \code{return_data == TRUE}.
 Chi-squared residuals matrix plot
 }
 \examples{
-ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq")
-ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", return_data = TRUE)
-ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", label = "scales::percent(row.prop)")
-ggchisq_res(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", breaks = c(-4, -2, 0, 2, 4))
+ggchisq_res(
+  Sex + Age + Class ~ Survived, 
+  data = as.data.frame(Titanic), 
+  weight = "Freq")
+ggchisq_res(
+  Sex + Age + Class ~ Survived, 
+  data = as.data.frame(Titanic), 
+  weight = "Freq", 
+  return_data = TRUE)
+ggchisq_res(
+  Sex + Age + Class ~ Survived, 
+  data = as.data.frame(Titanic), 
+  weight = "Freq", 
+  label = "scales::percent(row.prop)")
+ggchisq_res(
+  Sex + Age + Class ~ Survived, 
+  data = as.data.frame(Titanic), 
+  weight = "Freq", 
+  breaks = c(-4, -2, 0, 2, 4))
 }

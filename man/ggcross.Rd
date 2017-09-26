@@ -37,6 +37,8 @@ rows on left hand side and columns on the right hand side}
 
 \item{labels_size}{size of cell labels}
 
+\item{svystatistic}{statistic to be used for survey data (see \code{\link[survey]{svychisq}})}
+
 \item{return_data}{return computed data.frame instead of plot?}
 }
 \value{

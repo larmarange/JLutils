@@ -15,9 +15,9 @@ tidy.msSurv(x, extract = c("state occupation probabilities",
 
 \item{conf.level}{confidence level of the intervals}
 
-\item{...}{extra arguments}
+\item{conf.fun}{transformation appelied to confidence intervals}
 
-\item{cond.fun}{transformation appelied to confidence intervals}
+\item{...}{extra arguments}
 }
 \description{
 Experimental tidier for msSurv objects

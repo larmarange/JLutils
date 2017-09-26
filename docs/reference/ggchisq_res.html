@@ -133,7 +133,14 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>ggchisq_res</span>(<span class='no'>Sex</span> + <span class='no'>Age</span> + <span class='no'>Class</span> ~ <span class='no'>Survived</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>as.data.frame</span>(<span class='no'>Titanic</span>), <span class='kw'>weight</span> <span class='kw'>=</span> <span class='st'>"Freq"</span>)</div><div class='img'><img src='ggchisq_res-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>ggchisq_res</span>(<span class='no'>Sex</span> + <span class='no'>Age</span> + <span class='no'>Class</span> ~ <span class='no'>Survived</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>as.data.frame</span>(<span class='no'>Titanic</span>), <span class='kw'>weight</span> <span class='kw'>=</span> <span class='st'>"Freq"</span>, <span class='kw'>return_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;    row.label col.label observed       prop  row.prop   col.prop   expected
+    <pre class="examples"><div class='input'><span class='fu'>ggchisq_res</span>(
+  <span class='no'>Sex</span> + <span class='no'>Age</span> + <span class='no'>Class</span> ~ <span class='no'>Survived</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>as.data.frame</span>(<span class='no'>Titanic</span>),
+  <span class='kw'>weight</span> <span class='kw'>=</span> <span class='st'>"Freq"</span>)</div><div class='img'><img src='ggchisq_res-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>ggchisq_res</span>(
+  <span class='no'>Sex</span> + <span class='no'>Age</span> + <span class='no'>Class</span> ~ <span class='no'>Survived</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>as.data.frame</span>(<span class='no'>Titanic</span>),
+  <span class='kw'>weight</span> <span class='kw'>=</span> <span class='st'>"Freq"</span>,
+  <span class='kw'>return_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;    row.label col.label observed       prop  row.prop   col.prop   expected
 #&gt; 1       Male        No     1364 0.61971831 0.7879838 0.91543624 1171.82644
 #&gt; 2     Female        No      126 0.05724671 0.2680851 0.08456376  318.17356
 #&gt; 3       Male       Yes      367 0.16674239 0.2120162 0.51617440  559.17356
@@ -166,7 +173,15 @@
 #&gt; 13   9.5657718  12.593038        Class     Survived      [4,15.6]
 #&gt; 14   2.7029595   3.521022        Class     Survived         [2,4)
 #&gt; 15  -3.3150274  -4.888701        Class     Survived       [-4,-2)
-#&gt; 16  -4.3698398  -6.868541        Class     Survived    [-10.8,-4)</div><div class='input'><span class='fu'>ggchisq_res</span>(<span class='no'>Sex</span> + <span class='no'>Age</span> + <span class='no'>Class</span> ~ <span class='no'>Survived</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>as.data.frame</span>(<span class='no'>Titanic</span>), <span class='kw'>weight</span> <span class='kw'>=</span> <span class='st'>"Freq"</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"scales::percent(row.prop)"</span>)</div><div class='img'><img src='ggchisq_res-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>ggchisq_res</span>(<span class='no'>Sex</span> + <span class='no'>Age</span> + <span class='no'>Class</span> ~ <span class='no'>Survived</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>as.data.frame</span>(<span class='no'>Titanic</span>), <span class='kw'>weight</span> <span class='kw'>=</span> <span class='st'>"Freq"</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>4</span>, -<span class='fl'>2</span>, <span class='fl'>0</span>, <span class='fl'>2</span>, <span class='fl'>4</span>))</div><div class='img'><img src='ggchisq_res-3.png' alt='' width='700' height='432.632880098887' /></div></pre>
+#&gt; 16  -4.3698398  -6.868541        Class     Survived    [-10.8,-4)</div><div class='input'><span class='fu'>ggchisq_res</span>(
+  <span class='no'>Sex</span> + <span class='no'>Age</span> + <span class='no'>Class</span> ~ <span class='no'>Survived</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>as.data.frame</span>(<span class='no'>Titanic</span>),
+  <span class='kw'>weight</span> <span class='kw'>=</span> <span class='st'>"Freq"</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"scales::percent(row.prop)"</span>)</div><div class='img'><img src='ggchisq_res-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>ggchisq_res</span>(
+  <span class='no'>Sex</span> + <span class='no'>Age</span> + <span class='no'>Class</span> ~ <span class='no'>Survived</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>as.data.frame</span>(<span class='no'>Titanic</span>),
+  <span class='kw'>weight</span> <span class='kw'>=</span> <span class='st'>"Freq"</span>,
+  <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>4</span>, -<span class='fl'>2</span>, <span class='fl'>0</span>, <span class='fl'>2</span>, <span class='fl'>4</span>))</div><div class='img'><img src='ggchisq_res-3.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

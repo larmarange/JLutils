@@ -10,6 +10,11 @@
 \usage{
 round_preserve_sum(x, digits = 0)
 }
+\arguments{
+\item{x}{vector to sum}
+
+\item{digits}{number of decimals for rounding}
+}
 \description{
 In general, the sum of rounded numbers (e.g., using the 
 \code{base::round} function) is not the same as their rounded sum.

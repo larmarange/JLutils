@@ -147,6 +147,10 @@ rows on left hand side and columns on the right hand side</p></td>
       <td><p>size of cell labels</p></td>
     </tr>
     <tr>
+      <th>svystatistic</th>
+      <td><p>statistic to be used for survey data (see <code><a href='http://www.rdocumentation.org/packages/survey/topics/svychisq'>svychisq</a></code>)</p></td>
+    </tr>
+    <tr>
       <th>return_data</th>
       <td><p>return computed data.frame instead of plot?</p></td>
     </tr>
@@ -205,10 +209,7 @@ rows on left hand side and columns on the right hand side</p></td>
 #&gt; 16  -4.3698398  -6.868541        Class     Survived [-10.77361838,-4)</div><div class='input'><span class='kw'>if</span> (<span class='fu'>require</span>(<span class='no'>survey</span>)) {
   <span class='fu'>data</span>(<span class='no'>api</span>)
   <span class='no'>dclus1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/survey/topics/svydesign'>svydesign</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> ~<span class='no'>dnum</span>, <span class='kw'>weights</span> <span class='kw'>=</span> ~<span class='no'>pw</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>apiclus1</span>, <span class='kw'>fpc</span> <span class='kw'>=</span> ~<span class='no'>fpc</span>)
-}</div><div class='output co'>#&gt; <span class='message'>Loading required package: survey</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Matrix</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: survival</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘survey’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:graphics’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    dotchart</span></div></pre>
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
