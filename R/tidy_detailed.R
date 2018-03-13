@@ -34,9 +34,10 @@ tidy_detailed <- function(x, ...) {
     stop("broom package is required. Please install it.")
   if (!requireNamespace("dplyr")) 
     stop("dplyr package is required. Please install it.")
-  res <- merge(broom::tidy(x, ...), .tidy_levels_labels(x))
+  res <- merge(broom::tidy(x, ...), .tidy_levels_labels(x), all.x = TRUE)
   res$label <- res$level_detail
-  res[res$level_detail == "", "label"] <- res[res$level_detail == "", "variable_label"]
+  if (sum(res$level_detail == "", na.rm = TRUE) > 0)
+    res[res$level_detail == "", "label"] <- res[res$level_detail == "", "variable_label"]
   res
 }
 
