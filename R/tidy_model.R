@@ -6,6 +6,7 @@
 #' @param exponentiate whether to exponentiate the coefficient estimates and confidence intervals 
 #' @param quick	whether to compute a smaller and faster version, containing only the term and estimate columns.
 #' @param ... extra arguments
+#' @importFrom stats coef
 #' @export
 
 tidy_model <- function(x, conf.int = FALSE, conf.level = .95, exponentiate = FALSE, quick = FALSE, ...) {
