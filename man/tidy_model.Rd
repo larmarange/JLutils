@@ -16,7 +16,7 @@ tidy.clmm(x, conf.int = FALSE, conf.level = 0.95, exponentiate = FALSE,
   quick = FALSE, ...)
 }
 \arguments{
-\item{x}{a msSurv object}
+\item{x}{a model object}
 
 \item{conf.int}{whether to include a confidence interval}
 

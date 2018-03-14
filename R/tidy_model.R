@@ -1,6 +1,6 @@
 #' A generic tidier for model outputs
 #' 
-#' @param x a msSurv object
+#' @param x a model object
 #' @param conf.int whether to include a confidence interval
 #' @param conf.level confidence level of the interval, used only if \code{conf.int=TRUE}
 #' @param exponentiate whether to exponentiate the coefficient estimates and confidence intervals 
