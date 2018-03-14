@@ -37,7 +37,8 @@ tidy_detailed <- function(x, ...) {
   res <- merge(broom::tidy(x, ...), .tidy_levels_labels(x), all.x = TRUE)
   res$label <- res$level_detail
   if (sum(res$level_detail == "", na.rm = TRUE) > 0)
-    res[res$level_detail == "", "label"] <- res[res$level_detail == "", "variable_label"]
+    res[res$level_detail == "" & !is.na(res$level_detail), "label"] <- 
+      res[res$level_detail == "" & !is.na(res$level_detail), "variable_label"]
   res
 }
 
