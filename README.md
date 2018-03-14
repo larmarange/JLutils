@@ -24,5 +24,5 @@ if (!require(devtools)){
 	install.packages('devtools')
 	library(devtools)
 }
-install_github("JLutils","larmarange")
+install_github("larmarange/JLutils")
 ```
