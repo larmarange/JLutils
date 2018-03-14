@@ -31,12 +31,14 @@ process_model <- function(ret, x, conf.int = FALSE, conf.level = .95, exponentia
   
   if (conf.int) {
     # avoid "Waiting for profiling to be done..." message
-    CI <- suppressMessages(stats::confint(x, level = conf.level))
+    CI <- suppressMessages(trans(stats::confint(x, level = conf.level)))
     colnames(CI) = c("conf.low", "conf.high")
     CI <- as.data.frame(CI)
     CI$term <- rownames(CI)
     ret <- merge(ret, unrowname(CI), by = "term", all.x = TRUE)
   }
+  
+  ret$estimate <- trans(ret$estimate)
   ret
 }
 
