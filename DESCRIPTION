@@ -17,6 +17,7 @@ Depends:
     plyr
 Suggests:
     TraMineR,
+    FactoMineR,
     ade4,
     questionr,
     cluster,
