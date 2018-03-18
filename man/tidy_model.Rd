@@ -4,6 +4,8 @@
 \alias{tidy_model}
 \alias{tidy.clm}
 \alias{tidy.clmm}
+\alias{tidy.clm}
+\alias{tidy.svyolr}
 \title{A generic tidier for model outputs}
 \usage{
 tidy_model(x, conf.int = FALSE, conf.level = 0.95, exponentiate = FALSE,
@@ -13,6 +15,12 @@ tidy.clm(x, conf.int = FALSE, conf.level = 0.95, exponentiate = FALSE,
   quick = FALSE, ...)
 
 tidy.clmm(x, conf.int = FALSE, conf.level = 0.95, exponentiate = FALSE,
+  quick = FALSE, ...)
+
+tidy.clm(x, conf.int = FALSE, conf.level = 0.95, exponentiate = FALSE,
+  quick = FALSE, ...)
+
+tidy.svyolr(x, conf.int = FALSE, conf.level = 0.95, exponentiate = FALSE,
   quick = FALSE, ...)
 }
 \arguments{
