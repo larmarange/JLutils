@@ -294,6 +294,7 @@ who_formatter <- function(x) {
 #' 
 #' @param x a numeric vector of p-values
 #' @param formatter a formatter function, see \code{\link{number}}, typically \code{\link{en}} or \code{\link{fr}}
+#' @param accuracy number to round to
 #' @param stars add significance stars?
 #' @param three level below which to display three stars '***'
 #' @param two level below which to display two stars '**'
@@ -320,7 +321,7 @@ pval <- function(x, formatter = en, accuracy = .001, stars = FALSE, three = 0.00
 #' @rdname pval
 #' @export
 #' @examples 
-#' custom_function <- pval_format(digits = 1, stars = TRUE)
+#' custom_function <- pval_format(accuracy = .1, stars = TRUE)
 #' custom_function(p)
 pval_format <- function(formatter = en, accuracy = .001, stars = FALSE, three = 0.001, two = 0.01, one = 0.05, point = 0.1) {
   function(x) {

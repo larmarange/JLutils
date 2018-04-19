@@ -26,7 +26,6 @@ Suggests:
     broom,
     dplyr,
     labelled,
-    scales,
     data.table,
     msSurv,
     survey,

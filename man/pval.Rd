@@ -19,6 +19,8 @@ signif_stars(x, three = 0.001, two = 0.01, one = 0.05, point = 0.1)
 
 \item{formatter}{a formatter function, see \code{\link{number}}, typically \code{\link{en}} or \code{\link{fr}}}
 
+\item{accuracy}{number to round to}
+
 \item{stars}{add significance stars?}
 
 \item{three}{level below which to display three stars '***'}
@@ -42,7 +44,7 @@ p <- c(.50, 0.12, .09, .045, .011, .009, .00002, NA)
 pval(p)
 pval(p, formatter = fr, accuracy = .01)
 pval(p, stars = TRUE)
-custom_function <- pval_format(digits = 1, stars = TRUE)
+custom_function <- pval_format(accuracy = .1, stars = TRUE)
 custom_function(p)
 signif_stars(p)
 signif_stars(p, one = .15, point = NULL)
