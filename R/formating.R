@@ -475,3 +475,63 @@ who.format <- function(x) {
   return(format(x, digits=0, big.mark="\u00A0", scientific=FALSE))
 }
 
+
+#' p-values formatter and significance stars
+#' 
+#' Formatter for p-values, adding a symbol "<" for very small p-values and, optionally, significance stars
+#' 
+#' @param x a numeric vector of p-values
+#' @param digits number of decimal digits to display
+#' @param formatter a formatter function, typically \code{\link{en}}, \code{\link{fr}} or \code{\link{int}}
+#' @param stars add significance stars?
+#' @param three level below which to display three stars '***'
+#' @param two level below which to display two stars '**'
+#' @param one level below which to display one star '*'
+#' @param point level below which to display a point '.' (\code{NULL} to not display a point)
+#' @details 
+#' \code{pval_format} will produce a custom function, to be used for example with \code{ggplot2}.
+#' @export
+#' @examples 
+#' p <- c(.50, 0.12, .09, .045, .011, .009, .00002, NA)
+#' pval(p)
+#' pval(p, digits = 2, formatter = fr)
+#' pval(p, stars = TRUE)
+pval <- function(x, digits = 3, formatter = en, stars = FALSE, three = 0.001, two = 0.01, one = 0.05, point = 0.1) {
+  res <- formatter(x, digits = digits)
+  res[x < 10 ^ -digits] <- paste0("<", formatter(10 ^ -digits, digits = digits))
+  if (stars)
+    res <- paste(res, signif_stars(x, three, two, one, point))
+  res
+}
+
+#' @rdname pval
+#' @export
+#' @examples 
+#' custom_function <- pval_format(digits = 1, stars = TRUE)
+#' custom_function(p)
+pval_format <- function(digits = 3, formatter = en, stars = FALSE, three = 0.001, two = 0.01, one = 0.05, point = 0.1) {
+  function(x) {
+    pval(x, digits, formatter, stars, three, two, one, point)
+  }
+}
+
+
+
+#' @rdname pval
+#' @export signif_stars
+#' @examples 
+#' signif_stars(p)
+#' signif_stars(p, one = .15, point = NULL)
+signif_stars <- function(x, three = 0.001, two = 0.01, one = 0.05, point = 0.1) {
+  res <- rep_len("", length.out = length(x))
+  if (!is.null(point))
+    res[x <= point] <- "."
+  if (!is.null(one))
+    res[x <= one] <- "*"
+  if (!is.null(two))
+    res[x <= two] <- "**"
+  if (!is.null(three))
+    res[x <= three] <- "***"
+  res[is.na(x)] <- NA
+  res
+}
