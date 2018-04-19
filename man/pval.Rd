@@ -6,20 +6,18 @@
 \alias{signif_stars}
 \title{p-values formatter and significance stars}
 \usage{
-pval(x, digits = 3, formatter = en, stars = FALSE, three = 0.001,
-  two = 0.01, one = 0.05, point = 0.1)
+pval(x, formatter = en, accuracy = 0.001, stars = FALSE, three = 0.001,
+  two = 0.01, one = 0.05, point = 0.1, ...)
 
-pval_format(digits = 3, formatter = en, stars = FALSE, three = 0.001,
-  two = 0.01, one = 0.05, point = 0.1)
+pval_format(formatter = en, accuracy = 0.001, stars = FALSE,
+  three = 0.001, two = 0.01, one = 0.05, point = 0.1)
 
 signif_stars(x, three = 0.001, two = 0.01, one = 0.05, point = 0.1)
 }
 \arguments{
 \item{x}{a numeric vector of p-values}
 
-\item{digits}{number of decimal digits to display}
-
-\item{formatter}{a formatter function, typically \code{\link{en}}, \code{\link{fr}} or \code{\link{int}}}
+\item{formatter}{a formatter function, see \code{\link{number}}, typically \code{\link{en}} or \code{\link{fr}}}
 
 \item{stars}{add significance stars?}
 
@@ -30,6 +28,8 @@ signif_stars(x, three = 0.001, two = 0.01, one = 0.05, point = 0.1)
 \item{one}{level below which to display one star '*'}
 
 \item{point}{level below which to display a point '.' (\code{NULL} to not display a point)}
+
+\item{...}{additional parameters sent to formatter function}
 }
 \description{
 Formatter for p-values, adding a symbol "<" for very small p-values and, optionally, significance stars
@@ -40,7 +40,7 @@ Formatter for p-values, adding a symbol "<" for very small p-values and, optiona
 \examples{
 p <- c(.50, 0.12, .09, .045, .011, .009, .00002, NA)
 pval(p)
-pval(p, digits = 2, formatter = fr)
+pval(p, formatter = fr, accuracy = .01)
 pval(p, stars = TRUE)
 custom_function <- pval_format(digits = 1, stars = TRUE)
 custom_function(p)
