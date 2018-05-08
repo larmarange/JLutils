@@ -16,8 +16,8 @@ precision <- function(x) {
 #' \code{percent} a shortcut for English percentages (value are multiplied by 100 and a % symbol is added) and \code{pourcent} a shortcut for French percentages.
 #' \code{comp_percent} returns the complement of 1, i.e. \code{percent(1 - x)}. \code{comp_pourcent} is the French version.
 #' \code{*_format} functions will return another functions, useful to be used for example with \code{ggplot2}.
-#' \code{en1} to \code{en5} are shortcuts for \code{en} with 1 to 5 digits after decimal point. Similarly, \code{fr1} to \code{fr5} are shortcuts of \code{fr},
-#' \code{percent1} to \code{percent5} of \code{percent}, etc.
+#' \code{en0} to \code{en5} are shortcuts for \code{en} with 0 to 5 digits after decimal point. Similarly, \code{fr0} to \code{fr5} are shortcuts of \code{fr},
+#' \code{percent0} to \code{percent5} of \code{percent}, etc.
 #'
 #' @return a formatted character vector or, for \code{*_format} functions, a function with single parameter \code{x}, a numeric vector, that
 #'   returns a character vector
@@ -142,6 +142,10 @@ comp_pourcent <- function(x, accuracy = 1, multiplier = 100, prefix = "", suffix
 
 #' @rdname number
 #' @export
+en0 <- en_format(accuracy = 1)
+
+#' @rdname number
+#' @export
 en1 <- en_format(accuracy = .1)
 
 #' @rdname number
@@ -159,6 +163,10 @@ en4 <- en_format(accuracy = .0001)
 #' @rdname number
 #' @export
 en5 <- en_format(accuracy = .00001)
+
+#' @rdname number
+#' @export
+fr0 <- fr_format(accuracy = 1)
 
 #' @rdname number
 #' @export
@@ -182,6 +190,10 @@ fr5 <- fr_format(accuracy = .00001)
 
 #' @rdname number
 #' @export
+percent0 <- percent_format(accuracy = 1)
+
+#' @rdname number
+#' @export
 percent1 <- percent_format(accuracy = .1)
 
 #' @rdname number
@@ -199,6 +211,10 @@ percent4 <- percent_format(accuracy = .0001)
 #' @rdname number
 #' @export
 percent5 <- percent_format(accuracy = .00001)
+
+#' @rdname number
+#' @export
+pourcent0 <- pourcent_format(accuracy = 1)
 
 #' @rdname number
 #' @export
@@ -222,6 +238,10 @@ pourcent5 <- pourcent_format(accuracy = .00001)
 
 #' @rdname number
 #' @export
+comp_percent0 <- comp_percent_format(accuracy = 1)
+
+#' @rdname number
+#' @export
 comp_percent1 <- comp_percent_format(accuracy = .1)
 
 #' @rdname number
@@ -239,6 +259,10 @@ comp_percent4 <- comp_percent_format(accuracy = .0001)
 #' @rdname number
 #' @export
 comp_percent5 <- comp_percent_format(accuracy = .00001)
+
+#' @rdname number
+#' @export
+comp_pourcent0 <- comp_pourcent_format(accuracy = 1)
 
 #' @rdname number
 #' @export
