@@ -2,57 +2,60 @@
 #' 
 #' @param .data a data.frame
 #' @param .id a character, column containing individual ids
-#' @param .time a character, column containing time variable
-#' @param .status a character vector, a status variable (optionnal)
+#' @param .start a character, column containing time variable indicating the beginning of each row
+#' @param .stop a character, column containing time variable indicating the end of each row. If not provided, it will be derived from the dataset, considering that each row ends at the beginning of the next one.
 #' @param .by a character vector, co-variables to consider (optionnal)
 #' @examples 
 #' \dontrun{
 #' load(url("https://larmarange.github.io/analyse-R/data/care_trajectories.RData"))
 #' care_trajectories
-#' long_to_periods(care_trajectories, .id = "id", .time = "month")
-#' long_to_periods(care_trajectories, .id = "id", .time = "month", .by = c("sex", "age", "care_status"))
-#' long_to_periods(care_trajectories, .id = "id", .time = "month", .by = c("sex", "age"), .status = ("care_status"))
+#' long_to_periods(care_trajectories, .id = "id", .start = "month")
+#' long_to_periods(care_trajectories, .id = "id", .start = "month", .by = c("sex", "age", "care_status"))
 #' }
 #' @export
-long_to_periods <- function(.data, .id, .time, .status = NULL, .by = NULL){
+long_to_periods <- function(.data, .id, .start, .stop = NULL, .by = NULL){
   if (!requireNamespace("dplyr")) 
     stop("dplyr package is required. Please install it.")
   `%>%` <- dplyr::`%>%`
-  if (length(.time) > 1) stop(".time should contain only one column name")
-  if (length(.status) > 1) stop(".status should contain only one column name")
+  if (length(.start) != 1) stop(".start should contain only one column name")
+  if (length(.stop) > 1) stop(".stop should contain only one column name or be NULL")
+  .data$start <- .data[[.start]]
   .data <- .data %>% 
-    dplyr::arrange_(.id, .time) %>%
-    dplyr::group_by_at(c(.id, .by, .status))
+    dplyr::arrange_(.id, .start) %>%
+    dplyr::group_by_at(c(.id, .by))
   .data$.grp <- .data %>% dplyr::group_indices()
+  if (is.null(.stop)) {
+    .data <- .data %>%
+      dplyr::group_by_at(.id) %>%
+      dplyr::mutate(stop = dplyr::lead(start)) %>%
+      dplyr::filter(!is.na(stop)) # cleaning required
+  } else {
+    .data$stop <- .data[[.stop]]
+  }
   .data <- .data %>%
     dplyr::group_by_at(.id) %>%
-    dplyr::mutate(.prev_grp = dplyr::lag(.grp))
+    dplyr::mutate(
+      .prev_grp = dplyr::lag(.grp),
+      .prev_stop = dplyr::lag(stop)
+    )
   periods <- .data %>%
-    dplyr::filter(is.na(.prev_grp) | .grp != .prev_grp)
-  periods$.start <- periods[[.time]]
+    dplyr::filter(is.na(.prev_grp) | .grp != .prev_grp | start != .prev_stop)
   periods <- periods %>%
     dplyr::group_by_at(.id) %>%
-    dplyr::mutate(.next_start = dplyr::lead(.start))
-  .data$.timevar <- .data[[.time]]
+    dplyr::mutate(.next_prev_stop = dplyr::lead(.prev_stop))
+  # trick: using the next value of .prev_stop allows to identify the new value of stop in periods
+  # if no next value, stop remains unchanged
+  
   periods <- merge(
     periods,
-    .data %>% dplyr::group_by_at(.id) %>% dplyr::summarise(.last_time = dplyr::last(.timevar)),
+    .data %>% dplyr::group_by_at(.id) %>% dplyr::summarise(.last_stop = max(stop, na.rm = TRUE)),
     by = .id,
     all.x = TRUE
   )
   periods <- periods %>%
-    dplyr::mutate(.stop = ifelse(is.na(.next_start), .last_time, .next_start))
+    dplyr::mutate(stop = ifelse(!is.na(.next_prev_stop), .next_prev_stop, .last_stop))
   
-  if (!is.null(.status)) {
-    periods$.from <- periods[[.status]]
-    periods <- periods %>%
-      dplyr::group_by_at(.id) %>%
-      mutate(.to = dplyr::lead(.from))
-    periods[is.na(periods$.to),]$.to <- periods[is.na(periods$.to),]$.from
-    periods <- periods[, c(.id, ".start", ".stop", ".from", ".to", .by)]
-  } else {
-    periods <- periods[, c(.id, ".start", ".stop", .by)]
-  }
+  periods <- periods[, c(.id, "start", "stop", .by)]
   class(periods) <- class(.data)
   return(periods)
 }
