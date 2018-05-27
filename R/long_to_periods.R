@@ -17,6 +17,7 @@ long_to_periods <- function(.data, .id, .start, .stop = NULL, .by = NULL){
   if (!requireNamespace("dplyr")) 
     stop("dplyr package is required. Please install it.")
   `%>%` <- dplyr::`%>%`
+  cl <- class(.data)
   if (length(.start) != 1) stop(".start should contain only one column name")
   if (length(.stop) > 1) stop(".stop should contain only one column name or be NULL")
   .data$start <- .data[[.start]]
@@ -56,6 +57,16 @@ long_to_periods <- function(.data, .id, .start, .stop = NULL, .by = NULL){
     dplyr::mutate(stop = ifelse(!is.na(.next_prev_stop), .next_prev_stop, .last_stop))
   
   periods <- periods[, c(.id, "start", "stop", .by)]
-  class(periods) <- class(.data)
+  
+  if ("tbl_dt" %in% cl) {
+    periods <- dtplyr::tbl_dt(periods)
+  } else if ("tbl_df" %in% cl) {
+    periods <- dplyr::as_tibble(periods)
+  } else if ("data.table" %in% cl) {
+    periods <- data.table::as.data.table(periods)
+  } else {
+    periods <- as.data.frame(periods)
+  }
+  
   return(periods)
 }
