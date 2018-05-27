@@ -4,16 +4,16 @@
 \alias{long_to_periods}
 \title{Transform data from long format to period format}
 \usage{
-long_to_periods(.data, .id, .time, .status = NULL, .by = NULL)
+long_to_periods(.data, .id, .start, .stop = NULL, .by = NULL)
 }
 \arguments{
 \item{.data}{a data.frame}
 
 \item{.id}{a character, column containing individual ids}
 
-\item{.time}{a character, column containing time variable}
+\item{.start}{a character, column containing time variable indicating the beginning of each row}
 
-\item{.status}{a character vector, a status variable (optionnal)}
+\item{.stop}{a character, column containing time variable indicating the end of each row. If not provided, it will be derived from the dataset, considering that each row ends at the beginning of the next one.}
 
 \item{.by}{a character vector, co-variables to consider (optionnal)}
 }
@@ -24,8 +24,7 @@ Transform data from long format to period format
 \dontrun{
 load(url("https://larmarange.github.io/analyse-R/data/care_trajectories.RData"))
 care_trajectories
-long_to_periods(care_trajectories, .id = "id", .time = "month")
-long_to_periods(care_trajectories, .id = "id", .time = "month", .by = c("sex", "age", "care_status"))
-long_to_periods(care_trajectories, .id = "id", .time = "month", .by = c("sex", "age"), .status = ("care_status"))
+long_to_periods(care_trajectories, .id = "id", .start = "month")
+long_to_periods(care_trajectories, .id = "id", .start = "month", .by = c("sex", "age", "care_status"))
 }
 }
