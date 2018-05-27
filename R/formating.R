@@ -324,6 +324,7 @@ who_formatter <- function(x) {
 #' @param two level below which to display two stars '**'
 #' @param one level below which to display one star '*'
 #' @param point level below which to display a point '.' (\code{NULL} to not display a point)
+#' @param add_p add "p=" before the value?
 #' @param ... additional parameters sent to formatter function
 #' @details 
 #' \code{pval_format} will produce a custom function, to be used for example with \code{ggplot2}.
@@ -333,10 +334,13 @@ who_formatter <- function(x) {
 #' pval(p)
 #' pval(p, formatter = fr, accuracy = .01)
 #' pval(p, stars = TRUE)
-pval <- function(x, formatter = en, accuracy = .001, stars = FALSE, three = 0.001, two = 0.01, one = 0.05, point = 0.1, ...) {
+#' pval(p, add_p = TRUE)
+pval <- function(x, formatter = en, accuracy = .001, stars = FALSE, three = 0.001, two = 0.01, one = 0.05, point = 0.1, add_p = FALSE, ...) {
   res <- formatter(x, accuracy = accuracy, ...)
+  if (add_p) res <- paste0("p=", res)
   digits <- -floor(log10(accuracy))
-  res[x < 10 ^ -digits] <- paste0("<", formatter(10 ^ -digits, accuracy = accuracy, ...))
+  if (add_p) less <- "p<" else less <- "<"
+  res[x < 10 ^ -digits] <- paste0(less, formatter(10 ^ -digits, accuracy = accuracy, ...))
   if (stars)
     res <- paste(res, signif_stars(x, three, two, one, point))
   res
@@ -347,9 +351,9 @@ pval <- function(x, formatter = en, accuracy = .001, stars = FALSE, three = 0.00
 #' @examples 
 #' custom_function <- pval_format(accuracy = .1, stars = TRUE)
 #' custom_function(p)
-pval_format <- function(formatter = en, accuracy = .001, stars = FALSE, three = 0.001, two = 0.01, one = 0.05, point = 0.1) {
+pval_format <- function(formatter = en, accuracy = .001, stars = FALSE, three = 0.001, two = 0.01, one = 0.05, point = 0.1, add_p = FALSE, ...) {
   function(x) {
-    pval(x, formatter, accuracy, stars, three, two, one, point)
+    pval(x, formatter, accuracy, stars, three, two, one, point, add_p, ...)
   }
 }
 
