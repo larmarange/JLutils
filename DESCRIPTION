@@ -14,7 +14,6 @@ URL: https://github.com/larmarange/JLutils
 Encoding: UTF-8
 Depends:
     ggplot2 (>= 2.2.0),
-    scales,
     plyr
 Suggests:
     TraMineR,
@@ -27,7 +26,9 @@ Suggests:
     dplyr,
     labelled,
     data.table,
+    dtplyr,
     msSurv,
     survey,
+    scales,
     gridExtra
 RoxygenNote: 6.0.1
