@@ -383,6 +383,7 @@ signif_stars <- function(x, three = 0.001, two = 0.01, one = 0.05, point = 0.1) 
 #' @param prefix,suffix Symbols to display before and after value
 #' @param ... additional paramaters passed to \code{\link[base]{formatC}}, as \code{big.mark} or \code{decimal.mark}
 #' @export
+#' @seealso \code{\link[base]{formatC}}, \code{\link[base]{sprintf}}
 #' @examples 
 #' v <- c(2, 103.24, 1042.147, 12.4566, NA)
 #' leading_zeros(v)
