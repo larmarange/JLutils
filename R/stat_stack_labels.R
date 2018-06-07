@@ -45,16 +45,18 @@ stat_stack_labels <- function(mapping = NULL, data = NULL, geom = "text",
 StatStackLabels <- ggproto(
   "StatStackLabels",
   StatCount,
-  compute_panel = function (self, data, scales, ...) {
-    if (ggplot2:::empty(data))
+  compute_panel = function(self, data, scales, ...) {
+    if (ggplot2:::empty(data)) {
       return(data.frame())
+    }
     groups <- split(data, data$group)
     stats <- lapply(groups, function(group) {
       self$compute_group(data = group, scales = scales, ...)
     })
     stats <- mapply(function(new, old) {
-      if (ggplot2:::empty(new))
+      if (ggplot2:::empty(new)) {
         return(data.frame())
+      }
       unique <- ggplot2:::uniquecols(old)
       missing <- !(names(unique) %in% names(new))
       cbind(new, unique[rep(1, nrow(new)), missing, drop = FALSE])

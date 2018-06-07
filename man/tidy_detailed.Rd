@@ -5,7 +5,7 @@
 \title{Tidy data with variable names and factor levels}
 \source{
 This function has been adapted from Benjamin Nutter's \code{tidy_levels_labels} function
-implemented within the \code{pixiedust} package 
+implemented within the \code{pixiedust} package
 (\url{https://github.com/nutterb/pixiedust/blob/master/R/tidy_levels_labels.R}).
 }
 \usage{
@@ -39,7 +39,7 @@ tidy_detailed(reg)
 
 d <- as.data.frame(Titanic)
 reg2 <- glm(Survived ~ Sex + Age + Class, family = binomial, data = d, weights = d$Freq)
-tidy_detailed(reg2, conf.int = TRUE, exponentiate = TRUE) 
+tidy_detailed(reg2, conf.int = TRUE, exponentiate = TRUE)
 }
 \seealso{
 \code{\link[broom]{tidy}} function from \pkg{broom} package

@@ -17,7 +17,7 @@ cutree.order(tree, k = NULL, h = NULL)
 \item{h}{height where the tree is to be cut}
 }
 \description{
-Cut a tree (result from \link{hclust}) into groups of data. 
+Cut a tree (result from \link{hclust}) into groups of data.
 Groups are in the order of the tree leafs.
 }
 \note{

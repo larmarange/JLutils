@@ -1,5 +1,5 @@
 #' Experimental tidier for msSurv objects
-#' 
+#'
 #' @param x a msSurv object
 #' @param extract what should be extracted?
 #' @param conf.level confidence level of the intervals
@@ -7,15 +7,15 @@
 #' @param ... extra arguments
 #' @export
 tidy.msSurv <- function(
-  x, extract = c("state occupation probabilities", "transition probabilities"), 
-  conf.level = 0.95, 
-  conf.fun = c("linear", "log", "log-log", "cloglog"), ...
-) {
+                        x, extract = c("state occupation probabilities", "transition probabilities"),
+                        conf.level = 0.95,
+                        conf.fun = c("linear", "log", "log-log", "cloglog"), ...) {
   extract <- match.arg(extract)
   conf.fun <- match.arg(conf.fun)
-  if (!requireNamespace("msSurv", quietly = TRUE))
+  if (!requireNamespace("msSurv", quietly = TRUE)) {
     stop("msSurv package is required.")
-  
+  }
+
   if (extract == "state occupation probabilities") {
     ret <- as.table(ps(x))
     names(ret)
@@ -28,7 +28,7 @@ tidy.msSurv <- function(
     ret <- cbind(ret, conf.high = as.data.frame(as.table(ci$CI.p[, 3, ]))[[3]])
     return(ret)
   }
-  
+
   if (extract == "transition probabilities") {
     ret <- as.data.frame(as.table(AJs(x)))
     names(ret) <- c("from", "to", "time", "estimate")
@@ -60,7 +60,7 @@ tidy.msSurv <- function(
     ret <- merge(ret, tmp, by = c("trans", "time"), all.x = TRUE)
     # n.remain
     tmp <- sum_dNs(x)
-    dimnames(tmp)[[2]] <-  substr(dimnames(tmp)[[2]], 4, nchar(dimnames(tmp)[[2]]) - 2)
+    dimnames(tmp)[[2]] <- substr(dimnames(tmp)[[2]], 4, nchar(dimnames(tmp)[[2]]) - 2)
     dimnames(tmp)[[2]] <- paste(dimnames(tmp)[[2]], dimnames(tmp)[[2]], sep = " ")
     tmp <- as.data.frame(as.table(tmp))
     names(tmp) <- c("time", "trans", "n.sum.event")

@@ -19,7 +19,7 @@ s.freq(dfxy, xax = 1, yax = 2, ...)
 \item{...}{additional parameters sent to \code{\link[ade4]{s.value}}}
 }
 \description{
-For each point on the factorial plan, display the number of identical 
+For each point on the factorial plan, display the number of identical
 observations (i.e. with the same coordinates).
 }
 \examples{

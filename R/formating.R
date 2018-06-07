@@ -1,16 +1,17 @@
 precision <- function(x) {
   rng <- range(x, na.rm = TRUE)
-  
+
   span <- if (zero_range(rng)) abs(rng[1]) else diff(rng)
-  if (span == 0)
+  if (span == 0) {
     return(1)
-  
-  10 ^ floor(log10(span))
+  }
+
+  10^floor(log10(span))
 }
 
 
 #' Number formatters
-#' 
+#'
 #' \code{number} is a generic formatter for numeric values.
 #' \code{en} is a shortcut for English format (comma as separator for thousands, point for decimal), \code{fr} for French format (space for thousands, comma for decimal).
 #' \code{percent} a shortcut for English percentages (value are multiplied by 100 and a % symbol is added) and \code{pourcent} a shortcut for French percentages.
@@ -38,7 +39,7 @@ precision <- function(x) {
 #' en2(v)
 #' en(v, accuracy = .001)
 #' en(v, accuracy = .5)
-#' 
+#'
 #' p <- runif(10)
 #' p
 #' percent(p)
@@ -286,36 +287,36 @@ comp_pourcent5 <- comp_pourcent_format(accuracy = .00001)
 
 
 #' Formatting numbers like in WHO publications
-#' 
+#'
 #' In WHO publications, population numbers are usually presented as follow:
 #' \itemize{
 #'   \item 0 if < 5
-#'   \item 10 if ≥ 5 and < 10
-#'   \item one significant digit if ≥ 10 and < 100
-#'   \item two significant digits if ≥ 100 and < 10 millions
-#'   \item three significant digits if ≥ 10 millions
+#'   \item 10 if = 5 and < 10
+#'   \item one significant digit if = 10 and < 100
+#'   \item two significant digits if = 100 and < 10 millions
+#'   \item three significant digits if = 10 millions
 #' }
-#' 
+#'
 #' @param x a numeric vector to format
-#' 
+#'
 #' @export
-#' @examples 
+#' @examples
 #' who_formatter(c(3, 8, 42, 75, 45678, 9876543, 12345678))
 who_formatter <- function(x) {
   x[x < 4 & !is.na(x)] <- 0
   x[x >= 5 & x < 10 & !is.na(x)] <- 10
-  x[x >= 10 & x < 100 & !is.na(x)] <- signif(x[x >= 10 & x < 100 & !is.na(x)], digits=1)
-  x[x >= 100 & x < 10000000 & !is.na(x)] <- signif(x[x >= 100 & x < 10000000 & !is.na(x)], digits=2)
-  x[x >= 10000000 & !is.na(x)] <- signif(x[x >= 10000000 & !is.na(x)], digits=3)
-  
-  return(format(x, digits=0, big.mark=" ", scientific=FALSE))
+  x[x >= 10 & x < 100 & !is.na(x)] <- signif(x[x >= 10 & x < 100 & !is.na(x)], digits = 1)
+  x[x >= 100 & x < 10000000 & !is.na(x)] <- signif(x[x >= 100 & x < 10000000 & !is.na(x)], digits = 2)
+  x[x >= 10000000 & !is.na(x)] <- signif(x[x >= 10000000 & !is.na(x)], digits = 3)
+
+  return(format(x, digits = 0, big.mark = " ", scientific = FALSE))
 }
 
 
 #' p-values formatter and significance stars
-#' 
+#'
 #' Formatter for p-values, adding a symbol "<" for very small p-values and, optionally, significance stars
-#' 
+#'
 #' @param x a numeric vector of p-values
 #' @param formatter a formatter function, see \code{\link{number}}, typically \code{\link{en}} or \code{\link{fr}}
 #' @param accuracy number to round to
@@ -326,10 +327,10 @@ who_formatter <- function(x) {
 #' @param point level below which to display a point '.' (\code{NULL} to not display a point)
 #' @param add_p add "p=" before the value?
 #' @param ... additional parameters sent to formatter function
-#' @details 
+#' @details
 #' \code{pval_format} will produce a custom function, to be used for example with \code{ggplot2}.
 #' @export
-#' @examples 
+#' @examples
 #' p <- c(.50, 0.12, .09, .045, .011, .009, .00002, NA)
 #' pval(p)
 #' pval(p, formatter = fr, accuracy = .01)
@@ -340,15 +341,16 @@ pval <- function(x, formatter = en, accuracy = .001, stars = FALSE, three = 0.00
   if (add_p) res <- paste0("p=", res)
   digits <- -floor(log10(accuracy))
   if (add_p) less <- "p<" else less <- "<"
-  res[x < 10 ^ -digits] <- paste0(less, formatter(10 ^ -digits, accuracy = accuracy, ...))
-  if (stars)
+  res[x < 10^-digits] <- paste0(less, formatter(10^-digits, accuracy = accuracy, ...))
+  if (stars) {
     res <- paste(res, signif_stars(x, three, two, one, point))
+  }
   res
 }
 
 #' @rdname pval
 #' @export
-#' @examples 
+#' @examples
 #' custom_function <- pval_format(accuracy = .1, stars = TRUE)
 #' custom_function(p)
 pval_format <- function(formatter = en, accuracy = .001, stars = FALSE, three = 0.001, two = 0.01, one = 0.05, point = 0.1, add_p = FALSE, ...) {
@@ -359,24 +361,28 @@ pval_format <- function(formatter = en, accuracy = .001, stars = FALSE, three = 
 
 #' @rdname pval
 #' @export signif_stars
-#' @examples 
+#' @examples
 #' signif_stars(p)
 #' signif_stars(p, one = .15, point = NULL)
 signif_stars <- function(x, three = 0.001, two = 0.01, one = 0.05, point = 0.1) {
   res <- rep_len("", length.out = length(x))
-  if (!is.null(point))
+  if (!is.null(point)) {
     res[x <= point] <- "."
-  if (!is.null(one))
+  }
+  if (!is.null(one)) {
     res[x <= one] <- "*"
-  if (!is.null(two))
+  }
+  if (!is.null(two)) {
     res[x <= two] <- "**"
-  if (!is.null(three))
+  }
+  if (!is.null(three)) {
     res[x <= three] <- "***"
+  }
   res
 }
 
 #' Add leading zeros
-#' 
+#'
 #' @param x a numeric vector
 #' @param left_digits number of digits before decimal point, automatically computed if not provided
 #' @param digits number of digits after decimal point
@@ -384,15 +390,16 @@ signif_stars <- function(x, three = 0.001, two = 0.01, one = 0.05, point = 0.1) 
 #' @param ... additional paramaters passed to \code{\link[base]{formatC}}, as \code{big.mark} or \code{decimal.mark}
 #' @export
 #' @seealso \code{\link[base]{formatC}}, \code{\link[base]{sprintf}}
-#' @examples 
+#' @examples
 #' v <- c(2, 103.24, 1042.147, 12.4566, NA)
 #' leading_zeros(v)
 #' leading_zeros(v, digits = 1)
 #' leading_zeros(v, left_digits = 6, big.mark = " ")
 #' leading_zeros(c(0, 6, 12, 18), prefix = "M")
 leading_zeros <- function(x, left_digits = NULL, digits = 0, prefix = "", suffix = "", ...) {
-  if(is.null(left_digits))
+  if (is.null(left_digits)) {
     left_digits <- trunc(max(log10(x), na.rm = TRUE)) + 1
+  }
   if (digits > 0) {
     width <- left_digits + digits + 1
   } else {

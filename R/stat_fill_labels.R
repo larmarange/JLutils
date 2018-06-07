@@ -55,16 +55,18 @@ stat_fill_labels <- function(mapping = NULL, data = NULL, geom = "text",
 StatFillLabels <- ggproto(
   "StatFillLabels",
   StatCount,
-  compute_panel = function (self, data, scales, ...) {
-    if (ggplot2:::empty(data))
+  compute_panel = function(self, data, scales, ...) {
+    if (ggplot2:::empty(data)) {
       return(data.frame())
+    }
     groups <- split(data, data$group)
     stats <- lapply(groups, function(group) {
       self$compute_group(data = group, scales = scales, ...)
     })
     stats <- mapply(function(new, old) {
-      if (ggplot2:::empty(new))
+      if (ggplot2:::empty(new)) {
         return(data.frame())
+      }
       unique <- ggplot2:::uniquecols(old)
       missing <- !(names(unique) %in% names(new))
       cbind(new, unique[rep(1, nrow(new)), missing, drop = FALSE])
@@ -72,12 +74,11 @@ StatFillLabels <- ggproto(
     data <- do.call(plyr::rbind.fill, stats)
     plyr::ddply(
       data, "x", plyr::mutate,
-      prop = count/sum(count),
-      cumprop = inv_cumsum(count)/sum(count),
-      ylabel = (inv_cumsum(count) - count / 2)/sum(count),
+      prop = count / sum(count),
+      cumprop = inv_cumsum(count) / sum(count),
+      ylabel = (inv_cumsum(count) - count / 2) / sum(count),
       na.rm = TRUE
     )
   },
-  default_aes = aes(y = ..ylabel.., label = paste0(round(100 * ..prop.., digits =1), "%"))
+  default_aes = aes(y = ..ylabel.., label = paste0(round(100 * ..prop.., digits = 1), "%"))
 )
-

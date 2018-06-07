@@ -18,7 +18,7 @@ count of successes (in that case, \code{n} should be provided)}
 
 \item{n}{a vector of count of trials (\code{x} should be a vector of successes in that case)}
 
-\item{bounds}{\code{1:2} for lower and upper bounds, \code{1} for lower bounds only, 
+\item{bounds}{\code{1:2} for lower and upper bounds, \code{1} for lower bounds only,
 \code{2} for upper bound only.}
 
 \item{...}{additional parameters used by \code{\link[stats]{prop.test}}}
@@ -27,30 +27,30 @@ count of successes (in that case, \code{n} should be provided)}
 a vector with confidence interval
 }
 \description{
-Provide a convenient wrapper for \code{\link[stats]{prop.test}} to compute 
+Provide a convenient wrapper for \code{\link[stats]{prop.test}} to compute
 confidence intervals for proportions
 }
 \details{
 \code{prop.ci.lower} is a wrapper for \code{prop.ci} with \code{bounds = 1} and
  \code{prop.ci.upper} for \code{prop.ci} with \code{bounds = 2}.
- 
+
  When \code{x} and \code{n} are provided, they should be of same length. Alternativaly,
  \code{n} could be a single integer that will be used for each element of \code{x}.
- 
- When \code{x} and \code{n} are provided, if \code{x} contains several elements, 
+
+ When \code{x} and \code{n} are provided, if \code{x} contains several elements,
  \code{bounds} should be \code{1} or \code{2} but can't be \code{1:2}. In that scenario,
- the returned vector will contain the corresponding lower or the upper confidence interval 
+ the returned vector will contain the corresponding lower or the upper confidence interval
  bound for each element of \code{x}.
- 
+
  The confidence level could be specify with \code{conf.level} (0.95 by default).
- 
+
  By default, \code{NA} value are removed.
 }
 \examples{
  if (require(questionr)) {
  data(hdv2003)
  d <- hdv2003
- 
+
  freq(d$sport)
  prop.ci(d$sport)
  prop.ci.lower(d$sport)
@@ -59,10 +59,10 @@ confidence intervals for proportions
  prop.ci(table(d$sport))
  prop.ci(d$sport=="Non")
  prop.ci(d$sport=="Oui")
- 
+
  prop.ci.lower(c(1277, 723), n = 2000)
  prop.ci.upper(c(1277, 723), n = 2000)
- 
+
    if (require(data.table)) {
      d <- as.data.table(d)
      res <- d[,.(freq=.N),by=.(sexe,sport)]
@@ -73,7 +73,7 @@ confidence intervals for proportions
      res
    }
  }
- 
+
 }
 \seealso{
 \code{\link[stats]{prop.test}}

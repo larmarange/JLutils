@@ -12,7 +12,7 @@ ggcross(formula, data, weight = NULL, fill = "residuals",
   return_data = FALSE)
 }
 \arguments{
-\item{formula}{formula of variables to be cross-tabulated, 
+\item{formula}{formula of variables to be cross-tabulated,
 rows on left hand side and columns on the right hand side}
 
 \item{data}{data frame or survey object containing the data}
@@ -48,22 +48,22 @@ a ggplot graphic or a data frame if \code{return_data == TRUE}.
 A matrix plot of 2x2 cross-tabulated factors
 }
 \details{
-By default, the size of squares represents the number of observations while the color 
+By default, the size of squares represents the number of observations while the color
   represents the chi-squared residuals.
 }
 \examples{
 ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq")
-ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", 
+ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
   fill_breaks = c(-4, -2, 0, 2, 4))
-ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", 
+ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
   fill = "blue")
-ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", 
+ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
   size = "expected", size_title = "Expected number of observations")
-ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", 
+ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
   labels = "scales::percent(row.prop)", size = NULL)
-ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", 
+ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
   labels = "scales::percent(row.prop)", size = "raster")
-ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq", 
+ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
   return_data = TRUE)
 if (require(survey)) {
   data(api)

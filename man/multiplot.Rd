@@ -24,8 +24,8 @@ multiplot(..., plotlist = NULL, cols = 1, layout = NULL, heights = NULL,
 Renders multiple ggplot plots in one image
 }
 \note{
-If the layout is something like \code{matrix(c(1,2,3,3), nrow=2, byrow=TRUE)}, 
-then plot 1 will go in the upper left, 2 will go in the upper right, and 3 will go all 
+If the layout is something like \code{matrix(c(1,2,3,3), nrow=2, byrow=TRUE)},
+then plot 1 will go in the upper left, 2 will go in the upper right, and 3 will go all
 the way across the bottom.
 }
 \examples{
@@ -43,6 +43,6 @@ multiplot(p1, p2, p3, layout = matrix(c(1,2,3,3), nrow = 2, byrow = TRUE), heigh
 
 }
 \references{
-Adapted by Joseph Larmarange from Winston Chang, \emph{Cookbook for R}, 
+Adapted by Joseph Larmarange from Winston Chang, \emph{Cookbook for R},
 \url{http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/}
 }

@@ -13,10 +13,10 @@ who_formatter(x)
 In WHO publications, population numbers are usually presented as follow:
 \itemize{
   \item 0 if < 5
-  \item 10 if ≥ 5 and < 10
-  \item one significant digit if ≥ 10 and < 100
-  \item two significant digits if ≥ 100 and < 10 millions
-  \item three significant digits if ≥ 10 millions
+  \item 10 if = 5 and < 10
+  \item one significant digit if = 10 and < 100
+  \item two significant digits if = 100 and < 10 millions
+  \item three significant digits if = 10 millions
 }
 }
 \examples{

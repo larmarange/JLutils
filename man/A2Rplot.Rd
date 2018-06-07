@@ -70,7 +70,7 @@ bg.def <- par()$bg
 
 hc <- hclust(dist(mtcars))
 par(bg = "#EFEFEF")
-A2Rplot(hc, k = 3, boxes = FALSE, col.up = "gray50", 
+A2Rplot(hc, k = 3, boxes = FALSE, col.up = "gray50",
        col.down = c("#FF6B6B", "#4ECDC4", "#556270"))
 
 par(bg = "gray15")
@@ -92,14 +92,14 @@ A2Rplot(h77, k=4, knot.pos="left", type="tri")
 # Example showing how to include this in an other layout with only.tree
 op <- par(no.readonly=TRUE)
 par(mfrow = c(3,3))
-par(mar=c(3,3,3,3))  
+par(mar=c(3,3,3,3))
 plot(rnorm(50)) # one plot
 plot(rnorm(50)) # one plot
 plot(rnorm(50)) # one plot
 plot(rnorm(50)) # one plot
 par(mar=c(1,1,1,1))
 A2Rplot(h77, k=4, only.tree=TRUE, boxes=FALSE)
-par(mar=c(3,3,3,3))  
+par(mar=c(3,3,3,3))
 plot(rnorm(50)) # one plot
 plot(rnorm(50)) # one plot
 plot(rnorm(50)) # one plot
@@ -115,11 +115,11 @@ for(k in 1:10){
 }
 hc1 <- hclust(dist(cent)^2, method = "cen", members = table(memb))
 hc1$labels <- paste('g',1:10)
-A2Rplot(hc1, 
-				members = table(memb), 
-				k=4, 
+A2Rplot(hc1,
+				members = table(memb),
+				k=4,
 				lwd.up   =  2, lty.up=1, col.up = "gray",
-				lwd.down =  1, lty.down='twodash', 
+				lwd.down =  1, lty.down='twodash',
 				col.down = c("orange", "brown", "green3", "royalblue"),
 				knot.pos = "bary"
 )

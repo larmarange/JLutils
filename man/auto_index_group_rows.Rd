@@ -10,7 +10,7 @@ auto_index_group_rows(x)
 \item{x}{a vector}
 }
 \description{
-When using \code{group_rows} function from \code{kableExtra}, you can provide a names vector providing 
+When using \code{group_rows} function from \code{kableExtra}, you can provide a names vector providing
 the number of rows to group together. \code{auto_index_group_rows} compute that index based on a vector
 by counting the successive identical values of that vector.
 }
