@@ -2,7 +2,6 @@ Package: JLutils
 Type: Package
 Title: Collection of R functions
 Version: 1.14.0
-Date: 2018-04-19
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Authors@R: c(
   person("Joseph", "Larmarange", email = "joseph@larmarange.net", role = c("aut", "cre"))
