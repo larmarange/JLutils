@@ -6,12 +6,13 @@
 \alias{signif_stars}
 \title{p-values formatter and significance stars}
 \usage{
-pval(x, formatter = en, accuracy = 0.001, stars = FALSE, three = 0.001,
-  two = 0.01, one = 0.05, point = 0.1, add_p = FALSE, ...)
+pval(x, formatter = en, accuracy = 0.001, stars = FALSE,
+  three = 0.001, two = 0.01, one = 0.05, point = 0.1,
+  add_p = FALSE, ...)
 
 pval_format(formatter = en, accuracy = 0.001, stars = FALSE,
-  three = 0.001, two = 0.01, one = 0.05, point = 0.1, add_p = FALSE,
-  ...)
+  three = 0.001, two = 0.01, one = 0.05, point = 0.1,
+  add_p = FALSE, ...)
 
 signif_stars(x, three = 0.001, two = 0.01, one = 0.05, point = 0.1)
 }

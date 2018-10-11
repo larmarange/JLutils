@@ -4,7 +4,8 @@
 \alias{best.cutree}
 \title{Optimal partition based on the higher relative loss of inertia}
 \usage{
-best.cutree(hc, min = 3, max = 20, loss = FALSE, graph = FALSE, ...)
+best.cutree(hc, min = 3, max = 20, loss = FALSE, graph = FALSE,
+  ...)
 }
 \arguments{
 \item{hc}{a clustering tree (an object of class \code{\link{hclust}}, \code{\link{dendrogram}} or \code{\link{agnes}})}

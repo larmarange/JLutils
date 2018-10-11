@@ -53,8 +53,8 @@
 \alias{comp_pourcent5}
 \title{Number formatters}
 \usage{
-number_format(accuracy = 1, multiplier = 1, prefix = "", suffix = "",
-  big.mark = " ", decimal.mark = ".", ...)
+number_format(accuracy = 1, multiplier = 1, prefix = "",
+  suffix = "", big.mark = " ", decimal.mark = ".", ...)
 
 number(x, accuracy = 1, multiplier = 1, prefix = "", suffix = "",
   big.mark = " ", decimal.mark = ".", ...)
@@ -74,14 +74,14 @@ fr(x, accuracy = 1, multiplier = 1, prefix = "", suffix = "",
 percent_format(accuracy = 1, multiplier = 100, prefix = "",
   suffix = "\%", big.mark = " ", decimal.mark = ".", ...)
 
-percent(x, accuracy = 1, multiplier = 100, prefix = "", suffix = "\%",
-  big.mark = " ", decimal.mark = ".", ...)
+percent(x, accuracy = 1, multiplier = 100, prefix = "",
+  suffix = "\%", big.mark = " ", decimal.mark = ".", ...)
 
 pourcent_format(accuracy = 1, multiplier = 100, prefix = "",
   suffix = " \%", big.mark = " ", decimal.mark = ",", ...)
 
-pourcent(x, accuracy = 1, multiplier = 100, prefix = "", suffix = " \%",
-  big.mark = " ", decimal.mark = ",", ...)
+pourcent(x, accuracy = 1, multiplier = 100, prefix = "",
+  suffix = " \%", big.mark = " ", decimal.mark = ",", ...)
 
 comp_percent_format(accuracy = 1, multiplier = 100, prefix = "",
   suffix = "\%", big.mark = " ", decimal.mark = ".", ...)

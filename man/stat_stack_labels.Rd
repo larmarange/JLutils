@@ -7,8 +7,8 @@
 \title{Labels position for stack position.}
 \usage{
 stat_stack_labels(mapping = NULL, data = NULL, geom = "text",
-  position = "identity", width = NULL, na.rm = FALSE, show.legend = NA,
-  inherit.aes = TRUE, ...)
+  position = "identity", width = NULL, na.rm = FALSE,
+  show.legend = NA, inherit.aes = TRUE, ...)
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link[=aes]{aes()}} or

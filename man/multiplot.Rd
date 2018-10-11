@@ -4,8 +4,8 @@
 \alias{multiplot}
 \title{Multiple plot}
 \usage{
-multiplot(..., plotlist = NULL, cols = 1, layout = NULL, heights = NULL,
-  widths = NULL)
+multiplot(..., plotlist = NULL, cols = 1, layout = NULL,
+  heights = NULL, widths = NULL)
 }
 \arguments{
 \item{...}{ggplot objects (or grobs)}

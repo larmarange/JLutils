@@ -7,12 +7,12 @@
 \url{http://addictedtor.free.fr/packages/A2R/lastVersion/}
 }
 \usage{
-A2Rplot(x, k = 2, col.up = "black", col.down = rainbow(k), lty.up = 2,
-  lty.down = 1, lwd.up = 1, lwd.down = 2, type = c("rectangle",
-  "triangle"), knot.pos = c("mean", "bary", "left", "right", "random"),
-  criteria, fact.sup, show.labels = TRUE, only.tree = FALSE,
-  main = paste("Colored Dendrogram (", k, " groups)"), boxes = TRUE,
-  members)
+A2Rplot(x, k = 2, col.up = "black", col.down = rainbow(k),
+  lty.up = 2, lty.down = 1, lwd.up = 1, lwd.down = 2,
+  type = c("rectangle", "triangle"), knot.pos = c("mean", "bary",
+  "left", "right", "random"), criteria, fact.sup, show.labels = TRUE,
+  only.tree = FALSE, main = paste("Colored Dendrogram (", k,
+  " groups)"), boxes = TRUE, members)
 }
 \arguments{
 \item{x}{an \code{\link[stats]{hclust}} object to plot}
