@@ -88,6 +88,8 @@ tidy.prevalence.msm <- function(x) {
     dplyr::left_join(exp_p_ci_low, by = c("time", "status")) %>%
     dplyr::left_join(exp_p_ci_high, by = c("time", "status"))
   
+  res$time <- as.numeric(res$time)
+  
   res
 }
 

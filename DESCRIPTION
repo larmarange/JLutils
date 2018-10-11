@@ -1,7 +1,7 @@
 Package: JLutils
 Type: Package
 Title: Collection of R functions
-Version: 1.15.0
+Version: 1.15.1
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Authors@R: c(
   person("Joseph", "Larmarange", email = "joseph@larmarange.net", role = c("aut", "cre"))
@@ -35,4 +35,4 @@ Suggests:
     tidyr,
     tibble,
     msm
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
