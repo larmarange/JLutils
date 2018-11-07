@@ -1,7 +1,7 @@
 Package: JLutils
 Type: Package
 Title: Collection of R functions
-Version: 1.15.1
+Version: 1.16.0
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Authors@R: c(
   person("Joseph", "Larmarange", email = "joseph@larmarange.net", role = c("aut", "cre"))
@@ -16,6 +16,8 @@ Depends:
     ggplot2 (>= 2.2.0),
     plyr,
     magrittr
+Imports:
+    scales (>= 1.0.0)
 Suggests:
     TraMineR,
     FactoMineR,
@@ -30,7 +32,6 @@ Suggests:
     dtplyr,
     msSurv,
     survey,
-    scales,
     gridExtra,
     tidyr,
     tibble,

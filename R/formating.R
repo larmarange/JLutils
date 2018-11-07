@@ -1,15 +1,3 @@
-precision <- function(x) {
-  rng <- range(x, na.rm = TRUE)
-
-  span <- if (zero_range(rng)) abs(rng[1]) else diff(rng)
-  if (span == 0) {
-    return(1)
-  }
-
-  10^floor(log10(span))
-}
-
-
 #' Number formatters
 #'
 #' \code{number} is a generic formatter for numeric values.
@@ -22,13 +10,11 @@ precision <- function(x) {
 #'
 #' @return a formatted character vector or, for \code{*_format} functions, a function with single parameter \code{x}, a numeric vector, that
 #'   returns a character vector
-#' @param x a numeric vector to format
-#' @param accuracy number to round to, \code{NULL} for automatic guess
-#' @param multiplier number to multiply by (e.g. for computing percentages or thousands)
-#' @param prefix,suffix Symbols to display before and after value
-#' @param big.mark character used between every 3 digits to separate thousands
-#' @param decimal.mark the character to be used to indicate the numeric decimal point
-#' @param ... other arguments passed on to \code{\link{format}}.
+#' @inheritParams scales::number
+#' @importFrom scales number
+#' @importFrom scales number_format
+#' @importFrom scales percent
+#' @importFrom scales percent_format
 #' @rdname number
 #' @export
 #' @examples
@@ -48,98 +34,132 @@ precision <- function(x) {
 #' comp_percent(p)
 #'
 #' # Per mille
-#' per_mille <- number_format(multiplier = 1000, suffix = "\u2030", accuracy = .1)
+#' per_mille <- number_format(scale = 1000, suffix = "\u2030", accuracy = .1)
 #' per_mille(v)
-number_format <- function(accuracy = 1, multiplier = 1, prefix = "", suffix = "", big.mark = " ", decimal.mark = ".", ...) {
-  function(x) number(x, accuracy, multiplier, prefix, suffix, big.mark, decimal.mark, ...)
+number <- scales::number
+
+#' @export
+#' @rdname number
+number_format <- scales::number_format
+
+#' @export
+#' @rdname number
+en_format <- function(accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = ",", decimal.mark = ".", trim = TRUE, ...) {
+  number_format(
+    accuracy = accuracy, scale = scale, 
+    prefix = prefix, suffix = suffix, 
+    big.mark = big.mark, decimal.mark = decimal.mark, 
+    trim = trim, ...
+  )
 }
 #' @export
 #' @rdname number
-number <- function(x, accuracy = 1, multiplier = 1, prefix = "", suffix = "", big.mark = " ", decimal.mark = ".", ...) {
-  if (length(x) == 0) return(character())
-  if (is.null(accuracy)) {
-    x <- round_any(x, precision(x) / multiplier)
-    nsmall <- -floor(log10(precision(x)))
-  } else {
-    x <- round_any(x, accuracy / multiplier)
-    nsmall <- -floor(log10(accuracy))
-  }
-  nsmall <- min(max(nsmall, 0), 20)
-  paste0(prefix, format(multiplier * x, big.mark = big.mark, decimal.mark = decimal.mark, scientific = FALSE, trim = TRUE, nsmall = nsmall, ...), suffix)
+en <- function(x, accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = ",", decimal.mark = ".", trim = TRUE, ...) {
+  number(x,
+    accuracy = accuracy, scale = scale, 
+    prefix = prefix, suffix = suffix, 
+    big.mark = big.mark, decimal.mark = decimal.mark, 
+    trim = trim, ...
+  )
 }
 
 #' @export
 #' @rdname number
-en_format <- function(accuracy = 1, multiplier = 1, prefix = "", suffix = "", big.mark = ",", decimal.mark = ".", ...) {
-  number_format(accuracy, multiplier, prefix, suffix, big.mark, decimal.mark, ...)
+fr_format <- function(accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
+  number_format(
+    accuracy = accuracy, scale = scale, 
+    prefix = prefix, suffix = suffix, 
+    big.mark = big.mark, decimal.mark = decimal.mark, 
+    trim = trim, ...
+  )
 }
 #' @export
 #' @rdname number
-en <- function(x, accuracy = 1, multiplier = 1, prefix = "", suffix = "", big.mark = ",", decimal.mark = ".", ...) {
-  number(x, accuracy, multiplier, prefix, suffix, big.mark, decimal.mark, ...)
-}
-
-#' @export
-#' @rdname number
-fr_format <- function(accuracy = 1, multiplier = 1, prefix = "", suffix = "", big.mark = " ", decimal.mark = ",", ...) {
-  number_format(accuracy, multiplier, prefix, suffix, big.mark, decimal.mark, ...)
-}
-#' @export
-#' @rdname number
-fr <- function(x, accuracy = 1, multiplier = 1, prefix = "", suffix = "", big.mark = " ", decimal.mark = ",", ...) {
-  number(x, accuracy, multiplier, prefix, suffix, big.mark, decimal.mark, ...)
-}
-
-#' @export
-#' @rdname number
-percent_format <- function(accuracy = 1, multiplier = 100, prefix = "", suffix = "%", big.mark = " ", decimal.mark = ".", ...) {
-  number_format(accuracy, multiplier, prefix, suffix, big.mark, decimal.mark, ...)
-}
-#' @export
-#' @rdname number
-percent <- function(x, accuracy = 1, multiplier = 100, prefix = "", suffix = "%", big.mark = " ", decimal.mark = ".", ...) {
-  number(x, accuracy, multiplier, prefix, suffix, big.mark, decimal.mark, ...)
+fr <- function(x, accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
+  number(x,
+    accuracy = accuracy, scale = scale, 
+    prefix = prefix, suffix = suffix, 
+    big.mark = big.mark, decimal.mark = decimal.mark, 
+    trim = trim, ...
+  )
 }
 
 #' @export
 #' @rdname number
-pourcent_format <- function(accuracy = 1, multiplier = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", ...) {
-  number_format(accuracy, multiplier, prefix, suffix, big.mark, decimal.mark, ...)
+percent_format <- scales::percent_format
+
+#' @export
+#' @rdname number
+percent <- scales::percent
+
+#' @export
+#' @rdname number
+pourcent_format <- function(accuracy = 1, scale = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
+  number_format(
+    accuracy = accuracy, scale = scale, 
+    prefix = prefix, suffix = suffix, 
+    big.mark = big.mark, decimal.mark = decimal.mark, 
+    trim = trim, ...
+  )
 }
 #' @export
 #' @rdname number
-pourcent <- function(x, accuracy = 1, multiplier = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", ...) {
-  number(x, accuracy, multiplier, prefix, suffix, big.mark, decimal.mark, ...)
+pourcent <- function(x, accuracy = 1, scale = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
+  number(x,
+    accuracy = accuracy, scale = scale, 
+    prefix = prefix, suffix = suffix, 
+    big.mark = big.mark, decimal.mark = decimal.mark, 
+    trim = trim, ...
+  )
 }
 
 #' @export
 #' @rdname number
-comp_percent_format <- function(accuracy = 1, multiplier = 100, prefix = "", suffix = "%", big.mark = " ", decimal.mark = ".", ...) {
+comp_percent_format <- function(accuracy = 1, scale = 100, prefix = "", suffix = "%", big.mark = " ", decimal.mark = ".", trim = TRUE, ...) {
   function(x) {
-    comp_percent(x, accuracy, multiplier, prefix, suffix, big.mark, decimal.mark, ...)
+    comp_percent(
+      accuracy = accuracy, scale = scale, 
+      prefix = prefix, suffix = suffix, 
+      big.mark = big.mark, decimal.mark = decimal.mark, 
+      trim = trim, ...
+    )
   }
 }
 
 #' @export
 #' @rdname number
-comp_percent <- function(x, accuracy = 1, multiplier = 100, prefix = "", suffix = "%", big.mark = " ", decimal.mark = ".", ...) {
-  number(1 - x, accuracy, multiplier, prefix, suffix, big.mark, decimal.mark, ...)
+comp_percent <- function(x, accuracy = 1, scale = 100, prefix = "", suffix = "%", big.mark = " ", decimal.mark = ".", trim = TRUE, ...) {
+  number(1 - x,
+    accuracy = accuracy, scale = scale, 
+    prefix = prefix, suffix = suffix, 
+    big.mark = big.mark, decimal.mark = decimal.mark, 
+    trim = trim, ...
+  )
 }
 
 #' @export
 #' @rdname number
-comp_pourcent_format <- function(accuracy = 1, multiplier = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", ...) {
+comp_pourcent_format <- function(accuracy = 1, scale = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
   function(x) {
-    comp_pourcent(x, accuracy, multiplier, prefix, suffix, big.mark, decimal.mark, ...)
+    comp_pourcent(
+      accuracy = accuracy, scale = scale, 
+      prefix = prefix, suffix = suffix, 
+      big.mark = big.mark, decimal.mark = decimal.mark, 
+      trim = trim, ...
+    )
   }
 }
 
 #' @export
 #' @rdname number
-comp_pourcent <- function(x, accuracy = 1, multiplier = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", ...) {
-  number(1 - x, accuracy, multiplier, prefix, suffix, big.mark, decimal.mark, ...)
+comp_pourcent <- function(x, accuracy = 1, scale = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
+  number(1 - x,
+    accuracy = accuracy, scale = scale, 
+    prefix = prefix, suffix = suffix, 
+    big.mark = big.mark, decimal.mark = decimal.mark, 
+    trim = trim, ...
+  )
 }
-
 
 #' @rdname number
 #' @export
@@ -313,53 +333,31 @@ who_formatter <- function(x) {
 }
 
 
-#' p-values formatter and significance stars
-#'
-#' Formatter for p-values, adding a symbol "<" for very small p-values and, optionally, significance stars
-#'
-#' @param x a numeric vector of p-values
-#' @param formatter a formatter function, see \code{\link{number}}, typically \code{\link{en}} or \code{\link{fr}}
-#' @param accuracy number to round to
-#' @param stars add significance stars?
-#' @param three level below which to display three stars '***'
-#' @param two level below which to display two stars '**'
-#' @param one level below which to display one star '*'
-#' @param point level below which to display a point '.' (\code{NULL} to not display a point)
-#' @param add_p add "p=" before the value?
-#' @param ... additional parameters sent to formatter function
-#' @details
-#' \code{pval_format} will produce a custom function, to be used for example with \code{ggplot2}.
-#' @export
-#' @examples
-#' p <- c(.50, 0.12, .09, .045, .011, .009, .00002, NA)
-#' pval(p)
-#' pval(p, formatter = fr, accuracy = .01)
-#' pval(p, stars = TRUE)
-#' pval(p, add_p = TRUE)
-pval <- function(x, formatter = en, accuracy = .001, stars = FALSE, three = 0.001, two = 0.01, one = 0.05, point = 0.1, add_p = FALSE, ...) {
-  res <- formatter(x, accuracy = accuracy, ...)
-  if (add_p) res <- paste0("p=", res)
-  digits <- -floor(log10(accuracy))
-  if (add_p) less <- "p<" else less <- "<"
-  res[x < 10^-digits] <- paste0(less, formatter(10^-digits, accuracy = accuracy, ...))
-  if (stars) {
-    res <- paste(res, signif_stars(x, three, two, one, point))
-  }
-  res
-}
 
-#' @rdname pval
+#' p-values formatter
+#'
+#' Formatter for p-values, adding a symbol "<" for small p-values.
+#'
+#' @return `pvalue_format` returns a function with single parameter
+#'   `x`, a numeric vector, that returns a character vector.
+#' @inheritParams scales::pvalue
+#' @importFrom scales pvalue
+#' @importFrom scales pvalue_format
 #' @export
 #' @examples
-#' custom_function <- pval_format(accuracy = .1, stars = TRUE)
+#' p <- c(.50, 0.12, .045, .011, .009, .00002, NA)
+#' pvalue(p)
+#' pvalue(p, accuracy = .01)
+#' pvalue(p, add_p = TRUE)
+#' custom_function <- pvalue_format(accuracy = .1, decimal.mark = ",")
 #' custom_function(p)
-pval_format <- function(formatter = en, accuracy = .001, stars = FALSE, three = 0.001, two = 0.01, one = 0.05, point = 0.1, add_p = FALSE, ...) {
-  function(x) {
-    pval(x, formatter, accuracy, stars, three, two, one, point, add_p, ...)
-  }
-}
+pvalue <- scales::pvalue
 
-#' @rdname pval
+#' @rdname pvalue
+#' @export
+pvalue_format <- scales::pvalue_format
+
+#' @rdname pvalue
 #' @export signif_stars
 #' @examples
 #' signif_stars(p)
