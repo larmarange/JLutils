@@ -4,7 +4,11 @@ Title: Collection of R functions
 Version: 1.16.0
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Authors@R: c(
-  person("Joseph", "Larmarange", email = "joseph@larmarange.net", role = c("aut", "cre"))
+  person(
+    "Joseph", "Larmarange", 
+    email = "joseph@larmarange.net", 
+    role = c("aut", "cre"), 
+    comment = c(ORCID = "0000-0001-7097-700X"))
   )
 Description: A collection of diverse R functions who don't fit (yet?) in another
     package.
