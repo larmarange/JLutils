@@ -21,6 +21,14 @@ signif_stars(x, three = 0.001, two = 0.01, one = 0.05, point = 0.1)
 decimal point.}
 
 \item{add_p}{Add "p=" before the value?}
+
+\item{three}{threshold below which to display three stars}
+
+\item{two}{threshold below which to display two stars}
+
+\item{one}{threshold below which to display one star}
+
+\item{point}{threshold below which to display one point (\code{NULL} to desactivate)}
 }
 \value{
 `pvalue_format` returns a function with single parameter
