@@ -359,6 +359,10 @@ pvalue_format <- scales::pvalue_format
 
 #' @rdname pvalue
 #' @export signif_stars
+#' @param three threshold below which to display three stars
+#' @param two threshold below which to display two stars
+#' @param one threshold below which to display one star
+#' @param point threshold below which to display one point (\code{NULL} to desactivate)
 #' @examples
 #' signif_stars(p)
 #' signif_stars(p, one = .15, point = NULL)
