@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a riverplot from a sequence object — seq_makeRiver • JLutils</title>
+<title>Formatting numbers like in WHO publications — who_formatter • JLutils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,15 @@
 
 
 
-<meta property="og:title" content="Create a riverplot from a sequence object — seq_makeRiver" />
+<meta property="og:title" content="Formatting numbers like in WHO publications — who_formatter" />
 
-<meta property="og:description" content="Create a riverplot from a sequence object" />
+<meta property="og:description" content="In WHO publications, population numbers are usually presented as follow:
+0 if &amp;lt; 5
+10 if = 5 and &amp;lt; 10
+one significant digit if = 10 and &amp;lt; 100
+two significant digits if = 100 and &amp;lt; 10 millions
+three significant digits if = 10 millions
+" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,41 +105,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a riverplot from a sequence object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/larmarange/JLutils/blob/master/R/sequences.R'><code>R/sequences.R</code></a></small>
-    <div class="hidden name"><code>seq_makeRiver.Rd</code></div>
+    <h1>Formatting numbers like in WHO publications</h1>
+    <small class="dont-index">Source: <a href='https://github.com/larmarange/JLutils/blob/master/R/formating.R'><code>R/formating.R</code></a></small>
+    <div class="hidden name"><code>who_formatter.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Create a riverplot from a sequence object</p>
+    <p>In WHO publications, population numbers are usually presented as follow:</p><ul>
+<li><p>0 if &lt; 5</p></li>
+<li><p>10 if = 5 and &lt; 10</p></li>
+<li><p>one significant digit if = 10 and &lt; 100</p></li>
+<li><p>two significant digits if = 100 and &lt; 10 millions</p></li>
+<li><p>three significant digits if = 10 millions</p></li>
+</ul>
     
     </div>
 
-    <pre class="usage"><span class='fu'>seq_makeRiver</span>(<span class='no'>seq</span>)</pre>
+    <pre class="usage"><span class='fu'>who_formatter</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>seq</th>
-      <td><p>a stslist object (typically produced with <code><a href='https://www.rdocumentation.org/packages/TraMineR/topics/seqdef'>seqdef</a></code>)</p></td>
+      <th>x</th>
+      <td><p>a numeric vector to format</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a river plot object that can be plotted with <code><a href='https://www.rdocumentation.org/packages/riverplot/topics/riverplot'>riverplot</a></code></p>
-    
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>who_formatter</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>3</span>, <span class='fl'>8</span>, <span class='fl'>42</span>, <span class='fl'>75</span>, <span class='fl'>45678</span>, <span class='fl'>9876543</span>, <span class='fl'>12345678</span>))</div><div class='output co'>#&gt; [1] "         0" "        10" "        40" "        80" "    46 000"
+#&gt; [6] " 9 900 000" "12 300 000"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

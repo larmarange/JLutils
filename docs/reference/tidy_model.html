@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a riverplot from a sequence object — seq_makeRiver • JLutils</title>
+<title>A generic tidier for model outputs — tidy_model • JLutils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Create a riverplot from a sequence object — seq_makeRiver" />
+<meta property="og:title" content="A generic tidier for model outputs — tidy_model" />
 
-<meta property="og:description" content="Create a riverplot from a sequence object" />
+<meta property="og:description" content="A generic tidier for model outputs" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,31 +99,57 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a riverplot from a sequence object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/larmarange/JLutils/blob/master/R/sequences.R'><code>R/sequences.R</code></a></small>
-    <div class="hidden name"><code>seq_makeRiver.Rd</code></div>
+    <h1>A generic tidier for model outputs</h1>
+    <small class="dont-index">Source: <a href='https://github.com/larmarange/JLutils/blob/master/R/tidy_model.R'><code>R/tidy_model.R</code></a></small>
+    <div class="hidden name"><code>tidy_model.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Create a riverplot from a sequence object</p>
+    <p>A generic tidier for model outputs</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>seq_makeRiver</span>(<span class='no'>seq</span>)</pre>
+    <pre class="usage"><span class='fu'>tidy_model</span>(<span class='no'>x</span>, <span class='kw'>conf.int</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
+  <span class='kw'>exponentiate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>quick</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+
+<span class='fu'>tidy.clm</span>(<span class='no'>x</span>, <span class='kw'>conf.int</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
+  <span class='kw'>exponentiate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>quick</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+
+<span class='fu'>tidy.clmm</span>(<span class='no'>x</span>, <span class='kw'>conf.int</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
+  <span class='kw'>exponentiate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>quick</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+
+<span class='fu'>tidy.svyolr</span>(<span class='no'>x</span>, <span class='kw'>conf.int</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
+  <span class='kw'>exponentiate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>quick</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>seq</th>
-      <td><p>a stslist object (typically produced with <code><a href='https://www.rdocumentation.org/packages/TraMineR/topics/seqdef'>seqdef</a></code>)</p></td>
+      <th>x</th>
+      <td><p>a model object</p></td>
+    </tr>
+    <tr>
+      <th>conf.int</th>
+      <td><p>whether to include a confidence interval</p></td>
+    </tr>
+    <tr>
+      <th>conf.level</th>
+      <td><p>confidence level of the interval, used only if <code>conf.int=TRUE</code></p></td>
+    </tr>
+    <tr>
+      <th>exponentiate</th>
+      <td><p>whether to exponentiate the coefficient estimates and confidence intervals</p></td>
+    </tr>
+    <tr>
+      <th>quick</th>
+      <td><p>whether to compute a smaller and faster version, containing only the term and estimate columns.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>extra arguments</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>a river plot object that can be plotted with <code><a href='https://www.rdocumentation.org/packages/riverplot/topics/riverplot'>riverplot</a></code></p>
     
 
   </div>
@@ -131,9 +157,7 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>

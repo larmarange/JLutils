@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a riverplot from a sequence object — seq_makeRiver • JLutils</title>
+<title>Transform data from long format to period format — long_to_periods • JLutils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Create a riverplot from a sequence object — seq_makeRiver" />
+<meta property="og:title" content="Transform data from long format to period format — long_to_periods" />
 
-<meta property="og:description" content="Create a riverplot from a sequence object" />
+<meta property="og:description" content="Transform data from long format to period format" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,41 +99,61 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a riverplot from a sequence object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/larmarange/JLutils/blob/master/R/sequences.R'><code>R/sequences.R</code></a></small>
-    <div class="hidden name"><code>seq_makeRiver.Rd</code></div>
+    <h1>Transform data from long format to period format</h1>
+    <small class="dont-index">Source: <a href='https://github.com/larmarange/JLutils/blob/master/R/long_to_periods.R'><code>R/long_to_periods.R</code></a></small>
+    <div class="hidden name"><code>long_to_periods.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Create a riverplot from a sequence object</p>
+    <p>Transform data from long format to period format</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>seq_makeRiver</span>(<span class='no'>seq</span>)</pre>
+    <pre class="usage"><span class='fu'>long_to_periods</span>(<span class='no'>.data</span>, <span class='no'>.id</span>, <span class='no'>.start</span>, <span class='kw'>.stop</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.by</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>seq</th>
-      <td><p>a stslist object (typically produced with <code><a href='https://www.rdocumentation.org/packages/TraMineR/topics/seqdef'>seqdef</a></code>)</p></td>
+      <th>.data</th>
+      <td><p>a data.frame</p></td>
+    </tr>
+    <tr>
+      <th>.id</th>
+      <td><p>a character, column containing individual ids</p></td>
+    </tr>
+    <tr>
+      <th>.start</th>
+      <td><p>a character, column containing time variable indicating the beginning of each row</p></td>
+    </tr>
+    <tr>
+      <th>.stop</th>
+      <td><p>a character, column containing time variable indicating the end of each row. If not provided, it will be derived from the dataset, considering that each row ends at the beginning of the next one.</p></td>
+    </tr>
+    <tr>
+      <th>.by</th>
+      <td><p>a character vector, co-variables to consider (optionnal)</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a river plot object that can be plotted with <code><a href='https://www.rdocumentation.org/packages/riverplot/topics/riverplot'>riverplot</a></code></p>
-    
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/load'>load</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/connections'>url</a></span>(<span class='st'>"https://larmarange.github.io/analyse-R/data/care_trajectories.RData"</span>))
+<span class='no'>care_trajectories</span>
+<span class='fu'>long_to_periods</span>(<span class='no'>care_trajectories</span>, <span class='kw'>.id</span> <span class='kw'>=</span> <span class='st'>"id"</span>, <span class='kw'>.start</span> <span class='kw'>=</span> <span class='st'>"month"</span>)
+<span class='fu'>long_to_periods</span>(<span class='no'>care_trajectories</span>, <span class='kw'>.id</span> <span class='kw'>=</span> <span class='st'>"id"</span>, <span class='kw'>.start</span> <span class='kw'>=</span> <span class='st'>"month"</span>,
+                <span class='kw'>.by</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"sex"</span>, <span class='st'>"age"</span>, <span class='st'>"care_status"</span>))
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

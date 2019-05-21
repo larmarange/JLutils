@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a riverplot from a sequence object — seq_makeRiver • JLutils</title>
+<title>Compute automatically the index for grouping rows with kableExtra — auto_index_group_rows • JLutils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Create a riverplot from a sequence object — seq_makeRiver" />
+<meta property="og:title" content="Compute automatically the index for grouping rows with kableExtra — auto_index_group_rows" />
 
-<meta property="og:description" content="Create a riverplot from a sequence object" />
+<meta property="og:description" content="When using group_rows function from kableExtra, you can provide a names vector providing
+the number of rows to group together. auto_index_group_rows compute that index based on a vector
+by counting the successive identical values of that vector." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,41 +101,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a riverplot from a sequence object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/larmarange/JLutils/blob/master/R/sequences.R'><code>R/sequences.R</code></a></small>
-    <div class="hidden name"><code>seq_makeRiver.Rd</code></div>
+    <h1>Compute automatically the index for grouping rows with kableExtra</h1>
+    <small class="dont-index">Source: <a href='https://github.com/larmarange/JLutils/blob/master/R/auto_index_group_rows.R'><code>R/auto_index_group_rows.R</code></a></small>
+    <div class="hidden name"><code>auto_index_group_rows.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Create a riverplot from a sequence object</p>
+    <p>When using <code>group_rows</code> function from <code>kableExtra</code>, you can provide a names vector providing
+the number of rows to group together. <code>auto_index_group_rows</code> compute that index based on a vector
+by counting the successive identical values of that vector.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>seq_makeRiver</span>(<span class='no'>seq</span>)</pre>
+    <pre class="usage"><span class='fu'>auto_index_group_rows</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>seq</th>
-      <td><p>a stslist object (typically produced with <code><a href='https://www.rdocumentation.org/packages/TraMineR/topics/seqdef'>seqdef</a></code>)</p></td>
+      <th>x</th>
+      <td><p>a vector</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a river plot object that can be plotted with <code><a href='https://www.rdocumentation.org/packages/riverplot/topics/riverplot'>riverplot</a></code></p>
-    
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"a"</span>, <span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"b"</span>, <span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"c"</span>)
+<span class='fu'>auto_index_group_rows</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; a b a c 
+#&gt; 3 2 1 2 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

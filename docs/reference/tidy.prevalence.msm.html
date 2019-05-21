@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a riverplot from a sequence object — seq_makeRiver • JLutils</title>
+<title>Basic tieders for msm models — tidy.prevalence.msm • JLutils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Create a riverplot from a sequence object — seq_makeRiver" />
+<meta property="og:title" content="Basic tieders for msm models — tidy.prevalence.msm" />
 
-<meta property="og:description" content="Create a riverplot from a sequence object" />
+<meta property="og:description" content="Basic tieders for msm models" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,41 +99,51 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a riverplot from a sequence object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/larmarange/JLutils/blob/master/R/sequences.R'><code>R/sequences.R</code></a></small>
-    <div class="hidden name"><code>seq_makeRiver.Rd</code></div>
+    <h1>Basic tieders for msm models</h1>
+    <small class="dont-index">Source: <a href='https://github.com/larmarange/JLutils/blob/master/R/tidy_msm.R'><code>R/tidy_msm.R</code></a></small>
+    <div class="hidden name"><code>tidy.prevalence.msm.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Create a riverplot from a sequence object</p>
+    <p>Basic tieders for msm models</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>seq_makeRiver</span>(<span class='no'>seq</span>)</pre>
+    <pre class="usage"><span class='fu'>tidy.prevalence.msm</span>(<span class='no'>x</span>)
+
+<span class='fu'>tidy.hazard.msm</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>seq</th>
-      <td><p>a stslist object (typically produced with <code><a href='https://www.rdocumentation.org/packages/TraMineR/topics/seqdef'>seqdef</a></code>)</p></td>
+      <th>x</th>
+      <td><p>an object returned by <code><a href='https://www.rdocumentation.org/packages/msm/topics/prevalence.msm'>prevalence.msm</a></code> or <code><a href='https://www.rdocumentation.org/packages/msm/topics/hazard.msm'>hazard.msm</a></code></p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a river plot object that can be plotted with <code><a href='https://www.rdocumentation.org/packages/riverplot/topics/riverplot'>riverplot</a></code></p>
-    
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+  <span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>require</a></span>(<span class='no'>msm</span>)) {
+    <span class='no'>twoway4.q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>rbind</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(-<span class='fl'>0.5</span>, <span class='fl'>0.25</span>, <span class='fl'>0</span>, <span class='fl'>0.25</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0.166</span>, -<span class='fl'>0.498</span>, <span class='fl'>0.166</span>, <span class='fl'>0.166</span>),
+    <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0.25</span>, -<span class='fl'>0.5</span>, <span class='fl'>0.25</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>))
+    <span class='no'>cav.msm</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/msm/topics/msm'>msm</a></span>(<span class='no'>state</span> ~ <span class='no'>years</span>, <span class='kw'>subject</span><span class='kw'>=</span><span class='no'>PTNUM</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>cav</span>,
+                   <span class='kw'>qmatrix</span> <span class='kw'>=</span> <span class='no'>twoway4.q</span>, <span class='kw'>deathexact</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>covariates</span> <span class='kw'>=</span> ~ <span class='no'>sex</span>)
+    <span class='fu'>tidy.prevalence.msm</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/msm/topics/prevalence.msm'>prevalence.msm</a></span>(<span class='no'>cav.msm</span>))
+    <span class='fu'>tidy.prevalence.msm</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/msm/topics/prevalence.msm'>prevalence.msm</a></span>(<span class='no'>cav.msm</span>, <span class='kw'>ci</span> <span class='kw'>=</span> <span class='st'>"normal"</span>))
+    <span class='fu'>tidy.hazard.msm</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/msm/topics/hazard.msm'>hazard.msm</a></span>(<span class='no'>cav.msm</span>))
+  }
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

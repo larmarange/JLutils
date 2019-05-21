@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a riverplot from a sequence object — seq_makeRiver • JLutils</title>
+<title>Add leading zeros — leading_zeros • JLutils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Create a riverplot from a sequence object — seq_makeRiver" />
+<meta property="og:title" content="Add leading zeros — leading_zeros" />
 
-<meta property="og:description" content="Create a riverplot from a sequence object" />
+<meta property="og:description" content="Add leading zeros" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,41 +99,63 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a riverplot from a sequence object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/larmarange/JLutils/blob/master/R/sequences.R'><code>R/sequences.R</code></a></small>
-    <div class="hidden name"><code>seq_makeRiver.Rd</code></div>
+    <h1>Add leading zeros</h1>
+    <small class="dont-index">Source: <a href='https://github.com/larmarange/JLutils/blob/master/R/formating.R'><code>R/formating.R</code></a></small>
+    <div class="hidden name"><code>leading_zeros.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Create a riverplot from a sequence object</p>
+    <p>Add leading zeros</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>seq_makeRiver</span>(<span class='no'>seq</span>)</pre>
+    <pre class="usage"><span class='fu'>leading_zeros</span>(<span class='no'>x</span>, <span class='kw'>left_digits</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>seq</th>
-      <td><p>a stslist object (typically produced with <code><a href='https://www.rdocumentation.org/packages/TraMineR/topics/seqdef'>seqdef</a></code>)</p></td>
+      <th>x</th>
+      <td><p>a numeric vector</p></td>
+    </tr>
+    <tr>
+      <th>left_digits</th>
+      <td><p>number of digits before decimal point, automatically computed if not provided</p></td>
+    </tr>
+    <tr>
+      <th>digits</th>
+      <td><p>number of digits after decimal point</p></td>
+    </tr>
+    <tr>
+      <th>prefix, suffix</th>
+      <td><p>Symbols to display before and after value</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional paramaters passed to <code><a href='https://www.rdocumentation.org/packages/base/topics/formatc'>formatC</a></code>, as <code>big.mark</code> or <code>decimal.mark</code></p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>a river plot object that can be plotted with <code><a href='https://www.rdocumentation.org/packages/riverplot/topics/riverplot'>riverplot</a></code></p>
+    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/base/topics/formatc'>formatC</a></code>, <code><a href='https://www.rdocumentation.org/packages/base/topics/sprintf'>sprintf</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>103.24</span>, <span class='fl'>1042.147</span>, <span class='fl'>12.4566</span>, <span class='fl'>NA</span>)
+<span class='fu'>leading_zeros</span>(<span class='no'>v</span>)</div><div class='output co'>#&gt; [1] "0002" "0103" "1042" "0012" "  NA"</div><div class='input'><span class='fu'>leading_zeros</span>(<span class='no'>v</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] "0002.0" "0103.2" "1042.1" "0012.5" "    NA"</div><div class='input'><span class='fu'>leading_zeros</span>(<span class='no'>v</span>, <span class='kw'>left_digits</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>" "</span>)</div><div class='output co'>#&gt; [1] "000 002" "000 103" "001 042" "000 012" "     NA"</div><div class='input'><span class='fu'>leading_zeros</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>6</span>, <span class='fl'>12</span>, <span class='fl'>18</span>), <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"M"</span>)</div><div class='output co'>#&gt; [1] "M00" "M06" "M12" "M18"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-          </ul>
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
