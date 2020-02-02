@@ -89,6 +89,28 @@ proportions according to the `prop_of` aesthetic defining the denominator
 }
 }
 
+\examples{
+
+d <- as.data.frame(Titanic)
+
+p <- ggplot(d) +
+  aes(x = Class, fill = Survived, weight = Freq, prop_of = Class) +
+  geom_bar(position = "fill") + 
+  geom_text(stat = "prop", position = position_fill(.5))
+p
+p + facet_grid(~ Sexe)
+
+ggplot(d) +
+  aes(x = Class, fill = Survived, weight = Freq, prop_of = Survived) +
+  geom_bar(position = "dodge") +
+  geom_text(stat = "prop", position = position_dodge(0.9), vjust = "bottom")
+  
+ggplot(d) +
+  aes(x = Class, fill = Survived, weight = Freq, prop_of = 1) +
+  geom_bar() +
+  geom_text(aes(label = scales::percent(after_stat(prop), accuracy = .1)), stat = "prop", position = position_stack(.5))
+
+}
 \seealso{
 \code{\link[ggplot2]{stat_count}}
 }

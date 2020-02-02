@@ -18,6 +18,7 @@
 #' @import ggplot2
 #' @importFrom scales percent
 #' @export
+#' @examples 
 #' 
 #' d <- as.data.frame(Titanic)
 #' 
