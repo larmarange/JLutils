@@ -33,7 +33,6 @@ Suggests:
     dplyr,
     labelled,
     data.table,
-    dtplyr,
     msSurv,
     survey,
     gridExtra,

@@ -60,11 +60,7 @@ long_to_periods <- function(.data, .id, .start, .stop = NULL, .by = NULL) {
 
   periods <- periods[, c(.id, "start", "stop", .by)]
 
-  if ("tbl_dt" %in% cl) {
-    periods <- dtplyr::tbl_dt(periods)
-  } else if ("tbl_df" %in% cl) {
-    periods <- dplyr::as_tibble(periods)
-  } else if ("data.table" %in% cl) {
+  if ("data.table" %in% cl) {
     periods <- data.table::as.data.table(periods)
   } else {
     periods <- as.data.frame(periods)
