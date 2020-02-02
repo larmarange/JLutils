@@ -37,7 +37,11 @@
 #' ggplot(d) +
 #'   aes(x = Class, fill = Survived, weight = Freq, prop_among = 1) +
 #'   geom_bar() +
-#'   geom_text(aes(label = scales::percent(..prop.., accuracy = .1)), stat = "prop", position = position_stack(.5))
+#'   geom_text(
+#'     aes(label = scales::percent(..prop.., accuracy = .1)), 
+#'     stat = "prop", 
+#'     position = position_stack(.5)
+#'  )
 #' 
 stat_prop <- function(mapping = NULL, data = NULL,
                        geom = "bar", position = "fill",
