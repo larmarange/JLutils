@@ -48,7 +48,6 @@ stat_prop <- function(mapping = NULL, data = NULL,
                        ...,
                        width = NULL,
                        na.rm = FALSE,
-                       orientation = NA,
                        show.legend = NA,
                        inherit.aes = TRUE) {
   

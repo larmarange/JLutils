@@ -14,7 +14,6 @@ stat_prop(
   ...,
   width = NULL,
   na.rm = FALSE,
-  orientation = NA,
   show.legend = NA,
   inherit.aes = TRUE
 )
