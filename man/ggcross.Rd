@@ -4,12 +4,22 @@
 \alias{ggcross}
 \title{Cross-tabulation matrix plot}
 \usage{
-ggcross(formula, data, weight = NULL, fill = "residuals",
-  fill_breaks = c(-4, -2, 2, 4), palette = "RdBu",
-  fill_title = "Pearson residuals", size = "observed", max_size = 20,
-  size_title = "Observations", labels = NULL, labels_size = 3.5,
-  svystatistic = c("F", "Chisq", "Wald", "adjWald", "lincom",
-  "saddlepoint"), return_data = FALSE)
+ggcross(
+  formula,
+  data,
+  weight = NULL,
+  fill = "residuals",
+  fill_breaks = c(-4, -2, 2, 4),
+  palette = "RdBu",
+  fill_title = "Pearson residuals",
+  size = "observed",
+  max_size = 20,
+  size_title = "Observations",
+  labels = NULL,
+  labels_size = 3.5,
+  svystatistic = c("F", "Chisq", "Wald", "adjWald", "lincom", "saddlepoint"),
+  return_data = FALSE
+)
 }
 \arguments{
 \item{formula}{formula of variables to be cross-tabulated,

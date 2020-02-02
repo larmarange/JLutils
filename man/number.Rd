@@ -53,54 +53,166 @@
 \alias{comp_pourcent5}
 \title{Number formatters}
 \usage{
-number(x, accuracy = 1, scale = 1, prefix = "", suffix = "",
-  big.mark = " ", decimal.mark = ".", trim = TRUE, ...)
+number(
+  x,
+  accuracy = NULL,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 
-number_format(accuracy = 1, scale = 1, prefix = "", suffix = "",
-  big.mark = " ", decimal.mark = ".", trim = TRUE, ...)
+number_format(
+  accuracy = NULL,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 
-en_format(accuracy = 1, scale = 1, prefix = "", suffix = "",
-  big.mark = ",", decimal.mark = ".", trim = TRUE, ...)
+en_format(
+  accuracy = 1,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  big.mark = ",",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 
-en(x, accuracy = 1, scale = 1, prefix = "", suffix = "",
-  big.mark = ",", decimal.mark = ".", trim = TRUE, ...)
+en(
+  x,
+  accuracy = 1,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  big.mark = ",",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 
-fr_format(accuracy = 1, scale = 1, prefix = "", suffix = "",
-  big.mark = " ", decimal.mark = ",", trim = TRUE, ...)
+fr_format(
+  accuracy = 1,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  big.mark = " ",
+  decimal.mark = ",",
+  trim = TRUE,
+  ...
+)
 
-fr(x, accuracy = 1, scale = 1, prefix = "", suffix = "",
-  big.mark = " ", decimal.mark = ",", trim = TRUE, ...)
+fr(
+  x,
+  accuracy = 1,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  big.mark = " ",
+  decimal.mark = ",",
+  trim = TRUE,
+  ...
+)
 
-percent_format(accuracy = NULL, scale = 100, prefix = "",
-  suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
-  ...)
+percent_format(
+  accuracy = NULL,
+  scale = 100,
+  prefix = "",
+  suffix = "\%",
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 
-percent(x, accuracy = NULL, scale = 100, prefix = "",
-  suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
-  ...)
+percent(
+  x,
+  accuracy = NULL,
+  scale = 100,
+  prefix = "",
+  suffix = "\%",
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 
-pourcent_format(accuracy = 1, scale = 100, prefix = "",
-  suffix = " \%", big.mark = " ", decimal.mark = ",", trim = TRUE,
-  ...)
+pourcent_format(
+  accuracy = 1,
+  scale = 100,
+  prefix = "",
+  suffix = " \%",
+  big.mark = " ",
+  decimal.mark = ",",
+  trim = TRUE,
+  ...
+)
 
-pourcent(x, accuracy = 1, scale = 100, prefix = "", suffix = " \%",
-  big.mark = " ", decimal.mark = ",", trim = TRUE, ...)
+pourcent(
+  x,
+  accuracy = 1,
+  scale = 100,
+  prefix = "",
+  suffix = " \%",
+  big.mark = " ",
+  decimal.mark = ",",
+  trim = TRUE,
+  ...
+)
 
-comp_percent_format(accuracy = 1, scale = 100, prefix = "",
-  suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
-  ...)
+comp_percent_format(
+  accuracy = 1,
+  scale = 100,
+  prefix = "",
+  suffix = "\%",
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 
-comp_percent(x, accuracy = 1, scale = 100, prefix = "",
-  suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
-  ...)
+comp_percent(
+  x,
+  accuracy = 1,
+  scale = 100,
+  prefix = "",
+  suffix = "\%",
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 
-comp_pourcent_format(accuracy = 1, scale = 100, prefix = "",
-  suffix = " \%", big.mark = " ", decimal.mark = ",", trim = TRUE,
-  ...)
+comp_pourcent_format(
+  accuracy = 1,
+  scale = 100,
+  prefix = "",
+  suffix = " \%",
+  big.mark = " ",
+  decimal.mark = ",",
+  trim = TRUE,
+  ...
+)
 
-comp_pourcent(x, accuracy = 1, scale = 100, prefix = "",
-  suffix = " \%", big.mark = " ", decimal.mark = ",", trim = TRUE,
-  ...)
+comp_pourcent(
+  x,
+  accuracy = 1,
+  scale = 100,
+  prefix = "",
+  suffix = " \%",
+  big.mark = " ",
+  decimal.mark = ",",
+  trim = TRUE,
+  ...
+)
 
 en0(x)
 
@@ -177,11 +289,16 @@ comp_pourcent5(x)
 \arguments{
 \item{x}{A numeric vector to format.}
 
-\item{accuracy}{Number to round to, \code{NULL} for automatic guess.}
+\item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
+places of precision. If \code{NULL}, the default, uses a heuristic that should
+ensure breaks have the minimum number of digits needed to show the
+difference between adjacent values.
 
-\item{scale}{A scaling factor: \code{x} will be multiply by \code{scale} before
-formating (useful if the underlying data is on another scale,
-e.g. for computing percentages or thousands).}
+Applied to rescaled data.}
+
+\item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
+formating. This is useful if the underlying data is very small or very
+large.}
 
 \item{prefix}{Symbols to display before and after value.}
 
@@ -227,6 +344,6 @@ pourcent2(p)
 comp_percent(p)
 
 # Per mille
-per_mille <- number_format(scale = 1000, suffix = "\\u2030", accuracy = .1)
+per_mille <- number_format(scale = 1000, suffix = "\u2030", accuracy = .1)
 per_mille(v)
 }

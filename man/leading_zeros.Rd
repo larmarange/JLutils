@@ -4,8 +4,7 @@
 \alias{leading_zeros}
 \title{Add leading zeros}
 \usage{
-leading_zeros(x, left_digits = NULL, digits = 0, prefix = "",
-  suffix = "", ...)
+leading_zeros(x, left_digits = NULL, digits = 0, prefix = "", suffix = "", ...)
 }
 \arguments{
 \item{x}{a numeric vector}

@@ -3,6 +3,7 @@
 export("%p%")
 export(A2Rplot)
 export(StatFillLabels)
+export(StatProp)
 export(StatStackLabels)
 export(auto_index_group_rows)
 export(best.cutree)

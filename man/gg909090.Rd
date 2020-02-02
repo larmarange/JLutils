@@ -4,9 +4,16 @@
 \alias{gg909090}
 \title{plot the 90-90-90 UNAIDS's target}
 \usage{
-gg909090(first = 0.9, second = 0.9, third = 0.9, col = "#E81634",
+gg909090(
+  first = 0.9,
+  second = 0.9,
+  third = 0.9,
+  col = "#E81634",
   sub = c("diagnosed", "on treatment", "virally suppressed"),
-  p_size = 6, sub_size = 4, overall = FALSE)
+  p_size = 6,
+  sub_size = 4,
+  overall = FALSE
+)
 }
 \arguments{
 \item{first}{value of the first 90}
