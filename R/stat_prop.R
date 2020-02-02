@@ -27,7 +27,7 @@
 #'   geom_bar(position = "fill") + 
 #'   geom_text(stat = "prop", position = position_fill(.5))
 #' p
-#' p + facet_grid(~ Sexe)
+#' p + facet_grid(~ Sex)
 #' 
 #' ggplot(d) +
 #'   aes(x = Class, fill = Survived, weight = Freq, prop_among = Survived) +
@@ -37,7 +37,7 @@
 #' ggplot(d) +
 #'   aes(x = Class, fill = Survived, weight = Freq, prop_among = 1) +
 #'   geom_bar() +
-#'   geom_text(aes(label = scales::percent(after_stat(prop), accuracy = .1)), stat = "prop", position = position_stack(.5))
+#'   geom_text(aes(label = scales::percent(..prop.., accuracy = .1)), stat = "prop", position = position_stack(.5))
 #' 
 stat_prop <- function(mapping = NULL, data = NULL,
                        geom = "bar", position = "fill",

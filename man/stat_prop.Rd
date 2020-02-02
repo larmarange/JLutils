@@ -55,11 +55,6 @@ to the paired geom/stat.}
 \item{na.rm}{If \code{FALSE}, the default, missing values are removed with
 a warning. If \code{TRUE}, missing values are silently removed.}
 
-\item{orientation}{The orientation of the layer. The default (\code{NA})
-automatically determines the orientation from the aesthetic mapping. In the
-rare event that this fails it can be given explicitly by setting \code{orientation}
-to either \code{"x"} or \code{"y"}. See the \emph{Orientation} section for more detail.}
-
 \item{show.legend}{logical. Should this layer be included in the legends?
 \code{NA}, the default, includes if any aesthetics are mapped.
 \code{FALSE} never includes, and \code{TRUE} always includes.
@@ -73,12 +68,12 @@ the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 }
 \description{
 `stat_prop()` is a variation of `stat_count()` allowing to compute custom 
-proportions according to the `prop_of` aesthetic defining the denominator
-(i.e. all proportions for a same value of `prop_of` will sum to 1)
+proportions according to the `prop_among` aesthetic defining the denominator
+(i.e. all proportions for a same value of `prop_among` will sum to 1)
 }
 \section{Aesthetics}{
 
-`stat_prop()` requires the \strong{prop_of} aesthetic.
+`stat_prop()` requires the \strong{prop_among} aesthetic.
 }
 
 \section{Computed variables}{
@@ -94,21 +89,21 @@ proportions according to the `prop_of` aesthetic defining the denominator
 d <- as.data.frame(Titanic)
 
 p <- ggplot(d) +
-  aes(x = Class, fill = Survived, weight = Freq, prop_of = Class) +
+  aes(x = Class, fill = Survived, weight = Freq, prop_among = Class) +
   geom_bar(position = "fill") + 
   geom_text(stat = "prop", position = position_fill(.5))
 p
-p + facet_grid(~ Sexe)
+p + facet_grid(~ Sex)
 
 ggplot(d) +
-  aes(x = Class, fill = Survived, weight = Freq, prop_of = Survived) +
+  aes(x = Class, fill = Survived, weight = Freq, prop_among = Survived) +
   geom_bar(position = "dodge") +
   geom_text(stat = "prop", position = position_dodge(0.9), vjust = "bottom")
   
 ggplot(d) +
-  aes(x = Class, fill = Survived, weight = Freq, prop_of = 1) +
+  aes(x = Class, fill = Survived, weight = Freq, prop_among = 1) +
   geom_bar() +
-  geom_text(aes(label = scales::percent(after_stat(prop), accuracy = .1)), stat = "prop", position = position_stack(.5))
+  geom_text(aes(label = scales::percent(..prop.., accuracy = .1)), stat = "prop", position = position_stack(.5))
 
 }
 \seealso{
