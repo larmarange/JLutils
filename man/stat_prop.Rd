@@ -67,12 +67,12 @@ the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 }
 \description{
 `stat_prop()` is a variation of `stat_count()` allowing to compute custom 
-proportions according to the `prop_among` aesthetic defining the denominator
-(i.e. all proportions for a same value of `prop_among` will sum to 1)
+proportions according to the `prop_by` aesthetic defining the denominator
+(i.e. all proportions for a same value of `prop_by` will sum to 1)
 }
 \section{Aesthetics}{
 
-`stat_prop()` requires the \strong{prop_among} aesthetic.
+`stat_prop()` requires the \strong{prop_by} aesthetic.
 }
 
 \section{Computed variables}{
@@ -88,19 +88,19 @@ proportions according to the `prop_among` aesthetic defining the denominator
 d <- as.data.frame(Titanic)
 
 p <- ggplot(d) +
-  aes(x = Class, fill = Survived, weight = Freq, prop_among = Class) +
+  aes(x = Class, fill = Survived, weight = Freq, prop_by = Class) +
   geom_bar(position = "fill") + 
   geom_text(stat = "prop", position = position_fill(.5))
 p
 p + facet_grid(~ Sex)
 
 ggplot(d) +
-  aes(x = Class, fill = Survived, weight = Freq, prop_among = Survived) +
+  aes(x = Class, fill = Survived, weight = Freq, prop_by = Survived) +
   geom_bar(position = "dodge") +
   geom_text(stat = "prop", position = position_dodge(0.9), vjust = "bottom")
   
 ggplot(d) +
-  aes(x = Class, fill = Survived, weight = Freq, prop_among = 1) +
+  aes(x = Class, fill = Survived, weight = Freq, prop_by = 1) +
   geom_bar() +
   geom_text(
     aes(label = scales::percent(..prop.., accuracy = .1)), 
