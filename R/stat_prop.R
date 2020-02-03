@@ -2,7 +2,8 @@
 #' 
 #' `stat_prop()` is a variation of `stat_count()` allowing to compute custom 
 #' proportions according to the `by` aesthetic defining the denominator
-#' (i.e. all proportions for a same value of `by` will sum to 1)
+#' (i.e. all proportions for a same value of `by` will sum to 1).
+#' The `by` aesthetic should be a factor.
 #' 
 #' @inheritParams ggplot2::stat_count
 #' @param geom Override the default connection between `geom_bar()` and `stat_prop()`.
@@ -90,6 +91,9 @@ StatProp <- ggproto("StatProp", Stat,
   setup_params = function(data, params) {
     if (!is.null(data$y)) {
       stop("stat_prop() must not be used with a y aesthetic.", call. = FALSE)
+    }
+    if (!is.factor(data$by)) {
+      stop("The by aesthetic should be a factor.", call. = FALSE)
     }
     params
   },       

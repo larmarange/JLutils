@@ -68,7 +68,8 @@ the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 \description{
 `stat_prop()` is a variation of `stat_count()` allowing to compute custom 
 proportions according to the `by` aesthetic defining the denominator
-(i.e. all proportions for a same value of `by` will sum to 1)
+(i.e. all proportions for a same value of `by` will sum to 1).
+The `by` aesthetic should be a factor.
 }
 \section{Aesthetics}{
 
