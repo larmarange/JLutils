@@ -92,8 +92,9 @@ StatProp <- ggproto("StatProp", Stat,
     if (!is.null(data$y)) {
       stop("stat_prop() must not be used with a y aesthetic.", call. = FALSE)
     }
-    if (!is.factor(data$by)) {
-      stop("The by aesthetic should be a factor.", call. = FALSE)
+    # there is an unresolved bug when by is a character vector. To be explored.
+    if (is.character(data$by)) {
+      stop("The by aesthetic should be a factor instead of a character vector.", call. = FALSE)
     }
     params
   },       
@@ -105,6 +106,7 @@ StatProp <- ggproto("StatProp", Stat,
    # sum weights for each combination of by and aesthetics
    # the use of . allows to consider all aesthetics defined in data
    panel <- aggregate(weight ~ ., data = data, sum, na.rm = TRUE)
+   
    names(panel)[which(names(panel) == "weight")] <- "count"
    panel$count[is.na(panel$count)] <- 0
    
