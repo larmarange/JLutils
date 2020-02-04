@@ -69,6 +69,9 @@ to the paired geom/stat.}
 \description{
 Computes position of labels when using \code{position = "stack"}
 }
+\details{
+`stat_stack_labels()` is deprecated. Use `stat_prop()` instead.
+}
 \section{Computed variables}{
 
 \describe{

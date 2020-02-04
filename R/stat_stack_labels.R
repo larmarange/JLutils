@@ -1,6 +1,8 @@
 #' Labels position for stack position.
 #'
 #' Computes position of labels when using \code{position = "stack"}
+#' 
+#' `stat_stack_labels()` is deprecated. Use `stat_prop()` instead.
 #'
 #' @inheritParams ggplot2::stat_count
 #' @param geom Use to override the default connection between

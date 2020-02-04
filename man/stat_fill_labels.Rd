@@ -69,6 +69,9 @@ to the paired geom/stat.}
 \description{
 Computes position of labels when using \code{position = "fill"}
 }
+\details{
+`stat_fill_labels()` is deprecated. Use `stat_prop()` instead.
+}
 \section{Computed variables}{
 
 \describe{
