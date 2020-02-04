@@ -1,7 +1,7 @@
 Package: JLutils
 Type: Package
 Title: Collection of R functions
-Version: 1.16.0
+Version: 1.17.0
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Authors@R: c(
   person(
