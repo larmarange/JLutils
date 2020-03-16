@@ -2,18 +2,18 @@
 % Please edit documentation in R/formating.R
 \name{number}
 \alias{number}
-\alias{number_format}
-\alias{en_format}
+\alias{label_number}
+\alias{label_en}
 \alias{en}
-\alias{fr_format}
+\alias{label_fr}
 \alias{fr}
-\alias{percent_format}
+\alias{label_percent}
 \alias{percent}
-\alias{pourcent_format}
+\alias{label_pourcent}
 \alias{pourcent}
-\alias{comp_percent_format}
+\alias{comp_label_percent}
 \alias{comp_percent}
-\alias{comp_pourcent_format}
+\alias{comp_label_pourcent}
 \alias{comp_pourcent}
 \alias{en0}
 \alias{en1}
@@ -65,7 +65,7 @@ number(
   ...
 )
 
-number_format(
+label_number(
   accuracy = NULL,
   scale = 1,
   prefix = "",
@@ -76,7 +76,7 @@ number_format(
   ...
 )
 
-en_format(
+label_en(
   accuracy = 1,
   scale = 1,
   prefix = "",
@@ -99,7 +99,7 @@ en(
   ...
 )
 
-fr_format(
+label_fr(
   accuracy = 1,
   scale = 1,
   prefix = "",
@@ -122,7 +122,7 @@ fr(
   ...
 )
 
-percent_format(
+label_percent(
   accuracy = NULL,
   scale = 100,
   prefix = "",
@@ -145,7 +145,7 @@ percent(
   ...
 )
 
-pourcent_format(
+label_pourcent(
   accuracy = 1,
   scale = 100,
   prefix = "",
@@ -168,7 +168,7 @@ pourcent(
   ...
 )
 
-comp_percent_format(
+comp_label_percent(
   accuracy = 1,
   scale = 100,
   prefix = "",
@@ -191,7 +191,7 @@ comp_percent(
   ...
 )
 
-comp_pourcent_format(
+comp_label_pourcent(
   accuracy = 1,
   scale = 100,
   prefix = "",
@@ -315,7 +315,7 @@ width (see \code{\link[base:format]{base::format()}}).}
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 }
 \value{
-a formatted character vector or, for \code{*_format} functions, a function with single parameter \code{x}, a numeric vector, that
+a formatted character vector or, for \code{label_*} functions, a function with single parameter \code{x}, a numeric vector, that
   returns a character vector
 }
 \description{
@@ -344,6 +344,6 @@ pourcent2(p)
 comp_percent(p)
 
 # Per mille
-per_mille <- number_format(scale = 1000, suffix = "\u2030", accuracy = .1)
+per_mille <- label_number(scale = 1000, suffix = "\u2030", accuracy = .1)
 per_mille(v)
 }

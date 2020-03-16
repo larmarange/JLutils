@@ -2,13 +2,13 @@
 % Please edit documentation in R/formating.R
 \name{pvalue}
 \alias{pvalue}
-\alias{pvalue_format}
+\alias{label_pvalue}
 \alias{signif_stars}
 \title{p-values formatter}
 \usage{
 pvalue(x, accuracy = 0.001, decimal.mark = ".", prefix = NULL, add_p = FALSE)
 
-pvalue_format(
+label_pvalue(
   accuracy = 0.001,
   decimal.mark = ".",
   prefix = NULL,
@@ -45,7 +45,7 @@ if \code{add_p} is \code{TRUE} and \code{c("p<", "p=", "p>")} if \code{FALSE}.}
 \item{point}{threshold below which to display one point (\code{NULL} to desactivate)}
 }
 \value{
-`pvalue_format` returns a function with single parameter
+`label_pvalue` returns a function with single parameter
   `x`, a numeric vector, that returns a character vector.
 }
 \description{
@@ -56,7 +56,7 @@ p <- c(.50, 0.12, .045, .011, .009, .00002, NA)
 pvalue(p)
 pvalue(p, accuracy = .01)
 pvalue(p, add_p = TRUE)
-custom_function <- pvalue_format(accuracy = .1, decimal.mark = ",")
+custom_function <- label_pvalue(accuracy = .1, decimal.mark = ",")
 custom_function(p)
 signif_stars(p)
 signif_stars(p, one = .15, point = NULL)
