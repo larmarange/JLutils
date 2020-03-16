@@ -1,7 +1,7 @@
 Package: JLutils
 Type: Package
 Title: Collection of R functions
-Version: 1.17.0
+Version: 1.18.0
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Authors@R: c(
   person(
@@ -21,7 +21,7 @@ Depends:
     plyr,
     magrittr
 Imports:
-    scales (>= 1.0.0)
+    scales (>= 1.1.0)
 Suggests:
     TraMineR,
     FactoMineR,
