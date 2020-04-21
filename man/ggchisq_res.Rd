@@ -52,7 +52,7 @@ ggchisq_res(
   Sex + Age + Class ~ Survived,
   data = as.data.frame(Titanic),
   weight = "Freq",
-  label = "scales::percent(row.prop)")
+  label = "scales::percent(.row.prop)")
 ggchisq_res(
   Sex + Age + Class ~ Survived,
   data = as.data.frame(Titanic),
