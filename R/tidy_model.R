@@ -42,20 +42,4 @@ process_model <- function(ret, x, conf.int = FALSE, conf.level = .95, exponentia
   ret
 }
 
-#' @rdname tidy_model
-#' @export
-tidy.clm <- function(x, conf.int = FALSE, conf.level = .95, exponentiate = FALSE, quick = FALSE, ...) {
-  tidy_model(x, conf.int, conf.level, exponentiate, quick, ...)
-}
 
-#' @rdname tidy_model
-#' @export
-tidy.clmm <- function(x, conf.int = FALSE, conf.level = .95, exponentiate = FALSE, quick = FALSE, ...) {
-  tidy_model(x, conf.int, conf.level, exponentiate, quick, ...)
-}
-
-#' @rdname tidy_model
-#' @export
-tidy.svyolr <- function(x, conf.int = FALSE, conf.level = .95, exponentiate = FALSE, quick = FALSE, ...) {
-  tidy_model(x, conf.int, conf.level, exponentiate, quick, ...)
-}

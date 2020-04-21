@@ -8,6 +8,7 @@
 #' @param breaks how to recode residuals into categories?
 #' @param palette Brewer colour palette (see \url{http://colorbrewer2.org})
 #' @param return_data return computed data.frame instead of ggplot?
+#' @importFrom broom augment
 #' @return
 #' a ggplot graphic or a data frame if \code{return_data == TRUE}.
 #' @examples
@@ -24,7 +25,7 @@
 #'   Sex + Age + Class ~ Survived,
 #'   data = as.data.frame(Titanic),
 #'   weight = "Freq",
-#'   label = "scales::percent(row.prop)")
+#'   label = "scales::percent(.row.prop)")
 #' ggchisq_res(
 #'   Sex + Age + Class ~ Survived,
 #'   data = as.data.frame(Titanic),
@@ -66,7 +67,7 @@ ggchisq_res <- function(
         } else {
           f <- as.formula(paste(weight, "~", rv, "+", cv))
         }
-        tmp <- tidy_chisq(chisq.test(xtabs(f, data)))
+        tmp <- broom::augment(chisq.test(xtabs(f, data)))
         names(tmp)[1:2] <- c("row.label", "col.label")
         tmp$row.variable <- rv
         tmp$col.variable <- cv
@@ -75,14 +76,14 @@ ggchisq_res <- function(
     }
   }
 
-  if (min(res$residuals) < min(breaks)) {
-    breaks <- c(min(res$residuals), breaks)
+  if (min(res[[".residuals"]]) < min(breaks)) {
+    breaks <- c(min(res[[".residuals"]]), breaks)
   }
-  if (max(res$residuals) > max(breaks)) {
-    breaks <- c(breaks, max(res$residuals))
+  if (max(res[[".residuals"]]) > max(breaks)) {
+    breaks <- c(breaks, max(res[[".residuals"]]))
   }
 
-  res$residuals_cat <- cut(res$residuals, include.lowest = TRUE, right = FALSE, breaks = breaks)
+  res$residuals_cat <- cut(res[[".residuals"]], include.lowest = TRUE, right = FALSE, breaks = breaks)
 
   if (return_data) {
     return(res)
