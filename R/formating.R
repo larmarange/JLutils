@@ -8,13 +8,13 @@
 #' \code{en0} to \code{en5} are shortcuts for \code{en} with 0 to 5 digits after decimal point. Similarly, \code{fr0} to \code{fr5} are shortcuts of \code{fr},
 #' \code{percent0} to \code{percent5} of \code{percent}, etc.
 #'
-#' @return a formatted character vector or, for \code{*_format} functions, a function with single parameter \code{x}, a numeric vector, that
+#' @return a formatted character vector or, for \code{label_*} functions, a function with single parameter \code{x}, a numeric vector, that
 #'   returns a character vector
 #' @inheritParams scales::number
 #' @importFrom scales number
-#' @importFrom scales number_format
+#' @importFrom scales label_number
 #' @importFrom scales percent
-#' @importFrom scales percent_format
+#' @importFrom scales label_percent
 #' @rdname number
 #' @export
 #' @examples
@@ -34,18 +34,18 @@
 #' comp_percent(p)
 #'
 #' # Per mille
-#' per_mille <- number_format(scale = 1000, suffix = "\u2030", accuracy = .1)
+#' per_mille <- label_number(scale = 1000, suffix = "\u2030", accuracy = .1)
 #' per_mille(v)
 number <- scales::number
 
 #' @export
 #' @rdname number
-number_format <- scales::number_format
+label_number <- scales::label_number
 
 #' @export
 #' @rdname number
-en_format <- function(accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = ",", decimal.mark = ".", trim = TRUE, ...) {
-  number_format(
+label_en <- function(accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = ",", decimal.mark = ".", trim = TRUE, ...) {
+  label_number(
     accuracy = accuracy, scale = scale, 
     prefix = prefix, suffix = suffix, 
     big.mark = big.mark, decimal.mark = decimal.mark, 
@@ -65,8 +65,8 @@ en <- function(x, accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = 
 
 #' @export
 #' @rdname number
-fr_format <- function(accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
-  number_format(
+label_fr <- function(accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
+  label_number(
     accuracy = accuracy, scale = scale, 
     prefix = prefix, suffix = suffix, 
     big.mark = big.mark, decimal.mark = decimal.mark, 
@@ -86,7 +86,7 @@ fr <- function(x, accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = 
 
 #' @export
 #' @rdname number
-percent_format <- scales::percent_format
+label_percent <- scales::label_percent
 
 #' @export
 #' @rdname number
@@ -94,8 +94,8 @@ percent <- scales::percent
 
 #' @export
 #' @rdname number
-pourcent_format <- function(accuracy = 1, scale = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
-  number_format(
+label_pourcent <- function(accuracy = 1, scale = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
+  label_number(
     accuracy = accuracy, scale = scale, 
     prefix = prefix, suffix = suffix, 
     big.mark = big.mark, decimal.mark = decimal.mark, 
@@ -115,7 +115,7 @@ pourcent <- function(x, accuracy = 1, scale = 100, prefix = "", suffix = " %", b
 
 #' @export
 #' @rdname number
-comp_percent_format <- function(accuracy = 1, scale = 100, prefix = "", suffix = "%", big.mark = " ", decimal.mark = ".", trim = TRUE, ...) {
+comp_label_percent <- function(accuracy = 1, scale = 100, prefix = "", suffix = "%", big.mark = " ", decimal.mark = ".", trim = TRUE, ...) {
   function(x) {
     comp_percent(
       accuracy = accuracy, scale = scale, 
@@ -139,7 +139,7 @@ comp_percent <- function(x, accuracy = 1, scale = 100, prefix = "", suffix = "%"
 
 #' @export
 #' @rdname number
-comp_pourcent_format <- function(accuracy = 1, scale = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
+comp_label_pourcent <- function(accuracy = 1, scale = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
   function(x) {
     comp_pourcent(
       accuracy = accuracy, scale = scale, 
@@ -163,147 +163,147 @@ comp_pourcent <- function(x, accuracy = 1, scale = 100, prefix = "", suffix = " 
 
 #' @rdname number
 #' @export
-en0 <- en_format(accuracy = 1)
+en0 <- label_en(accuracy = 1)
 
 #' @rdname number
 #' @export
-en1 <- en_format(accuracy = .1)
+en1 <- label_en(accuracy = .1)
 
 #' @rdname number
 #' @export
-en2 <- en_format(accuracy = .01)
+en2 <- label_en(accuracy = .01)
 
 #' @rdname number
 #' @export
-en3 <- en_format(accuracy = .001)
+en3 <- label_en(accuracy = .001)
 
 #' @rdname number
 #' @export
-en4 <- en_format(accuracy = .0001)
+en4 <- label_en(accuracy = .0001)
 
 #' @rdname number
 #' @export
-en5 <- en_format(accuracy = .00001)
+en5 <- label_en(accuracy = .00001)
 
 #' @rdname number
 #' @export
-fr0 <- fr_format(accuracy = 1)
+fr0 <- label_fr(accuracy = 1)
 
 #' @rdname number
 #' @export
-fr1 <- fr_format(accuracy = .1)
+fr1 <- label_fr(accuracy = .1)
 
 #' @rdname number
 #' @export
-fr2 <- fr_format(accuracy = .01)
+fr2 <- label_fr(accuracy = .01)
 
 #' @rdname number
 #' @export
-fr3 <- fr_format(accuracy = .001)
+fr3 <- label_fr(accuracy = .001)
 
 #' @rdname number
 #' @export
-fr4 <- fr_format(accuracy = .0001)
+fr4 <- label_fr(accuracy = .0001)
 
 #' @rdname number
 #' @export
-fr5 <- fr_format(accuracy = .00001)
+fr5 <- label_fr(accuracy = .00001)
 
 #' @rdname number
 #' @export
-percent0 <- percent_format(accuracy = 1)
+percent0 <- label_percent(accuracy = 1)
 
 #' @rdname number
 #' @export
-percent1 <- percent_format(accuracy = .1)
+percent1 <- label_percent(accuracy = .1)
 
 #' @rdname number
 #' @export
-percent2 <- percent_format(accuracy = .01)
+percent2 <- label_percent(accuracy = .01)
 
 #' @rdname number
 #' @export
-percent3 <- percent_format(accuracy = .001)
+percent3 <- label_percent(accuracy = .001)
 
 #' @rdname number
 #' @export
-percent4 <- percent_format(accuracy = .0001)
+percent4 <- label_percent(accuracy = .0001)
 
 #' @rdname number
 #' @export
-percent5 <- percent_format(accuracy = .00001)
+percent5 <- label_percent(accuracy = .00001)
 
 #' @rdname number
 #' @export
-pourcent0 <- pourcent_format(accuracy = 1)
+pourcent0 <- label_pourcent(accuracy = 1)
 
 #' @rdname number
 #' @export
-pourcent1 <- pourcent_format(accuracy = .1)
+pourcent1 <- label_pourcent(accuracy = .1)
 
 #' @rdname number
 #' @export
-pourcent2 <- pourcent_format(accuracy = .01)
+pourcent2 <- label_pourcent(accuracy = .01)
 
 #' @rdname number
 #' @export
-pourcent3 <- pourcent_format(accuracy = .001)
+pourcent3 <- label_pourcent(accuracy = .001)
 
 #' @rdname number
 #' @export
-pourcent4 <- pourcent_format(accuracy = .0001)
+pourcent4 <- label_pourcent(accuracy = .0001)
 
 #' @rdname number
 #' @export
-pourcent5 <- pourcent_format(accuracy = .00001)
+pourcent5 <- label_pourcent(accuracy = .00001)
 
 #' @rdname number
 #' @export
-comp_percent0 <- comp_percent_format(accuracy = 1)
+comp_percent0 <- comp_label_percent(accuracy = 1)
 
 #' @rdname number
 #' @export
-comp_percent1 <- comp_percent_format(accuracy = .1)
+comp_percent1 <- comp_label_percent(accuracy = .1)
 
 #' @rdname number
 #' @export
-comp_percent2 <- comp_percent_format(accuracy = .01)
+comp_percent2 <- comp_label_percent(accuracy = .01)
 
 #' @rdname number
 #' @export
-comp_percent3 <- comp_percent_format(accuracy = .001)
+comp_percent3 <- comp_label_percent(accuracy = .001)
 
 #' @rdname number
 #' @export
-comp_percent4 <- comp_percent_format(accuracy = .0001)
+comp_percent4 <- comp_label_percent(accuracy = .0001)
 
 #' @rdname number
 #' @export
-comp_percent5 <- comp_percent_format(accuracy = .00001)
+comp_percent5 <- comp_label_percent(accuracy = .00001)
 
 #' @rdname number
 #' @export
-comp_pourcent0 <- comp_pourcent_format(accuracy = 1)
+comp_pourcent0 <- comp_label_pourcent(accuracy = 1)
 
 #' @rdname number
 #' @export
-comp_pourcent1 <- comp_pourcent_format(accuracy = .1)
+comp_pourcent1 <- comp_label_pourcent(accuracy = .1)
 
 #' @rdname number
 #' @export
-comp_pourcent2 <- comp_pourcent_format(accuracy = .01)
+comp_pourcent2 <- comp_label_pourcent(accuracy = .01)
 
 #' @rdname number
 #' @export
-comp_pourcent3 <- comp_pourcent_format(accuracy = .001)
+comp_pourcent3 <- comp_label_pourcent(accuracy = .001)
 
 #' @rdname number
 #' @export
-comp_pourcent4 <- comp_pourcent_format(accuracy = .0001)
+comp_pourcent4 <- comp_label_pourcent(accuracy = .0001)
 
 #' @rdname number
 #' @export
-comp_pourcent5 <- comp_pourcent_format(accuracy = .00001)
+comp_pourcent5 <- comp_label_pourcent(accuracy = .00001)
 
 
 #' Formatting numbers like in WHO publications
@@ -338,24 +338,24 @@ who_formatter <- function(x) {
 #'
 #' Formatter for p-values, adding a symbol "<" for small p-values.
 #'
-#' @return `pvalue_format` returns a function with single parameter
+#' @return `label_pvalue` returns a function with single parameter
 #'   `x`, a numeric vector, that returns a character vector.
 #' @inheritParams scales::pvalue
 #' @importFrom scales pvalue
-#' @importFrom scales pvalue_format
+#' @importFrom scales label_pvalue
 #' @export
 #' @examples
 #' p <- c(.50, 0.12, .045, .011, .009, .00002, NA)
 #' pvalue(p)
 #' pvalue(p, accuracy = .01)
 #' pvalue(p, add_p = TRUE)
-#' custom_function <- pvalue_format(accuracy = .1, decimal.mark = ",")
+#' custom_function <- label_pvalue(accuracy = .1, decimal.mark = ",")
 #' custom_function(p)
 pvalue <- scales::pvalue
 
 #' @rdname pvalue
 #' @export
-pvalue_format <- scales::pvalue_format
+label_pvalue <- scales::label_pvalue
 
 #' @rdname pvalue
 #' @export signif_stars
