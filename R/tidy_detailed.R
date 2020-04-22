@@ -5,6 +5,7 @@
 #'
 #' @param x model to tidy
 #' @param ... extra arguments passed to \code{\link[broom]{tidy}} function from \pkg{broom} package
+#' @importFrom broom tidy
 #' @note
 #' This function requires the \pkg{broom} and \pkg{dplyr} packages.
 #' @return
