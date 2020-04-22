@@ -75,11 +75,11 @@ the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 \describe{
   \item{observed}{number of observations in x,y}
   \item{prop}{proportion of total}
-  \item{prop}{computed proportion}
-  \item{prop}{computed proportion}
-  \item{prop}{computed proportion}
-  \item{prop}{computed proportion}
-  \item{prop}{computed proportion}
+  \item{row.prop}{row proportion}
+  \item{col.prop}{column proportion}
+  \item{expected}{expected count under the null hypothesis}
+  \item{residuals}{Pearson's residual}
+  \item{stdres}{standardized residual}
 }
 }
 
