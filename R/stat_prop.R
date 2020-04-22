@@ -57,7 +57,6 @@ stat_prop <- function(mapping = NULL, data = NULL,
   
   params <- list(
     na.rm = na.rm,
-    orientation = orientation,
     width = width,
     ...
   )
@@ -97,7 +96,9 @@ StatProp <- ggproto("StatProp", Stat,
       stop("The by aesthetic should be a factor instead of a character vector.", call. = FALSE)
     }
     params
-  },       
+  },
+  
+  extra_params = c("na.rm"),
                     
   compute_panel = function(self, data, scales, width = NULL) {
    data$weight <- data$weight %||% rep(1, nrow(data))
