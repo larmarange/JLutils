@@ -4,7 +4,7 @@
 \alias{tidy.msSurv}
 \title{Experimental tidier for msSurv objects}
 \usage{
-tidy.msSurv(
+\method{tidy}{msSurv}(
   x,
   extract = c("state occupation probabilities", "transition probabilities"),
   conf.level = 0.95,

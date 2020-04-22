@@ -5,9 +5,9 @@
 \alias{tidy.hazard.msm}
 \title{Basic tieders for msm models}
 \usage{
-tidy.prevalence.msm(x)
+\method{tidy}{prevalence.msm}(x)
 
-tidy.hazard.msm(x)
+\method{tidy}{hazard.msm}(x)
 }
 \arguments{
 \item{x}{an object returned by \code{\link[msm]{prevalence.msm}} or \code{\link[msm]{hazard.msm}}}
