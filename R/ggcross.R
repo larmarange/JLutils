@@ -48,6 +48,7 @@ ggcross <- function(
                     labels = NULL, labels_size = 3.5,
                     svystatistic = c("F", "Chisq", "Wald", "adjWald", "lincom", "saddlepoint"),
                     return_data = FALSE) {
+  svystatistic <- match.arg(svystatistic)
   if (!is.data.frame(data) & !inherits(data, "survey.design")) {
     data <- as.data.frame(data)
   }
@@ -93,7 +94,7 @@ ggcross <- function(
           f <- as.formula(paste(weight, "~", rv, "+", cv))
         }
         if (inherits(data, "survey.design")) {
-          tmp <- .tidy_chisq(svychisq(f, data))
+          tmp <- .tidy_chisq(svychisq(f, data, statistic = svystatistic))
         } else {
           tmp <- .tidy_chisq(chisq.test(xtabs(f, data)))
         }
