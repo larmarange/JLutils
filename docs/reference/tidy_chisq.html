@@ -36,7 +36,9 @@
 
 
 <meta property="og:title" content="Tidiers for lists returned from chisq.test — tidy_chisq" />
-<meta property="og:description" content="Tidies objects returned by the chisq.test function." />
+<meta property="og:description" content="Tidies objects returned by the chisq.test function.
+This function is now deprecated. Use augment method from
+broom package" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -69,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">JLutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.17.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.0</span>
       </span>
     </div>
 
@@ -114,7 +116,9 @@
     </div>
 
     <div class="ref-description">
-    <p>Tidies objects returned by the <code><a href='https://rdrr.io/r/stats/chisq.test.html'>chisq.test</a></code> function.</p>
+    <p>Tidies objects returned by the <code><a href='https://rdrr.io/r/stats/chisq.test.html'>chisq.test</a></code> function.
+This function is now deprecated. Use <code>augment</code> method from
+<code>broom</code> package</p>
     </div>
 
     <pre class="usage"><span class='fu'>tidy_chisq</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
@@ -135,24 +139,17 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>test</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/chisq.test.html'>chisq.test</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/xtabs.html'>xtabs</a></span>(<span class='no'>Freq</span> ~ <span class='no'>Sex</span> + <span class='no'>Class</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>Titanic</span>)))
-<span class='fu'>tidy_chisq</span>(<span class='no'>test</span>)</div><div class='output co'>#&gt;      Sex Class observed       prop   row.prop  col.prop  expected  residuals
-#&gt; 1   Male   1st      180 0.08178101 0.10398614 0.5538462 255.59973  -4.728681
-#&gt; 2 Female   1st      145 0.06587915 0.30851064 0.4461538  69.40027   9.074854
-#&gt; 3   Male   2nd      179 0.08132667 0.10340843 0.6280702 224.14130  -3.015179
-#&gt; 4 Female   2nd      106 0.04815993 0.22553191 0.3719298  60.85870   5.786457
-#&gt; 5   Male   3rd      510 0.23171286 0.29462738 0.7223796 555.24125  -1.919967
-#&gt; 6 Female   3rd      196 0.08905043 0.41702128 0.2776204 150.75875   3.684626
-#&gt; 7   Male  Crew      862 0.39164016 0.49797805 0.9740113 696.01772   6.291462
-#&gt; 8 Female  Crew       23 0.01044980 0.04893617 0.0259887 188.98228 -12.074000
-#&gt;       stdres
-#&gt; 1 -11.083954
-#&gt; 2  11.083954
-#&gt; 3  -6.993369
-#&gt; 4   6.993369
-#&gt; 5  -5.041320
-#&gt; 6   5.041320
-#&gt; 7  17.607380
-#&gt; 8 -17.607380</div></pre>
+<span class='kw pkg'>broom</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/broom/man/reexports.html'>augment</a></span>(<span class='no'>test</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 8 x 9</span><span>
+#&gt;   Sex    Class .observed  .prop .row.prop .col.prop .expected .residuals .stdres
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> Male   1st         180 0.081</span><span style='text-decoration: underline;'>8</span><span>    0.104     0.554      256.       -</span><span style='color: #BB0000;'>4.73</span><span>  -</span><span style='color: #BB0000;'>11.1</span><span> 
+#&gt; </span><span style='color: #555555;'>2</span><span> Female 1st         145 0.065</span><span style='text-decoration: underline;'>9</span><span>    0.309     0.446       69.4       9.07   11.1 
+#&gt; </span><span style='color: #555555;'>3</span><span> Male   2nd         179 0.081</span><span style='text-decoration: underline;'>3</span><span>    0.103     0.628      224.       -</span><span style='color: #BB0000;'>3.02</span><span>   -</span><span style='color: #BB0000;'>6.99</span><span>
+#&gt; </span><span style='color: #555555;'>4</span><span> Female 2nd         106 0.048</span><span style='text-decoration: underline;'>2</span><span>    0.226     0.372       60.9       5.79    6.99
+#&gt; </span><span style='color: #555555;'>5</span><span> Male   3rd         510 0.232     0.295     0.722      555.       -</span><span style='color: #BB0000;'>1.92</span><span>   -</span><span style='color: #BB0000;'>5.04</span><span>
+#&gt; </span><span style='color: #555555;'>6</span><span> Female 3rd         196 0.089</span><span style='text-decoration: underline;'>1</span><span>    0.417     0.278      151.        3.68    5.04
+#&gt; </span><span style='color: #555555;'>7</span><span> Male   Crew        862 0.392     0.498     0.974      696.        6.29   17.6 
+#&gt; </span><span style='color: #555555;'>8</span><span> Female Crew         23 0.010</span><span style='text-decoration: underline;'>4</span><span>    0.048</span><span style='text-decoration: underline;'>9</span><span>    0.026</span><span style='text-decoration: underline;'>0</span><span>     189.      -</span><span style='color: #BB0000;'>12.1</span><span>   -</span><span style='color: #BB0000;'>17.6</span><span> </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

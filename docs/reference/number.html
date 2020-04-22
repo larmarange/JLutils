@@ -75,7 +75,7 @@ percent0 to percent5 of percent, etc." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">JLutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.17.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.0</span>
       </span>
     </div>
 
@@ -141,7 +141,7 @@ percent0 to percent5 of percent, etc." />
   <span class='no'>...</span>
 )
 
-<span class='fu'>number_format</span>(
+<span class='fu'>label_number</span>(
   <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
@@ -152,7 +152,7 @@ percent0 to percent5 of percent, etc." />
   <span class='no'>...</span>
 )
 
-<span class='fu'>en_format</span>(
+<span class='fu'>label_en</span>(
   <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
@@ -175,7 +175,7 @@ percent0 to percent5 of percent, etc." />
   <span class='no'>...</span>
 )
 
-<span class='fu'>fr_format</span>(
+<span class='fu'>label_fr</span>(
   <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
@@ -198,7 +198,7 @@ percent0 to percent5 of percent, etc." />
   <span class='no'>...</span>
 )
 
-<span class='fu'>percent_format</span>(
+<span class='fu'>label_percent</span>(
   <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>100</span>,
   <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
@@ -221,7 +221,7 @@ percent0 to percent5 of percent, etc." />
   <span class='no'>...</span>
 )
 
-<span class='fu'>pourcent_format</span>(
+<span class='fu'>label_pourcent</span>(
   <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>100</span>,
   <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
@@ -244,7 +244,7 @@ percent0 to percent5 of percent, etc." />
   <span class='no'>...</span>
 )
 
-<span class='fu'>comp_percent_format</span>(
+<span class='fu'>comp_label_percent</span>(
   <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>100</span>,
   <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
@@ -267,7 +267,7 @@ percent0 to percent5 of percent, etc." />
   <span class='no'>...</span>
 )
 
-<span class='fu'>comp_pourcent_format</span>(
+<span class='fu'>comp_label_pourcent</span>(
   <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>100</span>,
   <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
@@ -413,7 +413,7 @@ width (see <code><a href='https://rdrr.io/r/base/format.html'>base::format()</a>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a formatted character vector or, for <code>*_format</code> functions, a function with single parameter <code>x</code>, a numeric vector, that
+    <p>a formatted character vector or, for <code>label_*</code> functions, a function with single parameter <code>x</code>, a numeric vector, that
   returns a character vector</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -426,7 +426,7 @@ width (see <code><a href='https://rdrr.io/r/base/format.html'>base::format()</a>
 #&gt;  [9] "6.73%"  "2.70%" </div><div class='input'><span class='fu'>pourcent2</span>(<span class='no'>p</span>)</div><div class='output co'>#&gt;  [1] "95,87 %" "36,00 %" "19,90 %" "72,63 %" "16,81 %" "22,65 %" "84,55 %"
 #&gt;  [8] "34,59 %" "6,73 %"  "2,70 %" </div><div class='input'><span class='fu'>comp_percent</span>(<span class='no'>p</span>)</div><div class='output co'>#&gt;  [1] "4%"  "64%" "80%" "27%" "83%" "77%" "15%" "65%" "93%" "97%"</div><div class='input'>
 <span class='co'># Per mille</span>
-<span class='no'>per_mille</span> <span class='kw'>&lt;-</span> <span class='fu'>number_format</span>(<span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>"\u2030"</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>.1</span>)
+<span class='no'>per_mille</span> <span class='kw'>&lt;-</span> <span class='fu'>label_number</span>(<span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>"\u2030"</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>.1</span>)
 <span class='fu'>per_mille</span>(<span class='no'>v</span>)</div><div class='output co'>#&gt; [1] "12 300.0‰"     "4 000.0‰"      "12 345 789.0‰" "0.2‰"         </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

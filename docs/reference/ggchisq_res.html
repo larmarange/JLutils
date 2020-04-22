@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">JLutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.17.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.0</span>
       </span>
     </div>
 
@@ -177,24 +177,24 @@
   <span class='no'>Sex</span> + <span class='no'>Age</span> + <span class='no'>Class</span> ~ <span class='no'>Survived</span>,
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>Titanic</span>),
   <span class='kw'>weight</span> <span class='kw'>=</span> <span class='st'>"Freq"</span>,
-  <span class='kw'>return_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;    row.label col.label observed       prop  row.prop   col.prop   expected
-#&gt; 1       Male        No     1364 0.61971831 0.7879838 0.91543624 1171.82644
-#&gt; 2     Female        No      126 0.05724671 0.2680851 0.08456376  318.17356
-#&gt; 3       Male       Yes      367 0.16674239 0.2120162 0.51617440  559.17356
-#&gt; 4     Female       Yes      344 0.15629259 0.7319149 0.48382560  151.82644
-#&gt; 5      Child        No       52 0.02362562 0.4770642 0.03489933   73.78919
-#&gt; 6      Adult        No     1438 0.65333939 0.6873805 0.96510067 1416.21081
-#&gt; 7      Child       Yes       57 0.02589732 0.5229358 0.08016878   35.21081
-#&gt; 8      Adult       Yes      654 0.29713766 0.3126195 0.91983122  675.78919
-#&gt; 9        1st        No      122 0.05542935 0.3753846 0.08187919  220.01363
-#&gt; 10       2nd        No      167 0.07587460 0.5859649 0.11208054  192.93503
-#&gt; 11       3rd        No      528 0.23989096 0.7478754 0.35436242  477.93730
-#&gt; 12      Crew        No      673 0.30577010 0.7604520 0.45167785  599.11404
-#&gt; 13       1st       Yes      203 0.09223080 0.6246154 0.28551336  104.98637
-#&gt; 14       2nd       Yes      118 0.05361199 0.4140351 0.16596343   92.06497
-#&gt; 15       3rd       Yes      178 0.08087233 0.2521246 0.25035162  228.06270
-#&gt; 16      Crew       Yes      212 0.09631985 0.2395480 0.29817159  285.88596
-#&gt;      residuals     stdres row.variable col.variable residuals_cat
+  <span class='kw'>return_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;    row.label col.label .observed      .prop .row.prop  .col.prop  .expected
+#&gt; 1       Male        No      1364 0.61971831 0.7879838 0.91543624 1171.82644
+#&gt; 2     Female        No       126 0.05724671 0.2680851 0.08456376  318.17356
+#&gt; 3       Male       Yes       367 0.16674239 0.2120162 0.51617440  559.17356
+#&gt; 4     Female       Yes       344 0.15629259 0.7319149 0.48382560  151.82644
+#&gt; 5      Child        No        52 0.02362562 0.4770642 0.03489933   73.78919
+#&gt; 6      Adult        No      1438 0.65333939 0.6873805 0.96510067 1416.21081
+#&gt; 7      Child       Yes        57 0.02589732 0.5229358 0.08016878   35.21081
+#&gt; 8      Adult       Yes       654 0.29713766 0.3126195 0.91983122  675.78919
+#&gt; 9        1st        No       122 0.05542935 0.3753846 0.08187919  220.01363
+#&gt; 10       2nd        No       167 0.07587460 0.5859649 0.11208054  192.93503
+#&gt; 11       3rd        No       528 0.23989096 0.7478754 0.35436242  477.93730
+#&gt; 12      Crew        No       673 0.30577010 0.7604520 0.45167785  599.11404
+#&gt; 13       1st       Yes       203 0.09223080 0.6246154 0.28551336  104.98637
+#&gt; 14       2nd       Yes       118 0.05361199 0.4140351 0.16596343   92.06497
+#&gt; 15       3rd       Yes       178 0.08087233 0.2521246 0.25035162  228.06270
+#&gt; 16      Crew       Yes       212 0.09631985 0.2395480 0.29817159  285.88596
+#&gt;     .residuals    .stdres row.variable col.variable residuals_cat
 #&gt; 1    5.6138652  21.374615          Sex     Survived      [4,15.6]
 #&gt; 2  -10.7736184 -21.374615          Sex     Survived    [-10.8,-4)
 #&gt; 3   -8.1268139 -21.374615          Sex     Survived    [-10.8,-4)
@@ -214,7 +214,7 @@
   <span class='no'>Sex</span> + <span class='no'>Age</span> + <span class='no'>Class</span> ~ <span class='no'>Survived</span>,
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>Titanic</span>),
   <span class='kw'>weight</span> <span class='kw'>=</span> <span class='st'>"Freq"</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"scales::percent(row.prop)"</span>)</div><div class='img'><img src='ggchisq_res-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>ggchisq_res</span>(
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"scales::percent(.row.prop)"</span>)</div><div class='img'><img src='ggchisq_res-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>ggchisq_res</span>(
   <span class='no'>Sex</span> + <span class='no'>Age</span> + <span class='no'>Class</span> ~ <span class='no'>Survived</span>,
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>Titanic</span>),
   <span class='kw'>weight</span> <span class='kw'>=</span> <span class='st'>"Freq"</span>,

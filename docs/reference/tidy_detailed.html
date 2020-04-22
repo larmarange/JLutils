@@ -70,7 +70,7 @@ by providing additional column indicating variables and factors names." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">JLutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.17.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.0</span>
       </span>
     </div>
 
@@ -159,7 +159,7 @@ implemented within the <code>pixiedust</code> package
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>reg</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>Sepal.Length</span> ~ <span class='no'>Sepal.Width</span> + <span class='no'>Petal.Length</span> * <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)
-<span class='fu'>tidy_detailed</span>(<span class='no'>reg</span>)</div><div class='output co'>#&gt; <span class='message'>Le chargement a nécessité le package : broom</span></div><div class='output co'>#&gt;                             term   estimate  std.error statistic      p.value
+<span class='fu'>tidy_detailed</span>(<span class='no'>reg</span>)</div><div class='output co'>#&gt;                             term   estimate  std.error statistic      p.value
 #&gt; 1                    (Intercept)  2.9257321 0.43637647  6.704606 4.338251e-10
 #&gt; 2                   Petal.Length  0.3677469 0.25359434  1.450138 1.492097e-01
 #&gt; 3 Petal.Length:Speciesversicolor  0.2920936 0.26829782  1.088692 2.781212e-01

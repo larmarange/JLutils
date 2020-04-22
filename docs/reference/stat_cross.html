@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Labels position for stack position. — stat_stack_labels • JLutils</title>
+<title>Compute cross-tabulation statisticics — stat_cross • JLutils</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Labels position for stack position. — stat_stack_labels" />
-<meta property="og:description" content="Computes position of labels when using position = &quot;stack&quot;" />
+<meta property="og:title" content="Compute cross-tabulation statisticics — stat_cross" />
+<meta property="og:description" content="`stat_cross()` computes statistics of a 2-dimensional matrix using `broom::augment.htest()`." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,25 +108,24 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Labels position for stack position.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/larmarange/JLutils/blob/master/R/stat_stack_labels.R'><code>R/stat_stack_labels.R</code></a></small>
-    <div class="hidden name"><code>stat_stack_labels.Rd</code></div>
+    <h1>Compute cross-tabulation statisticics</h1>
+    <small class="dont-index">Source: <a href='https://github.com/larmarange/JLutils/blob/master/R/stat_cross.R'><code>R/stat_cross.R</code></a></small>
+    <div class="hidden name"><code>stat_cross.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Computes position of labels when using <code>position = "stack"</code></p>
+    <p>`stat_cross()` computes statistics of a 2-dimensional matrix using `broom::augment.htest()`.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>stat_stack_labels</span>(
+    <pre class="usage"><span class='fu'>stat_cross</span>(
   <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>geom</span> <span class='kw'>=</span> <span class='st'>"text"</span>,
+  <span class='kw'>geom</span> <span class='kw'>=</span> <span class='st'>"point"</span>,
   <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"identity"</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>show.legend</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>inherit.aes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>...</span>
+  <span class='kw'>inherit.aes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -155,8 +154,7 @@ from a <code>formula</code> (e.g. <code>~ head(.x, 10)</code>).</p></td>
     </tr>
     <tr>
       <th>geom</th>
-      <td><p>Use to override the default connection between
-<code>geom_text</code> and <code>stat_stack_labels</code>.</p></td>
+      <td><p>Override the default connection between `geom_bar()` and `stat_prop()`.</p></td>
     </tr>
     <tr>
       <th>position</th>
@@ -164,13 +162,16 @@ from a <code>formula</code> (e.g. <code>~ head(.x, 10)</code>).</p></td>
 a call to a position adjustment function.</p></td>
     </tr>
     <tr>
-      <th>width</th>
-      <td><p>Bar width. By default, set to 90% of the resolution of the data.</p></td>
+      <th>...</th>
+      <td><p>Other arguments passed on to <code><a href='https://ggplot2.tidyverse.org/reference/layer.html'>layer()</a></code>. These are
+often aesthetics, used to set an aesthetic to a fixed value, like
+<code>colour = "red"</code> or <code>size = 3</code>. They may also be parameters
+to the paired geom/stat.</p></td>
     </tr>
     <tr>
       <th>na.rm</th>
-      <td><p>If <code>FALSE</code>, the default, missing values are removed with
-a warning. If <code>TRUE</code>, missing values are silently removed.</p></td>
+      <td><p>If `TRUE`, the default, missing values are removed with a warning. 
+If `TRUE`, missing values are silently removed.</p></td>
     </tr>
     <tr>
       <th>show.legend</th>
@@ -187,51 +188,63 @@ rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. <code><a href='https://ggplot2.tidyverse.org/reference/borders.html'>borders()</a></code>.</p></td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Other arguments passed on to <code><a href='https://ggplot2.tidyverse.org/reference/layer.html'>layer()</a></code>. These are
-often aesthetics, used to set an aesthetic to a fixed value, like
-<code>colour = "red"</code> or <code>size = 3</code>. They may also be parameters
-to the paired geom/stat.</p></td>
-    </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="aesthetics"><a class="anchor" href="#aesthetics"></a>Aesthetics</h2>
 
-    <p>`stat_stack_labels()` is deprecated. Use `stat_prop()` instead.</p>
+    
+
+<p>`stat_prop()` requires the <strong>x</strong> and the <strong>y</strong> aesthetics.</p>
     <h2 class="hasAnchor" id="computed-variables"><a class="anchor" href="#computed-variables"></a>Computed variables</h2>
 
     
 
 <dl class='dl-horizontal'>
-  <dt>count</dt><dd><p>the number of observations</p></dd>
-  <dt>cumcount</dt><dd><p>the cumulative number of observations</p></dd>
-  <dt>ylabel</dt><dd><p>the y position of labels, i.e. \(cumcount - count / 2\)</p></dd>
+  <dt>observed</dt><dd><p>number of observations in x,y</p></dd>
+  <dt>prop</dt><dd><p>proportion of total</p></dd>
+  <dt>prop</dt><dd><p>computed proportion</p></dd>
+  <dt>prop</dt><dd><p>computed proportion</p></dd>
+  <dt>prop</dt><dd><p>computed proportion</p></dd>
+  <dt>prop</dt><dd><p>computed proportion</p></dd>
+  <dt>prop</dt><dd><p>computed proportion</p></dd>
 
 </dl>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='stat_fill_labels.html'>stat_fill_labels</a></code> for <code>position = "fill"</code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>ggplot</span>(<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>Titanic</span>)) +
-  <span class='fu'>aes</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Class</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>Survived</span>, <span class='kw'>weight</span> <span class='kw'>=</span> <span class='no'>Freq</span>) +
-  <span class='fu'>geom_bar</span>() + <span class='fu'>stat_stack_labels</span>()</div><div class='img'><img src='stat_stack_labels-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>ggplot</span>(<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>Titanic</span>)) +
-  <span class='fu'>aes</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Class</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>Survived</span>, <span class='kw'>weight</span> <span class='kw'>=</span> <span class='no'>Freq</span>) +
-  <span class='fu'>geom_bar</span>() + <span class='fu'>geom_label</span>(<span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"stack_labels"</span>)</div><div class='img'><img src='stat_stack_labels-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>ggplot</span>(<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>Titanic</span>)) +
-  <span class='fu'>aes</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Class</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>Survived</span>, <span class='kw'>weight</span> <span class='kw'>=</span> <span class='no'>Freq</span>) +
-  <span class='fu'>geom_bar</span>() + <span class='fu'>stat_stack_labels</span>() + <span class='fu'>facet_grid</span>(~<span class='no'>Sex</span>)</div><div class='img'><img src='stat_stack_labels-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>ggplot</span>(<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>Titanic</span>)) +
-  <span class='fu'>aes</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span>(<span class='no'>Class</span>), <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>Survived</span>, <span class='kw'>weight</span> <span class='kw'>=</span> <span class='no'>Freq</span>) +
-  <span class='fu'>geom_area</span>(<span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"count"</span>) + <span class='fu'>stat_stack_labels</span>()</div><div class='img'><img src='stat_stack_labels-4.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>Titanic</span>)
+
+<span class='fu'>ggplot</span>(<span class='no'>d</span>) +
+  <span class='fu'>aes</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Class</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Survived</span>, <span class='kw'>weight</span> <span class='kw'>=</span> <span class='no'>Freq</span>) +
+  <span class='fu'>stat_cross</span>() +
+  <span class='fu'>scale_size_area</span>()</div><div class='img'><img src='stat_cross-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>ggplot</span>(<span class='no'>d</span>) +
+  <span class='fu'>aes</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Class</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Survived</span>, <span class='kw'>weight</span> <span class='kw'>=</span> <span class='no'>Freq</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>..stdres..</span>) +
+  <span class='fu'>stat_cross</span>(<span class='kw'>shape</span> <span class='kw'>=</span> <span class='fl'>22</span>) +
+  <span class='fu'>scale_fill_steps2</span>(<span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>4</span>, -<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>4</span>), <span class='kw'>show.limits</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='stat_cross-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>ggplot</span>(<span class='no'>d</span>) +
+  <span class='fu'>aes</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Class</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Survived</span>, <span class='kw'>weight</span> <span class='kw'>=</span> <span class='no'>Freq</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw pkg'>scales</span><span class='kw ns'>::</span><span class='fu'><a href='https://scales.r-lib.org//reference/label_percent.html'>percent</a></span>(<span class='no'>..row.prop..</span>), <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>) +
+  <span class='fu'>geom_text</span>(<span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"cross"</span>)</div><div class='img'><img src='stat_cross-3.png' alt='' width='700' height='433' /></div><div class='input'>
+  <span class='fu'>ggplot</span>(<span class='no'>d</span>) +
+    <span class='fu'>aes</span>(
+      <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Class</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Survived</span>, <span class='kw'>weight</span> <span class='kw'>=</span> <span class='no'>Freq</span>,
+      <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw pkg'>scales</span><span class='kw ns'>::</span><span class='fu'><a href='https://scales.r-lib.org//reference/label_percent.html'>percent</a></span>(<span class='no'>..row.prop..</span>),
+      <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>..stdres..</span>
+    ) +
+    <span class='fu'>stat_cross</span>(<span class='kw'>shape</span> <span class='kw'>=</span> <span class='fl'>22</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>30</span>) +
+    <span class='fu'>geom_text</span>(<span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"cross"</span>) +
+    <span class='fu'>scale_fill_steps2</span>(<span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>4</span>, -<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>4</span>), <span class='kw'>show.limits</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) +
+    <span class='fu'>facet_grid</span>(<span class='no'>Sex</span> ~ <span class='no'>.</span>) +
+    <span class='fu'>labs</span>(<span class='kw'>fill</span> <span class='kw'>=</span> <span class='st'>"Standardized residuals"</span>) +
+    <span class='fu'>theme_minimal</span>()</div><div class='img'><img src='stat_cross-4.png' alt='' width='700' height='433' /></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#details">Details</a></li>
+      <li><a href="#aesthetics">Aesthetics</a></li>
       <li><a href="#computed-variables">Computed variables</a></li>
-      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
