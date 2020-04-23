@@ -92,19 +92,19 @@ ggplot(d) +
   scale_size_area()
 
 ggplot(d) + 
-  aes(x = Class, y = Survived, weight = Freq, fill = ..stdres..) + 
+  aes(x = Class, y = Survived, weight = Freq, fill = after_stat(stdres)) + 
   stat_cross(shape = 22) + 
   scale_fill_steps2(breaks = c(-4, -2, 2, 4), show.limits = TRUE)
 
 ggplot(d) + 
-  aes(x = Class, y = Survived, weight = Freq, label = scales::percent(..row.prop..), size = NULL) +
+  aes(x = Class, y = Survived, weight = Freq, label = scales::percent(after_stat(row.prop)), size = NULL) +
   geom_text(stat = "cross")
   
   ggplot(d) + 
     aes(
       x = Class, y = Survived, weight = Freq, 
-      label = scales::percent(..row.prop..), 
-      size = NULL, fill = ..stdres..
+      label = scales::percent(after_stat(row.prop)), 
+      size = NULL, fill = after_stat(stdres)
     ) + 
     stat_cross(shape = 22, size = 30) + 
     geom_text(stat = "cross") + 

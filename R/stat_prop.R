@@ -42,7 +42,7 @@
 #'   aes(x = Class, fill = Survived, weight = Freq, by = 1) +
 #'   geom_bar() +
 #'   geom_text(
-#'     aes(label = scales::percent(..prop.., accuracy = .1)), 
+#'     aes(label = scales::percent(after_stat(prop), accuracy = .1)), 
 #'     stat = "prop", 
 #'     position = position_stack(.5)
 #'  )
@@ -84,7 +84,7 @@ StatProp <- ggproto("StatProp", Stat,
   required_aes = c("x", "by"),
   default_aes = aes(
     y = stat(count), weight = 1,
-    label = scales::percent(..prop..)
+    label = scales::percent(after_stat(prop))
   ),
   
   setup_params = function(data, params) {
