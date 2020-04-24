@@ -1,3 +1,7 @@
+# JLutils 1.20.0
+
+* a `ggsurvey()` function for easy ggplot from a survey object
+
 # JLutils 1.19.0
 
 * `tidy.clm()`, `tidy.clmm()` and `tidy.svyolr()` are now part of `broom` and have
