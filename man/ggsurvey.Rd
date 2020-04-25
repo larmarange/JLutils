@@ -24,3 +24,20 @@ to compute the graph. However, statistic or geometry requiring
 correct variance computation (like \code{geom_smooth()}) will 
 be statistically incorrect.
 }
+\examples{
+if (require(survey)) {
+  data(api)
+  dstrat <- svydesign(
+    id = ~1, strata = ~stype, 
+    weights = ~pw, data=apistrat, 
+    fpc = ~fpc
+  )
+  ggsurvey(dstrat) + 
+    aes(x = cnum, y = dnum) + 
+    geom_count()
+ 
+  d <- as.data.frame(Titanic)
+  dw <- svydesign(ids = ~1, weights=~Freq, data = d)
+  ggsurvey(dw) + aes(x = Class, fill = Survived) + geom_bar(position = "fill")
+}
+}

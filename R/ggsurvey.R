@@ -14,7 +14,7 @@
 #' @param ... Other arguments passed on to methods. Not currently used.
 #' 
 #' @export
-#' @example 
+#' @examples 
 #' if (require(survey)) {
 #'   data(api)
 #'   dstrat <- svydesign(
