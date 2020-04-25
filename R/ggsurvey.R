@@ -36,7 +36,7 @@ ggsurvey <- function(design = NULL, mapping = aes(), ...) {
   }
   data <- design$variables
   data$.weights <- weights(design)
-  mapping$weight <- aes(weight = .weights)$weight
+  mapping$weight <- aes_string(weight = ".weights")$weight
   
   ggplot(data, mapping, ...)
 }
