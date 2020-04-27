@@ -1,7 +1,7 @@
 #'  Basic tieders for msm models
 #' 
 #' @param x an object returned by \code{\link[msm]{prevalence.msm}} or \code{\link[msm]{hazard.msm}}
-#' @export
+#' @rawNamespace export(tidy.prevalence.msm)
 #' @import magrittr
 #' @examples 
 #' \dontrun{
@@ -94,7 +94,7 @@ tidy.prevalence.msm <- function(x) {
 }
 
 #' @rdname tidy.prevalence.msm
-#' @export
+#' @rawNamespace export(tidy.hazard.msm)
 tidy.hazard.msm <- function(x) {
   res <- tibble::tibble()
   for (term in names(x)) {
