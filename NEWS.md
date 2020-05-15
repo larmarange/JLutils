@@ -1,6 +1,7 @@
 # JLutils 1.20.0
 
 * a `ggsurvey()` function for easy ggplot from a survey object
+* an experimental `stat_weighted_mean()`
 
 # JLutils 1.19.0
 
