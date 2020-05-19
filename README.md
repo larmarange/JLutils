@@ -26,9 +26,3 @@ if (!require(devtools)){
 }
 install_github("larmarange/JLutils")
 ```
-
-### Alternative
-
-```r
-source("https://install-github.me/larmarange/JLutils")
-```
