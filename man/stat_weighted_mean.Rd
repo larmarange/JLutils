@@ -72,28 +72,4 @@ the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 \description{
 Experimental
 }
-\examples{
-cuse <- read.table("https://data.princeton.edu/wws509/datasets/cuse.dat", header = TRUE)
-cuse$n <- cuse$notUsing + cuse$using
-cuse$prop <- cuse$using / cuse$n
-
-library(ggplot2)
-ggplot(cuse) +
-  aes(x = education, y = prop, weight = n) +
-  stat_weighted_mean()
-  
-ggplot(cuse) +
-  aes(x = age, y = prop, weight = n, color = education) +
-  stat_weighted_mean()
-  
-ggplot(cuse) +
-  aes(x = education, y = prop, weight = n) +
-  stat_weighted_mean(geom = "bar")
-
-ggplot(cuse) +
-  aes(x = age, y = prop, weight = n, fill = education) +
-  stat_weighted_mean(geom = "bar") +
-  geom_text(aes(label = scales::percent(after_stat(y))), stat = "weighted_mean", vjust = 0) +
-  facet_grid(~ education)
-}
 \keyword{datasets}
