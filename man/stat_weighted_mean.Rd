@@ -4,7 +4,7 @@
 \name{stat_weighted_mean}
 \alias{stat_weighted_mean}
 \alias{StatWeightedMean}
-\title{Compute weighted y mean at unique x}
+\title{Compute weighted y mean}
 \usage{
 stat_weighted_mean(
   mapping = NULL,
@@ -93,6 +93,7 @@ ggplot(cuse) +
 ggplot(cuse) +
   aes(x = age, y = prop, weight = n, fill = education) +
   stat_weighted_mean(geom = "bar") +
+  geom_text(aes(label = scales::percent(after_stat(y))), stat = "weighted_mean", vjust = 0) +
   facet_grid(~ education)
 }
 \keyword{datasets}
