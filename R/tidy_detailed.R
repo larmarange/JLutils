@@ -6,6 +6,7 @@
 #' @param x model to tidy
 #' @param ... extra arguments passed to \code{\link[broom]{tidy}} function from \pkg{broom} package
 #' @importFrom broom tidy
+#' @importFrom dplyr left_join
 #' @note
 #' This function requires the \pkg{broom} and \pkg{dplyr} packages.
 #' @return
@@ -37,7 +38,7 @@ tidy_detailed <- function(x, ...) {
   if (!requireNamespace("dplyr")) {
     stop("dplyr package is required. Please install it.")
   }
-  res <- merge(broom::tidy(x, ...), .tidy_levels_labels(x), all.x = TRUE)
+  res <- dplyr::left_join(broom::tidy(x, ...), .tidy_levels_labels(x), by = "term")
   res$label <- res$level_detail
   if (sum(res$level_detail == "", na.rm = TRUE) > 0) {
     res[res$level_detail == "" & !is.na(res$level_detail), "label"] <-

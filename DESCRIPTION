@@ -22,7 +22,8 @@ Depends:
     magrittr
 Imports:
     scales (>= 1.1.0),
-    broom (>= 0.5.0)
+    broom (>= 0.5.0),
+    dplyr
 Suggests:
     TraMineR,
     FactoMineR,
@@ -30,7 +31,6 @@ Suggests:
     questionr,
     cluster,
     riverplot,
-    dplyr,
     labelled,
     data.table,
     msSurv,

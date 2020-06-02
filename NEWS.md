@@ -2,6 +2,7 @@
 
 * `ggcross()` has been updated.
 * `ggchisq_res()` is now deprecated. You could use instead `GGally::ggtable()` or `JLutils::ggcross()`.
+* `tidy_detailed()` keeps now the original order of terms.
 
 # JLutils 1.20.0
 
