@@ -12,7 +12,7 @@
 
 * `tidy.clm()`, `tidy.clmm()` and `tidy.svyolr()` are now part of `broom` and have
   been removed from JLutils.
-* `tidy_.clm_chisq()` is deprecated. Use `augment()` from `broom` instead.
+* `tidy_chisq()` is deprecated. Use `augment()` from `broom` instead.
 
 # JLutils 1.18.0
 
