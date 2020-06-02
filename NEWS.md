@@ -1,5 +1,7 @@
 # JLutils (development version)
 
+* `ggcross()` has been updated.
+
 # JLutils 1.20.0
 
 * a `ggsurvey()` function for easy ggplot from a survey object

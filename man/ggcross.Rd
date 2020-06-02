@@ -8,10 +8,9 @@ ggcross(
   formula,
   data,
   weight = NULL,
-  fill = "residuals",
-  fill_breaks = c(-4, -2, 2, 4),
-  palette = "RdBu",
-  fill_title = "Pearson residuals",
+  fill = "stdres",
+  fill_breaks = c(-3, -2, 2, 3),
+  fill_title = "Standardized residuals",
   size = "observed",
   max_size = 20,
   size_title = "Observations",
@@ -32,8 +31,6 @@ rows on left hand side and columns on the right hand side}
 \item{fill}{variable mapped to fill OR color name OR \code{NULL} (see examples)}
 
 \item{fill_breaks}{how to cut fill variable into categories? (cf. \code{\link[base]{cut}})}
-
-\item{palette}{Brewer colour palette (see \url{http://colorbrewer2.org})}
 
 \item{fill_title}{legend title for fill}
 
@@ -64,7 +61,7 @@ By default, the size of squares represents the number of observations while the 
 \examples{
 ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq")
 ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
-  fill_breaks = c(-4, -2, 0, 2, 4))
+  fill_breaks = c(-3, -2, 0, 2, 3))
 ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
   fill = "blue")
 ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
@@ -78,5 +75,6 @@ ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "F
 if (require(survey)) {
   data(api)
   dclus1 <- svydesign(id = ~dnum, weights = ~pw, data = apiclus1, fpc = ~fpc)
+  ggcross(awards ~ cname, data = dclus1)
 }
 }

@@ -8,7 +8,6 @@
 #' @param weight optionnal string indicating a column containing weights
 #' @param fill variable mapped to fill OR color name OR \code{NULL} (see examples)
 #' @param fill_breaks how to cut fill variable into categories? (cf. \code{\link[base]{cut}})
-#' @param palette Brewer colour palette (see \url{http://colorbrewer2.org})
 #' @param fill_title legend title for fill
 #' @param size variable mapped to size OR \code{"raster"} OR \code{NULL} (see examples)
 #' @param max_size size of largest point
@@ -25,7 +24,7 @@
 #' @examples
 #' ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq")
 #' ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
-#'   fill_breaks = c(-4, -2, 0, 2, 4))
+#'   fill_breaks = c(-3, -2, 0, 2, 3))
 #' ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
 #'   fill = "blue")
 #' ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
@@ -39,11 +38,12 @@
 #' if (require(survey)) {
 #'   data(api)
 #'   dclus1 <- svydesign(id = ~dnum, weights = ~pw, data = apiclus1, fpc = ~fpc)
+#'   ggcross(awards ~ cname, data = dclus1)
 #' }
 #' @export
 ggcross <- function(
                     formula, data, weight = NULL,
-                    fill = "residuals", fill_breaks = c(-4, -2, 2, 4), palette = "RdBu", fill_title = "Pearson residuals",
+                    fill = "stdres", fill_breaks = c(-3, -2, 2, 3), fill_title = "Standardized residuals",
                     size = "observed", max_size = 20, size_title = "Observations",
                     labels = NULL, labels_size = 3.5,
                     svystatistic = c("F", "Chisq", "Wald", "adjWald", "lincom", "saddlepoint"),
@@ -110,16 +110,7 @@ ggcross <- function(
   fill_col <- NULL
   if (!is.null(fill)) {
     if (fill %in% names(res)) {
-      if (length(fill_breaks) > 1) {
-        if (min(res[[fill]]) < min(fill_breaks)) {
-          fill_breaks <- c(min(res[[fill]]), fill_breaks)
-        }
-        if (max(res[[fill]]) > max(fill_breaks)) {
-          fill_breaks <- c(fill_breaks, max(res[[fill]]))
-        }
-      }
-      res$category <- cut(res[[fill]], include.lowest = TRUE, right = FALSE, breaks = fill_breaks, dig.lab = 10)
-      fill_var <- "category"
+      fill_var <- fill
     } else {
       fill_col <- fill
     }
@@ -140,7 +131,9 @@ ggcross <- function(
     aes_string(x = "col.label", y = "row.label", fill = fill_var)
 
   if (raster) {
-    p <- p + geom_tile(colour = "black")
+    p <- p + geom_tile(colour = "black") +
+      scale_x_discrete(expand = expansion(0, 0)) +
+      scale_y_discrete(expand = expansion(0, 0))
   }
 
   if (!raster & is.null(fill_col)) {
@@ -158,16 +151,15 @@ ggcross <- function(
   p <- p +
     facet_grid("row.variable ~ col.variable", scales = "free", space = "free") +
     xlab("") + ylab("") +
-    scale_fill_brewer(palette = palette, drop = FALSE)
+    scale_fill_steps2(breaks = fill_breaks, show.limits = TRUE)
 
   if (raster) {
     p <- p +
-      labs(fill = fill_title) +
-      guides(fill = guide_legend(reverse = TRUE))
+      labs(fill = fill_title)
   } else {
     p <- p +
       labs(fill = fill_title, size = size_title) +
-      guides(fill = guide_legend(reverse = TRUE, override.aes = list(size = max_size / 2)))
+      guides(fill = guide_legend(override.aes = list(size = max_size / 2)))
   }
 
   if (size == 1 & !raster) {
