@@ -1,6 +1,7 @@
 # JLutils (development version)
 
 * `ggcross()` has been updated.
+* `ggchisq_res()` is now deprecated. You could use instead `GGally::ggtable()` or `JLutils::ggcross()`.
 
 # JLutils 1.20.0
 
