@@ -95,7 +95,9 @@ ggcoef_model <- function (
 #' 
 #' # you can reverse the vertical position of the point by using a negative value
 #' # for dodged_width (but it will produce some warnings)
-#' ggcoef_compare(mods, exponentiate = TRUE, dodged_width = -.9)
+#' \dontrun{
+#'   ggcoef_compare(mods, exponentiate = TRUE, dodged_width = -.9)
+#' }
 ggcoef_compare <- function (
   mods,
   type = c("dodged", "faceted"),
@@ -176,6 +178,7 @@ ggcoef_compare <- function (
 #' @description 
 #' [ggcoef_multinom()] is a variation of [ggcoef_model()] adapted to multinomial
 #' logistic regressions performed with [nnet::multinom()].
+#' [ggcoef_multinom()] works only with the dev version of `gtsummary`.
 #' @param y.level_label an optional named vector for labelling `y.level` (see examples)
 #' @export
 #' @examples 
@@ -217,7 +220,7 @@ ggcoef_multinom <- function (
       levels = names(y.level_label), 
       labels = y.level_label
   ) else
-    data$y.level <- forcats::fct_inorder(data$y.level)
+    data$y.level <- forcats::fct_inorder(factor(data$y.level))
   
   # reference rows need to be duplicated for each value of y.levels
   rr <- data[!is.na(data$row_ref) & data$row_ref, ]
@@ -359,7 +362,6 @@ ggcoef_data <- function (
 #' @param dodged should points be dodged (according to the colour aesthetic)?
 #' @param dodged_width width value for [ggplot2::position_dodge()]
 #' @param facet_col optional variable name to be used for column facets
-#' @arr
 #' @export
 ggcoef_plot <- function (
   data,

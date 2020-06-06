@@ -161,6 +161,7 @@ Use wit caution, syntax is subject to change.
 
 \code{\link[=ggcoef_multinom]{ggcoef_multinom()}} is a variation of \code{\link[=ggcoef_model]{ggcoef_model()}} adapted to multinomial
 logistic regressions performed with \code{\link[nnet:multinom]{nnet::multinom()}}.
+\code{\link[=ggcoef_multinom]{ggcoef_multinom()}} works only with the dev version of \code{gtsummary}.
 }
 \examples{
 data(trial, package = "gtsummary")
@@ -198,7 +199,9 @@ ggcoef_compare(mods, exponentiate = TRUE, type = "faceted")
 
 # you can reverse the vertical position of the point by using a negative value
 # for dodged_width (but it will produce some warnings)
-ggcoef_compare(mods, exponentiate = TRUE, dodged_width = -.9)
+\dontrun{
+  ggcoef_compare(mods, exponentiate = TRUE, dodged_width = -.9)
+}
 
 # specific function for multinom models
 data(tips, package = "reshape")

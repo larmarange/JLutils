@@ -23,7 +23,8 @@ Depends:
 Imports:
     scales (>= 1.1.0),
     broom (>= 0.5.0),
-    dplyr
+    dplyr,
+    forcats
 Suggests:
     gtsummary,
     TraMineR,
@@ -39,6 +40,9 @@ Suggests:
     gridExtra,
     tidyr,
     tibble,
-    msm
+    msm,
+    reshape,
+    nnet,
+    survival
 RoxygenNote: 7.1.0
 Roxygen: list(markdown = TRUE)
