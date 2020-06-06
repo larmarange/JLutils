@@ -20,10 +20,10 @@ In general, the sum of rounded numbers (e.g., using the
 \code{base::round} function) is not the same as their rounded sum.
 This solution applies the following algorithm
 \enumerate{
-   \item Round down to the specified number of decimal places
-   \item Order numbers by their remainder values
-   \item Increment the specified decimal place of values with ‘k’ largest remainders,
-   where ‘k’ is the number of values that must be incremented to preserve their rounded sum
+\item Round down to the specified number of decimal places
+\item Order numbers by their remainder values
+\item Increment the specified decimal place of values with ‘k’ largest remainders,
+where ‘k’ is the number of values that must be incremented to preserve their rounded sum
 }
 }
 \examples{

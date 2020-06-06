@@ -39,7 +39,7 @@ the plot data. The return value must be a \code{data.frame}, and
 will be used as the layer data. A \code{function} can be created
 from a \code{formula} (e.g. \code{~ head(.x, 10)}).}
 
-\item{geom}{Override the default connection between `geom_bar()` and `stat_prop()`.}
+\item{geom}{Override the default connection between \code{geom_bar()} and \code{stat_prop()}.}
 
 \item{position}{Position adjustment, either as a string, or the result of
 a call to a position adjustment function.}
@@ -66,21 +66,21 @@ that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 }
 \description{
-`stat_prop()` is a variation of `stat_count()` allowing to compute custom 
-proportions according to the `by` aesthetic defining the denominator
-(i.e. all proportions for a same value of `by` will sum to 1).
-The `by` aesthetic should be a factor.
+\code{stat_prop()} is a variation of \code{stat_count()} allowing to compute custom
+proportions according to the \code{by} aesthetic defining the denominator
+(i.e. all proportions for a same value of \code{by} will sum to 1).
+The \code{by} aesthetic should be a factor.
 }
 \section{Aesthetics}{
 
-`stat_prop()` requires the \strong{by} aesthetic.
+\code{stat_prop()} requires the \strong{by} aesthetic.
 }
 
 \section{Computed variables}{
 
 \describe{
-  \item{count}{number of points in bin}
-  \item{prop}{computed proportion}
+\item{count}{number of points in bin}
+\item{prop}{computed proportion}
 }
 }
 

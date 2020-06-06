@@ -56,7 +56,7 @@ A matrix plot of 2x2 cross-tabulated factors
 }
 \details{
 By default, the size of squares represents the number of observations while the color
-  represents the chi-squared residuals.
+represents the chi-squared residuals.
 }
 \examples{
 ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq")

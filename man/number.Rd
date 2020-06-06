@@ -316,12 +316,12 @@ width (see \code{\link[base:format]{base::format()}}).}
 }
 \value{
 a formatted character vector or, for \code{label_*} functions, a function with single parameter \code{x}, a numeric vector, that
-  returns a character vector
+returns a character vector
 }
 \description{
 \code{number} is a generic formatter for numeric values.
 \code{en} is a shortcut for English format (comma as separator for thousands, point for decimal), \code{fr} for French format (space for thousands, comma for decimal).
-\code{percent} a shortcut for English percentages (value are multiplied by 100 and a % symbol is added) and \code{pourcent} a shortcut for French percentages.
+\code{percent} a shortcut for English percentages (value are multiplied by 100 and a \% symbol is added) and \code{pourcent} a shortcut for French percentages.
 \code{comp_percent} returns the complement of 1, i.e. \code{percent(1 - x)}. \code{comp_pourcent} is the French version.
 \code{*_format} functions will return another functions, useful to be used for example with \code{ggplot2}.
 \code{en0} to \code{en5} are shortcuts for \code{en} with 0 to 5 digits after decimal point. Similarly, \code{fr0} to \code{fr5} are shortcuts of \code{fr},

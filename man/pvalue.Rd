@@ -45,8 +45,8 @@ if \code{add_p} is \code{TRUE} and \code{c("p<", "p=", "p>")} if \code{FALSE}.}
 \item{point}{threshold below which to display one point (\code{NULL} to desactivate)}
 }
 \value{
-`label_pvalue` returns a function with single parameter
-  `x`, a numeric vector, that returns a character vector.
+\code{label_pvalue} returns a function with single parameter
+\code{x}, a numeric vector, that returns a character vector.
 }
 \description{
 Formatter for p-values, adding a symbol "<" for small p-values.

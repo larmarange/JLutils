@@ -15,13 +15,13 @@ ggsurvey(design = NULL, mapping = aes(), ...)
 }
 \description{
 A function to facilitate ggplot graphs using a survey object.
-It will initiate a ggplot and map survey weights to the 
+It will initiate a ggplot and map survey weights to the
 corresponding aesthetic.
 }
 \details{
 Graphs will be correct as long as only weights are required
 to compute the graph. However, statistic or geometry requiring
-correct variance computation (like \code{geom_smooth()}) will 
+correct variance computation (like \code{geom_smooth()}) will
 be statistically incorrect.
 }
 \examples{

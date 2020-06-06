@@ -70,14 +70,14 @@ to the paired geom/stat.}
 Computes position of labels when using \code{position = "stack"}
 }
 \details{
-`stat_stack_labels()` is deprecated. Use `stat_prop()` instead.
+\code{stat_stack_labels()} is deprecated. Use \code{stat_prop()} instead.
 }
 \section{Computed variables}{
 
 \describe{
-  \item{count}{the number of observations}
-  \item{cumcount}{the cumulative number of observations}
-  \item{ylabel}{the y position of labels, i.e. \eqn{cumcount - count / 2}}
+\item{count}{the number of observations}
+\item{cumcount}{the cumulative number of observations}
+\item{ylabel}{the y position of labels, i.e. \eqn{cumcount - count / 2}}
 }
 }
 

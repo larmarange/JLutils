@@ -19,11 +19,11 @@ tidy_detailed(x, ...)
 \value{
 The \code{data.frame} produced by \code{\link[broom]{tidy}} with these additional columns:
 \describe{
-  \item{variable}{variable name}
-  \item{variable_label}{label of the variable (if available), variable name otherwise}
-  \item{level}{for factors, the corresponding level}
-  \item{level_detail}{level with indication of the reference level, eg. \code{B vs. A}}
-  \item{label}{equal to level_detail if it's a factor, to variable_label otherwise}
+\item{variable}{variable name}
+\item{variable_label}{label of the variable (if available), variable name otherwise}
+\item{level}{for factors, the corresponding level}
+\item{level_detail}{level with indication of the reference level, eg. \code{B vs. A}}
+\item{label}{equal to level_detail if it's a factor, to variable_label otherwise}
 }
 }
 \description{

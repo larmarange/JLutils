@@ -70,15 +70,15 @@ to the paired geom/stat.}
 Computes position of labels when using \code{position = "fill"}
 }
 \details{
-`stat_fill_labels()` is deprecated. Use `stat_prop()` instead.
+\code{stat_fill_labels()} is deprecated. Use \code{stat_prop()} instead.
 }
 \section{Computed variables}{
 
 \describe{
-  \item{count}{the number of observations}
-  \item{prop}{proportion on \code{x}}
-  \item{cumprop}{the cumulative proportion on \code{x}}
-  \item{ylabel}{the y position of labels, i.e. \eqn{cumprop - prop / 2}}
+\item{count}{the number of observations}
+\item{prop}{proportion on \code{x}}
+\item{cumprop}{the cumulative proportion on \code{x}}
+\item{ylabel}{the y position of labels, i.e. \eqn{cumprop - prop / 2}}
 }
 }
 
