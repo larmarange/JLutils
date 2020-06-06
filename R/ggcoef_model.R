@@ -1,7 +1,6 @@
 #' Plot model coefficients
 #' 
 #' Experimental redesign of [GGally::ggcoef()] using [gtsummary::tbl_regression()].
-#' Require the dev version of `gtsummary`.
 #' Use wit caution, syntax is subject to change.
 #' 
 #' @param x a regression model object
@@ -180,6 +179,8 @@ ggcoef_compare <- function (
 #' @param y.level_label an optional named vector for labelling `y.level` (see examples)
 #' @export
 #' @examples 
+#' 
+#' # specific function for multinom models
 #' data(tips, package = "reshape")
 #' library(nnet)
 #' mod <- multinom(day ~ ., data = tips)

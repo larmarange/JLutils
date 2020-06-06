@@ -157,7 +157,6 @@ ggcoef_plot(
 }
 \description{
 Experimental redesign of \code{\link[GGally:ggcoef]{GGally::ggcoef()}} using \code{\link[gtsummary:tbl_regression]{gtsummary::tbl_regression()}}.
-Require the dev version of \code{gtsummary}.
 Use wit caution, syntax is subject to change.
 
 \code{\link[=ggcoef_multinom]{ggcoef_multinom()}} is a variation of \code{\link[=ggcoef_model]{ggcoef_model()}} adapted to multinomial
@@ -200,6 +199,8 @@ ggcoef_compare(mods, exponentiate = TRUE, type = "faceted")
 # you can reverse the vertical position of the point by using a negative value
 # for dodged_width (but it will produce some warnings)
 ggcoef_compare(mods, exponentiate = TRUE, dodged_width = -.9)
+
+# specific function for multinom models
 data(tips, package = "reshape")
 library(nnet)
 mod <- multinom(day ~ ., data = tips)
