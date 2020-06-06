@@ -25,6 +25,7 @@ Imports:
     broom (>= 0.5.0),
     dplyr
 Suggests:
+    gtsummary,
     TraMineR,
     FactoMineR,
     ade4,
@@ -40,3 +41,4 @@ Suggests:
     tibble,
     msm
 RoxygenNote: 7.1.0
+Roxygen: list(markdown = TRUE)
