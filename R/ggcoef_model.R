@@ -10,6 +10,7 @@
 #' @param show_single_row by default categorical variables are printed on multiple rows. If a variable is dichotomous (e.g. Yes/No) and you wish to print the regression coefficient on a single row, include the variable name(s) here–quoted and unquoted variable name accepted
 #' @param conf.level confidence level (between 0 and 4) for confidence intervals, default to .95, `NULL` to not display confidence intervals
 #' @param intercept if `TRUE`, include the intercept in the output
+#' @param signif_stars if `TRUE`, add significant stars to labels
 #' @param significance level (between 0 and 1) below which a coefficient is consider to be significantly different from 0 (or 1 if `exponentiate = TRUE`), `NULL` for not highlighting such coefficients
 #' @param return_data if `TRUE`, will return the data.frame used for plotting instead of the plot
 #' @param ... parameters passed to [ggcoef_plot()]
@@ -46,7 +47,8 @@ ggcoef_model <- function (
   show_single_row = NULL,
   conf.level = .95,
   intercept = FALSE,
-  significance = .05,
+  signif_stars = TRUE,
+  significance = NULL,
   return_data = FALSE,
   ...
 ){
@@ -60,6 +62,9 @@ ggcoef_model <- function (
     intercept = intercept,
     significance = significance
   )
+  
+  if (signif_stars)
+    data$label <- forcats::fct_inorder(factor(paste(data$label, data$signif_stars)))
   
   if (return_data)
     return(data)
@@ -138,7 +143,17 @@ ggcoef_compare <- function (
   }
   
   data <- dplyr::bind_rows(data, .id = "model")
+  x_label <- attr(data, "x_label")
+  
   data$model <- forcats::fct_inorder(data$model)
+  
+  # Add NA values for unobserved combinations
+  # (i.e. for a term present in one model but not in another)
+  data <- data %>%
+    tidyr::expand(model, nesting(variable, variable_label, var_type, row_ref, row_type, label)) %>% 
+    dplyr::left_join(data, by = c("model", "variable_label", "variable", "var_type", "row_ref", "row_type", "label"))
+  
+  attr(data, "x_label") <- x_label
   
   if (return_data)
     return(data)
@@ -318,6 +333,8 @@ ggcoef_data <- function (
     )
   }
   
+  data$signif_stars <- signif_stars(data$p.value, point = NULL)
+  
   # add variable labels to all rows
   var_labs <- data[data$row_type == "label", c("variable", "label")]
   names(var_labs) <- c("variable", "variable_label")
@@ -327,7 +344,7 @@ ggcoef_data <- function (
   data <- data[!is.na(data$estimate), ]
   
   data$variable_label <- forcats::fct_inorder(data$variable_label)
-  data$label <- forcats::fct_rev(forcats::fct_inorder(data$label))
+  data$label <- forcats::fct_inorder(data$label)
 
   
   # label for x axis
@@ -359,6 +376,7 @@ ggcoef_data <- function (
 #' @param strips_odd color of the odd rows
 #' @param strips_even color of the even rows
 #' @param vline should a vertical line de drawn at 0 (or 1 if `exponentiate = TRUE`)?
+#' @param vline_colour colour of vertical line
 #' @param dodged should points be dodged (according to the colour aesthetic)?
 #' @param dodged_width width value for [ggplot2::position_dodge()]
 #' @param facet_col optional variable name to be used for column facets
@@ -383,10 +401,13 @@ ggcoef_plot <- function (
   strips_odd = "#11111111", 
   strips_even = "#00000000",
   vline = TRUE,
+  vline_colour = "grey50",
   dodged = FALSE,
   dodged_width = .8,
   facet_col = NULL
 ){
+  data$label <- forcats::fct_rev(data$label)
+  
   # mapping
   mapping <- aes_string(x = "estimate", y = "label")
   
@@ -422,7 +443,7 @@ ggcoef_plot <- function (
       )
   
   if (vline)
-    p <- p + geom_vline(xintercept = ifelse(exponentiate, 1, 0))
+    p <- p + geom_vline(xintercept = ifelse(exponentiate, 1, 0), colour = vline_colour)
   
   if(errorbar) {
     if (!is.null(colour) & errorbar_coloured) {
@@ -454,7 +475,8 @@ ggcoef_plot <- function (
       size = point_size, 
       stroke = point_stroke, 
       fill = point_fill,
-      position = position
+      position = position,
+      na.rm = TRUE
     ) +
     facet_grid(
       facet_formula, 

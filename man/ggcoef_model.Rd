@@ -16,7 +16,8 @@ ggcoef_model(
   show_single_row = NULL,
   conf.level = 0.95,
   intercept = FALSE,
-  significance = 0.05,
+  signif_stars = TRUE,
+  significance = NULL,
   return_data = FALSE,
   ...
 )
@@ -81,6 +82,7 @@ ggcoef_plot(
   strips_odd = "#11111111",
   strips_even = "#00000000",
   vline = TRUE,
+  vline_colour = "grey50",
   dodged = FALSE,
   dodged_width = 0.8,
   facet_col = NULL
@@ -100,6 +102,8 @@ ggcoef_plot(
 \item{conf.level}{confidence level (between 0 and 4) for confidence intervals, default to .95, \code{NULL} to not display confidence intervals}
 
 \item{intercept}{if \code{TRUE}, include the intercept in the output}
+
+\item{signif_stars}{if \code{TRUE}, add significant stars to labels}
 
 \item{significance}{level (between 0 and 1) below which a coefficient is consider to be significantly different from 0 (or 1 if \code{exponentiate = TRUE}), \code{NULL} for not highlighting such coefficients}
 
@@ -148,6 +152,8 @@ ggcoef_plot(
 \item{strips_even}{color of the even rows}
 
 \item{vline}{should a vertical line de drawn at 0 (or 1 if \code{exponentiate = TRUE})?}
+
+\item{vline_colour}{colour of vertical line}
 
 \item{dodged}{should points be dodged (according to the colour aesthetic)?}
 
