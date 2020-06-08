@@ -1,4 +1,4 @@
-# JLutils (development version)
+# JLutils 1.21.0
 
 * `stat_prop()`, `stat_weigthed_mean()` and `stat_cross()` have
   been moved to `GGally` (>= 2.0.0)
