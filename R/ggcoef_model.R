@@ -408,6 +408,10 @@ ggcoef_plot <- function (
 ){
   data$label <- forcats::fct_rev(data$label)
   
+  if (stripped_rows)
+    data <- data %>% 
+      mutate(.fill = dplyr::if_else(as.integer(label) %% 2L == 1, strips_even, strips_odd))
+  
   # mapping
   mapping <- aes_string(x = "estimate", y = "label")
   
@@ -436,10 +440,8 @@ ggcoef_plot <- function (
   if (stripped_rows)
     p <- p + 
       geom_stripped_rows(
-        mapping = aes_string(y = "label"), 
-        inherit.aes = FALSE,
-        odd = strips_odd,
-        even = strips_even
+        mapping = aes_string(y = "label", odd = ".fill", even = ".fill"), 
+        inherit.aes = FALSE
       )
   
   if (vline)
