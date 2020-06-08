@@ -18,5 +18,17 @@ NULL
 #' @rdname deprecated
 #' @export
 ggchisq_res <- function(...) {
-  stop("This function is deprecated. You could use instead JLutils::ggcross() or GGally::ggtable.")
+  stop("This function is deprecated. You could use instead JLutils::ggcross() or GGally::ggtable().")
+}
+
+#' @rdname deprecated
+#' @export
+stat_stack_labels <- function(...) {
+  stop("stat_stack_labels() is depecreated. Use instead GGally::stat_prop().")
+}
+
+#' @rdname deprecated
+#' @export
+stat_fill_labels <- function(...) {
+  stop("stat_fill_labels() is depecreated. Use instead GGally::stat_prop().")
 }

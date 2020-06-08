@@ -3,9 +3,15 @@
 \name{deprecated}
 \alias{deprecated}
 \alias{ggchisq_res}
+\alias{stat_stack_labels}
+\alias{stat_fill_labels}
 \title{Deprecated functions}
 \usage{
 ggchisq_res(...)
+
+stat_stack_labels(...)
+
+stat_fill_labels(...)
 }
 \arguments{
 \item{...}{parameters}
