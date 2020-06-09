@@ -151,7 +151,7 @@ ggcoef_compare <- function (
   # Add NA values for unobserved combinations
   # (i.e. for a term present in one model but not in another)
   data <- data %>%
-    tidyr::expand(model, nesting(variable, variable_label, var_type, row_ref, row_type, label)) %>% 
+    tidyr::expand(model, tidyr::nesting(variable, variable_label, var_type, row_ref, row_type, label)) %>% 
     dplyr::left_join(data, by = c("model", "variable_label", "variable", "var_type", "row_ref", "row_type", "label"))
   
   attr(data, "x_label") <- x_label
@@ -517,7 +517,8 @@ ggcoef_plot <- function (
       scale_shape_manual(
         values = shape_values, 
         drop = FALSE, 
-        guide = shape_guide
+        guide = shape_guide,
+        na.translate = FALSE
       ) +
       labs(shape = shape_lab)
   }
