@@ -26,9 +26,11 @@
 #'   theme_light()
 #' p
 #' p + geom_stripped_rows()
+#' p + geom_stripped_rows() + scale_y_discrete(expand = expansion(0, 0.5))
 #' p + geom_stripped_rows(xfrom = 10, xto = 35)
 #' p + geom_stripped_rows(odd = "blue", even = "yellow")
 #' p + geom_stripped_rows(odd = "blue", even = "yellow", alpha = .1)
+#' p + geom_stripped_rows(odd = "#00FF0022", even = "#FF000022")
 #' 
 #' p + geom_stripped_cols()
 #' p + geom_stripped_cols(width = 10)
