@@ -10,6 +10,7 @@
 #' @param show_single_row by default categorical variables are printed on multiple rows. If a variable is dichotomous (e.g. Yes/No) and you wish to print the regression coefficient on a single row, include the variable name(s) here–quoted and unquoted variable name accepted
 #' @param conf.level confidence level (between 0 and 4) for confidence intervals, default to .95, `NULL` to not display confidence intervals
 #' @param intercept if `TRUE`, include the intercept in the output
+#' @param show_p_values if `TRUE`, add p-value to labels
 #' @param signif_stars if `TRUE`, add significant stars to labels
 #' @param significance level (between 0 and 1) below which a coefficient is consider to be significantly different from 0 (or 1 if `exponentiate = TRUE`), `NULL` for not highlighting such coefficients
 #' @param return_data if `TRUE`, will return the data.frame used for plotting instead of the plot
@@ -25,7 +26,7 @@
 #' ggcoef_model(mod, exponentiate = TRUE, label = c(age = "Age in years", stage = "Stage of the disease"))
 #' ggcoef_model(mod, exponentiate = TRUE, show_single_row = "high_marker", intercept = TRUE)
 #' ggcoef_model(mod, exponentiate = TRUE, include = c("stage", "age"))
-#' ggcoef_model(mod, significance = .10, conf.level = .9)
+#' ggcoef_model(mod, significance = .10, conf.level = .9, signif_stars = FALSE, show_p_values = FALSE)
 #' ggcoef_model(mod, exponentiate = TRUE, colour = NULL, stripped_rows = FALSE, signif_stars = FALSE)
 #' ggcoef_model(mod, exponentiate = TRUE, conf.level = NULL)
 #' 
@@ -48,6 +49,7 @@ ggcoef_model <- function (
   show_single_row = NULL,
   conf.level = .95,
   intercept = FALSE,
+  show_p_values = TRUE,
   signif_stars = TRUE,
   significance = NULL,
   return_data = FALSE,
@@ -64,8 +66,23 @@ ggcoef_model <- function (
     significance = significance
   )
   
-  if (signif_stars)
-    data$label <- forcats::fct_inorder(factor(paste(data$label, data$signif_stars)))
+  if (show_p_values & signif_stars)
+    data$add_to_label <- paste0(data$p_value_label, data$signif_stars)
+  if (show_p_values & !signif_stars)
+    data$add_to_label <- data$p_value_label
+  if (!show_p_values & signif_stars)
+    data$add_to_label <- data$signif_stars
+  
+  if (show_p_values | signif_stars) {
+    data$label <- forcats::fct_inorder(
+      factor(
+        paste0(
+          data$label, 
+          ifelse(data$add_to_label == "", "", paste0(" (", data$add_to_label, ")"))
+        )
+      )
+    )
+  }
   
   if (return_data)
     return(data)
@@ -334,7 +351,9 @@ ggcoef_data <- function (
     )
   }
   
-  data$signif_stars <- signif_stars(data$p.value, point = NULL)
+  data$signif_stars <- GGally::signif_stars(data$p.value, point = NULL)
+  
+  data$p_value_label <- ifelse(is.na(data$p.value), "", scales::pvalue(data$p.value, add_p = TRUE))
   
   # add variable labels to all rows
   var_labs <- data[data$row_type == "label", c("variable", "label")]

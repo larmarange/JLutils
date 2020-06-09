@@ -16,6 +16,7 @@ ggcoef_model(
   show_single_row = NULL,
   conf.level = 0.95,
   intercept = FALSE,
+  show_p_values = TRUE,
   signif_stars = TRUE,
   significance = NULL,
   return_data = FALSE,
@@ -103,6 +104,8 @@ ggcoef_plot(
 
 \item{intercept}{if \code{TRUE}, include the intercept in the output}
 
+\item{show_p_values}{if \code{TRUE}, add p-value to labels}
+
 \item{signif_stars}{if \code{TRUE}, add significant stars to labels}
 
 \item{significance}{level (between 0 and 1) below which a coefficient is consider to be significantly different from 0 (or 1 if \code{exponentiate = TRUE}), \code{NULL} for not highlighting such coefficients}
@@ -179,7 +182,7 @@ ggcoef_model(mod, exponentiate = TRUE)
 ggcoef_model(mod, exponentiate = TRUE, label = c(age = "Age in years", stage = "Stage of the disease"))
 ggcoef_model(mod, exponentiate = TRUE, show_single_row = "high_marker", intercept = TRUE)
 ggcoef_model(mod, exponentiate = TRUE, include = c("stage", "age"))
-ggcoef_model(mod, significance = .10, conf.level = .9)
+ggcoef_model(mod, significance = .10, conf.level = .9, signif_stars = FALSE, show_p_values = FALSE)
 ggcoef_model(mod, exponentiate = TRUE, colour = NULL, stripped_rows = FALSE, signif_stars = FALSE)
 ggcoef_model(mod, exponentiate = TRUE, conf.level = NULL)
 
