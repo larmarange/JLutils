@@ -14,7 +14,9 @@ geom_stripped_rows(
   show.legend = NA,
   inherit.aes = TRUE,
   xfrom = -Inf,
-  xto = Inf
+  xto = Inf,
+  width = 1,
+  nudge_y = 0
 )
 
 geom_stripped_cols(
@@ -26,7 +28,9 @@ geom_stripped_cols(
   show.legend = NA,
   inherit.aes = TRUE,
   yfrom = -Inf,
-  yto = Inf
+  yto = Inf,
+  width = 1,
+  nudge_x = 0
 )
 }
 \arguments{
@@ -74,7 +78,11 @@ the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 
 \item{xfrom, xto}{limitation of the strips along the x-axis}
 
+\item{width}{width of the strips}
+
 \item{yfrom, yto}{limitation of the strips along the y-axis}
+
+\item{nudge_x, nudge_y}{horizontal or vertical adjustment to nudge strips by}
 }
 \description{
 Add alternating background color along the y-axis. The geom takes default
@@ -100,4 +108,8 @@ p + geom_stripped_rows()
 p + geom_stripped_rows(xfrom = 10, xto = 35)
 p + geom_stripped_rows(odd = "blue", even = "yellow")
 p + geom_stripped_rows(odd = "blue", even = "yellow", alpha = .1)
+
+p + geom_stripped_cols()
+p + geom_stripped_cols(width = 10)
+p + geom_stripped_cols(width = 10, nudge_x = 5)
 }

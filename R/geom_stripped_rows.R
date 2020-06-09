@@ -1,4 +1,3 @@
-# Adapted from https://github.com/NightingaleHealth/ggforestplot/blob/master/R/geom_stripes.R
 #' Alternating Background Colour
 #'
 #' Add alternating background color along the y-axis. The geom takes default
@@ -7,6 +6,8 @@
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_rect
 #' @param xfrom,xto limitation of the strips along the x-axis
+#' @param width width of the strips
+#' @param nudge_x,nudge_y horizontal or vertical adjustment to nudge strips by
 #' @export
 #' @examples
 #' data(tips, package = "reshape")
@@ -18,7 +19,7 @@
 #' p + geom_stripped_rows()
 #' p + geom_stripped_cols()
 #' p + geom_stripped_rows() + geom_stripped_cols()
-#'
+#' 
 #' p <- ggplot(tips) +
 #'   aes(x = total_bill, y = day) +
 #'   geom_count() +
@@ -28,6 +29,10 @@
 #' p + geom_stripped_rows(xfrom = 10, xto = 35)
 #' p + geom_stripped_rows(odd = "blue", even = "yellow")
 #' p + geom_stripped_rows(odd = "blue", even = "yellow", alpha = .1)
+#' 
+#' p + geom_stripped_cols()
+#' p + geom_stripped_cols(width = 10)
+#' p + geom_stripped_cols(width = 10, nudge_x = 5)
 geom_stripped_rows <- function(mapping = NULL,
                                data = NULL,
                                stat = "identity",
@@ -36,7 +41,9 @@ geom_stripped_rows <- function(mapping = NULL,
                                show.legend = NA,
                                inherit.aes = TRUE,
                                xfrom = -Inf,
-                               xto = Inf) {
+                               xto = Inf,
+                               width = 1,
+                               nudge_y = 0) {
   ggplot2::layer(
     data = data,
     mapping = mapping,
@@ -45,7 +52,7 @@ geom_stripped_rows <- function(mapping = NULL,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,
-    params = list(xfrom = xfrom, xto = xto, ...)
+    params = list(xfrom = xfrom, xto = xto, width = width, nudge_y = nudge_y, ...)
   )
 }
 
@@ -54,19 +61,19 @@ GeomStrippedRows <- ggplot2::ggproto("GeomStrippedRows", ggplot2::Geom,
 
   default_aes = ggplot2::aes(
     odd = "#11111111", even = "#00000000",
-    alpha = NA, colour = "black", linetype = "solid", size = NA
+    alpha = NA, colour = NA, linetype = "solid", size = .5
   ),
 
   # draw_key = ggplot2::draw_key_blank,
   draw_key = ggplot2::draw_key_rect,
 
-  draw_panel = function(data, panel_params, coord, xfrom, xto) {
+  draw_panel = function(data, panel_params, coord, xfrom, xto, width = 1, nudge_y = 0) {
     ggplot2::GeomRect$draw_panel(
       data %>%
         dplyr::mutate(
-          y = round(.data$y),
-          ymin = .data$y - 0.5,
-          ymax = .data$y + 0.5,
+          y = plyr::round_any(.data$y, width),
+          ymin = .data$y - width / 2 + nudge_y,
+          ymax = .data$y + width / 2 + nudge_y,
           xmin = xfrom,
           xmax = xto
         ) %>%
@@ -76,7 +83,7 @@ GeomStrippedRows <- ggplot2::ggproto("GeomStrippedRows", ggplot2::Geom,
           .data$odd, .data$even,
           .data$alpha, .data$colour, .data$linetype, .data$size
         ) %>%
-        unique() %>%
+        dplyr::distinct(.data$ymin, .keep_all = TRUE) %>%
         dplyr::arrange(.data$ymin) %>%
         dplyr::mutate(
           .n = dplyr::row_number(),
@@ -104,7 +111,9 @@ geom_stripped_cols <- function(mapping = NULL,
                                show.legend = NA,
                                inherit.aes = TRUE,
                                yfrom = -Inf,
-                               yto = Inf) {
+                               yto = Inf,
+                               width = 1,
+                               nudge_x = 0) {
   ggplot2::layer(
     data = data,
     mapping = mapping,
@@ -113,28 +122,28 @@ geom_stripped_cols <- function(mapping = NULL,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,
-    params = list(yfrom = yfrom, yto = yto, ...)
+    params = list(yfrom = yfrom, yto = yto, width = width, nudge_x = nudge_x, ...)
   )
 }
 
 GeomStrippedCols <- ggplot2::ggproto("GeomStrippedCols", ggplot2::Geom,
-  required_aes = c("x"),
+  required_aes = c("y"),
 
   default_aes = ggplot2::aes(
     odd = "#11111111", even = "#00000000",
-    alpha = NA, colour = "black", linetype = "solid", size = NA
+    alpha = NA, colour = NA, linetype = "solid", size = .5
   ),
 
   # draw_key = ggplot2::draw_key_blank,
   draw_key = ggplot2::draw_key_rect,
 
-  draw_panel = function(data, panel_params, coord, yfrom, yto) {
+  draw_panel = function(data, panel_params, coord, yfrom, yto, width = 1, nudge_x = 0) {
     ggplot2::GeomRect$draw_panel(
       data %>%
         dplyr::mutate(
-          x = round(.data$x),
-          xmin = .data$x - 0.5,
-          xmax = .data$x + 0.5,
+          x = plyr::round_any(.data$x, width),
+          xmin = .data$x - width / 2 + nudge_x,
+          xmax = .data$x + width / 2 + nudge_x,
           ymin = yfrom,
           ymax = yto
         ) %>%
@@ -144,7 +153,7 @@ GeomStrippedCols <- ggplot2::ggproto("GeomStrippedCols", ggplot2::Geom,
           .data$odd, .data$even,
           .data$alpha, .data$colour, .data$linetype, .data$size
         ) %>%
-        unique() %>%
+        dplyr::distinct(.data$xmin, .keep_all = TRUE) %>%
         dplyr::arrange(.data$xmin) %>%
         dplyr::mutate(
           .n = dplyr::row_number(),
