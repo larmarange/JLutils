@@ -79,7 +79,7 @@ tidy.prevalence.msm <- function(x) {
     dplyr::left_join(exp, by = c("time", "status")) %>%
     dplyr::left_join(obs_p, by = c("time", "status")) %>%
     dplyr::left_join(exp_p, by = c("time", "status")) %>%
-    tibble::as.tibble()
+    tibble::as_tibble()
   
   if (is.list(x$Expected))
     res <- res %>%
@@ -98,7 +98,7 @@ tidy.prevalence.msm <- function(x) {
 tidy.hazard.msm <- function(x) {
   res <- tibble::tibble()
   for (term in names(x)) {
-    tmp <- tibble::as.tibble(x[[term]])
+    tmp <- tibble::as_tibble(x[[term]])
     names(tmp) <- c("estimate", "conf.low", "conf.high")
     tmp$term <- term
     tmp$transition <- rownames(x[[term]])
