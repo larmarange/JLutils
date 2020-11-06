@@ -6,7 +6,7 @@ JLutils
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/JLutils)](https://cran.r-project.org/package=JLutils)
 
 
-**Online documentation:** <http://larmarange.github.io/JLutils/>
+**Online documentation:** <https://larmarange.github.io/JLutils/>
 
 A collection of diverse R functions who don't fit (yet?) in another package. Please note that some functions could be removed from `JLutils` once incorporated in a more appropriate package.
 
