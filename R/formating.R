@@ -46,9 +46,9 @@ label_number <- scales::label_number
 #' @rdname number
 label_en <- function(accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = ",", decimal.mark = ".", trim = TRUE, ...) {
   label_number(
-    accuracy = accuracy, scale = scale, 
-    prefix = prefix, suffix = suffix, 
-    big.mark = big.mark, decimal.mark = decimal.mark, 
+    accuracy = accuracy, scale = scale,
+    prefix = prefix, suffix = suffix,
+    big.mark = big.mark, decimal.mark = decimal.mark,
     trim = trim, ...
   )
 }
@@ -56,9 +56,9 @@ label_en <- function(accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark
 #' @rdname number
 en <- function(x, accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = ",", decimal.mark = ".", trim = TRUE, ...) {
   number(x,
-    accuracy = accuracy, scale = scale, 
-    prefix = prefix, suffix = suffix, 
-    big.mark = big.mark, decimal.mark = decimal.mark, 
+    accuracy = accuracy, scale = scale,
+    prefix = prefix, suffix = suffix,
+    big.mark = big.mark, decimal.mark = decimal.mark,
     trim = trim, ...
   )
 }
@@ -67,9 +67,9 @@ en <- function(x, accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = 
 #' @rdname number
 label_fr <- function(accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
   label_number(
-    accuracy = accuracy, scale = scale, 
-    prefix = prefix, suffix = suffix, 
-    big.mark = big.mark, decimal.mark = decimal.mark, 
+    accuracy = accuracy, scale = scale,
+    prefix = prefix, suffix = suffix,
+    big.mark = big.mark, decimal.mark = decimal.mark,
     trim = trim, ...
   )
 }
@@ -77,9 +77,9 @@ label_fr <- function(accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark
 #' @rdname number
 fr <- function(x, accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
   number(x,
-    accuracy = accuracy, scale = scale, 
-    prefix = prefix, suffix = suffix, 
-    big.mark = big.mark, decimal.mark = decimal.mark, 
+    accuracy = accuracy, scale = scale,
+    prefix = prefix, suffix = suffix,
+    big.mark = big.mark, decimal.mark = decimal.mark,
     trim = trim, ...
   )
 }
@@ -96,9 +96,9 @@ percent <- scales::percent
 #' @rdname number
 label_pourcent <- function(accuracy = 1, scale = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
   label_number(
-    accuracy = accuracy, scale = scale, 
-    prefix = prefix, suffix = suffix, 
-    big.mark = big.mark, decimal.mark = decimal.mark, 
+    accuracy = accuracy, scale = scale,
+    prefix = prefix, suffix = suffix,
+    big.mark = big.mark, decimal.mark = decimal.mark,
     trim = trim, ...
   )
 }
@@ -106,9 +106,9 @@ label_pourcent <- function(accuracy = 1, scale = 100, prefix = "", suffix = " %"
 #' @rdname number
 pourcent <- function(x, accuracy = 1, scale = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
   number(x,
-    accuracy = accuracy, scale = scale, 
-    prefix = prefix, suffix = suffix, 
-    big.mark = big.mark, decimal.mark = decimal.mark, 
+    accuracy = accuracy, scale = scale,
+    prefix = prefix, suffix = suffix,
+    big.mark = big.mark, decimal.mark = decimal.mark,
     trim = trim, ...
   )
 }
@@ -118,9 +118,9 @@ pourcent <- function(x, accuracy = 1, scale = 100, prefix = "", suffix = " %", b
 comp_label_percent <- function(accuracy = 1, scale = 100, prefix = "", suffix = "%", big.mark = " ", decimal.mark = ".", trim = TRUE, ...) {
   function(x) {
     comp_percent(
-      accuracy = accuracy, scale = scale, 
-      prefix = prefix, suffix = suffix, 
-      big.mark = big.mark, decimal.mark = decimal.mark, 
+      accuracy = accuracy, scale = scale,
+      prefix = prefix, suffix = suffix,
+      big.mark = big.mark, decimal.mark = decimal.mark,
       trim = trim, ...
     )
   }
@@ -130,9 +130,9 @@ comp_label_percent <- function(accuracy = 1, scale = 100, prefix = "", suffix = 
 #' @rdname number
 comp_percent <- function(x, accuracy = 1, scale = 100, prefix = "", suffix = "%", big.mark = " ", decimal.mark = ".", trim = TRUE, ...) {
   number(1 - x,
-    accuracy = accuracy, scale = scale, 
-    prefix = prefix, suffix = suffix, 
-    big.mark = big.mark, decimal.mark = decimal.mark, 
+    accuracy = accuracy, scale = scale,
+    prefix = prefix, suffix = suffix,
+    big.mark = big.mark, decimal.mark = decimal.mark,
     trim = trim, ...
   )
 }
@@ -142,9 +142,9 @@ comp_percent <- function(x, accuracy = 1, scale = 100, prefix = "", suffix = "%"
 comp_label_pourcent <- function(accuracy = 1, scale = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
   function(x) {
     comp_pourcent(
-      accuracy = accuracy, scale = scale, 
-      prefix = prefix, suffix = suffix, 
-      big.mark = big.mark, decimal.mark = decimal.mark, 
+      accuracy = accuracy, scale = scale,
+      prefix = prefix, suffix = suffix,
+      big.mark = big.mark, decimal.mark = decimal.mark,
       trim = trim, ...
     )
   }
@@ -154,9 +154,9 @@ comp_label_pourcent <- function(accuracy = 1, scale = 100, prefix = "", suffix =
 #' @rdname number
 comp_pourcent <- function(x, accuracy = 1, scale = 100, prefix = "", suffix = " %", big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
   number(1 - x,
-    accuracy = accuracy, scale = scale, 
-    prefix = prefix, suffix = suffix, 
-    big.mark = big.mark, decimal.mark = decimal.mark, 
+    accuracy = accuracy, scale = scale,
+    prefix = prefix, suffix = suffix,
+    big.mark = big.mark, decimal.mark = decimal.mark,
     trim = trim, ...
   )
 }

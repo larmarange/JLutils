@@ -18,17 +18,20 @@
 #'
 #' @examples
 #' require(ggplot2)
-#' p1 <- ggplot(mtcars, aes(wt, mpg)) + geom_point()
-#' p2 <- ggplot(mtcars, aes(factor(cyl))) + geom_bar()
-#' p3 <- ggplot(mtcars, aes(factor(cyl), mpg)) + geom_violin()
-#' p4 <- ggplot(mtcars, aes(factor(cyl), mpg)) + geom_boxplot()
+#' p1 <- ggplot(mtcars, aes(wt, mpg)) +
+#'   geom_point()
+#' p2 <- ggplot(mtcars, aes(factor(cyl))) +
+#'   geom_bar()
+#' p3 <- ggplot(mtcars, aes(factor(cyl), mpg)) +
+#'   geom_violin()
+#' p4 <- ggplot(mtcars, aes(factor(cyl), mpg)) +
+#'   geom_boxplot()
 #'
 #' multiplot(p1, p2, p3, p4)
 #' multiplot(p1, p2, p3, p4, cols = 2)
-#' multiplot(p1, p2, p3, layout = matrix(c(1,2,3,3), nrow = 2))
-#' multiplot(p1, p2, p3, layout = matrix(c(1,2,3,3), nrow = 2, byrow = TRUE))
-#' multiplot(p1, p2, p3, layout = matrix(c(1,2,3,3), nrow = 2, byrow = TRUE), heights = c(3, 1))
-#'
+#' multiplot(p1, p2, p3, layout = matrix(c(1, 2, 3, 3), nrow = 2))
+#' multiplot(p1, p2, p3, layout = matrix(c(1, 2, 3, 3), nrow = 2, byrow = TRUE))
+#' multiplot(p1, p2, p3, layout = matrix(c(1, 2, 3, 3), nrow = 2, byrow = TRUE), heights = c(3, 1))
 #' @export
 
 # Source: http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/

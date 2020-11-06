@@ -9,7 +9,6 @@
 #' @examples
 #' x <- c("a", "a", "a", "b", "b", "a", "c", "c")
 #' auto_index_group_rows(x)
-
 auto_index_group_rows <- function(x) {
   lx <- dplyr::lead(x)
 

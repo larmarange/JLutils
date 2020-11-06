@@ -21,7 +21,7 @@
 #' @export best.cutree
 
 best.cutree <-
-  function(hc, min=3, max=20, loss=FALSE, graph=FALSE, ...) {
+  function(hc, min = 3, max = 20, loss = FALSE, graph = FALSE, ...) {
     if (!inherits(hc, "hclust")) hc <- as.hclust(hc)
     max <- min(max, length(hc$height))
     inert.gain <- rev(hc$height)

@@ -14,8 +14,8 @@
 #'   geom_point() +
 #'   theme(legend.position = "bottom")
 #' p2 <- ggplot(iris) +
-#' aes(x = Petal.Length, y = Petal.Width, color = Species) +
-#' geom_point()
+#'   aes(x = Petal.Length, y = Petal.Width, color = Species) +
+#'   geom_point()
 #'
 #' # get legend from p1
 #' l <- get_legend(p1)
@@ -26,7 +26,6 @@
 #'
 #' # Combining
 #' multiplot(p1, p2, l, heights = c(2, 2, 1))
-#'
 #' @export
 
 get_legend <- function(p) {

@@ -13,13 +13,12 @@
 #' @examples
 #' if (require(TraMineR) & require(cluster)) {
 #'   data(mvad)
-#'   mvad.seq <- seqdef(mvad[,17:86])
+#'   mvad.seq <- seqdef(mvad[, 17:86])
 #'   mvad.lcs <- seqdist(mvad.seq, method = "LCS")
 #'   mvad.hc <- agnes(mvad.lcs, method = "ward")
 #'   seq_heatmap(mvad.seq, mvad.hc)
 #'   seqIplot(mvad.seq, sortv = cutree.order(mvad.hc, nrow(mvad.seq)))
 #' }
-
 seq_heatmap <- function(seq, tree, with.missing = FALSE, ...) {
   if (!requireNamespace("TraMineR")) {
     stop("TraMineR package is required. Please install it.")

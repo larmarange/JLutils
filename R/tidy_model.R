@@ -41,5 +41,3 @@ process_model <- function(ret, x, conf.int = FALSE, conf.level = .95, exponentia
   ret$estimate <- trans(ret$estimate)
   ret
 }
-
-

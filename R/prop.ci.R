@@ -27,33 +27,32 @@
 #'  By default, \code{NA} value are removed.
 #'
 #' @examples
-#'  if (require(questionr)) {
-#'  data(hdv2003)
-#'  d <- hdv2003
+#' if (require(questionr)) {
+#'   data(hdv2003)
+#'   d <- hdv2003
 #'
-#'  freq(d$sport)
-#'  prop.ci(d$sport)
-#'  prop.ci.lower(d$sport)
-#'  prop.ci.upper(d$sport)
-#'  prop.ci(d$sport, conf.level = 0.9)
-#'  prop.ci(table(d$sport))
-#'  prop.ci(d$sport=="Non")
-#'  prop.ci(d$sport=="Oui")
+#'   freq(d$sport)
+#'   prop.ci(d$sport)
+#'   prop.ci.lower(d$sport)
+#'   prop.ci.upper(d$sport)
+#'   prop.ci(d$sport, conf.level = 0.9)
+#'   prop.ci(table(d$sport))
+#'   prop.ci(d$sport == "Non")
+#'   prop.ci(d$sport == "Oui")
 #'
-#'  prop.ci.lower(c(1277, 723), n = 2000)
-#'  prop.ci.upper(c(1277, 723), n = 2000)
+#'   prop.ci.lower(c(1277, 723), n = 2000)
+#'   prop.ci.upper(c(1277, 723), n = 2000)
 #'
-#'    if (require(data.table)) {
-#'      d <- as.data.table(d)
-#'      res <- d[,.(freq=.N),by=.(sexe,sport)]
-#'      res[, n := sum(freq), by=sexe]
-#'      res[, prop := freq/n]
-#'      res[, prop.l := prop.ci.lower(freq, n)]
-#'      res[, prop.h := prop.ci.upper(freq, n)]
-#'      res
-#'    }
-#'  }
-#'
+#'   if (require(data.table)) {
+#'     d <- as.data.table(d)
+#'     res <- d[, .(freq = .N), by = .(sexe, sport)]
+#'     res[, n := sum(freq), by = sexe]
+#'     res[, prop := freq / n]
+#'     res[, prop.l := prop.ci.lower(freq, n)]
+#'     res[, prop.h := prop.ci.upper(freq, n)]
+#'     res
+#'   }
+#' }
 #' @return a vector with confidence interval
 #'
 #' @seealso \code{\link[stats]{prop.test}}
@@ -85,8 +84,9 @@ prop.ci <- function(x, n = NULL, bounds = 1:2, ...) {
       stop("When x and n are provided, and if x contains several elements, bounds should be 1 or 2 (but not 1:2).")
     }
     res <- c()
-    for (i in 1:length(x))
+    for (i in 1:length(x)) {
       res <- c(res, prop.test(x[i], n[i], ...)$conf.int[bounds])
+    }
     return(res)
   }
 }

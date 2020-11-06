@@ -23,18 +23,30 @@
 #' a ggplot graphic or a data frame if \code{return_data == TRUE}.
 #' @examples
 #' ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq")
-#' ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
-#'   fill_breaks = c(-3, -2, 0, 2, 3))
-#' ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
-#'   fill = "blue")
-#' ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
-#'   size = "expected", size_title = "Expected number of observations")
-#' ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
-#'   labels = "scales::percent(row.prop)", size = NULL)
-#' ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
-#'   labels = "scales::percent(row.prop)", size = "raster")
-#' ggcross(Sex + Age + Class ~ Survived, data = as.data.frame(Titanic), weight = "Freq",
-#'   return_data = TRUE)
+#' ggcross(Sex + Age + Class ~ Survived,
+#'   data = as.data.frame(Titanic), weight = "Freq",
+#'   fill_breaks = c(-3, -2, 0, 2, 3)
+#' )
+#' ggcross(Sex + Age + Class ~ Survived,
+#'   data = as.data.frame(Titanic), weight = "Freq",
+#'   fill = "blue"
+#' )
+#' ggcross(Sex + Age + Class ~ Survived,
+#'   data = as.data.frame(Titanic), weight = "Freq",
+#'   size = "expected", size_title = "Expected number of observations"
+#' )
+#' ggcross(Sex + Age + Class ~ Survived,
+#'   data = as.data.frame(Titanic), weight = "Freq",
+#'   labels = "scales::percent(row.prop)", size = NULL
+#' )
+#' ggcross(Sex + Age + Class ~ Survived,
+#'   data = as.data.frame(Titanic), weight = "Freq",
+#'   labels = "scales::percent(row.prop)", size = "raster"
+#' )
+#' ggcross(Sex + Age + Class ~ Survived,
+#'   data = as.data.frame(Titanic), weight = "Freq",
+#'   return_data = TRUE
+#' )
 #' if (require(survey)) {
 #'   data(api)
 #'   dclus1 <- svydesign(id = ~dnum, weights = ~pw, data = apiclus1, fpc = ~fpc)

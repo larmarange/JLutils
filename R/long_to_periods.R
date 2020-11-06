@@ -10,8 +10,10 @@
 #' load(url("https://larmarange.github.io/analyse-R/data/care_trajectories.RData"))
 #' care_trajectories
 #' long_to_periods(care_trajectories, .id = "id", .start = "month")
-#' long_to_periods(care_trajectories, .id = "id", .start = "month",
-#'                 .by = c("sex", "age", "care_status"))
+#' long_to_periods(care_trajectories,
+#'   .id = "id", .start = "month",
+#'   .by = c("sex", "age", "care_status")
+#' )
 #' }
 #' @export
 long_to_periods <- function(.data, .id, .start, .stop = NULL, .by = NULL) {

@@ -29,10 +29,10 @@
 #' @export A2Rplot
 #' @examples
 #' # Example with iris data
-#' d <- dist(iris[,1:4],method="euc")
+#' d <- dist(iris[, 1:4], method = "euc")
 #' h <- hclust(d)
-#' Species <- iris[,5]
-#' A2Rplot(h, k=3, fact.sup=Species, knot.pos="bary", show.labels=FALSE)
+#' Species <- iris[, 5]
+#' A2Rplot(h, k = 3, fact.sup = Species, knot.pos = "bary", show.labels = FALSE)
 #'
 #' # Examples from http://rpubs.com/gaston/dendrograms
 #'
@@ -40,11 +40,13 @@
 #'
 #' hc <- hclust(dist(mtcars))
 #' par(bg = "#EFEFEF")
-#' A2Rplot(hc, k = 3, boxes = FALSE, col.up = "gray50",
-#'        col.down = c("#FF6B6B", "#4ECDC4", "#556270"))
+#' A2Rplot(hc,
+#'   k = 3, boxes = FALSE, col.up = "gray50",
+#'   col.down = c("#FF6B6B", "#4ECDC4", "#556270")
+#' )
 #'
 #' par(bg = "gray15")
-#' cols = hsv(c(0.2, 0.57, 0.95), 1, 1, 0.8)
+#' cols <- hsv(c(0.2, 0.57, 0.95), 1, 1, 0.8)
 #' A2Rplot(hc, k = 3, boxes = FALSE, col.up = "gray50", col.down = cols)
 #'
 #' par(bg = bg.def)
@@ -52,24 +54,26 @@
 #' # Examples with state.x77
 #' d77 <- dist(state.x77)
 #' h77 <- hclust(d77)
-#' A2Rplot(h77, k=4, knot.pos="mean", type="tri")
-#' A2Rplot(h77, k=4, lty.up=1,lwd.down=1,
-#' 				col.down=c("purple","black","green3","orange"),
-#' 				col.up="gray", boxes=FALSE)
+#' A2Rplot(h77, k = 4, knot.pos = "mean", type = "tri")
+#' A2Rplot(h77,
+#'   k = 4, lty.up = 1, lwd.down = 1,
+#'   col.down = c("purple", "black", "green3", "orange"),
+#'   col.up = "gray", boxes = FALSE
+#' )
 #'
-#' A2Rplot(h77, k=4, knot.pos="left", type="tri")
+#' A2Rplot(h77, k = 4, knot.pos = "left", type = "tri")
 #'
 #' # Example showing how to include this in an other layout with only.tree
-#' op <- par(no.readonly=TRUE)
-#' par(mfrow = c(3,3))
-#' par(mar=c(3,3,3,3))
+#' op <- par(no.readonly = TRUE)
+#' par(mfrow = c(3, 3))
+#' par(mar = c(3, 3, 3, 3))
 #' plot(rnorm(50)) # one plot
 #' plot(rnorm(50)) # one plot
 #' plot(rnorm(50)) # one plot
 #' plot(rnorm(50)) # one plot
-#' par(mar=c(1,1,1,1))
-#' A2Rplot(h77, k=4, only.tree=TRUE, boxes=FALSE)
-#' par(mar=c(3,3,3,3))
+#' par(mar = c(1, 1, 1, 1))
+#' A2Rplot(h77, k = 4, only.tree = TRUE, boxes = FALSE)
+#' par(mar = c(3, 3, 3, 3))
 #' plot(rnorm(50)) # one plot
 #' plot(rnorm(50)) # one plot
 #' plot(rnorm(50)) # one plot
@@ -80,18 +84,18 @@
 #' hc <- hclust(dist(USArrests)^2, "cen")
 #' memb <- cutree(hc, k = 10)
 #' cent <- NULL
-#' for(k in 1:10){
-#' 	cent <- rbind(cent, colMeans(USArrests[memb == k, , drop = FALSE]))
+#' for (k in 1:10) {
+#'   cent <- rbind(cent, colMeans(USArrests[memb == k, , drop = FALSE]))
 #' }
 #' hc1 <- hclust(dist(cent)^2, method = "cen", members = table(memb))
-#' hc1$labels <- paste('g',1:10)
+#' hc1$labels <- paste("g", 1:10)
 #' A2Rplot(hc1,
-#' 				members = table(memb),
-#' 				k=4,
-#' 				lwd.up   =  2, lty.up=1, col.up = "gray",
-#' 				lwd.down =  1, lty.down='twodash',
-#' 				col.down = c("orange", "brown", "green3", "royalblue"),
-#' 				knot.pos = "bary"
+#'   members = table(memb),
+#'   k = 4,
+#'   lwd.up = 2, lty.up = 1, col.up = "gray",
+#'   lwd.down = 1, lty.down = "twodash",
+#'   col.down = c("orange", "brown", "green3", "royalblue"),
+#'   knot.pos = "bary"
 #' )
 #' @importFrom grDevices rainbow
 #' @importFrom utils tail
@@ -100,21 +104,21 @@
 
 `A2Rplot` <- function(
                       x, # an hclust object to draw
-                      k        = 2, # the number of groups
-                      col.up   = "black",
+                      k = 2, # the number of groups
+                      col.up = "black",
                       col.down = rainbow(k),
-                      lty.up   = 2,
+                      lty.up = 2,
                       lty.down = 1,
-                      lwd.up   = 1,
+                      lwd.up = 1,
                       lwd.down = 2,
-                      type     = c("rectangle", "triangle"),
+                      type = c("rectangle", "triangle"),
                       knot.pos = c("mean", "bary", "left", "right", "random"),
                       criteria,
                       fact.sup,
-                      show.labels=TRUE,
-                      only.tree=FALSE,
-                      main     = paste("Colored Dendrogram (", k, " groups)"),
-                      boxes    = TRUE,
+                      show.labels = TRUE,
+                      only.tree = FALSE,
+                      main = paste("Colored Dendrogram (", k, " groups)"),
+                      boxes = TRUE,
                       members) {
   if (!inherits(x, "hclust")) x <- as.hclust(x)
   if (missing(members)) members <- NULL
@@ -438,12 +442,11 @@
 #' @export cutree.order
 #' @examples
 #' h77 <- hclust(dist(state.x77))
-#' ct.o <- cutree.order(h77, k=4)
-#' ct.n <- cutree(h77,k=4)
+#' ct.o <- cutree.order(h77, k = 4)
+#' ct.n <- cutree(h77, k = 4)
 #' plot(h77)
 #' rect.hclust(h77, 4)
 #' cbind(ct.o, ct.n)
-
 `cutree.order` <-
   function(tree, k = NULL, h = NULL) {
     coupe <- cutree(tree, k = k, h = h)

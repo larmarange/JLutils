@@ -19,7 +19,7 @@
 #' p + geom_stripped_rows()
 #' p + geom_stripped_cols()
 #' p + geom_stripped_rows() + geom_stripped_cols()
-#' 
+#'
 #' p <- ggplot(tips) +
 #'   aes(x = total_bill, y = day) +
 #'   geom_count() +
@@ -31,7 +31,7 @@
 #' p + geom_stripped_rows(odd = "blue", even = "yellow")
 #' p + geom_stripped_rows(odd = "blue", even = "yellow", alpha = .1)
 #' p + geom_stripped_rows(odd = "#00FF0022", even = "#FF000022")
-#' 
+#'
 #' p + geom_stripped_cols()
 #' p + geom_stripped_cols(width = 10)
 #' p + geom_stripped_cols(width = 10, nudge_x = 5)

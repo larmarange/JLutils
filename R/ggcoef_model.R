@@ -1,8 +1,8 @@
 #' Plot model coefficients
-#' 
+#'
 #' Experimental redesign of [GGally::ggcoef()] using [gtsummary::tbl_regression()].
 #' Use wit caution, syntax is subject to change.
-#' 
+#'
 #' @param x a regression model object
 #' @param label list of formulas specifying variables labels, e.g. `list(age ~ "Age, yrs", stage ~ "Path T Stage")`
 #' @param exponentiate if `TRUE`, exponentiate the coefficient estimates
@@ -16,7 +16,7 @@
 #' @param return_data if `TRUE`, will return the data.frame used for plotting instead of the plot
 #' @param ... parameters passed to [ggcoef_plot()]
 #' @export
-#' @examples 
+#' @examples
 #' data(trial, package = "gtsummary")
 #' trial$high_marker <- factor(trial$marker > 1, label = c("low", "high"))
 #' attr(trial$high_marker, "label") <- "Marker level"
@@ -29,32 +29,33 @@
 #' ggcoef_model(mod, significance = .10, conf.level = .9, signif_stars = FALSE, show_p_values = FALSE)
 #' ggcoef_model(mod, exponentiate = TRUE, colour = NULL, stripped_rows = FALSE, signif_stars = FALSE)
 #' ggcoef_model(mod, exponentiate = TRUE, conf.level = NULL)
-#' 
+#'
 #' mod <- glm(response ~ stage:age + grade:stage, trial, family = binomial(link = "logit"))
 #' ggcoef_model(mod, exponentiate = TRUE)
-#' 
+#'
 #' if (require(survival)) {
-#'   test <- list(time = c(4,3,1,1,2,2,3), 
-#'                 status = c(1,1,1,0,1,1,0), 
-#'                 x = c(0,2,1,1,1,0,0), 
-#'                 sex = c("f", "f", "f", "f", "m", "m", "m")) 
+#'   test <- list(
+#'     time = c(4, 3, 1, 1, 2, 2, 3),
+#'     status = c(1, 1, 1, 0, 1, 1, 0),
+#'     x = c(0, 2, 1, 1, 1, 0, 0),
+#'     sex = c("f", "f", "f", "f", "m", "m", "m")
+#'   )
 #'   mod <- coxph(Surv(time, status) ~ x + sex, test)
 #'   ggcoef_model(mod, exponentiate = TRUE)
 #' }
-ggcoef_model <- function (
-  x,
-  label = NULL,
-  exponentiate = FALSE,
-  include = dplyr::everything(),
-  show_single_row = NULL,
-  conf.level = .95,
-  intercept = FALSE,
-  show_p_values = TRUE,
-  signif_stars = TRUE,
-  significance = NULL,
-  return_data = FALSE,
-  ...
-){
+ggcoef_model <- function(
+                         x,
+                         label = NULL,
+                         exponentiate = FALSE,
+                         include = dplyr::everything(),
+                         show_single_row = NULL,
+                         conf.level = .95,
+                         intercept = FALSE,
+                         show_p_values = TRUE,
+                         signif_stars = TRUE,
+                         significance = NULL,
+                         return_data = FALSE,
+                         ...) {
   data <- ggcoef_data(
     x,
     label = label,
@@ -65,39 +66,43 @@ ggcoef_model <- function (
     intercept = intercept,
     significance = significance
   )
-  
-  if (show_p_values & signif_stars)
+
+  if (show_p_values & signif_stars) {
     data$add_to_label <- paste0(data$p_value_label, data$signif_stars)
-  if (show_p_values & !signif_stars)
+  }
+  if (show_p_values & !signif_stars) {
     data$add_to_label <- data$p_value_label
-  if (!show_p_values & signif_stars)
+  }
+  if (!show_p_values & signif_stars) {
     data$add_to_label <- data$signif_stars
-  
+  }
+
   if (show_p_values | signif_stars) {
     data$label <- forcats::fct_inorder(
       factor(
         paste0(
-          data$label, 
+          data$label,
           ifelse(data$add_to_label == "", "", paste0(" (", data$add_to_label, ")"))
         )
       )
     )
   }
-  
-  if (return_data)
+
+  if (return_data) {
     return(data)
-  
+  }
+
   args <- list(...)
   args$data <- data
   args$exponentiate <- exponentiate
-  
+
   if (!"colour" %in% names(args)) {
     args$colour <- "variable_label"
     if (!"colour_guide" %in% names(args)) {
       args$colour_guide <- FALSE
     }
   }
-  
+
   do.call(ggcoef_plot, args)
 }
 
@@ -105,42 +110,41 @@ ggcoef_model <- function (
 #' @export
 #' @param mods named list of models
 #' @param type a dodged plot or a facetted plot?
-#' @examples 
-#' 
+#' @examples
+#'
 #' # Comparison of several models
 #' mod1 <- glm(response ~ age + stage + grade + high_marker, trial, family = binomial())
 #' mod2 <- step(mod1, trace = 0)
 #' mod3 <- glm(response ~ high_marker * stage, trial, family = binomial())
 #' mods <- list("Full model" = mod1, "Simplified model" = mod2, "With interaction" = mod3)
-#' 
+#'
 #' ggcoef_compare(mods, exponentiate = TRUE)
 #' ggcoef_compare(mods, exponentiate = TRUE, type = "faceted")
-#' 
+#'
 #' # you can reverse the vertical position of the point by using a negative value
 #' # for dodged_width (but it will produce some warnings)
 #' \dontrun{
-#'   ggcoef_compare(mods, exponentiate = TRUE, dodged_width = -.9)
+#' ggcoef_compare(mods, exponentiate = TRUE, dodged_width = -.9)
 #' }
-ggcoef_compare <- function (
-  mods,
-  type = c("dodged", "faceted"),
-  label = NULL,
-  exponentiate = FALSE,
-  include = NULL,
-  show_single_row = NULL,
-  conf.level = .95,
-  intercept = FALSE,
-  significance = .05,
-  return_data = FALSE,
-  ...
-){
+ggcoef_compare <- function(
+                           mods,
+                           type = c("dodged", "faceted"),
+                           label = NULL,
+                           exponentiate = FALSE,
+                           include = NULL,
+                           show_single_row = NULL,
+                           conf.level = .95,
+                           intercept = FALSE,
+                           significance = .05,
+                           return_data = FALSE,
+                           ...) {
   if (is.null(include)) {
     data <- lapply(
       X = mods,
       FUN = ggcoef_data,
       label = label,
       exponentiate = exponentiate,
-      #include = include,
+      # include = include,
       show_single_row = show_single_row,
       conf.level = conf.level,
       intercept = intercept,
@@ -159,32 +163,33 @@ ggcoef_compare <- function (
       significance = significance
     )
   }
-  
+
   data <- dplyr::bind_rows(data, .id = "model")
   x_label <- attr(data, "x_label")
-  
+
   data$model <- forcats::fct_inorder(data$model)
-  
+
   # Add NA values for unobserved combinations
   # (i.e. for a term present in one model but not in another)
   data <- data %>%
-    tidyr::expand(model, tidyr::nesting(variable, variable_label, var_type, row_ref, row_type, label)) %>% 
+    tidyr::expand(model, tidyr::nesting(variable, variable_label, var_type, row_ref, row_type, label)) %>%
     dplyr::left_join(data, by = c("model", "variable_label", "variable", "var_type", "row_ref", "row_type", "label"))
-  
+
   attr(data, "x_label") <- x_label
-  
-  if (return_data)
+
+  if (return_data) {
     return(data)
-  
+  }
+
   type <- match.arg(type)
-  
+
   args <- list(...)
   args$data <- data
   args$exponentiate <- exponentiate
-  
+
   if (type == "dodged") {
     if (!"dodged " %in% names(args)) {
-      args$dodged  <- TRUE
+      args$dodged <- TRUE
     }
     if (!"colour" %in% names(args)) {
       args$colour <- "model"
@@ -203,39 +208,38 @@ ggcoef_compare <- function (
       }
     }
   }
-  
+
   do.call(ggcoef_plot, args)
 }
 
 #' @rdname ggcoef_model
-#' @description 
+#' @description
 #' [ggcoef_multinom()] is a variation of [ggcoef_model()] adapted to multinomial
 #' logistic regressions performed with [nnet::multinom()].
 #' [ggcoef_multinom()] works only with the dev version of `gtsummary`.
 #' @param y.level_label an optional named vector for labelling `y.level` (see examples)
 #' @export
-#' @examples 
-#' 
+#' @examples
+#'
 #' # specific function for multinom models
 #' data(tips, package = "reshape")
 #' library(nnet)
 #' mod <- multinom(day ~ ., data = tips)
 #' ggcoef_multinom(mod)
 #' ggcoef_multinom(mod, y.level = c(Thur = "Thursday", Sat = "Saturday", Sun = "Sunday"))
-ggcoef_multinom <- function (
-  x,
-  type = c("dodged", "faceted"),
-  y.level_label = NULL,
-  label = NULL,
-  exponentiate = TRUE,
-  include = dplyr::everything(),
-  show_single_row = NULL,
-  conf.level = .95,
-  intercept = FALSE,
-  significance = .05,
-  return_data = FALSE,
-  ...
-){
+ggcoef_multinom <- function(
+                            x,
+                            type = c("dodged", "faceted"),
+                            y.level_label = NULL,
+                            label = NULL,
+                            exponentiate = TRUE,
+                            include = dplyr::everything(),
+                            show_single_row = NULL,
+                            conf.level = .95,
+                            intercept = FALSE,
+                            significance = .05,
+                            return_data = FALSE,
+                            ...) {
   data <- ggcoef_data(
     x,
     label = label,
@@ -246,40 +250,44 @@ ggcoef_multinom <- function (
     intercept = intercept,
     significance = significance
   )
-  
-  if (!is.null(y.level_label))
+
+  if (!is.null(y.level_label)) {
     data$y.level <- factor(
-      data$y.level, 
-      levels = names(y.level_label), 
+      data$y.level,
+      levels = names(y.level_label),
       labels = y.level_label
-  ) else
+    )
+  } else {
     data$y.level <- forcats::fct_inorder(factor(data$y.level))
-  
+  }
+
   # reference rows need to be duplicated for each value of y.levels
   rr <- data[!is.na(data$row_ref) & data$row_ref, ]
   yl <- levels(data$y.level)
   data[!is.na(data$row_ref) & data$row_ref, "y.level"] <- yl[1]
-  
+
   for (i in 2:length(yl)) {
     rr$y.level <- yl[i]
     data <- dplyr::bind_rows(data, rr)
   }
-  
-  if (exponentiate)
+
+  if (exponentiate) {
     attr(data, "x_level") <- "OR"
-  
-  if (return_data)
+  }
+
+  if (return_data) {
     return(data)
-  
+  }
+
   type <- match.arg(type)
-  
+
   args <- list(...)
   args$data <- data
   args$exponentiate <- exponentiate
-  
+
   if (type == "dodged") {
     if (!"dodged " %in% names(args)) {
-      args$dodged  <- TRUE
+      args$dodged <- TRUE
     }
     if (!"colour" %in% names(args)) {
       args$colour <- "y.level"
@@ -298,81 +306,84 @@ ggcoef_multinom <- function (
       }
     }
   }
-  
+
   do.call(ggcoef_plot, args)
 }
 
 #' @rdname ggcoef_model
 #' @export
-ggcoef_data <- function (
-  x,
-  label = NULL,
-  exponentiate = FALSE,
-  include = dplyr::everything(),
-  show_single_row = NULL,
-  conf.level = .95,
-  intercept = FALSE,
-  significance = .05
-){
-  if (!requireNamespace("gtsummary"))
+ggcoef_data <- function(
+                        x,
+                        label = NULL,
+                        exponentiate = FALSE,
+                        include = dplyr::everything(),
+                        show_single_row = NULL,
+                        conf.level = .95,
+                        intercept = FALSE,
+                        significance = .05) {
+  if (!requireNamespace("gtsummary")) {
     stop("Package gtsummary is required.")
-  
+  }
+
   # transform label from a named vector to a list of formulas
-  if (!is.null(label) && is.character(label))
+  if (!is.null(label) && is.character(label)) {
     label <- unname(mapply(
-      FUN = function(n, l){formula(paste0(n, " ~ \"", l, "\""))}, 
-      names(label), 
+      FUN = function(n, l) {
+        formula(paste0(n, " ~ \"", l, "\""))
+      },
+      names(label),
       label
     ))
-  
+  }
+
   tbl <- gtsummary::tbl_regression(
-    x = x, 
-    label = label, 
+    x = x,
+    label = label,
     exponentiate = exponentiate,
-    include = include, 
-    show_single_row = show_single_row, 
+    include = include,
+    show_single_row = show_single_row,
     conf.level = conf.level,
     intercept = intercept
   )
   data <- tbl$table_body
-  
-  data[!is.na(data$row_ref) & data$row_ref, "estimate"] <- 
+
+  data[!is.na(data$row_ref) & data$row_ref, "estimate"] <-
     ifelse(exponentiate, 1, 0)
-  
-  if(is.null(conf.level)) {
+
+  if (is.null(conf.level)) {
     data <- data[!names(data) %in% c("conf.low", "conf.high")]
   }
-  
-  if(!is.null(significance)) {
+
+  if (!is.null(significance)) {
     data$significance <- factor(
-      !is.na(data$p.value) & data$p.value <= significance, 
+      !is.na(data$p.value) & data$p.value <= significance,
       levels = c(TRUE, FALSE),
       labels = paste(c("p \u2264", "p >"), significance)
     )
   }
-  
+
   data$signif_stars <- GGally::signif_stars(data$p.value, point = NULL)
-  
+
   data$p_value_label <- ifelse(is.na(data$p.value), "", scales::pvalue(data$p.value, add_p = TRUE))
-  
+
   # add variable labels to all rows
   var_labs <- data[data$row_type == "label", c("variable", "label")]
   names(var_labs) <- c("variable", "variable_label")
   data <- dplyr::left_join(data, var_labs, by = "variable")
-  
+
   # keep only rows with estimate
   data <- data[!is.na(data$estimate), ]
-  
+
   data$variable_label <- forcats::fct_inorder(data$variable_label)
   data$label <- forcats::fct_inorder(data$label)
 
-  
+
   # label for x axis
   th <- tbl$table_header
   x_label <- th[th$column == "estimate", "label"]
   x_label <- gsub("\\*\\*", "", x_label)
   attr(data, "x_label") <- x_label
-  
+
   data
 }
 
@@ -401,107 +412,111 @@ ggcoef_data <- function (
 #' @param dodged_width width value for [ggplot2::position_dodge()]
 #' @param facet_col optional variable name to be used for column facets
 #' @export
-ggcoef_plot <- function (
-  data,
-  exponentiate = FALSE,
-  point_size = 2,
-  point_stroke = 2,
-  point_fill = "white",
-  colour = NULL,
-  colour_guide = TRUE,
-  colour_lab = "",
-  shape = "significance",
-  shape_values = c(16, 21),
-  shape_guide = TRUE,
-  shape_lab = "",
-  errorbar = TRUE,
-  errorbar_height = .1,
-  errorbar_coloured = FALSE,
-  stripped_rows = TRUE,
-  strips_odd = "#11111111", 
-  strips_even = "#00000000",
-  vline = TRUE,
-  vline_colour = "grey50",
-  dodged = FALSE,
-  dodged_width = .8,
-  facet_col = NULL
-){
+ggcoef_plot <- function(
+                        data,
+                        exponentiate = FALSE,
+                        point_size = 2,
+                        point_stroke = 2,
+                        point_fill = "white",
+                        colour = NULL,
+                        colour_guide = TRUE,
+                        colour_lab = "",
+                        shape = "significance",
+                        shape_values = c(16, 21),
+                        shape_guide = TRUE,
+                        shape_lab = "",
+                        errorbar = TRUE,
+                        errorbar_height = .1,
+                        errorbar_coloured = FALSE,
+                        stripped_rows = TRUE,
+                        strips_odd = "#11111111",
+                        strips_even = "#00000000",
+                        vline = TRUE,
+                        vline_colour = "grey50",
+                        dodged = FALSE,
+                        dodged_width = .8,
+                        facet_col = NULL) {
   data$label <- forcats::fct_rev(data$label)
-  
-  if (stripped_rows)
-    data <- data %>% 
+
+  if (stripped_rows) {
+    data <- data %>%
       mutate(.fill = dplyr::if_else(as.integer(label) %% 2L == 1, strips_even, strips_odd))
-  
+  }
+
   # mapping
   mapping <- aes_string(x = "estimate", y = "label")
-  
+
   errorbar <- errorbar & all(c("conf.low", "conf.high") %in% names(data))
-  if(errorbar) {
+  if (errorbar) {
     mapping$xmin <- aes_string(xmin = "conf.low")$xmin
     mapping$xmax <- aes_string(xmax = "conf.high")$xmax
   }
-  if(!is.null(shape) && shape %in% names(data)) {
+  if (!is.null(shape) && shape %in% names(data)) {
     mapping$shape <- aes_string(shape = shape)$shape
   }
-  if(!is.null(colour) && colour %in% names(data)) {
+  if (!is.null(colour) && colour %in% names(data)) {
     mapping$colour <- aes_string(colour = colour)$colour
     mapping$group <- aes_string(group = colour)$group
   }
-  
+
   # position
-  if (dodged)
+  if (dodged) {
     position <- position_dodge(dodged_width)
-  else
+  } else {
     position <- position_identity()
-  
+  }
+
   # plot
   p <- ggplot(data = data, mapping = mapping)
-  
-  if (stripped_rows)
-    p <- p + 
+
+  if (stripped_rows) {
+    p <- p +
       geom_stripped_rows(
-        mapping = aes_string(y = "label", odd = ".fill", even = ".fill"), 
+        mapping = aes_string(y = "label", odd = ".fill", even = ".fill"),
         inherit.aes = FALSE
       )
-  
-  if (vline)
+  }
+
+  if (vline) {
     p <- p + geom_vline(xintercept = ifelse(exponentiate, 1, 0), colour = vline_colour)
-  
-  if(errorbar) {
+  }
+
+  if (errorbar) {
     if (!is.null(colour) & errorbar_coloured) {
-      p <- p + 
+      p <- p +
         geom_errorbarh(
-          na.rm = TRUE, 
+          na.rm = TRUE,
           height = errorbar_height,
           position = position
         )
     } else {
-      p <- p + 
+      p <- p +
         geom_errorbarh(
-          mapping = aes(colour = NULL), 
-          na.rm = TRUE, 
-          height = errorbar_height, 
+          mapping = aes(colour = NULL),
+          na.rm = TRUE,
+          height = errorbar_height,
           colour = "black",
           position = position
         )
     }
   }
-  
-  if (!is.null(facet_col))
+
+  if (!is.null(facet_col)) {
     facet_formula <- as.formula(paste("variable_label ~ ", facet_col))
-  else
+  } else {
     facet_formula <- variable_label ~ .
-    
-  p <- p + 
+  }
+
+  p <- p +
     geom_point(
-      size = point_size, 
-      stroke = point_stroke, 
+      size = point_size,
+      stroke = point_stroke,
       fill = point_fill,
       position = position,
       na.rm = TRUE
     ) +
     facet_grid(
-      facet_formula, 
+      facet_formula,
       scales = "free_y", space = "free_y", switch = "y"
     ) +
     ylab("") +
@@ -510,9 +525,9 @@ ggcoef_plot <- function (
     theme(
       legend.position = "bottom",
       legend.box = "vertical",
-      strip.placement = "outside", 
-      strip.text.y.left = element_text(face = "bold", angle = 0, colour = "black", hjust = 0, vjust = 1), 
-      strip.text.x = element_text(face = "bold", colour = "black"), 
+      strip.placement = "outside",
+      strip.text.y.left = element_text(face = "bold", angle = 0, colour = "black", hjust = 0, vjust = 1),
+      strip.text.x = element_text(face = "bold", colour = "black"),
       strip.background = element_blank(),
       panel.grid.minor = element_blank(),
       panel.grid.major.y = element_blank(),
@@ -520,34 +535,37 @@ ggcoef_plot <- function (
       axis.title.x = element_text(face = "bold"),
       axis.ticks.y = element_blank()
     )
-  
-  if(!is.null(colour) && colour %in% names(data)) {
-    if (colour_guide)
+
+  if (!is.null(colour) && colour %in% names(data)) {
+    if (colour_guide) {
       colour_guide <- guide_legend()
+    }
     p <- p +
       scale_colour_discrete(guide = colour_guide) +
       labs(colour = colour_lab)
   }
-  
-  if(!is.null(shape) && shape %in% names(data)) {
-    if (shape_guide)
+
+  if (!is.null(shape) && shape %in% names(data)) {
+    if (shape_guide) {
       shape_guide <- guide_legend()
-    p <- p + 
+    }
+    p <- p +
       scale_shape_manual(
-        values = shape_values, 
-        drop = FALSE, 
+        values = shape_values,
+        drop = FALSE,
         guide = shape_guide,
         na.translate = FALSE
       ) +
       labs(shape = shape_lab)
   }
-  
-  if (exponentiate)
+
+  if (exponentiate) {
     p <- p + scale_x_log10()
-  
-  if (!is.null(attr(data, "x_label")))
+  }
+
+  if (!is.null(attr(data, "x_label"))) {
     p <- p + xlab(attr(data, "x_label"))
-  
+  }
+
   p
 }
-
