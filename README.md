@@ -10,7 +10,11 @@ JLutils
 
 A collection of diverse R functions who don't fit (yet?) in another package. Please note that some functions could be removed from `JLutils` once incorporated in a more appropriate package.
 
+**Please note that this is a sandbox package. All functions have not been tested in details and some are very experimental.**
+
 Une collection de fonctions diverses R qui n'ont pas (encore ?) trouvé de place dans un autre package. Veuillez noter que certaines fonctions peuvent être retirées de `JLutils` une fois incorporées dans un package plus approprié.
+
+**Merci de noter qu'il s'agit d'un package "bac-à-sable". Toutes les fonctions n'ont pas été testées en profondeur et certaines sont très expérimentales.**
 
 How to install / Installation 
 --------------
