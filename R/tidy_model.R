@@ -9,6 +9,7 @@
 #' @param quick	whether to compute a smaller and faster version, containing only the term and estimate columns.
 #' @param ... extra arguments
 #' @importFrom stats coef
+#' @importFrom broom tidy
 #' @export
 
 tidy_model <- function(x, conf.int = FALSE, conf.level = .95, exponentiate = FALSE, quick = FALSE, ...) {
