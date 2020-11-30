@@ -6,6 +6,7 @@
 \alias{ggcross}
 \alias{stat_stack_labels}
 \alias{stat_fill_labels}
+\alias{tidy_detailed}
 \title{Deprecated functions}
 \usage{
 ggchisq_res(...)
@@ -16,7 +17,7 @@ stat_stack_labels(...)
 
 stat_fill_labels(...)
 
-stat_fill_labels(...)
+tidy_detailed(...)
 }
 \arguments{
 \item{...}{parameters}
