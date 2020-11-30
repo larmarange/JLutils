@@ -31,6 +31,9 @@
 #'   ggsurvey(dw) + aes(x = Class, fill = Survived) + geom_bar(position = "fill")
 #' }
 ggsurvey <- function(design = NULL, mapping = aes(), ...) {
+  if (!inherits(design, "survey.design")) {
+    stop("'design' should be a 'survey.design' object.")
+  }
   if (!requireNamespace("survey", quietly = TRUE)) {
     stop("survey package is required.")
   }
