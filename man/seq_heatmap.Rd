@@ -25,7 +25,7 @@ dendrogram. The dendrogram is also plotted on the side of the index plot.
 \examples{
 if (require(TraMineR) & require(cluster)) {
   data(mvad)
-  mvad.seq <- seqdef(mvad[,17:86])
+  mvad.seq <- seqdef(mvad[, 17:86])
   mvad.lcs <- seqdist(mvad.seq, method = "LCS")
   mvad.hc <- agnes(mvad.lcs, method = "ward")
   seq_heatmap(mvad.seq, mvad.hc)

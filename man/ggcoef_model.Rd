@@ -136,7 +136,7 @@ ggcoef_plot(
 
 \item{shape}{optional variable name to be mapped to the shape aesthetic}
 
-\item{shape_values}{values of the different shapes to use in \code{\link[ggplot2:scale_shape_manual]{ggplot2::scale_shape_manual()}}}
+\item{shape_values}{values of the different shapes to use in \code{\link[ggplot2:scale_manual]{ggplot2::scale_shape_manual()}}}
 
 \item{shape_guide}{should shape guide be displayed in the legend?}
 
@@ -190,10 +190,12 @@ mod <- glm(response ~ stage:age + grade:stage, trial, family = binomial(link = "
 ggcoef_model(mod, exponentiate = TRUE)
 
 if (require(survival)) {
-  test <- list(time = c(4,3,1,1,2,2,3), 
-                status = c(1,1,1,0,1,1,0), 
-                x = c(0,2,1,1,1,0,0), 
-                sex = c("f", "f", "f", "f", "m", "m", "m")) 
+  test <- list(
+    time = c(4, 3, 1, 1, 2, 2, 3),
+    status = c(1, 1, 1, 0, 1, 1, 0),
+    x = c(0, 2, 1, 1, 1, 0, 0),
+    sex = c("f", "f", "f", "f", "m", "m", "m")
+  )
   mod <- coxph(Surv(time, status) ~ x + sex, test)
   ggcoef_model(mod, exponentiate = TRUE)
 }
@@ -210,7 +212,7 @@ ggcoef_compare(mods, exponentiate = TRUE, type = "faceted")
 # you can reverse the vertical position of the point by using a negative value
 # for dodged_width (but it will produce some warnings)
 \dontrun{
-  ggcoef_compare(mods, exponentiate = TRUE, dodged_width = -.9)
+ggcoef_compare(mods, exponentiate = TRUE, dodged_width = -.9)
 }
 
 # specific function for multinom models

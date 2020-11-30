@@ -1,7 +1,9 @@
 #' Tidy data with variable names and factor levels
 #'
-#' This function extends the output of \code{\link[broom]{tidy}} function from \pkg{broom} package
-#' by providing additional column indicating variables and factors names.
+#' @description 
+#' \lifecycle{deprecated}
+#' 
+#' For a more recent and powerful function, use `broom.helpers::tidy_plus_plus()`
 #'
 #' @param x model to tidy
 #' @param ... extra arguments passed to \code{\link[broom]{tidy}} function from \pkg{broom} package
@@ -32,6 +34,7 @@
 #' tidy_detailed(reg2, conf.int = TRUE, exponentiate = TRUE)
 #' @export
 tidy_detailed <- function(x, ...) {
+  lifecycle::deprecate_warn("1.22.0", "JLutils::tidy_detailed()", "broom.helpers::tidy_plus_plus()")
   if (!requireNamespace("broom")) {
     stop("broom package is required. Please install it.")
   }

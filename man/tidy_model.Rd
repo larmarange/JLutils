@@ -27,5 +27,5 @@ tidy_model(
 \item{...}{extra arguments}
 }
 \description{
-A generic tidier for model outputs
+\lifecycle{experimental}
 }

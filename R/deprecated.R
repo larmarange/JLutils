@@ -7,9 +7,10 @@
 #'
 #' \code{tidy_chisq} is deprecated. Use \code{\link[broom]{augment.htest}}
 #' from \pkg{broom} instead.
+#' 
+#' \code{tidy_detailed} is deprecated. Use \code{\link[broom.helpers]{tidy_plus_plus}} from \pkg{broom.helpers} instead.
 #'
-#' \code{ggchisq_res} is now deprecated. You could use instead \code{\link[GGally]{ggtable}}
-#' from \pkg{GGally} or \code{\link{ggcross}}.
+#' \code{ggchisq_res} and \code{\link{ggcross}} are now deprecated. You could use instead \code{\link[GGally]{ggtable}} from \pkg{GGally}.
 #'
 #' @name deprecated
 #' @param ... parameters

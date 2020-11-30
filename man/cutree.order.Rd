@@ -26,8 +26,8 @@ anymore with a recent version of R. It's why this function has been copied here.
 }
 \examples{
 h77 <- hclust(dist(state.x77))
-ct.o <- cutree.order(h77, k=4)
-ct.n <- cutree(h77,k=4)
+ct.o <- cutree.order(h77, k = 4)
+ct.n <- cutree(h77, k = 4)
 plot(h77)
 rect.hclust(h77, 4)
 cbind(ct.o, ct.n)

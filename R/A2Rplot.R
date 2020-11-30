@@ -1,5 +1,8 @@
 #' Colored dendrogram
 #'
+#' @description 
+#' \lifecycle{superseded}
+#' 
 #' This function plot an dendrogram with different colors to each cluster
 #' for a given number of classes. See examples.
 #'

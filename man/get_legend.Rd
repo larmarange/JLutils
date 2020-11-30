@@ -22,8 +22,8 @@ p1 <- ggplot(iris) +
   geom_point() +
   theme(legend.position = "bottom")
 p2 <- ggplot(iris) +
-aes(x = Petal.Length, y = Petal.Width, color = Species) +
-geom_point()
+  aes(x = Petal.Length, y = Petal.Width, color = Species) +
+  geom_point()
 
 # get legend from p1
 l <- get_legend(p1)
@@ -34,7 +34,6 @@ p2 <- p2 + theme(legend.position = "none")
 
 # Combining
 multiplot(p1, p2, l, heights = c(2, 2, 1))
-
 }
 \references{
 Adapted from \url{http://stackoverflow.com/questions/12539348/ggplot-separate-legend-and-plot}

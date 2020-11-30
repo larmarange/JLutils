@@ -1,4 +1,6 @@
 #' A generic tidier for model outputs
+#' 
+#' \lifecycle{experimental}
 #'
 #' @param x a model object
 #' @param conf.int whether to include a confidence interval

@@ -6,6 +6,7 @@
 \alias{stat_prop}
 \alias{stat_weighted_mean}
 \alias{stat_cross}
+\alias{ggsurvey}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -14,5 +15,7 @@ below to see their documentation.
 
 \describe{
   \item{GGally}{\code{\link[GGally]{stat_cross}}, \code{\link[GGally]{stat_prop}}, \code{\link[GGally]{stat_weighted_mean}}}
+
+  \item{questionr}{\code{\link[questionr]{ggsurvey}}}
 }}
 

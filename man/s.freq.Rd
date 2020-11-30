@@ -25,7 +25,7 @@ observations (i.e. with the same coordinates).
 \examples{
 if (require(ade4) & require(questionr)) {
   data(hdv2003)
-  acm <- dudi.acm(hdv2003[,c("sexe","sport","bricol","cuisine","cinema")], scannf = FALSE)
+  acm <- dudi.acm(hdv2003[, c("sexe", "sport", "bricol", "cuisine", "cinema")], scannf = FALSE)
   s.label(acm$li, clabel = 0, cpoint = 2)
   s.freq(acm$li, csize = 0.75)
 }

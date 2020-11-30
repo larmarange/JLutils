@@ -17,14 +17,18 @@ Basic tieders for msm models
 }
 \examples{
 \dontrun{
-  if (require(msm)) {
-    twoway4.q <- rbind(c(-0.5, 0.25, 0, 0.25), c(0.166, -0.498, 0.166, 0.166),
-    c(0, 0.25, -0.5, 0.25), c(0, 0, 0, 0))
-    cav.msm <- msm(state ~ years, subject=PTNUM, data = cav,
-                   qmatrix = twoway4.q, deathexact = 4, covariates = ~ sex)
-    tidy.prevalence.msm(prevalence.msm(cav.msm))
-    tidy.prevalence.msm(prevalence.msm(cav.msm, ci = "normal"))
-    tidy.hazard.msm(hazard.msm(cav.msm))
-  }
+if (require(msm)) {
+  twoway4.q <- rbind(
+    c(-0.5, 0.25, 0, 0.25), c(0.166, -0.498, 0.166, 0.166),
+    c(0, 0.25, -0.5, 0.25), c(0, 0, 0, 0)
+  )
+  cav.msm <- msm(state ~ years,
+    subject = PTNUM, data = cav,
+    qmatrix = twoway4.q, deathexact = 4, covariates = ~sex
+  )
+  tidy.prevalence.msm(prevalence.msm(cav.msm))
+  tidy.prevalence.msm(prevalence.msm(cav.msm, ci = "normal"))
+  tidy.hazard.msm(hazard.msm(cav.msm))
+}
 }
 }

@@ -27,8 +27,9 @@ The \code{data.frame} produced by \code{\link[broom]{tidy}} with these additiona
 }
 }
 \description{
-This function extends the output of \code{\link[broom]{tidy}} function from \pkg{broom} package
-by providing additional column indicating variables and factors names.
+\lifecycle{deprecated}
+
+For a more recent and powerful function, use \code{broom.helpers::tidy_plus_plus()}
 }
 \note{
 This function requires the \pkg{broom} and \pkg{dplyr} packages.

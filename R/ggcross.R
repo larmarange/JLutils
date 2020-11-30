@@ -1,6 +1,9 @@
 #' Cross-tabulation matrix plot
 #'
-#' A matrix plot of 2x2 cross-tabulated factors
+#' @description 
+#' \lifecycle{deprecated}
+#' 
+#' For a more recent and powerful function, use `GGally::ggtable()`
 #'
 #' @param formula formula of variables to be cross-tabulated,
 #'    rows on left hand side and columns on the right hand side
@@ -60,6 +63,7 @@ ggcross <- function(
                     labels = NULL, labels_size = 3.5,
                     svystatistic = c("F", "Chisq", "Wald", "adjWald", "lincom", "saddlepoint"),
                     return_data = FALSE) {
+  lifecycle::deprecate_warn("1.22.0", "JLutils::ggcross()", "GGally::ggtable()")
   svystatistic <- match.arg(svystatistic)
   if (!is.data.frame(data) & !inherits(data, "survey.design")) {
     data <- as.data.frame(data)

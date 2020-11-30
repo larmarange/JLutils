@@ -9,3 +9,7 @@ GGally::stat_weighted_mean
 #' @importFrom GGally stat_cross
 #' @export
 GGally::stat_cross
+
+#' @importFrom questionr ggsurvey
+#' @export
+questionr::ggsurvey
