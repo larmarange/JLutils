@@ -32,11 +32,14 @@
 #' }
 ggsurvey <- function(design = NULL, mapping = aes(), ...) {
   if (!requireNamespace("survey", quietly = TRUE)) {
-    stop("msSurv package is required.")
+    stop("survey package is required.")
+  }
+    if (!requireNamespace("ggplot2", quietly = TRUE)) {
+    stop("ggplot2 package is required.")
   }
   data <- design$variables
   data$.weights <- weights(design)
-  mapping$weight <- aes_string(weight = ".weights")$weight
+  mapping$weight <- ggplot2::aes_string(weight = ".weights")$weight
 
-  ggplot(data, mapping, ...)
+  ggplot2::ggplot(data, mapping, ...)
 }
