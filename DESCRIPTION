@@ -31,6 +31,7 @@ Imports:
     lifecycle
 Suggests:
     gtsummary,
+    broom.helpers,
     TraMineR,
     FactoMineR,
     ade4,
