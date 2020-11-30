@@ -40,7 +40,14 @@
 
 
 <meta property="og:title" content="Deprecated functions — deprecated" />
-<meta property="og:description" content="These functions are deprecated." />
+<meta property="og:description" content="
+These functions are deprecated.
+tidy.clm, tidy.clmm and tidy.svyolr are now part of broom
+and have been removed from JLutils.
+tidy_chisq is deprecated. Use augment.htest
+from broom instead.
+tidy_detailed is deprecated. Use tidy_plus_plus from broom.helpers instead.
+ggchisq_res and ggcross are now deprecated. You could use instead ggtable from GGally." />
 
 
 
@@ -72,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">JLutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.21.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.22.0</span>
       </span>
     </div>
 
@@ -117,12 +124,23 @@
     </div>
 
     <div class="ref-description">
-    <p>These functions are deprecated.</p>
+    <p><img src='figures/lifecycle-deprecated.svg' alt='Deprecated lifecycle' /></p>
+<p>These functions are deprecated.</p>
+<p><code>tidy.clm</code>, <code>tidy.clmm</code> and <code>tidy.svyolr</code> are now part of <span class="pkg">broom</span>
+and have been removed from <span class="pkg">JLutils</span>.</p>
+<p><code>tidy_chisq</code> is deprecated. Use <code><a href='https://broom.tidymodels.org/reference/augment.htest.html'>augment.htest</a></code>
+from <span class="pkg">broom</span> instead.</p>
+<p><code>tidy_detailed</code> is deprecated. Use <code>tidy_plus_plus</code> from <span class="pkg">broom.helpers</span> instead.</p>
+<p><code>ggchisq_res</code> and <code>ggcross</code> are now deprecated. You could use instead <code><a href='https://ggobi.github.io/ggally/reference/ggtable.html'>ggtable</a></code> from <span class="pkg">GGally</span>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>ggchisq_res</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
 
+<span class='fu'>ggcross</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
+
 <span class='fu'>stat_stack_labels</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>stat_fill_labels</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
 
 <span class='fu'>stat_fill_labels</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
 
@@ -135,14 +153,6 @@
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p><code>tidy.clm</code>, <code>tidy.clmm</code> and <code>tidy.svyolr</code> are now part of <span class="pkg">broom</span>
-and have been removed from <span class="pkg">JLutils</span>.</p>
-<p><code>tidy_chisq</code> is deprecated. Use <code><a href='https://broom.tidymodels.org/reference/augment.htest.html'>augment.htest</a></code>
-from <span class="pkg">broom</span> instead.</p>
-<p><code>ggchisq_res</code> is now deprecated. You could use instead <code><a href='https://ggobi.github.io/ggally/reference/ggtable.html'>ggtable</a></code>
-from <span class="pkg">GGally</span> or <code><a href='ggcross.html'>ggcross</a></code>.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -73,7 +73,7 @@ observations (i.e. with the same coordinates)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">JLutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.21.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.22.0</span>
       </span>
     </div>
 
@@ -155,7 +155,7 @@ observations (i.e. with the same coordinates).</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='http://pbil.univ-lyon1.fr/ADE-4/'>ade4</a></span><span class='op'>)</span> <span class='op'>&amp;</span> <span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='https://juba.github.io/questionr/'>questionr</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>hdv2003</span><span class='op'>)</span>
-  <span class='va'>acm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/ade4/man/dudi.acm.html'>dudi.acm</a></span><span class='op'>(</span><span class='va'>hdv2003</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"sexe"</span>,<span class='st'>"sport"</span>,<span class='st'>"bricol"</span>,<span class='st'>"cuisine"</span>,<span class='st'>"cinema"</span><span class='op'>)</span><span class='op'>]</span>, scannf <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+  <span class='va'>acm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/ade4/man/dudi.acm.html'>dudi.acm</a></span><span class='op'>(</span><span class='va'>hdv2003</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"sexe"</span>, <span class='st'>"sport"</span>, <span class='st'>"bricol"</span>, <span class='st'>"cuisine"</span>, <span class='st'>"cinema"</span><span class='op'>)</span><span class='op'>]</span>, scannf <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
   <span class='fu'><a href='https://rdrr.io/pkg/ade4/man/s.label.html'>s.label</a></span><span class='op'>(</span><span class='va'>acm</span><span class='op'>$</span><span class='va'>li</span>, clabel <span class='op'>=</span> <span class='fl'>0</span>, cpoint <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
   <span class='fu'>s.freq</span><span class='op'>(</span><span class='va'>acm</span><span class='op'>$</span><span class='va'>li</span>, csize <span class='op'>=</span> <span class='fl'>0.75</span><span class='op'>)</span>
 <span class='op'>}</span>

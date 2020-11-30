@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">JLutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.21.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.22.0</span>
       </span>
     </div>
 
@@ -138,15 +138,19 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/chjackson/msm'>msm</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-    <span class='va'>twoway4.q</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/rbindlist.html'>rbind</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.5</span>, <span class='fl'>0.25</span>, <span class='fl'>0</span>, <span class='fl'>0.25</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.166</span>, <span class='op'>-</span><span class='fl'>0.498</span>, <span class='fl'>0.166</span>, <span class='fl'>0.166</span><span class='op'>)</span>,
-    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0.25</span>, <span class='op'>-</span><span class='fl'>0.5</span>, <span class='fl'>0.25</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>
-    <span class='va'>cav.msm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/msm/man/msm.html'>msm</a></span><span class='op'>(</span><span class='va'>state</span> <span class='op'>~</span> <span class='va'>years</span>, subject<span class='op'>=</span><span class='va'>PTNUM</span>, data <span class='op'>=</span> <span class='va'>cav</span>,
-                   qmatrix <span class='op'>=</span> <span class='va'>twoway4.q</span>, deathexact <span class='op'>=</span> <span class='fl'>4</span>, covariates <span class='op'>=</span> <span class='op'>~</span> <span class='va'>sex</span><span class='op'>)</span>
-    <span class='fu'>tidy.prevalence.msm</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/msm/man/prevalence.msm.html'>prevalence.msm</a></span><span class='op'>(</span><span class='va'>cav.msm</span><span class='op'>)</span><span class='op'>)</span>
-    <span class='fu'>tidy.prevalence.msm</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/msm/man/prevalence.msm.html'>prevalence.msm</a></span><span class='op'>(</span><span class='va'>cav.msm</span>, ci <span class='op'>=</span> <span class='st'>"normal"</span><span class='op'>)</span><span class='op'>)</span>
-    <span class='fu'>tidy.hazard.msm</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/msm/man/hazard.msm.html'>hazard.msm</a></span><span class='op'>(</span><span class='va'>cav.msm</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='op'>}</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/chjackson/msm'>msm</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>twoway4.q</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/rbindlist.html'>rbind</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.5</span>, <span class='fl'>0.25</span>, <span class='fl'>0</span>, <span class='fl'>0.25</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.166</span>, <span class='op'>-</span><span class='fl'>0.498</span>, <span class='fl'>0.166</span>, <span class='fl'>0.166</span><span class='op'>)</span>,
+    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0.25</span>, <span class='op'>-</span><span class='fl'>0.5</span>, <span class='fl'>0.25</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span><span class='op'>)</span>
+  <span class='op'>)</span>
+  <span class='va'>cav.msm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/msm/man/msm.html'>msm</a></span><span class='op'>(</span><span class='va'>state</span> <span class='op'>~</span> <span class='va'>years</span>,
+    subject <span class='op'>=</span> <span class='va'>PTNUM</span>, data <span class='op'>=</span> <span class='va'>cav</span>,
+    qmatrix <span class='op'>=</span> <span class='va'>twoway4.q</span>, deathexact <span class='op'>=</span> <span class='fl'>4</span>, covariates <span class='op'>=</span> <span class='op'>~</span><span class='va'>sex</span>
+  <span class='op'>)</span>
+  <span class='fu'>tidy.prevalence.msm</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/msm/man/prevalence.msm.html'>prevalence.msm</a></span><span class='op'>(</span><span class='va'>cav.msm</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'>tidy.prevalence.msm</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/msm/man/prevalence.msm.html'>prevalence.msm</a></span><span class='op'>(</span><span class='va'>cav.msm</span>, ci <span class='op'>=</span> <span class='st'>"normal"</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'>tidy.hazard.msm</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/msm/man/hazard.msm.html'>hazard.msm</a></span><span class='op'>(</span><span class='va'>cav.msm</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
 <span class='op'>}</span>
 </div></pre>
   </div>
