@@ -1,5 +1,8 @@
 #' Deprecated functions
 #'
+#' @description 
+#' \lifecycle{deprecated}
+#' 
 #' These functions are deprecated.
 #'
 #' \code{tidy.clm}, \code{tidy.clmm} and \code{tidy.svyolr} are now part of \pkg{broom}
@@ -19,17 +22,49 @@ NULL
 #' @rdname deprecated
 #' @export
 ggchisq_res <- function(...) {
-  stop("This function is deprecated. You could use instead JLutils::ggcross() or GGally::ggtable().")
+  lifecycle::deprecate_stop(
+    "1.21.0", 
+    "JLutils::ggchisq_res()", 
+    "GGally::ggtable()"
+  )
+}
+
+#' @rdname deprecated
+#' @export
+ggcross <- function(...) {
+  lifecycle::deprecate_stop(
+    "1.22.0", 
+    "JLutils::ggcross()", 
+    "GGally::ggtable()"
+  )
 }
 
 #' @rdname deprecated
 #' @export
 stat_stack_labels <- function(...) {
-  stop("stat_stack_labels() is depecreated. Use instead GGally::stat_prop().")
+  lifecycle::deprecate_stop(
+    "1.21.0", 
+    "JLutils::stat_stack_labels()", 
+    "GGally::stat_prop()"
+  )
 }
 
 #' @rdname deprecated
 #' @export
 stat_fill_labels <- function(...) {
-  stop("stat_fill_labels() is depecreated. Use instead GGally::stat_prop().")
+  lifecycle::deprecate_stop(
+    "1.21.0", 
+    "JLutils::stat_fill_labels()", 
+    "GGally::stat_prop()"
+  )
+}
+
+#' @rdname deprecated
+#' @export
+stat_fill_labels <- function(...) {
+  lifecycle::deprecate_stop(
+    "1.21.0", 
+    "JLutils::stat_fill_labels()", 
+    "GGally::stat_prop()"
+  )
 }

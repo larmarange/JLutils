@@ -3,13 +3,18 @@
 \name{deprecated}
 \alias{deprecated}
 \alias{ggchisq_res}
+\alias{ggcross}
 \alias{stat_stack_labels}
 \alias{stat_fill_labels}
 \title{Deprecated functions}
 \usage{
 ggchisq_res(...)
 
+ggcross(...)
+
 stat_stack_labels(...)
+
+stat_fill_labels(...)
 
 stat_fill_labels(...)
 }
@@ -17,9 +22,10 @@ stat_fill_labels(...)
 \item{...}{parameters}
 }
 \description{
+\lifecycle{deprecated}
+
 These functions are deprecated.
-}
-\details{
+
 \code{tidy.clm}, \code{tidy.clmm} and \code{tidy.svyolr} are now part of \pkg{broom}
 and have been removed from \pkg{JLutils}.
 
