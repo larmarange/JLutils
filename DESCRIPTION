@@ -49,5 +49,6 @@ Suggests:
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 Remotes:
-    juba/questionr
+    juba/questionr,
+    bioc::graph
 RdMacros: lifecycle
