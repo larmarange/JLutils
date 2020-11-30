@@ -1,3 +1,10 @@
+# JLutils 1.22.0
+
+* `ggsurvey()` has been moved to `questionr`.
+* `ggcoef_model()` and `geom_stripped_rows()` has been moved to `GGally`.
+* `tidy_detailed()` has been removed and could be replaced by `broom.helpers::tidy_plus_plus()`.
+* `ggcross()` has been removed.
+
 # JLutils 1.21.0
 
 * `stat_prop()`, `stat_weigthed_mean()` and `stat_cross()` have

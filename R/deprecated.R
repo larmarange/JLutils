@@ -59,4 +59,12 @@ stat_fill_labels <- function(...) {
   )
 }
 
-
+#' @rdname deprecated
+#' @export
+tidy_detailed <- function(...) {
+  lifecycle::deprecate_stop(
+    "1.21.0", 
+    "JLutils::tidy_detailed()", 
+    "broom.helpers::tidy_plus_plus()"
+  )
+}
