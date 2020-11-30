@@ -59,12 +59,4 @@ stat_fill_labels <- function(...) {
   )
 }
 
-#' @rdname deprecated
-#' @export
-stat_fill_labels <- function(...) {
-  lifecycle::deprecate_stop(
-    "1.21.0", 
-    "JLutils::stat_fill_labels()", 
-    "GGally::stat_prop()"
-  )
-}
+
