@@ -34,7 +34,7 @@ ggsurvey <- function(design = NULL, mapping = aes(), ...) {
   if (!requireNamespace("survey", quietly = TRUE)) {
     stop("survey package is required.")
   }
-    if (!requireNamespace("ggplot2", quietly = TRUE)) {
+  if (!requireNamespace("ggplot2", quietly = TRUE)) {
     stop("ggplot2 package is required.")
   }
   data <- design$variables
