@@ -51,5 +51,6 @@ RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 Remotes:
     juba/questionr,
+    ggobi/ggally,
     bioc::graph
 RdMacros: lifecycle

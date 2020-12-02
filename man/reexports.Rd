@@ -7,6 +7,12 @@
 \alias{stat_weighted_mean}
 \alias{stat_cross}
 \alias{ggsurvey}
+\alias{geom_stripped_rows}
+\alias{geom_stripped_cols}
+\alias{ggcoef_model}
+\alias{ggcoef_compare}
+\alias{ggcoef_multinom}
+\alias{ggcoef_plot}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -14,7 +20,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{GGally}{\code{\link[GGally]{stat_cross}}, \code{\link[GGally]{stat_prop}}, \code{\link[GGally]{stat_weighted_mean}}}
+  \item{GGally}{\code{\link[GGally:geom_stripped_rows]{geom_stripped_cols}}, \code{\link[GGally]{geom_stripped_rows}}, \code{\link[GGally:ggcoef_model]{ggcoef_compare}}, \code{\link[GGally]{ggcoef_model}}, \code{\link[GGally:ggcoef_model]{ggcoef_multinom}}, \code{\link[GGally:ggcoef_model]{ggcoef_plot}}, \code{\link[GGally]{stat_cross}}, \code{\link[GGally]{stat_prop}}, \code{\link[GGally]{stat_weighted_mean}}}
 
   \item{questionr}{\code{\link[questionr]{ggsurvey}}}
 }}
