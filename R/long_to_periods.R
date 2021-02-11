@@ -59,6 +59,7 @@ long_to_periods <- function(.data, .id, .start, .stop = NULL, .by = NULL) {
   )
   periods <- periods %>%
     dplyr::mutate(stop = ifelse(!is.na(.next_prev_stop), .next_prev_stop, .last_stop))
+  class(periods$stop) <- class(periods$.next_prev_stop) # bug fix
 
   periods <- periods[, c(.id, "start", "stop", .by)]
 
