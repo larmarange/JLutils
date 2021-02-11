@@ -65,7 +65,7 @@ long_to_periods <- function(.data, .id, .start, .stop = NULL, .by = NULL) {
   if ("data.table" %in% cl) {
     periods <- data.table::as.data.table(periods)
   } else {
-    periods <- as.data.frame(periods)
+    periods <- dplyr::as_tibble(periods)
   }
 
   return(periods)
