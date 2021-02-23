@@ -1,12 +1,17 @@
 #' Extend geom_smooth in a single direction
 #' 
 #' Allows to extend a linear regression line drawn with [ggplot2::geom_smooth()]
-#' to only one direction (left or right), or to zero. See examples. 
-#' DOES NOT WORK WITH CURRENT VERSION OF GGPLOT2.
+#' to only one direction (left or right), or to zero.  
+#' **DOES NOT WORK WITH CURRENT VERSION OF GGPLOT2.**
+#' You have to include
+#' `source("https://raw.githubusercontent.com/larmarange/JLutils/master/R/lm_right.R")`
+#' into your R code.
 #' 
 #' cf. https://github.com/tidyverse/ggplot2/issues/3132
 #' The implementation should be through a new stat rather than extending 
 #' [predictdf()]
+#' 
+#' Note: xseq could be passed to [ggplot2::geom_smooth()]
 #' 
 #' @note Adapted from <https://stackoverflow.com/questions/26705554/extend-geom-smooth-in-a-single-direction>
 #' @param formula a model formula
@@ -23,6 +28,8 @@
 #' 
 #' # use `fullrange = TRUE` to extend on both sides
 #' p + geom_smooth(method = "lm", fullrange = TRUE)
+#' 
+#' p + geom_smooth(method = "lm", xseq = c(.75, 2.25))
 #' 
 #' # use `method = "lm_right"` or `method = "lm_left"`
 #' # with `fullrange = TRUE` to extand in only one direction
