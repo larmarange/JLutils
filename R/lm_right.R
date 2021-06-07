@@ -18,6 +18,7 @@
 #' @param data a data.frame
 #' @param ... unused
 #' @export
+#' @importFrom ggplot2 predictdf
 #' @examples 
 #' p <- ggplot(iris) + 
 #'   aes(x = Petal.Width, y = Petal.Length, colour = Species) +
