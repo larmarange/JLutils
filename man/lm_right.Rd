@@ -30,7 +30,7 @@ into your R code.
 \details{
 cf. https://github.com/tidyverse/ggplot2/issues/3132
 The implementation should be through a new stat rather than extending
-\code{\link[=predictdf]{predictdf()}}
+\code{predictdf()}
 
 Note: xseq could be passed to \code{\link[ggplot2:geom_smooth]{ggplot2::geom_smooth()}}
 }

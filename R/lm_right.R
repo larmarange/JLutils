@@ -9,7 +9,7 @@
 #' 
 #' cf. https://github.com/tidyverse/ggplot2/issues/3132
 #' The implementation should be through a new stat rather than extending 
-#' [predictdf()]
+#' `predictdf()`
 #' 
 #' Note: xseq could be passed to [ggplot2::geom_smooth()]
 #' 
