@@ -18,7 +18,6 @@
 #' @param data a data.frame
 #' @param ... unused
 #' @export
-#' @importFrom ggplot2 predictdf
 #' @examples 
 #' p <- ggplot(iris) + 
 #'   aes(x = Petal.Width, y = Petal.Length, colour = Species) +
@@ -59,6 +58,11 @@ lm_zero <- function(formula, data, ...) {
   mod <- lm(formula, data)
   class(mod) <- c("lm_zero", class(mod))
   mod
+}
+
+#' @export
+predictdf <- function(model, xseq, se, level) {
+  UseMethod("predictdf")
 }
 
 #' @export
