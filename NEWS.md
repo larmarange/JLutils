@@ -1,5 +1,7 @@
 # JLutils 1.23.0
 
+* `long_to_periods()` has been updated. `.data` argument has been renamed `data`
+
 # JLutils 1.22.0
 
 * `ggsurvey()` has been moved to `questionr`.
