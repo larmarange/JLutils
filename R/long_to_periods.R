@@ -16,44 +16,46 @@
 #' )
 #' }
 #' @export
-long_to_periods <- function(.data, .id, .start, .stop = NULL, .by = NULL) {
+long_to_periods <- function(data, .id, .start, .stop = NULL, .by = NULL) {
   if (!requireNamespace("dplyr")) {
     stop("dplyr package is required. Please install it.")
   }
   `%>%` <- dplyr::`%>%`
-  cl <- class(.data)
+  cl <- class(data)
   if (length(.start) != 1) stop(".start should contain only one column name")
   if (length(.stop) > 1) stop(".stop should contain only one column name or be NULL")
-  .data$start <- .data[[.start]]
-  .data <- .data %>%
-    dplyr::arrange_(.id, .start) %>%
-    dplyr::group_by_at(c(.id, .by))
-  .data$.grp <- .data %>% dplyr::group_indices()
+  data$start <- data[[.start]]
+  data <- data %>%
+    dplyr::arrange(.data[[.id]], .data[[.start]]) %>%
+    dplyr::group_by(!!!dplyr::syms(c(.id, .by)))
+  data$.grp <- data %>% dplyr::group_indices()
   if (is.null(.stop)) {
-    .data <- .data %>%
-      dplyr::group_by_at(.id) %>%
+    data <- data %>%
+      dplyr::group_by(!!!dplyr::syms(.id)) %>%
       dplyr::mutate(stop = dplyr::lead(start)) %>%
       dplyr::filter(!is.na(stop)) # cleaning required
   } else {
-    .data$stop <- .data[[.stop]]
+    data$stop <- data[[.stop]]
   }
-  .data <- .data %>%
-    dplyr::group_by_at(.id) %>%
+  data <- data %>%
+    dplyr::group_by(!!!dplyr::syms(.id)) %>%
     dplyr::mutate(
       .prev_grp = dplyr::lag(.grp),
       .prev_stop = dplyr::lag(stop)
     )
-  periods <- .data %>%
+  periods <- data %>%
     dplyr::filter(is.na(.prev_grp) | .grp != .prev_grp | start != .prev_stop)
   periods <- periods %>%
-    dplyr::group_by_at(.id) %>%
+    dplyr::group_by(!!!dplyr::syms(.id)) %>%
     dplyr::mutate(.next_prev_stop = dplyr::lead(.prev_stop))
   # trick: using the next value of .prev_stop allows to identify the new value of stop in periods
   # if no next value, stop remains unchanged
 
   periods <- merge(
     periods,
-    .data %>% dplyr::group_by_at(.id) %>% dplyr::summarise(.last_stop = max(stop, na.rm = TRUE)),
+    data %>% 
+      dplyr::group_by(!!!dplyr::syms(.id)) %>%
+      dplyr::summarise(.last_stop = max(stop, na.rm = TRUE)),
     by = .id,
     all.x = TRUE
   )
