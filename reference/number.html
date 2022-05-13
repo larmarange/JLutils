@@ -23,7 +23,7 @@ percent0 to percent5 of percent, etc."><!-- mathjax --><script src="https://cdnj
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">JLutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.22.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.23.0</span>
       </span>
     </div>
 
@@ -73,6 +73,9 @@ percent0 to percent5 of percent, etc."><!-- mathjax --><script src="https://cdnj
   suffix <span class="op">=</span> <span class="st">""</span>,
   big.mark <span class="op">=</span> <span class="st">" "</span>,
   decimal.mark <span class="op">=</span> <span class="st">"."</span>,
+  style_positive <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"plus"</span><span class="op">)</span>,
+  style_negative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hyphen"</span>, <span class="st">"minus"</span>, <span class="st">"parens"</span><span class="op">)</span>,
+  scale_cut <span class="op">=</span> <span class="cn">NULL</span>,
   trim <span class="op">=</span> <span class="cn">TRUE</span>,
   <span class="va">...</span>
 <span class="op">)</span>
@@ -84,6 +87,9 @@ percent0 to percent5 of percent, etc."><!-- mathjax --><script src="https://cdnj
   suffix <span class="op">=</span> <span class="st">""</span>,
   big.mark <span class="op">=</span> <span class="st">" "</span>,
   decimal.mark <span class="op">=</span> <span class="st">"."</span>,
+  style_positive <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"plus"</span><span class="op">)</span>,
+  style_negative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hyphen"</span>, <span class="st">"minus"</span>, <span class="st">"parens"</span><span class="op">)</span>,
+  scale_cut <span class="op">=</span> <span class="cn">NULL</span>,
   trim <span class="op">=</span> <span class="cn">TRUE</span>,
   <span class="va">...</span>
 <span class="op">)</span>
@@ -301,9 +307,7 @@ percent0 to percent5 of percent, etc."><!-- mathjax --><script src="https://cdnj
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>x</dt>
-<dd><p>A numeric vector to format.</p></dd>
-<dt>accuracy</dt>
+    <dl><dt>accuracy</dt>
 <dd><p>A number to round to. Use (e.g.) <code>0.01</code> to show 2 decimal
 places of precision. If <code>NULL</code>, the default, uses a heuristic that should
 ensure breaks have the minimum number of digits needed to show the
@@ -311,17 +315,39 @@ difference between adjacent values.</p>
 <p>Applied to rescaled data.</p></dd>
 <dt>scale</dt>
 <dd><p>A scaling factor: <code>x</code> will be multiplied by <code>scale</code> before
-formating. This is useful if the underlying data is very small or very
+formatting. This is useful if the underlying data is very small or very
 large.</p></dd>
 <dt>prefix</dt>
-<dd><p>Symbols to display before and after value.</p></dd>
+<dd><p>Additional text to display before the number. The suffix is
+applied to absolute value before <code>style_positive</code> and <code>style_negative</code> are
+processed so that <code>prefix = "$"</code> will yield (e.g.) <code>-$1</code> and <code>($1)</code>.</p></dd>
 <dt>suffix</dt>
-<dd><p>Symbols to display before and after value.</p></dd>
+<dd><p>Additional text to display after the number.</p></dd>
 <dt>big.mark</dt>
 <dd><p>Character used between every 3 digits to separate thousands.</p></dd>
 <dt>decimal.mark</dt>
 <dd><p>The character to be used to indicate the numeric
 decimal point.</p></dd>
+<dt>style_positive</dt>
+<dd><p>A string that determines the style of positive numbers:</p><ul><li><p><code>"none"</code> (the default): no change, e.g. <code>1</code>.</p></li>
+<li><p><code>"plus"</code>: preceded by <code>+</code>, e.g. <code>+1</code>.</p></li>
+</ul></dd>
+<dt>style_negative</dt>
+<dd><p>A string that determines the style of negative numbers:</p><ul><li><p><code>"hyphen"</code> (the default): preceded by a standard hypen <code>-</code>, e.g. <code>-1</code>.</p></li>
+<li><p><code>"minus"</code>, uses a proper Unicode minus symbol. This is a typographical
+nicety that ensures <code>-</code> aligns with the horizontal bar of the
+the horizontal bar of <code>+</code>.</p></li>
+<li><p><code>"parens"</code>, wrapped in parentheses, e.g. <code>(1)</code>.</p></li>
+</ul></dd>
+<dt>scale_cut</dt>
+<dd><p>Named numeric vector that allows you to rescale large
+(or small) numbers and add a prefix. Built-in helpers include:</p><ul><li><p><code>cut_short_scale()</code>: [10^3, 10^6) = K, [10^6, 10^9) = M, [10^9, 10^12) = B, [10^12, Inf) = T.</p></li>
+<li><p><code>cut_long_scale()</code>: [10^3, 10^6) = K, [10^6, 10^12) = M, [10^12, 10^18) = B, [10^18, Inf) = T.</p></li>
+<li><p><code>cut_si(unit)</code>: uses standard SI units.</p></li>
+</ul><p>If you supply a vector <code>c(a = 100, b = 1000)</code>, absolute values in the
+range <code>[0, 100)</code> will not be rescaled, absolute values in the range <code>[100, 1000)</code>
+will be divided by 100 and given the suffix "a", and absolute values in
+the range <code>[1000, Inf)</code> will be divided by 1000 and given the suffix "b".</p></dd>
 <dt>trim</dt>
 <dd><p>Logical, if <code>FALSE</code>, values are right-justified to a common
 width (see <code><a href="https://rdrr.io/r/base/format.html" class="external-link">base::format()</a></code>).</p></dd>
@@ -352,19 +378,19 @@ returns a character vector</p>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">p</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.2947243 0.1404346 0.1930996 0.2608457 0.9663050 0.8287336 0.4088486</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.6824513 0.5030608 0.5973911</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.55099466 0.64126846 0.06505946 0.28320576 0.23074641 0.65177322</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.43732013 0.18713663 0.11164920 0.07132038</span>
 <span class="r-in"><span class="fu">percent</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "29.5%" "14.0%" "19.3%" "26.1%" "96.6%" "82.9%" "40.9%" "68.2%" "50.3%"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "59.7%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "55.10%" "64.13%" "6.51%"  "28.32%" "23.07%" "65.18%" "43.73%" "18.71%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "11.16%" "7.13%" </span>
 <span class="r-in"><span class="fu">percent2</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "29.47%" "14.04%" "19.31%" "26.08%" "96.63%" "82.87%" "40.88%" "68.25%"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "50.31%" "59.74%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "55.10%" "64.13%" "6.51%"  "28.32%" "23.07%" "65.18%" "43.73%" "18.71%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "11.16%" "7.13%" </span>
 <span class="r-in"><span class="fu">pourcent2</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "29,47 %" "14,04 %" "19,31 %" "26,08 %" "96,63 %" "82,87 %" "40,88 %"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "68,25 %" "50,31 %" "59,74 %"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "55,10 %" "64,13 %" "6,51 %"  "28,32 %" "23,07 %" "65,18 %" "43,73 %"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "18,71 %" "11,16 %" "7,13 %" </span>
 <span class="r-in"><span class="fu">comp_percent</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "71%" "86%" "81%" "74%" "3%"  "17%" "59%" "32%" "50%" "40%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "45%" "36%" "93%" "72%" "77%" "35%" "56%" "81%" "89%" "93%"</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Per mille</span></span>
 <span class="r-in"><span class="va">per_mille</span> <span class="op">&lt;-</span> <span class="fu">label_number</span><span class="op">(</span>scale <span class="op">=</span> <span class="fl">1000</span>, suffix <span class="op">=</span> <span class="st">"\u2030"</span>, accuracy <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span></span>
