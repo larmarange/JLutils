@@ -39,7 +39,6 @@ Suggests:
     riverplot,
     labelled,
     data.table,
-    msSurv,
     survey,
     gridExtra,
     tibble,
