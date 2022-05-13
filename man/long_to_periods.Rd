@@ -4,10 +4,10 @@
 \alias{long_to_periods}
 \title{Transform data from long format to period format}
 \usage{
-long_to_periods(.data, .id, .start, .stop = NULL, .by = NULL)
+long_to_periods(data, .id, .start, .stop = NULL, .by = NULL)
 }
 \arguments{
-\item{.data}{a data.frame}
+\item{data}{a data.frame}
 
 \item{.id}{a character, column containing individual ids}
 

@@ -47,7 +47,7 @@ Suggests:
     reshape,
     nnet,
     survival
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 Remotes:
     juba/questionr,

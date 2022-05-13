@@ -1,6 +1,6 @@
 #' Transform data from long format to period format
 #'
-#' @param .data a data.frame
+#' @param data a data.frame
 #' @param .id a character, column containing individual ids
 #' @param .start a character, column containing time variable indicating the beginning of each row
 #' @param .stop a character, column containing time variable indicating the end of each row. If not provided, it will be derived from the dataset, considering that each row ends at the beginning of the next one.

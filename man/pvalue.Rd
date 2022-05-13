@@ -18,8 +18,6 @@ label_pvalue(
 signif_stars(x, three = 0.001, two = 0.01, one = 0.05, point = 0.1)
 }
 \arguments{
-\item{x}{A numeric vector to format.}
-
 \item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
 places of precision. If \code{NULL}, the default, uses a heuristic that should
 ensure breaks have the minimum number of digits needed to show the
