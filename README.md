@@ -26,9 +26,5 @@ Execute the following code within `R`:
 Exécutez le code suivant dans `R` :
 
 ```r
-if (!require(devtools)){
-	install.packages('devtools')
-	library(devtools)
-}
-install_github("larmarange/JLutils")
+remotes::install_github("larmarange/JLutils")
 ```
