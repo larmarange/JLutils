@@ -59,23 +59,34 @@ proposed by the <code><a href="https://rdrr.io/pkg/FactoMineR/man/HCPC.html" cla
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">best.cutree</span><span class="op">(</span><span class="va">hc</span>, min <span class="op">=</span> <span class="fl">3</span>, max <span class="op">=</span> <span class="fl">20</span>, loss <span class="op">=</span> <span class="cn">FALSE</span>, graph <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">best.cutree</span><span class="op">(</span><span class="va">hc</span>, min <span class="op">=</span> <span class="fl">3</span>, max <span class="op">=</span> <span class="fl">20</span>, loss <span class="op">=</span> <span class="cn">FALSE</span>, graph <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>hc</dt>
 <dd><p>a clustering tree (an object of class <code><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></code>, <code><a href="https://rdrr.io/r/stats/dendrogram.html" class="external-link">dendrogram</a></code> or <code>agnes</code>)</p></dd>
+
+
 <dt>min</dt>
 <dd><p>the minimum number of classes</p></dd>
+
+
 <dt>max</dt>
 <dd><p>the maximum number of classes</p></dd>
+
+
 <dt>loss</dt>
 <dd><p>if <code>TRUE</code>, will return the relative loss of inertia of each partition instead of the best partition</p></dd>
+
+
 <dt>graph</dt>
 <dd><p>if <code>TRUE</code>, will plot the relative loss of inertia of each partition, the best partition being indicated in black and the second best in grey</p></dd>
+
+
 <dt>...</dt>
 <dd><p>additional arguments sent to <code>plot</code> (if <code>graph = TRUE</code>)</p></dd>
+
 </dl></div>
     <div id="see-also">
     <h2>See also</h2>
@@ -84,20 +95,20 @@ proposed by the <code><a href="https://rdrr.io/pkg/FactoMineR/man/HCPC.html" cla
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">hc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">USArrests</span><span class="op">)</span>, <span class="st">"ave"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">best.cutree</span><span class="op">(</span><span class="va">hc</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">hc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">USArrests</span><span class="op">)</span>, <span class="st">"ave"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">best.cutree</span><span class="op">(</span><span class="va">hc</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
-<span class="r-in"><span class="fu">best.cutree</span><span class="op">(</span><span class="va">hc</span>, loss <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">best.cutree</span><span class="op">(</span><span class="va">hc</span>, loss <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         3         4         5         6         7         8         9        10 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.9162296 0.9204839 0.9390592 0.9468502 0.9445603 0.9455332 0.9447788 0.9428372 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        11        12        13        14        15        16        17        18 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.9478849 0.9517658 0.9509931 0.9486210 0.9462873 0.9454169 0.9430228 0.9450606 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        19        20 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.9452040 0.9456931 </span>
-<span class="r-in"><span class="fu">best.cutree</span><span class="op">(</span><span class="va">hc</span>, graph <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">best.cutree</span><span class="op">(</span><span class="va">hc</span>, graph <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="best.cutree-1.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
-<span class="r-in"><span class="fu">best.cutree</span><span class="op">(</span><span class="va">hc</span>, graph <span class="op">=</span> <span class="cn">TRUE</span>, min <span class="op">=</span> <span class="fl">6</span>, max <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">best.cutree</span><span class="op">(</span><span class="va">hc</span>, graph <span class="op">=</span> <span class="cn">TRUE</span>, min <span class="op">=</span> <span class="fl">6</span>, max <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="best.cutree-2.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 10</span>
 </code></pre></div>
@@ -114,7 +125,7 @@ proposed by the <code><a href="https://rdrr.io/pkg/FactoMineR/man/HCPC.html" cla
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

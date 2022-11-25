@@ -57,25 +57,25 @@ for a given number of classes. See examples.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">A2Rplot</span><span class="op">(</span>
-  <span class="va">x</span>,
-  k <span class="op">=</span> <span class="fl">2</span>,
-  col.up <span class="op">=</span> <span class="st">"black"</span>,
-  col.down <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span>,
-  lty.up <span class="op">=</span> <span class="fl">2</span>,
-  lty.down <span class="op">=</span> <span class="fl">1</span>,
-  lwd.up <span class="op">=</span> <span class="fl">1</span>,
-  lwd.down <span class="op">=</span> <span class="fl">2</span>,
-  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rectangle"</span>, <span class="st">"triangle"</span><span class="op">)</span>,
-  knot.pos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"bary"</span>, <span class="st">"left"</span>, <span class="st">"right"</span>, <span class="st">"random"</span><span class="op">)</span>,
-  <span class="va">criteria</span>,
-  <span class="va">fact.sup</span>,
-  show.labels <span class="op">=</span> <span class="cn">TRUE</span>,
-  only.tree <span class="op">=</span> <span class="cn">FALSE</span>,
-  main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Colored Dendrogram ("</span>, <span class="va">k</span>, <span class="st">" groups)"</span><span class="op">)</span>,
-  boxes <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">members</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">A2Rplot</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  k <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  col.up <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>  col.down <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span>,</span>
+<span>  lty.up <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  lty.down <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  lwd.up <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  lwd.down <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rectangle"</span>, <span class="st">"triangle"</span><span class="op">)</span>,</span>
+<span>  knot.pos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"bary"</span>, <span class="st">"left"</span>, <span class="st">"right"</span>, <span class="st">"random"</span><span class="op">)</span>,</span>
+<span>  <span class="va">criteria</span>,</span>
+<span>  <span class="va">fact.sup</span>,</span>
+<span>  show.labels <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  only.tree <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Colored Dendrogram ("</span>, <span class="va">k</span>, <span class="st">" groups)"</span><span class="op">)</span>,</span>
+<span>  boxes <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">members</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="source">
@@ -86,38 +86,71 @@ for a given number of classes. See examples.</p>
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>an <code><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></code> object to plot</p></dd>
+
+
 <dt>k</dt>
 <dd><p>the number of clusters</p></dd>
+
+
 <dt>col.up</dt>
 <dd><p>color for the upper part</p></dd>
+
+
 <dt>col.down</dt>
 <dd><p>a vector of colors of length <code>k</code>, one color per cluster</p></dd>
+
+
 <dt>lty.up</dt>
 <dd><p>line type for the upper part (see <code><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></code>)</p></dd>
+
+
 <dt>lty.down</dt>
 <dd><p>line type for the clusters part (see <code><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></code>)</p></dd>
+
+
 <dt>lwd.up</dt>
 <dd><p>line width for the upper part (see <code><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></code>)</p></dd>
+
+
 <dt>lwd.down</dt>
 <dd><p>line width for the clusters part (see <code><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></code>)</p></dd>
+
+
 <dt>type</dt>
 <dd><p>type of link (<code>"rectangle"</code> or <code>"triangle"</code>)</p></dd>
+
+
 <dt>knot.pos</dt>
 <dd><p>position of the knots: <code>"mean"</code> mean between the two tree sons, <code>"bary"</code> weighted mean relative to the number of observations in the left and the right branch, <code>"left"</code>, <code>"right"</code>, <code>"random"</code> just for fun actually</p></dd>
+
+
 <dt>criteria</dt>
 <dd><p>vector of a criteria to draw on the left of the tree</p></dd>
+
+
 <dt>fact.sup</dt>
 <dd><p>a factor to categorize the observations</p></dd>
+
+
 <dt>show.labels</dt>
 <dd><p><code>TRUE</code> if the labels should be drawn</p></dd>
+
+
 <dt>only.tree</dt>
 <dd><p><code>TRUE</code> if only the tree should be drawn (use that to include the tree in a more complicated layout)</p></dd>
+
+
 <dt>main</dt>
 <dd><p>title of the plot</p></dd>
+
+
 <dt>boxes</dt>
 <dd><p><code>TRUE</code> to draw the bow around the plots</p></dd>
+
+
 <dt>members</dt>
 <dd><p>members of each terminal node (see <code><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></code> for more details)</p></dd>
+
 </dl></div>
     <div id="note">
     <h2>Note</h2>
@@ -135,83 +168,83 @@ anymore with a recent version of R. It's why this function has been copied here.
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Example with iris data</span></span>
-<span class="r-in"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, method <span class="op">=</span> <span class="st">"euc"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">Species</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span>, <span class="fl">5</span><span class="op">]</span></span>
-<span class="r-in"><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">h</span>, k <span class="op">=</span> <span class="fl">3</span>, fact.sup <span class="op">=</span> <span class="va">Species</span>, knot.pos <span class="op">=</span> <span class="st">"bary"</span>, show.labels <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Example with iris data</span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, method <span class="op">=</span> <span class="st">"euc"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Species</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span>, <span class="fl">5</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">h</span>, k <span class="op">=</span> <span class="fl">3</span>, fact.sup <span class="op">=</span> <span class="va">Species</span>, knot.pos <span class="op">=</span> <span class="st">"bary"</span>, show.labels <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="A2Rplot-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Examples from http://rpubs.com/gaston/dendrograms</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">bg.def</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">bg</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">hc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>bg <span class="op">=</span> <span class="st">"#EFEFEF"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">hc</span>,</span>
-<span class="r-in">  k <span class="op">=</span> <span class="fl">3</span>, boxes <span class="op">=</span> <span class="cn">FALSE</span>, col.up <span class="op">=</span> <span class="st">"gray50"</span>,</span>
-<span class="r-in">  col.down <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#FF6B6B"</span>, <span class="st">"#4ECDC4"</span>, <span class="st">"#556270"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Examples from http://rpubs.com/gaston/dendrograms</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">bg.def</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">bg</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">hc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>bg <span class="op">=</span> <span class="st">"#EFEFEF"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">hc</span>,</span></span>
+<span class="r-in"><span>  k <span class="op">=</span> <span class="fl">3</span>, boxes <span class="op">=</span> <span class="cn">FALSE</span>, col.up <span class="op">=</span> <span class="st">"gray50"</span>,</span></span>
+<span class="r-in"><span>  col.down <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#FF6B6B"</span>, <span class="st">"#4ECDC4"</span>, <span class="st">"#556270"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="A2Rplot-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>bg <span class="op">=</span> <span class="st">"gray15"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">cols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/hsv.html" class="external-link">hsv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.57</span>, <span class="fl">0.95</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0.8</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">hc</span>, k <span class="op">=</span> <span class="fl">3</span>, boxes <span class="op">=</span> <span class="cn">FALSE</span>, col.up <span class="op">=</span> <span class="st">"gray50"</span>, col.down <span class="op">=</span> <span class="va">cols</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>bg <span class="op">=</span> <span class="st">"gray15"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">cols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/hsv.html" class="external-link">hsv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.57</span>, <span class="fl">0.95</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0.8</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">hc</span>, k <span class="op">=</span> <span class="fl">3</span>, boxes <span class="op">=</span> <span class="cn">FALSE</span>, col.up <span class="op">=</span> <span class="st">"gray50"</span>, col.down <span class="op">=</span> <span class="va">cols</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="A2Rplot-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>bg <span class="op">=</span> <span class="va">bg.def</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Examples with state.x77</span></span>
-<span class="r-in"><span class="va">d77</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">state.x77</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">h77</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="va">d77</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">h77</span>, k <span class="op">=</span> <span class="fl">4</span>, knot.pos <span class="op">=</span> <span class="st">"mean"</span>, type <span class="op">=</span> <span class="st">"tri"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>bg <span class="op">=</span> <span class="va">bg.def</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Examples with state.x77</span></span></span>
+<span class="r-in"><span><span class="va">d77</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">state.x77</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">h77</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="va">d77</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">h77</span>, k <span class="op">=</span> <span class="fl">4</span>, knot.pos <span class="op">=</span> <span class="st">"mean"</span>, type <span class="op">=</span> <span class="st">"tri"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="A2Rplot-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">h77</span>,</span>
-<span class="r-in">  k <span class="op">=</span> <span class="fl">4</span>, lty.up <span class="op">=</span> <span class="fl">1</span>, lwd.down <span class="op">=</span> <span class="fl">1</span>,</span>
-<span class="r-in">  col.down <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"purple"</span>, <span class="st">"black"</span>, <span class="st">"green3"</span>, <span class="st">"orange"</span><span class="op">)</span>,</span>
-<span class="r-in">  col.up <span class="op">=</span> <span class="st">"gray"</span>, boxes <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">h77</span>,</span></span>
+<span class="r-in"><span>  k <span class="op">=</span> <span class="fl">4</span>, lty.up <span class="op">=</span> <span class="fl">1</span>, lwd.down <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>  col.down <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"purple"</span>, <span class="st">"black"</span>, <span class="st">"green3"</span>, <span class="st">"orange"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  col.up <span class="op">=</span> <span class="st">"gray"</span>, boxes <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="A2Rplot-5.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">h77</span>, k <span class="op">=</span> <span class="fl">4</span>, knot.pos <span class="op">=</span> <span class="st">"left"</span>, type <span class="op">=</span> <span class="st">"tri"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">h77</span>, k <span class="op">=</span> <span class="fl">4</span>, knot.pos <span class="op">=</span> <span class="st">"left"</span>, type <span class="op">=</span> <span class="st">"tri"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="A2Rplot-6.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Example showing how to include this in an other layout with only.tree</span></span>
-<span class="r-in"><span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">h77</span>, k <span class="op">=</span> <span class="fl">4</span>, only.tree <span class="op">=</span> <span class="cn">TRUE</span>, boxes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Example showing how to include this in an other layout with only.tree</span></span></span>
+<span class="r-in"><span><span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">h77</span>, k <span class="op">=</span> <span class="fl">4</span>, only.tree <span class="op">=</span> <span class="cn">TRUE</span>, boxes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="co"># one plot</span></span></span>
 <span class="r-plt img"><img src="A2Rplot-7.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">op</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Example using members</span></span>
-<span class="r-in"><span class="va">hc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">USArrests</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span>, <span class="st">"cen"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">memb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cutree.html" class="external-link">cutree</a></span><span class="op">(</span><span class="va">hc</span>, k <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">cent</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
-<span class="r-in"><span class="kw">for</span> <span class="op">(</span><span class="va">k</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="va">cent</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">cent</span>, <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colMeans</a></span><span class="op">(</span><span class="va">USArrests</span><span class="op">[</span><span class="va">memb</span> <span class="op">==</span> <span class="va">k</span>, , drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"><span class="va">hc1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">cent</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span>, method <span class="op">=</span> <span class="st">"cen"</span>, members <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">memb</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">hc1</span><span class="op">$</span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"g"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">hc1</span>,</span>
-<span class="r-in">  members <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">memb</span><span class="op">)</span>,</span>
-<span class="r-in">  k <span class="op">=</span> <span class="fl">4</span>,</span>
-<span class="r-in">  lwd.up <span class="op">=</span> <span class="fl">2</span>, lty.up <span class="op">=</span> <span class="fl">1</span>, col.up <span class="op">=</span> <span class="st">"gray"</span>,</span>
-<span class="r-in">  lwd.down <span class="op">=</span> <span class="fl">1</span>, lty.down <span class="op">=</span> <span class="st">"twodash"</span>,</span>
-<span class="r-in">  col.down <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"orange"</span>, <span class="st">"brown"</span>, <span class="st">"green3"</span>, <span class="st">"royalblue"</span><span class="op">)</span>,</span>
-<span class="r-in">  knot.pos <span class="op">=</span> <span class="st">"bary"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">op</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Example using members</span></span></span>
+<span class="r-in"><span><span class="va">hc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">USArrests</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span>, <span class="st">"cen"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">memb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cutree.html" class="external-link">cutree</a></span><span class="op">(</span><span class="va">hc</span>, k <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">cent</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></span>
+<span class="r-in"><span><span class="kw">for</span> <span class="op">(</span><span class="va">k</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cent</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">cent</span>, <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colMeans</a></span><span class="op">(</span><span class="va">USArrests</span><span class="op">[</span><span class="va">memb</span> <span class="op">==</span> <span class="va">k</span>, , drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="va">hc1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">cent</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span>, method <span class="op">=</span> <span class="st">"cen"</span>, members <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">memb</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">hc1</span><span class="op">$</span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"g"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">A2Rplot</span><span class="op">(</span><span class="va">hc1</span>,</span></span>
+<span class="r-in"><span>  members <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">memb</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  k <span class="op">=</span> <span class="fl">4</span>,</span></span>
+<span class="r-in"><span>  lwd.up <span class="op">=</span> <span class="fl">2</span>, lty.up <span class="op">=</span> <span class="fl">1</span>, col.up <span class="op">=</span> <span class="st">"gray"</span>,</span></span>
+<span class="r-in"><span>  lwd.down <span class="op">=</span> <span class="fl">1</span>, lty.down <span class="op">=</span> <span class="st">"twodash"</span>,</span></span>
+<span class="r-in"><span>  col.down <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"orange"</span>, <span class="st">"brown"</span>, <span class="st">"green3"</span>, <span class="st">"royalblue"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  knot.pos <span class="op">=</span> <span class="st">"bary"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="A2Rplot-8.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -227,7 +260,7 @@ anymore with a recent version of R. It's why this function has been copied here.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

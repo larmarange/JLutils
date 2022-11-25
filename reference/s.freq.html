@@ -55,7 +55,7 @@ observations (i.e. with the same coordinates).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">s.freq</span><span class="op">(</span><span class="va">dfxy</span>, xax <span class="op">=</span> <span class="fl">1</span>, yax <span class="op">=</span> <span class="fl">2</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">s.freq</span><span class="op">(</span><span class="va">dfxy</span>, xax <span class="op">=</span> <span class="fl">1</span>, yax <span class="op">=</span> <span class="fl">2</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="source">
@@ -66,12 +66,19 @@ observations (i.e. with the same coordinates).</p>
     <h2>Arguments</h2>
     <dl><dt>dfxy</dt>
 <dd><p>a data frame with two coordinates</p></dd>
+
+
 <dt>xax</dt>
 <dd><p>column for the x axis</p></dd>
+
+
 <dt>yax</dt>
 <dd><p>column for the y axis</p></dd>
+
+
 <dt>...</dt>
 <dd><p>additional parameters sent to <code><a href="https://rdrr.io/pkg/ade4/man/s.value.html" class="external-link">s.value</a></code></p></dd>
+
 </dl></div>
     <div id="see-also">
     <h2>See also</h2>
@@ -80,12 +87,12 @@ observations (i.e. with the same coordinates).</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="http://pbil.univ-lyon1.fr/ADE-4/" class="external-link">ade4</a></span><span class="op">)</span> <span class="op">&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://juba.github.io/questionr/" class="external-link">questionr</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">hdv2003</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">acm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ade4/man/dudi.acm.html" class="external-link">dudi.acm</a></span><span class="op">(</span><span class="va">hdv2003</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sexe"</span>, <span class="st">"sport"</span>, <span class="st">"bricol"</span>, <span class="st">"cuisine"</span>, <span class="st">"cinema"</span><span class="op">)</span><span class="op">]</span>, scannf <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.label.html" class="external-link">s.label</a></span><span class="op">(</span><span class="va">acm</span><span class="op">$</span><span class="va">li</span>, clabel <span class="op">=</span> <span class="fl">0</span>, cpoint <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu">s.freq</span><span class="op">(</span><span class="va">acm</span><span class="op">$</span><span class="va">li</span>, csize <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="http://pbil.univ-lyon1.fr/ADE-4/" class="external-link">ade4</a></span><span class="op">)</span> <span class="op">&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://juba.github.io/questionr/" class="external-link">questionr</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">hdv2003</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">acm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ade4/man/dudi.acm.html" class="external-link">dudi.acm</a></span><span class="op">(</span><span class="va">hdv2003</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sexe"</span>, <span class="st">"sport"</span>, <span class="st">"bricol"</span>, <span class="st">"cuisine"</span>, <span class="st">"cinema"</span><span class="op">)</span><span class="op">]</span>, scannf <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.label.html" class="external-link">s.label</a></span><span class="op">(</span><span class="va">acm</span><span class="op">$</span><span class="va">li</span>, clabel <span class="op">=</span> <span class="fl">0</span>, cpoint <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">s.freq</span><span class="op">(</span><span class="va">acm</span><span class="op">$</span><span class="va">li</span>, csize <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: ade4</span>
 <span class="r-plt img"><img src="s.freq-1.png" alt="" width="700" height="433"></span>
 <span class="r-plt img"><img src="s.freq-2.png" alt="" width="700" height="433"></span>
@@ -103,7 +110,7 @@ observations (i.e. with the same coordinates).</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

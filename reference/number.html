@@ -65,244 +65,244 @@ percent0 to percent5 of percent, etc."><!-- mathjax --><script src="https://cdnj
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">number</span><span class="op">(</span>
-  <span class="va">x</span>,
-  accuracy <span class="op">=</span> <span class="cn">NULL</span>,
-  scale <span class="op">=</span> <span class="fl">1</span>,
-  prefix <span class="op">=</span> <span class="st">""</span>,
-  suffix <span class="op">=</span> <span class="st">""</span>,
-  big.mark <span class="op">=</span> <span class="st">" "</span>,
-  decimal.mark <span class="op">=</span> <span class="st">"."</span>,
-  style_positive <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"plus"</span><span class="op">)</span>,
-  style_negative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hyphen"</span>, <span class="st">"minus"</span>, <span class="st">"parens"</span><span class="op">)</span>,
-  scale_cut <span class="op">=</span> <span class="cn">NULL</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">label_number</span><span class="op">(</span>
-  accuracy <span class="op">=</span> <span class="cn">NULL</span>,
-  scale <span class="op">=</span> <span class="fl">1</span>,
-  prefix <span class="op">=</span> <span class="st">""</span>,
-  suffix <span class="op">=</span> <span class="st">""</span>,
-  big.mark <span class="op">=</span> <span class="st">" "</span>,
-  decimal.mark <span class="op">=</span> <span class="st">"."</span>,
-  style_positive <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"plus"</span><span class="op">)</span>,
-  style_negative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hyphen"</span>, <span class="st">"minus"</span>, <span class="st">"parens"</span><span class="op">)</span>,
-  scale_cut <span class="op">=</span> <span class="cn">NULL</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">label_en</span><span class="op">(</span>
-  accuracy <span class="op">=</span> <span class="fl">1</span>,
-  scale <span class="op">=</span> <span class="fl">1</span>,
-  prefix <span class="op">=</span> <span class="st">""</span>,
-  suffix <span class="op">=</span> <span class="st">""</span>,
-  big.mark <span class="op">=</span> <span class="st">","</span>,
-  decimal.mark <span class="op">=</span> <span class="st">"."</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">en</span><span class="op">(</span>
-  <span class="va">x</span>,
-  accuracy <span class="op">=</span> <span class="fl">1</span>,
-  scale <span class="op">=</span> <span class="fl">1</span>,
-  prefix <span class="op">=</span> <span class="st">""</span>,
-  suffix <span class="op">=</span> <span class="st">""</span>,
-  big.mark <span class="op">=</span> <span class="st">","</span>,
-  decimal.mark <span class="op">=</span> <span class="st">"."</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">label_fr</span><span class="op">(</span>
-  accuracy <span class="op">=</span> <span class="fl">1</span>,
-  scale <span class="op">=</span> <span class="fl">1</span>,
-  prefix <span class="op">=</span> <span class="st">""</span>,
-  suffix <span class="op">=</span> <span class="st">""</span>,
-  big.mark <span class="op">=</span> <span class="st">" "</span>,
-  decimal.mark <span class="op">=</span> <span class="st">","</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">fr</span><span class="op">(</span>
-  <span class="va">x</span>,
-  accuracy <span class="op">=</span> <span class="fl">1</span>,
-  scale <span class="op">=</span> <span class="fl">1</span>,
-  prefix <span class="op">=</span> <span class="st">""</span>,
-  suffix <span class="op">=</span> <span class="st">""</span>,
-  big.mark <span class="op">=</span> <span class="st">" "</span>,
-  decimal.mark <span class="op">=</span> <span class="st">","</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">label_percent</span><span class="op">(</span>
-  accuracy <span class="op">=</span> <span class="cn">NULL</span>,
-  scale <span class="op">=</span> <span class="fl">100</span>,
-  prefix <span class="op">=</span> <span class="st">""</span>,
-  suffix <span class="op">=</span> <span class="st">"%"</span>,
-  big.mark <span class="op">=</span> <span class="st">" "</span>,
-  decimal.mark <span class="op">=</span> <span class="st">"."</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">percent</span><span class="op">(</span>
-  <span class="va">x</span>,
-  accuracy <span class="op">=</span> <span class="cn">NULL</span>,
-  scale <span class="op">=</span> <span class="fl">100</span>,
-  prefix <span class="op">=</span> <span class="st">""</span>,
-  suffix <span class="op">=</span> <span class="st">"%"</span>,
-  big.mark <span class="op">=</span> <span class="st">" "</span>,
-  decimal.mark <span class="op">=</span> <span class="st">"."</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">label_pourcent</span><span class="op">(</span>
-  accuracy <span class="op">=</span> <span class="fl">1</span>,
-  scale <span class="op">=</span> <span class="fl">100</span>,
-  prefix <span class="op">=</span> <span class="st">""</span>,
-  suffix <span class="op">=</span> <span class="st">" %"</span>,
-  big.mark <span class="op">=</span> <span class="st">" "</span>,
-  decimal.mark <span class="op">=</span> <span class="st">","</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">pourcent</span><span class="op">(</span>
-  <span class="va">x</span>,
-  accuracy <span class="op">=</span> <span class="fl">1</span>,
-  scale <span class="op">=</span> <span class="fl">100</span>,
-  prefix <span class="op">=</span> <span class="st">""</span>,
-  suffix <span class="op">=</span> <span class="st">" %"</span>,
-  big.mark <span class="op">=</span> <span class="st">" "</span>,
-  decimal.mark <span class="op">=</span> <span class="st">","</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">comp_label_percent</span><span class="op">(</span>
-  accuracy <span class="op">=</span> <span class="fl">1</span>,
-  scale <span class="op">=</span> <span class="fl">100</span>,
-  prefix <span class="op">=</span> <span class="st">""</span>,
-  suffix <span class="op">=</span> <span class="st">"%"</span>,
-  big.mark <span class="op">=</span> <span class="st">" "</span>,
-  decimal.mark <span class="op">=</span> <span class="st">"."</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">comp_percent</span><span class="op">(</span>
-  <span class="va">x</span>,
-  accuracy <span class="op">=</span> <span class="fl">1</span>,
-  scale <span class="op">=</span> <span class="fl">100</span>,
-  prefix <span class="op">=</span> <span class="st">""</span>,
-  suffix <span class="op">=</span> <span class="st">"%"</span>,
-  big.mark <span class="op">=</span> <span class="st">" "</span>,
-  decimal.mark <span class="op">=</span> <span class="st">"."</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">comp_label_pourcent</span><span class="op">(</span>
-  accuracy <span class="op">=</span> <span class="fl">1</span>,
-  scale <span class="op">=</span> <span class="fl">100</span>,
-  prefix <span class="op">=</span> <span class="st">""</span>,
-  suffix <span class="op">=</span> <span class="st">" %"</span>,
-  big.mark <span class="op">=</span> <span class="st">" "</span>,
-  decimal.mark <span class="op">=</span> <span class="st">","</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">comp_pourcent</span><span class="op">(</span>
-  <span class="va">x</span>,
-  accuracy <span class="op">=</span> <span class="fl">1</span>,
-  scale <span class="op">=</span> <span class="fl">100</span>,
-  prefix <span class="op">=</span> <span class="st">""</span>,
-  suffix <span class="op">=</span> <span class="st">" %"</span>,
-  big.mark <span class="op">=</span> <span class="st">" "</span>,
-  decimal.mark <span class="op">=</span> <span class="st">","</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">en0</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">en1</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">en2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">en3</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">en4</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">en5</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">fr0</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">fr1</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">fr2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">fr3</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">fr4</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">fr5</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">percent0</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">percent1</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">percent2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">percent3</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">percent4</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">percent5</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">pourcent0</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">pourcent1</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">pourcent2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">pourcent3</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">pourcent4</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">pourcent5</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">comp_percent0</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">comp_percent1</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">comp_percent2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">comp_percent3</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">comp_percent4</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">comp_percent5</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">comp_pourcent0</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">comp_pourcent1</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">comp_pourcent2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">comp_pourcent3</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">comp_pourcent4</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">comp_pourcent5</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">number</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  accuracy <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="st">" "</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>  style_positive <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"plus"</span><span class="op">)</span>,</span>
+<span>  style_negative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hyphen"</span>, <span class="st">"minus"</span>, <span class="st">"parens"</span><span class="op">)</span>,</span>
+<span>  scale_cut <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">label_number</span><span class="op">(</span></span>
+<span>  accuracy <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="st">" "</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>  style_positive <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"plus"</span><span class="op">)</span>,</span>
+<span>  style_negative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hyphen"</span>, <span class="st">"minus"</span>, <span class="st">"parens"</span><span class="op">)</span>,</span>
+<span>  scale_cut <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">label_en</span><span class="op">(</span></span>
+<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="st">","</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">en</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="st">","</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">label_fr</span><span class="op">(</span></span>
+<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="st">" "</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="st">","</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">fr</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="st">" "</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="st">","</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">label_percent</span><span class="op">(</span></span>
+<span>  accuracy <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="st">"%"</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="st">" "</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">percent</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  accuracy <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="st">"%"</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="st">" "</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">label_pourcent</span><span class="op">(</span></span>
+<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="st">" %"</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="st">" "</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="st">","</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pourcent</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="st">" %"</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="st">" "</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="st">","</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_label_percent</span><span class="op">(</span></span>
+<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="st">"%"</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="st">" "</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_percent</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="st">"%"</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="st">" "</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_label_pourcent</span><span class="op">(</span></span>
+<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="st">" %"</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="st">" "</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="st">","</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_pourcent</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="st">" %"</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="st">" "</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="st">","</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">en0</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">en1</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">en2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">en3</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">en4</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">en5</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">fr0</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">fr1</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">fr2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">fr3</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">fr4</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">fr5</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">percent0</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">percent1</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">percent2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">percent3</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">percent4</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">percent5</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pourcent0</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pourcent1</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pourcent2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pourcent3</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pourcent4</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pourcent5</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_percent0</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_percent1</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_percent2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_percent3</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_percent4</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_percent5</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_pourcent0</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_pourcent1</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_pourcent2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_pourcent3</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_pourcent4</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">comp_pourcent5</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -313,25 +313,39 @@ places of precision. If <code>NULL</code>, the default, uses a heuristic that sh
 ensure breaks have the minimum number of digits needed to show the
 difference between adjacent values.</p>
 <p>Applied to rescaled data.</p></dd>
+
+
 <dt>scale</dt>
 <dd><p>A scaling factor: <code>x</code> will be multiplied by <code>scale</code> before
 formatting. This is useful if the underlying data is very small or very
 large.</p></dd>
+
+
 <dt>prefix</dt>
 <dd><p>Additional text to display before the number. The suffix is
 applied to absolute value before <code>style_positive</code> and <code>style_negative</code> are
 processed so that <code>prefix = "$"</code> will yield (e.g.) <code>-$1</code> and <code>($1)</code>.</p></dd>
+
+
 <dt>suffix</dt>
 <dd><p>Additional text to display after the number.</p></dd>
+
+
 <dt>big.mark</dt>
 <dd><p>Character used between every 3 digits to separate thousands.</p></dd>
+
+
 <dt>decimal.mark</dt>
 <dd><p>The character to be used to indicate the numeric
 decimal point.</p></dd>
+
+
 <dt>style_positive</dt>
 <dd><p>A string that determines the style of positive numbers:</p><ul><li><p><code>"none"</code> (the default): no change, e.g. <code>1</code>.</p></li>
 <li><p><code>"plus"</code>: preceded by <code>+</code>, e.g. <code>+1</code>.</p></li>
 </ul></dd>
+
+
 <dt>style_negative</dt>
 <dd><p>A string that determines the style of negative numbers:</p><ul><li><p><code>"hyphen"</code> (the default): preceded by a standard hypen <code>-</code>, e.g. <code>-1</code>.</p></li>
 <li><p><code>"minus"</code>, uses a proper Unicode minus symbol. This is a typographical
@@ -339,6 +353,8 @@ nicety that ensures <code>-</code> aligns with the horizontal bar of the
 the horizontal bar of <code>+</code>.</p></li>
 <li><p><code>"parens"</code>, wrapped in parentheses, e.g. <code>(1)</code>.</p></li>
 </ul></dd>
+
+
 <dt>scale_cut</dt>
 <dd><p>Named numeric vector that allows you to rescale large
 (or small) numbers and add a prefix. Built-in helpers include:</p><ul><li><p><code>cut_short_scale()</code>: [10^3, 10^6) = K, [10^6, 10^9) = M, [10^9, 10^12) = B, [10^12, Inf) = T.</p></li>
@@ -348,53 +364,60 @@ the horizontal bar of <code>+</code>.</p></li>
 range <code>[0, 100)</code> will not be rescaled, absolute values in the range <code>[100, 1000)</code>
 will be divided by 100 and given the suffix "a", and absolute values in
 the range <code>[1000, Inf)</code> will be divided by 1000 and given the suffix "b".</p></dd>
+
+
 <dt>trim</dt>
 <dd><p>Logical, if <code>FALSE</code>, values are right-justified to a common
 width (see <code><a href="https://rdrr.io/r/base/format.html" class="external-link">base::format()</a></code>).</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other arguments passed on to <code><a href="https://rdrr.io/r/base/format.html" class="external-link">base::format()</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a formatted character vector or, for <code>label_*</code> functions, a function with single parameter <code>x</code>, a numeric vector, that
+    
+
+<p>a formatted character vector or, for <code>label_*</code> functions, a function with single parameter <code>x</code>, a numeric vector, that
 returns a character vector</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12.3</span>, <span class="fl">4</span>, <span class="fl">12345.789</span>, <span class="fl">0.0002</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">number</span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12.3</span>, <span class="fl">4</span>, <span class="fl">12345.789</span>, <span class="fl">0.0002</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">number</span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12.3"     "4.0"      "12 345.8" "0.0"     </span>
-<span class="r-in"><span class="fu">en</span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">en</span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12"     "4"      "12,346" "0"     </span>
-<span class="r-in"><span class="fu">fr</span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">fr</span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12"     "4"      "12 346" "0"     </span>
-<span class="r-in"><span class="fu">en2</span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">en2</span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12.30"     "4.00"      "12,345.79" "0.00"     </span>
-<span class="r-in"><span class="fu">en</span><span class="op">(</span><span class="va">v</span>, accuracy <span class="op">=</span> <span class="fl">.001</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">en</span><span class="op">(</span><span class="va">v</span>, accuracy <span class="op">=</span> <span class="fl">.001</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12.300"     "4.000"      "12,345.789" "0.000"     </span>
-<span class="r-in"><span class="fu">en</span><span class="op">(</span><span class="va">v</span>, accuracy <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">en</span><span class="op">(</span><span class="va">v</span>, accuracy <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12.5"     "4.0"      "12,346.0" "0.0"     </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">p</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.559602048 0.930699241 0.262820832 0.006048528 0.017287528 0.512266240</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.462041185 0.369390548 0.842756769 0.455616352</span>
-<span class="r-in"><span class="fu">percent</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "55.96%" "93.07%" "26.28%" "0.60%"  "1.73%"  "51.23%" "46.20%" "36.94%"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "84.28%" "45.56%"</span>
-<span class="r-in"><span class="fu">percent2</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "55.96%" "93.07%" "26.28%" "0.60%"  "1.73%"  "51.23%" "46.20%" "36.94%"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "84.28%" "45.56%"</span>
-<span class="r-in"><span class="fu">pourcent2</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "55,96 %" "93,07 %" "26,28 %" "0,60 %"  "1,73 %"  "51,23 %" "46,20 %"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "36,94 %" "84,28 %" "45,56 %"</span>
-<span class="r-in"><span class="fu">comp_percent</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "44%" "7%"  "74%" "99%" "98%" "49%" "54%" "63%" "16%" "54%"</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Per mille</span></span>
-<span class="r-in"><span class="va">per_mille</span> <span class="op">&lt;-</span> <span class="fu">label_number</span><span class="op">(</span>scale <span class="op">=</span> <span class="fl">1000</span>, suffix <span class="op">=</span> <span class="st">"\u2030"</span>, accuracy <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">per_mille</span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">p</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.8769947 0.2108077 0.1943812 0.1413462 0.8024813 0.6332688 0.5893762</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.1231338 0.5654539 0.1878088</span>
+<span class="r-in"><span><span class="fu">percent</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "87.70%" "21.08%" "19.44%" "14.13%" "80.25%" "63.33%" "58.94%" "12.31%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "56.55%" "18.78%"</span>
+<span class="r-in"><span><span class="fu">percent2</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "87.70%" "21.08%" "19.44%" "14.13%" "80.25%" "63.33%" "58.94%" "12.31%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "56.55%" "18.78%"</span>
+<span class="r-in"><span><span class="fu">pourcent2</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "87,70 %" "21,08 %" "19,44 %" "14,13 %" "80,25 %" "63,33 %" "58,94 %"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "12,31 %" "56,55 %" "18,78 %"</span>
+<span class="r-in"><span><span class="fu">comp_percent</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "12%" "79%" "81%" "86%" "20%" "37%" "41%" "88%" "43%" "81%"</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Per mille</span></span></span>
+<span class="r-in"><span><span class="va">per_mille</span> <span class="op">&lt;-</span> <span class="fu">label_number</span><span class="op">(</span>scale <span class="op">=</span> <span class="fl">1000</span>, suffix <span class="op">=</span> <span class="st">"\u2030"</span>, accuracy <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">per_mille</span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12 300.0‰"     "4 000.0‰"      "12 345 789.0‰" "0.2‰"         </span>
 </code></pre></div>
     </div>
@@ -410,7 +433,7 @@ returns a character vector</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
