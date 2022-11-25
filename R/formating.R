@@ -11,6 +11,7 @@
 #' @return a formatted character vector or, for \code{label_*} functions, a function with single parameter \code{x}, a numeric vector, that
 #'   returns a character vector
 #' @inheritParams scales::number
+#' @param x a numeric vector to format
 #' @importFrom scales number
 #' @importFrom scales label_number
 #' @importFrom scales percent

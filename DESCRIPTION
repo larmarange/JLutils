@@ -16,11 +16,10 @@ License: GPL (>= 3)
 URL: https://github.com/larmarange/JLutils
 BugReports: https://github.com/larmarange/JLutils/issues
 Encoding: UTF-8
-Depends:
+Imports:
     ggplot2 (>= 3.3.0),
     plyr,
-    magrittr
-Imports:
+    magrittr,
     scales (>= 1.1.0),
     broom (>= 0.5.0),
     dplyr,
@@ -45,11 +44,11 @@ Suggests:
     msm,
     reshape,
     nnet,
-    survival
+    survival,
+    msSurv
 RoxygenNote: 7.2.1
 Roxygen: list(markdown = TRUE)
 Remotes:
-    juba/questionr,
     ggobi/ggally,
     bioc::graph
 RdMacros: lifecycle
