@@ -45,7 +45,8 @@ Suggests:
     msm,
     reshape,
     nnet,
-    survival
+    survival,
+    ggstats
 RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
 Remotes:
