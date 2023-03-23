@@ -405,19 +405,19 @@ returns a character vector</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">p</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.68202360 0.41617415 0.25797942 0.99798447 0.06572454 0.91590776</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.72007230 0.65789799 0.71828217 0.16676244</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.10295904 0.70020340 0.34467833 0.79533091 0.15183486 0.06944454</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.57258371 0.88031890 0.62055229 0.77745843</span>
 <span class="r-in"><span><span class="fu">percent</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "68.20%" "41.62%" "25.80%" "99.80%" "6.57%"  "91.59%" "72.01%" "65.79%"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "71.83%" "16.68%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "10.3%" "70.0%" "34.5%" "79.5%" "15.2%" "6.9%"  "57.3%" "88.0%" "62.1%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "77.7%"</span>
 <span class="r-in"><span><span class="fu">percent2</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "68.20%" "41.62%" "25.80%" "99.80%" "6.57%"  "91.59%" "72.01%" "65.79%"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "71.83%" "16.68%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "10.30%" "70.02%" "34.47%" "79.53%" "15.18%" "6.94%"  "57.26%" "88.03%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "62.06%" "77.75%"</span>
 <span class="r-in"><span><span class="fu">pourcent2</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "68,20 %" "41,62 %" "25,80 %" "99,80 %" "6,57 %"  "91,59 %" "72,01 %"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "65,79 %" "71,83 %" "16,68 %"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "10,30 %" "70,02 %" "34,47 %" "79,53 %" "15,18 %" "6,94 %"  "57,26 %"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "88,03 %" "62,06 %" "77,75 %"</span>
 <span class="r-in"><span><span class="fu">comp_percent</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "32%" "58%" "74%" "0%"  "93%" "8%"  "28%" "34%" "28%" "83%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "90%" "30%" "66%" "20%" "85%" "93%" "43%" "12%" "38%" "22%"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Per mille</span></span></span>
 <span class="r-in"><span><span class="va">per_mille</span> <span class="op">&lt;-</span> <span class="fu">label_number</span><span class="op">(</span>scale <span class="op">=</span> <span class="fl">1000</span>, suffix <span class="op">=</span> <span class="st">"\u2030"</span>, accuracy <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span></span></span>
