@@ -1,6 +1,7 @@
 # JLutils 1.24.0
 
 * New function `test_local_as_cran()`
+* `tidy.msSurv()` removed as `msSurv` is not anymore on CRAN
 
 # JLutils 1.23.0
 

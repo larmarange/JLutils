@@ -3,7 +3,6 @@
 S3method(predictdf,lm_left)
 S3method(predictdf,lm_right)
 S3method(predictdf,lm_zero)
-S3method(tidy,msSurv)
 export("%p%")
 export(A2Rplot)
 export(auto_index_group_rows)
