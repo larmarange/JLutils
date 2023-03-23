@@ -1,3 +1,7 @@
+# JLutils 1.24.0
+
+* New function `test_local_as_cran()`
+
 # JLutils 1.23.0
 
 * `long_to_periods()` has been updated. `.data` argument has been renamed `data`
