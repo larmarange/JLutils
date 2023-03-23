@@ -3,6 +3,8 @@
 * New function `test_local_as_cran()`
 * `tidy.msSurv()` removed as `msSurv` is not anymore on CRAN
 * `signif_stars()` now available in `ggstats`
+* `lm_right()`, `lm_left()`  and `lm_zero()` have been removed as not working
+  anymore and considering that it is possible to pass `xseq` argument to `geom_smooth()`
 
 # JLutils 1.23.0
 
