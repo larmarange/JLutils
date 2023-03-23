@@ -1,8 +1,8 @@
 #' Deprecated functions
 #'
-#' @description 
+#' @description
 #' \lifecycle{deprecated}
-#' 
+#'
 #' These functions are deprecated.
 #'
 #' \code{tidy.clm}, \code{tidy.clmm} and \code{tidy.svyolr} are now part of \pkg{broom}
@@ -10,10 +10,12 @@
 #'
 #' \code{tidy_chisq} is deprecated. Use \code{\link[broom]{augment.htest}}
 #' from \pkg{broom} instead.
-#' 
+#'
 #' \code{tidy_detailed} is deprecated. Use \code{\link[broom.helpers]{tidy_plus_plus}} from \pkg{broom.helpers} instead.
 #'
 #' \code{ggchisq_res} and \code{\link{ggcross}} are now deprecated. You could use instead \code{\link[GGally]{ggtable}} from \pkg{GGally}.
+#'
+#' `signif_stars()` is now available in `ggstats`, see `ggstats::signif_stars()`.
 #'
 #' @name deprecated
 #' @param ... parameters
@@ -23,8 +25,8 @@ NULL
 #' @export
 ggchisq_res <- function(...) {
   lifecycle::deprecate_stop(
-    "1.21.0", 
-    "JLutils::ggchisq_res()", 
+    "1.21.0",
+    "JLutils::ggchisq_res()",
     "GGally::ggtable()"
   )
 }
@@ -33,8 +35,8 @@ ggchisq_res <- function(...) {
 #' @export
 ggcross <- function(...) {
   lifecycle::deprecate_stop(
-    "1.22.0", 
-    "JLutils::ggcross()", 
+    "1.22.0",
+    "JLutils::ggcross()",
     "GGally::ggtable()"
   )
 }
@@ -43,9 +45,9 @@ ggcross <- function(...) {
 #' @export
 stat_stack_labels <- function(...) {
   lifecycle::deprecate_stop(
-    "1.21.0", 
-    "JLutils::stat_stack_labels()", 
-    "GGally::stat_prop()"
+    "1.21.0",
+    "JLutils::stat_stack_labels()",
+    "ggstats::stat_prop()"
   )
 }
 
@@ -53,9 +55,9 @@ stat_stack_labels <- function(...) {
 #' @export
 stat_fill_labels <- function(...) {
   lifecycle::deprecate_stop(
-    "1.21.0", 
-    "JLutils::stat_fill_labels()", 
-    "GGally::stat_prop()"
+    "1.21.0",
+    "JLutils::stat_fill_labels()",
+    "ggstats::stat_prop()"
   )
 }
 
@@ -63,8 +65,18 @@ stat_fill_labels <- function(...) {
 #' @export
 tidy_detailed <- function(...) {
   lifecycle::deprecate_stop(
-    "1.21.0", 
-    "JLutils::tidy_detailed()", 
+    "1.21.0",
+    "JLutils::tidy_detailed()",
     "broom.helpers::tidy_plus_plus()"
+  )
+}
+
+#' @rdname deprecated
+#' @export
+signif_stars <- function(...) {
+  lifecycle::deprecate_stop(
+    "1.24.0",
+    "JLutils::signif_stars()",
+    "ggstats::signif_stars()"
   )
 }

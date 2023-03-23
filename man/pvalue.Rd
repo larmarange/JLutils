@@ -3,7 +3,6 @@
 \name{pvalue}
 \alias{pvalue}
 \alias{label_pvalue}
-\alias{signif_stars}
 \title{p-values formatter}
 \usage{
 pvalue(x, accuracy = 0.001, decimal.mark = ".", prefix = NULL, add_p = FALSE)
@@ -14,8 +13,6 @@ label_pvalue(
   prefix = NULL,
   add_p = FALSE
 )
-
-signif_stars(x, three = 0.001, two = 0.01, one = 0.05, point = 0.1)
 }
 \arguments{
 \item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
@@ -33,14 +30,6 @@ put in front of numbers. The default values are \code{c("<", "", ">")}
 if \code{add_p} is \code{TRUE} and \code{c("p<", "p=", "p>")} if \code{FALSE}.}
 
 \item{add_p}{Add "p=" before the value?}
-
-\item{three}{threshold below which to display three stars}
-
-\item{two}{threshold below which to display two stars}
-
-\item{one}{threshold below which to display one star}
-
-\item{point}{threshold below which to display one point (\code{NULL} to desactivate)}
 }
 \value{
 \code{label_pvalue} returns a function with single parameter
@@ -56,6 +45,4 @@ pvalue(p, accuracy = .01)
 pvalue(p, add_p = TRUE)
 custom_function <- label_pvalue(accuracy = .1, decimal.mark = ",")
 custom_function(p)
-signif_stars(p)
-signif_stars(p, one = .15, point = NULL)
 }

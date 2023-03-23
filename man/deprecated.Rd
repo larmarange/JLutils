@@ -7,6 +7,7 @@
 \alias{stat_stack_labels}
 \alias{stat_fill_labels}
 \alias{tidy_detailed}
+\alias{signif_stars}
 \title{Deprecated functions}
 \usage{
 ggchisq_res(...)
@@ -18,6 +19,8 @@ stat_stack_labels(...)
 stat_fill_labels(...)
 
 tidy_detailed(...)
+
+signif_stars(...)
 }
 \arguments{
 \item{...}{parameters}
@@ -36,4 +39,6 @@ from \pkg{broom} instead.
 \code{tidy_detailed} is deprecated. Use \code{\link[broom.helpers]{tidy_plus_plus}} from \pkg{broom.helpers} instead.
 
 \code{ggchisq_res} and \code{\link{ggcross}} are now deprecated. You could use instead \code{\link[GGally]{ggtable}} from \pkg{GGally}.
+
+\code{signif_stars()} is now available in \code{ggstats}, see \code{ggstats::signif_stars()}.
 }

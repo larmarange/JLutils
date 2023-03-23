@@ -2,6 +2,7 @@
 
 * New function `test_local_as_cran()`
 * `tidy.msSurv()` removed as `msSurv` is not anymore on CRAN
+* `signif_stars()` now available in `ggstats`
 
 # JLutils 1.23.0
 
